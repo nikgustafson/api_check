@@ -1,0 +1,315 @@
+[2018-04-10 10:34:06,023] nyx/INFO/locust.main: Starting web monitor at *:8089
+[2018-04-10 10:34:06,023] nyx/INFO/locust.main: Starting Locust 0.8.1
+[2018-04-10 10:34:20,206] nyx/INFO/locust.runners: Hatching and swarming 50 clients at the rate 10 clients/s...
+[2018-04-10 10:34:20,540] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:20,541] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,541] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:19 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:20,541] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,541] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ1OSwibmJmIjoxNTIzMzc0NDU5fQ.BcOgdXak0fyUlxrjnqSuzg3iX0RaYbcBgxFQDbgkvX0
+[2018-04-10 10:34:20,541] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,736] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:20,737] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,737] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:19 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:20,737] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,737] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MCwibmJmIjoxNTIzMzc0NDYwfQ.QbetI0gsJuKeIDL_W6EBOAdTPq1bjDOPPn2mZWIdZWw
+[2018-04-10 10:34:20,738] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,792] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:20,793] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,795] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:19 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:20,795] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,795] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MCwibmJmIjoxNTIzMzc0NDYwfQ.QbetI0gsJuKeIDL_W6EBOAdTPq1bjDOPPn2mZWIdZWw
+[2018-04-10 10:34:20,795] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,886] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:20,887] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,887] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:19 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:20,887] nyx/INFO/stdout: 
+[2018-04-10 10:34:20,887] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MCwibmJmIjoxNTIzMzc0NDYwfQ.QbetI0gsJuKeIDL_W6EBOAdTPq1bjDOPPn2mZWIdZWw
+[2018-04-10 10:34:20,887] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,046] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,047] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,047] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:19 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:21,047] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,047] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MCwibmJmIjoxNTIzMzc0NDYwfQ.QbetI0gsJuKeIDL_W6EBOAdTPq1bjDOPPn2mZWIdZWw
+[2018-04-10 10:34:21,047] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,141] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,142] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,143] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:19 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:21,143] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,143] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MCwibmJmIjoxNTIzMzc0NDYwfQ.QbetI0gsJuKeIDL_W6EBOAdTPq1bjDOPPn2mZWIdZWw
+[2018-04-10 10:34:21,143] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,197] nyx/DEBUG/locust.runners: 10 locusts hatched
+[2018-04-10 10:34:21,255] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,257] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,258] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:19 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:21,258] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,258] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MCwibmJmIjoxNTIzMzc0NDYwfQ.QbetI0gsJuKeIDL_W6EBOAdTPq1bjDOPPn2mZWIdZWw
+[2018-04-10 10:34:21,258] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,411] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,412] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,412] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:20 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:21,413] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,413] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MCwibmJmIjoxNTIzMzc0NDYwfQ.QbetI0gsJuKeIDL_W6EBOAdTPq1bjDOPPn2mZWIdZWw
+[2018-04-10 10:34:21,413] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,461] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,461] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,462] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:19 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:21,462] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,462] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MCwibmJmIjoxNTIzMzc0NDYwfQ.QbetI0gsJuKeIDL_W6EBOAdTPq1bjDOPPn2mZWIdZWw
+[2018-04-10 10:34:21,462] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,551] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,552] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,552] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:20 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:21,552] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,552] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:21,552] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,663] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,664] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,664] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:20 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:21,664] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,664] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:21,664] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,752] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,754] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,755] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:20 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:21,755] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,755] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:21,756] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,901] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,902] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,902] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:20 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:21,902] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,902] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:21,902] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,976] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:21,977] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,977] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:20 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:21,978] nyx/INFO/stdout: 
+[2018-04-10 10:34:21,978] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:21,978] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,077] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,078] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,078] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:20 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,078] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,078] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:22,078] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,124] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,125] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,125] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:21 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,126] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,126] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:22,126] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,228] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,229] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,229] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:21 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,229] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,230] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:22,230] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,232] nyx/DEBUG/locust.runners: 20 locusts hatched
+[2018-04-10 10:34:22,350] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,350] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,350] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:21 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,351] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,351] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:22,351] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,446] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,446] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,447] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:20 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,447] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,447] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:22,447] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,561] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,562] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,562] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:21 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,562] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,562] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MSwibmJmIjoxNTIzMzc0NDYxfQ.msc1REfOGHDIQeMpPVTn8VgIpBqyn0AU6Tdph6jH2ZE
+[2018-04-10 10:34:22,562] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,675] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,676] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,676] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:21 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,676] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,676] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:22,676] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,858] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,858] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,858] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:21 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,858] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,859] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:22,859] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,976] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:22,977] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,977] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:22 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:22,977] nyx/INFO/stdout: 
+[2018-04-10 10:34:22,977] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:22,977] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,015] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,016] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,016] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:21 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:23,016] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,017] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:23,017] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,075] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,076] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,076] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:21 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:23,076] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,077] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:23,077] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,185] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,186] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,186] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:22 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:23,186] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,186] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:23,186] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,282] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,282] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,282] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:22 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:23,283] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,283] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:23,283] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,302] nyx/DEBUG/locust.runners: 30 locusts hatched
+[2018-04-10 10:34:23,405] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,405] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,405] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:22 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:23,405] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,405] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:23,405] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,516] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,517] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,517] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:22 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:23,517] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,517] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MiwibmJmIjoxNTIzMzc0NDYyfQ.FxEzVIa_z0kp7GUTs5t7y-wYE2N_-IRaJoujf6FHTbA
+[2018-04-10 10:34:23,517] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,622] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,623] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,623] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:22 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:23,623] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,623] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:23,623] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,728] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,729] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,729] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:23,729] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,729] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:23,729] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,807] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,807] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,807] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:22 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:23,807] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,808] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:23,808] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,941] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:23,942] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,942] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:23,942] nyx/INFO/stdout: 
+[2018-04-10 10:34:23,942] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:23,942] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,078] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,079] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,079] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,079] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,079] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:24,079] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,126] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,127] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,127] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:22 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,127] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,127] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:24,127] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,261] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,261] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,262] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,262] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,262] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:24,262] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,365] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,365] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,366] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,366] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,366] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:24,366] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,367] nyx/DEBUG/locust.runners: 40 locusts hatched
+[2018-04-10 10:34:24,480] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,480] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,480] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,480] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,481] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2MywibmJmIjoxNTIzMzc0NDYzfQ.8Dhn8WSRLPPWfRfnqEbTLzmM8QLPMdU3buzQoQVAn4U
+[2018-04-10 10:34:24,481] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,555] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,555] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,556] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,556] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,556] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:24,556] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,685] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,685] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,686] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,686] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,686] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:24,686] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,755] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,755] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,756] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,756] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,756] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:24,756] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,877] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,878] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,878] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,878] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,878] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:24,878] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,989] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:24,992] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,993] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:24 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:24,994] nyx/INFO/stdout: 
+[2018-04-10 10:34:24,995] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:24,995] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,119] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:25,120] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,120] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:24 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:25,120] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,120] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:25,120] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,221] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:25,222] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,222] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:23 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:25,222] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,222] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:25,222] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,326] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:25,327] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,327] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:24 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:25,327] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,327] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:25,327] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,412] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:25,414] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,414] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:24 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '524'}
+[2018-04-10 10:34:25,414] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,415] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NCwibmJmIjoxNTIzMzc0NDY0fQ.rHr23xF6mjmrYWhoSJhxzGRQZSwmRBP8AZemJX67jo4
+[2018-04-10 10:34:25,415] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,474] nyx/DEBUG/locust.runners: 50 locusts hatched
+[2018-04-10 10:34:25,564] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:25,565] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,565] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:25 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:25,565] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,565] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NSwibmJmIjoxNTIzMzc0NDY1fQ._iaGNRZmFEpdj_Eede7oOPlU1Hnq0pmBxOOazZQ44FA
+[2018-04-10 10:34:25,565] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,588] nyx/INFO/locust.runners: All locusts hatched: WebsiteUser: 50
+[2018-04-10 10:34:25,589] nyx/INFO/locust.runners: Resetting stats
+
+[2018-04-10 10:34:25,695] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:25,696] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,696] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:24 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=7e838ad1db00fc56a92f3906911eb60681b4df3882a3ef7b510d6771bc778182;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:25,696] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,696] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NSwibmJmIjoxNTIzMzc0NDY1fQ._iaGNRZmFEpdj_Eede7oOPlU1Hnq0pmBxOOazZQ44FA
+[2018-04-10 10:34:25,697] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,826] nyx/INFO/stdout: https://auth.ordercloud.io/oauth/token
+[2018-04-10 10:34:25,827] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,827] nyx/INFO/stdout: {'Vary': 'Accept-Encoding', 'Date': 'Tue, 10 Apr 2018 15:34:24 GMT', 'X-Powered-By': 'ASP.NET', 'Content-Type': 'application/json;charset=UTF-8', 'Pragma': 'no-cache', 'Server': 'Microsoft-IIS/10.0', 'Expires': '-1', 'Set-Cookie': 'ARRAffinity=ac57cbf6179750e129ef094e9ec88110cf3195275849a904a0c3af6d15c789cf;Path=/;HttpOnly;Domain=auth.ordercloud.io', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Length': '523'}
+[2018-04-10 10:34:25,827] nyx/INFO/stdout: 
+[2018-04-10 10:34:25,827] nyx/INFO/stdout: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzQxMDQ2NSwibmJmIjoxNTIzMzc0NDY1fQ._iaGNRZmFEpdj_Eede7oOPlU1Hnq0pmBxOOazZQ44FA
+[2018-04-10 10:34:25,827] nyx/INFO/stdout: 
+[2018-04-10 12:57:49,906] nyx/ERROR/stderr: KeyboardInterrupt
+[2018-04-10 12:57:49,911] nyx/ERROR/stderr: Tue Apr 10 12:57:49 2018
+[2018-04-10 12:57:49,912] nyx/ERROR/stderr: 
+[2018-04-10 12:57:49,912] nyx/INFO/locust.main: Shutting down (exit code 0), bye.

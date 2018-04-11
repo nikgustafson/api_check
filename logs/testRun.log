@@ -1,0 +1,174 @@
+DEBUG:userWorkflow:test_userMe
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 522
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4MywibmJmIjoxNTIzMzA3OTgzfQ.j1HqDfTcNVtMseLh0t8OvL3elU4r7VbzXi6mLeMkkF8
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4MywibmJmIjoxNTIzMzA3OTgzfQ.j1HqDfTcNVtMseLh0t8OvL3elU4r7VbzXi6mLeMkkF8'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 346
+DEBUG:userWorkflow:user: 
+DEBUG:userWorkflow:{'Buyer': {'ID': 'smokeBuyer01', 'DefaultCatalogID': 'smokeBuyer01'}, 'ID': 'pytest', 'Username': 'pytest', 'Password': None, 'FirstName': 'Py', 'LastName': 'Test', 'Email': 'pytest@ordercloud-qa.mailinator.com', 'Phone': '999-867-5309', 'TermsAccepted': '2018-03-21T23:00:00+00:00', 'Active': True, 'xp': {}, 'AvailableRoles': ['FullAccess']}
+INFO:userWorkflow:<Response [200]>
+DEBUG:userWorkflow:test_MeProduct
+DEBUG:userWorkflow:test_MeProduct: Product List
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 520
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NCwibmJmIjoxNTIzMzA3OTg0fQ.FeLbbe0QKL9AvyrKN4k2cw8H-dNsU2i-gEqB5lgTyxA
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NCwibmJmIjoxNTIzMzA3OTg0fQ.FeLbbe0QKL9AvyrKN4k2cw8H-dNsU2i-gEqB5lgTyxA'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products HTTP/1.1" 200 2473
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products
+INFO:userWorkflow:Random Product: {'PriceSchedule': {'ID': 'FoYw-6__JUKmTyQPwgtXVQ', 'Name': 'variant pricing schedule', 'ApplyTax': True, 'ApplyShipping': True, 'MinQuantity': 1, 'MaxQuantity': 1000, 'UseCumulativeQuantity': False, 'RestrictedQuantity': False, 'PriceBreaks': [{'Quantity': 1, 'Price': 617.0}], 'xp': None}, 'ID': 'XRbafUYSK0OQHCFxaUVeTA', 'Name': 'runscope00260dd1-8f41-4089-84a1-f046b267f761', 'Description': 'A TEST PRODUCT FOR THE RUNSCOPE TESTS 00260dd1-8f41-4089-84a1-f046b267f761', 'QuantityMultiplier': 1, 'ShipWeight': 1.0, 'ShipHeight': None, 'ShipWidth': None, 'ShipLength': None, 'Active': True, 'SpecCount': 0, 'xp': None, 'VariantCount': 0, 'ShipFromAddressID': None, 'Inventory': {'Enabled': False, 'NotificationPoint': None, 'VariantLevelTracking': False, 'OrderCanExceed': False, 'QuantityAvailable': None, 'LastUpdated': None}, 'AutoForwardSupplierID': None}
+DEBUG:userWorkflow:test_MeProduct: Product GET
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 520
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NCwibmJmIjoxNTIzMzA3OTg0fQ.FeLbbe0QKL9AvyrKN4k2cw8H-dNsU2i-gEqB5lgTyxA
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NCwibmJmIjoxNTIzMzA3OTg0fQ.FeLbbe0QKL9AvyrKN4k2cw8H-dNsU2i-gEqB5lgTyxA'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products/XRbafUYSK0OQHCFxaUVeTA HTTP/1.1" 200 625
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products/XRbafUYSK0OQHCFxaUVeTA
+DEBUG:userWorkflow:XRbafUYSK0OQHCFxaUVeTA
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 519
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NSwibmJmIjoxNTIzMzA3OTg1fQ.tnfOb8LiTf3uq5e-crluHLPydO7Slf1VQB12vC22vaw
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NSwibmJmIjoxNTIzMzA3OTg1fQ.tnfOb8LiTf3uq5e-crluHLPydO7Slf1VQB12vC22vaw'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products HTTP/1.1" 200 2473
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:test_MeProductFilter catalogID expects smokebuyer01
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 519
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NiwibmJmIjoxNTIzMzA3OTg2fQ.d5yhUD1rGutgSiG6ipCvGZ5CvuwevR7gCEJpQZIwZ6A
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NiwibmJmIjoxNTIzMzA3OTg2fQ.d5yhUD1rGutgSiG6ipCvGZ5CvuwevR7gCEJpQZIwZ6A'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products?catalogID=smokebuyer01 HTTP/1.1" 200 2473
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products?catalogID=smokebuyer01
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 519
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NiwibmJmIjoxNTIzMzA3OTg2fQ.d5yhUD1rGutgSiG6ipCvGZ5CvuwevR7gCEJpQZIwZ6A
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NiwibmJmIjoxNTIzMzA3OTg2fQ.d5yhUD1rGutgSiG6ipCvGZ5CvuwevR7gCEJpQZIwZ6A'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products HTTP/1.1" 200 2473
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:test_MeProductFilter search expects *w*
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 524
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NywibmJmIjoxNTIzMzA3OTg3fQ.yoJqxFQMJf22TBdEBVc4qPBSt3Y-LMbt7pD_JIQdi9U
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4NywibmJmIjoxNTIzMzA3OTg3fQ.yoJqxFQMJf22TBdEBVc4qPBSt3Y-LMbt7pD_JIQdi9U'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products?search=%2Aw%2A HTTP/1.1" 200 189
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products?search=%2Aw%2A
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 523
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4OCwibmJmIjoxNTIzMzA3OTg4fQ.n4eZZJ3ab-RteqS4oitbXu8Jf0YOfPzPNviKDKXhGGc
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4OCwibmJmIjoxNTIzMzA3OTg4fQ.n4eZZJ3ab-RteqS4oitbXu8Jf0YOfPzPNviKDKXhGGc'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products HTTP/1.1" 200 2473
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:test_MeProductFilter sortBy expects name
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 523
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4OCwibmJmIjoxNTIzMzA3OTg4fQ.n4eZZJ3ab-RteqS4oitbXu8Jf0YOfPzPNviKDKXhGGc
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4OCwibmJmIjoxNTIzMzA3OTg4fQ.n4eZZJ3ab-RteqS4oitbXu8Jf0YOfPzPNviKDKXhGGc'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products?sortBy=name HTTP/1.1" 200 2495
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products?sortBy=name
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 522
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4OSwibmJmIjoxNTIzMzA3OTg5fQ.xf2efqfzsOnE7z_ASHXb5zaDGV2dHrMzmtFmQh0rmh4
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk4OSwibmJmIjoxNTIzMzA3OTg5fQ.xf2efqfzsOnE7z_ASHXb5zaDGV2dHrMzmtFmQh0rmh4'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products HTTP/1.1" 200 2473
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:test_MeProductFilter page expects 5
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 523
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk5MCwibmJmIjoxNTIzMzA3OTkwfQ.9pGn6d2vBmsFzQYSdM5myVSR8ULRTyR2y-0r4YdvpjM
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk5MCwibmJmIjoxNTIzMzA3OTkwfQ.9pGn6d2vBmsFzQYSdM5myVSR8ULRTyR2y-0r4YdvpjM'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products?page=5 HTTP/1.1" 200 2340
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products?page=5
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 523
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk5MCwibmJmIjoxNTIzMzA3OTkwfQ.9pGn6d2vBmsFzQYSdM5myVSR8ULRTyR2y-0r4YdvpjM
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk5MCwibmJmIjoxNTIzMzA3OTkwfQ.9pGn6d2vBmsFzQYSdM5myVSR8ULRTyR2y-0r4YdvpjM'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products HTTP/1.1" 200 2473
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:userWorkflow:test_MeProductFilter pageSize expects 100
+DEBUG:userWorkflow:getMe
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 524
+DEBUG:userWorkflow:token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk5MSwibmJmIjoxNTIzMzA3OTkxfQ.UxnVm8u3KlVqeDApH6fo_36u-UhnBYyCvOeBqqUHoIA
+DEBUG:userWorkflow:headers: 
+DEBUG:userWorkflow:{'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJweXRlc3QiLCJjaWQiOiIzZjY5ZWUzNC1iMDMyLTQ5NGYtOWMwMS02MTdhYmQ4ZmIzNzUiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUyMzM0Mzk5MSwibmJmIjoxNTIzMzA3OTkxfQ.UxnVm8u3KlVqeDApH6fo_36u-UhnBYyCvOeBqqUHoIA'}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me/products?pageSize=100 HTTP/1.1" 200 9533
+DEBUG:userWorkflow:https://api.ordercloud.io/v1/me/products?pageSize=100
+DEBUG:userWorkflow:9992
+DEBUG:userWorkflow:500
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /env HTTP/1.1" 200 269
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /env HTTP/1.1" 200 269
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): qaapi.ordercloud.io
+DEBUG:urllib3.connectionpool:https://qaapi.ordercloud.io:443 "GET /env HTTP/1.1" 200 273
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): qaapi.ordercloud.io
+DEBUG:urllib3.connectionpool:https://qaapi.ordercloud.io:443 "GET /env HTTP/1.1" 200 273
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "GET /env HTTP/1.1" 200 277
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): auth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://auth.ordercloud.io:443 "GET /env HTTP/1.1" 200 277
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): qaauth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://qaauth.ordercloud.io:443 "GET /env HTTP/1.1" 200 280
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): qaauth.ordercloud.io
+DEBUG:urllib3.connectionpool:https://qaauth.ordercloud.io:443 "GET /env HTTP/1.1" 200 280
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 401 115
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.ordercloud.io
+DEBUG:urllib3.connectionpool:https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 401 115
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): qaapi.ordercloud.io
+DEBUG:urllib3.connectionpool:https://qaapi.ordercloud.io:443 "GET /v1/me HTTP/1.1" 401 115
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): qaapi.ordercloud.io
+DEBUG:urllib3.connectionpool:https://qaapi.ordercloud.io:443 "GET /v1/me HTTP/1.1" 401 115
