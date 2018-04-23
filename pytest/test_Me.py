@@ -1,18 +1,22 @@
 #filter user workflow tests
 import requests
+from requests import codes as codes
 import pytest
 import configparser
 import json
 import logging
+import datetime
 import urllib
 from random import randint
+from faker import Faker
+fake = Faker()
 
 logging.basicConfig(filename='testRun.log', level=logging.DEBUG, filemode = 'w')
 log = logging.getLogger('userWorkflow')
 
 config = configparser.ConfigParser()
-config.read('config.ini')
-auth = config['AUTH']
+config.read('../config.ini')
+auth = config['LOCUST-AUTH']
 
 environments = {'api':['api', 'qaapi'], 'auth':['auth', 'qaauth']}
 
@@ -33,9 +37,9 @@ def getTokenBuyer(buyerUsername, buyerPassword, scope = ''):
 
 # Me List Endpoints
 
-def getMe(buyerUsername, buyerPassword):
+def getMe(buyerUsername, buyerPassword, scope = ''):
 	log.debug('getMe')
-	token = getTokenBuyer(buyerUsername, buyerPassword, 'Shopper')
+	token = getTokenBuyer(buyerUsername, buyerPassword, scope)
 	log.debug('token: '+ token)
 	headers = {'Content-Type':'application/json', 'Authorization':'Bearer '+ token}
 	log.debug('headers: ')
@@ -48,7 +52,7 @@ def getMeProducts(buyerUsername, buyerPassword, search='', productID = ''):
 	if productID != '':
 		productID = '/'+productID
 
-	log.debug('getMe')
+	log.debug('getMeProducts')
 	token = getTokenBuyer(buyerUsername, buyerPassword, 'Shopper')
 	log.debug('token: '+ token)
 	headers = {'Content-Type':'application/json', 'Authorization':'Bearer '+ token}
@@ -61,7 +65,7 @@ def getMeProducts(buyerUsername, buyerPassword, search='', productID = ''):
 def test_MeGet():
 	# get me succeeds, and user is active
 	log.debug('test_userMe')
-	user = getMe(auth['buyerUsername'], auth['buyerPassword'])
+	user = getMe(auth['buyerUsername'], auth['buyerPassword'], 'Shopper')
 	log.debug('user: ')
 	log.debug(user.json())
 	assert user.status_code == 200
@@ -133,3 +137,53 @@ def test_MeProductFilter(searchParams):
 
 
 # what we want: 'catalogID','search',"sortBy","page","pageSize" x filters
+
+
+def meCardCreate():
+	log.debug('meCardCreate()')
+
+	user = getMe(auth['buyerUsername'], auth['buyerPassword'], 'MeCreditCardAdmin')
+	# TODO: refactor scope to be array of strings
+	assert user.status_code == codes.ok
+
+	headers = user.request.headers
+	#assert headers.json()['Authorization'] TODO: to be able to assert user has current priv, add jwt decode
+	log.debug(headers)
+	log.debug(json.dumps(user.json(), indent=2))
+
+	cardNumber = fake.credit_card_number(card_type=None)
+
+	fullCard = {
+	"BuyerID": '',
+	"TransactionType": "createCreditCard",
+	"CardDetails": {
+	"CardholderName":  user.json()['FirstName']+' '+user.json()['LastName'],
+	"CardType": fake.credit_card_provider(card_type=None),
+	"CardNumber": cardNumber,
+	"ExpirationDate": fake.credit_card_expire(start="now", end="+10y", date_format="%Y/%m/%d"),
+	"CardCode": cardNumber[-4:],
+	"Shared": False
+	}   
+	}
+
+	partialCard = {
+	    "CardType": fullCard["CardDetails"]['CardType'],
+	    "CardholderName": fullCard["CardDetails"]['CardholderName'],
+	    "ExpirationDate": fullCard["CardDetails"]['ExpirationDate'],
+	    "PartialAccountNumber": fullCard["CardDetails"]['CardCode'],
+	    "Token": "",
+	    "xp": {}
+	}
+
+	#log.debug(partialCard)
+	log.debug(fullCard)
+
+	card = requests.post('https://api.ordercloud.io/v1/me/creditcards', headers = headers, json = partialCard)
+	log.debug(card.url)
+	log.debug(card.request.body)
+	log.debug(json.dumps(card.json(), indent=2))
+	assert card.status_code == codes.created
+
+	
+	return(fullCard)
+	
