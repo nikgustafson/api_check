@@ -4,10 +4,12 @@ import json
 import requests
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('../config.ini')
 auth = config['AUTH']
 
 environments = {'api':['api', 'qaapi'], 'auth':['auth', 'qaauth']}
+
+ENV = 'qa'
 
 
 class UserBehavior(TaskSet):
@@ -21,7 +23,7 @@ class UserBehavior(TaskSet):
         'Scope': "Shopper"
         }
         headers = {'Content-Type':'application/json'}
-        r = requests.post('https://auth.ordercloud.io/oauth/token', data = payload, headers = headers)
+        r = requests.post('https://'+ENV+'auth.ordercloud.io/oauth/token', data = payload, headers = headers)
 
         print(r.url)
         print(r.headers)
@@ -47,6 +49,6 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
-    host = "https://qaapi.ordercloud.io/v1"
+    host = "https://"+ENV+"api.ordercloud.io/v1"
     min_wait = 5000
     max_wait = 9000

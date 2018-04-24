@@ -9,7 +9,7 @@ from datetime import *
 import urllib
 import configparser
 sys.path.append("C:/api-check/pytest")
-from test_Me import meCardCreate, getMe
+from test_Me import meCardCreate, getMe, getMeToken, getTokenBuyer
 from faker import Faker
 fake = Faker()
 
@@ -25,30 +25,28 @@ authhost = 'https://'+env+'auth.ordercloud.io'
 #log = logging.getLogger('Authorize.Net')
 # auth.net
 
-authnet = host+'/v1/integrationproxy/Authorize.Net'
+authnet = host+'/v1/integrationproxy/authorizenet'
 
-def createAuthCard(BuyerID):
+def createAuthCard(BuyerID, username, password):
+    log = logging.getLogger('Create Authorize.Net Card')
 
-    card = meCardCreate() # creates card in ordercloud api
+    card = meCardCreate(username, password) # creates card in ordercloud api
     card['BuyerID'] = BuyerID
 
-    log.debug(card)
-    user = getMe(auth['buyerUsername'], auth['buyerPassword'], 'Shopper')
-    log.debug(json.dumps(user.json(), indent=2))
-    assert user.status_code == codes.ok
+    token = getTokenBuyer(username, password, 'MeCreditCardAdmin')
+
+    headers = {'Content-Type':'application/json; charset=UTF-8', 'Authorization':'Bearer '+ token}
     
-    authCard = requests.post(authnet, headers = user.headers, json = card)
-    log.debug(authCard.request)
-    log.debug(authCard.url)
-    log.debug(authCard.text)
+    authCard = requests.post(authnet, headers = headers, json = card)
+    log.debug('auth.net url: '+authCard.url)
+    log.debug('new card request body: \n'+json.dumps(json.loads(authCard.request.body), indent=2))
+    log.debug('auth.net response: \n'+ json.dumps(authCard.json(), indent=2))
     assert authCard.status_code is codes.created
+    assert authCard.json()['ResponseHttpStatusCode'] is codes.created
+    
 
-    #c = requests.post(authnet, )
-
-
-def registerUser():
-    log = logging.getLogger('Register Anon User')
-
+def getAnonToken():
+    log = logging.getLogger('Get Anon Token')
 
     data = {
         'client_id': auth['buyerClientID'],
@@ -65,6 +63,13 @@ def registerUser():
     log.debug(anonToken.json())
     assert anonToken.status_code is codes.ok
 
+    return(anonToken.json())
+
+def registerUser():
+    log = logging.getLogger('Register Anon User')
+
+    anonToken = getAnonToken()
+    log.debug(anonToken)
 
     newUserID = fake.ean8()
 
@@ -73,34 +78,39 @@ def registerUser():
       'Username' : fake.user_name(),
       'FirstName' : fake.first_name(),
       'LastName' : fake.last_name(),
+      'Password': fake.password(),
       'Email' : newUserID+'@ordercloud-qa.mailinator.com',
       'Phone' : fake.phone_number(),
-      'TermsAccepted':'2018-04-23T14:35:10.8939165-05:00',#datetime.utcnow().strftime('%Y'),
+      'TermsAccepted':datetime.utcnow().strftime('%Y/%m/%d'),
       'Active' : 'True',
       'xp' : {}
     }
 
     url = host+'/v1/me/register'
-    querystring = {"anonUserToken": anonToken.json()['access_token']}
-
+    querystring = {"anonUserToken": anonToken['access_token']}
     payload = json.dumps(jsonObj, indent=2)
-
     headers = {
     'Accept': "application/json",
     'Content-Type': "application/json",
-    'Authorization': "Bearer "+anonToken.json()['access_token']
+    'Authorization': "Bearer "+anonToken['access_token']
     }
 
     user = requests.request("PUT", url, data=payload, headers=headers, params=querystring)
 
    
-    log.debug(user.request.url)
-    log.debug(user.request.headers)
-    log.debug(user.request.body)
+    log.info(user.request.url)
+    log.info(user.request.headers)
+    log.info(user.request.body)
     log.debug(user.json())
 
 
     assert user.status_code is codes.ok
+
+    returnedUser = dict()
+    returnedUser['access_token']= user.json()['access_token']
+    returnedUser['user'] = json.loads(user.request.body)
+
+    return(returnedUser)
 
 
 
@@ -109,14 +119,18 @@ def test_AuthorizeNet():
     log = logging.getLogger('Authorize.Net')
 
     user = registerUser()
-    log.debug(user)
+    print(user)
 
-    me = getMe(auth['buyerUsername'], auth['buyerPassword'], 'Shopper')
+    me = getMeToken(user['access_token'])
     log.debug(me.json())
 
-    buyer = me.json()['Buyer']['ID']
+    headers = {'Content-Type':'application/json', 'Authorization':'Bearer '+ user['access_token']} #TODO: Move to me tests
+    meCC = requests.get(host+'/v1/me/creditcards', headers = headers)
+    log.debug(json.dumps(meCC.json(), indent=2))
+    assert meCC.status_code is codes.ok
+    totalCount = meCC.json()['Meta']['TotalCount']
 
-    card = createAuthCard(buyer)
+    card = createAuthCard(me.json()['Buyer']['ID'], user['user']['Username'], user['user']['Password'])
 
 
 test_AuthorizeNet()

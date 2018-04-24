@@ -23,11 +23,12 @@ environments = {'api':['api', 'qaapi'], 'auth':['auth', 'qaauth']}
 # Authentication
 
 def getTokenBuyer(buyerUsername, buyerPassword, scope = ''):
+	log = logging.getLogger('getTokenBuyer')
 	payload = {
 	'client_id':auth['buyerClientID'],
 	'grant_type': 'password',
-	'username' : auth['buyerUsername'],
-	'password':auth['buyerPassword'],
+	'username' : buyerUsername,
+	'password':buyerPassword,
 	'Scope': scope
 	}
 	headers = {'Content-Type':'application/json'}
@@ -37,14 +38,23 @@ def getTokenBuyer(buyerUsername, buyerPassword, scope = ''):
 
 # Me List Endpoints
 
-def getMe(buyerUsername, buyerPassword, scope = ''):
+def getMeToken(token):
 	log.debug('getMe')
-	token = getTokenBuyer(buyerUsername, buyerPassword, scope)
+	token = token
 	log.debug('token: '+ token)
 	headers = {'Content-Type':'application/json', 'Authorization':'Bearer '+ token}
 	log.debug('headers: ')
 	log.debug(headers)
 	r = requests.get('https://api.ordercloud.io/v1/me', headers = headers)
+	return(r)
+
+def getMe(buyerUsername= '', buyerPassword = '', scope = ''):
+	log.debug('getMe')
+	token = getTokenBuyer(buyerUsername, buyerPassword, scope)
+	log.debug('token: '+ token)
+
+	r = getMeToken(token)
+	
 	return(r)
 
 def getMeProducts(buyerUsername, buyerPassword, search='', productID = ''):
@@ -139,10 +149,10 @@ def test_MeProductFilter(searchParams):
 # what we want: 'catalogID','search',"sortBy","page","pageSize" x filters
 
 
-def meCardCreate():
-	log.debug('meCardCreate()')
+def meCardCreate(username, password):
+	log.debug('ME: Create Credit Card ')
 
-	user = getMe(auth['buyerUsername'], auth['buyerPassword'], 'MeCreditCardAdmin')
+	user = getMe(username, password, 'MeCreditCardAdmin')
 	# TODO: refactor scope to be array of strings
 	assert user.status_code == codes.ok
 
