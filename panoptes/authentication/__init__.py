@@ -2,7 +2,7 @@ import requests
 from requests import codes
 import logging
 import json
-from .. import auth, authhost, host, logger, createUserObj
+from .. import auth, authhost, host, createUserObj
 
 
 def getTokenPasswordGrant(buyerUsername, buyerPassword, scope=''):
@@ -23,7 +23,7 @@ def getTokenPasswordGrant(buyerUsername, buyerPassword, scope=''):
     return r.json()['access_token']
 
 
-def getTokenClientGrand():
+def getTokenClientGrant():
     payload = {
         'client_id': auth['buyerClientID'],
         'grant_type': 'clientgrant',
@@ -64,6 +64,7 @@ def registerUser():
     log.debug(anonToken)
 
     jsonObj = createUserObj()
+    log.info('json object for user'+ json.dumps(jsonObj, indent=2))
 
     url = host+'/v1/me/register'
     querystring = {"anonUserToken": anonToken['access_token']}
@@ -73,14 +74,17 @@ def registerUser():
     'Content-Type': "application/json",
     'Authorization': "Bearer "+anonToken['access_token']
     }
-
+    log.info('request url: '+url)
+    log.info('querystring: '+str(querystring))
+    log.info('headers: '+str(headers))
+    log.info('payload: '+str(payload))
     user = requests.request("PUT", url, data=payload, headers=headers, params=querystring)
 
-   
+    log.debug('response user'+ str(user.json()))
     log.info(user.request.url)
     log.info(user.request.headers)
     log.info(user.request.body)
-    log.debug(user.json())
+    
 
 
     assert user.status_code is codes.ok

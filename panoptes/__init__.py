@@ -12,15 +12,6 @@ import os
 fake = Faker()
 
 
-## Logging
-
-# create logger with 'spam_application'
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-# create file handler which logs even debug messages
-fh = logging.FileHandler('../logs/'+__name__+'.log')
-
-
 ## common api info
 
 cwd = Path.cwd()
@@ -49,10 +40,7 @@ auth = config['LOCUST-AUTH']
 
 
 def createCreditCardObj():
-    """
-    creates a dict object with fully random credit card info
-
-    """    
+ 
     cardNumber = fake.credit_card_number(card_type=None)
 
     cc = {
@@ -88,6 +76,7 @@ def createUserObj():
         'xp' : {}
     }
 
+    return(user)
 
  
  

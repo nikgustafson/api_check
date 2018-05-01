@@ -1,8 +1,5 @@
 import requests
-import logging
 from . import auth, authhost
-
-logger = logging.getLogger(__name__)
 
 
 def getTokenPasswordGrant(buyerUsername, buyerPassword, scope=''):
