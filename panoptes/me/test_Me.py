@@ -1,6 +1,6 @@
 # filter user workflow tests
 import requests
-from requests import codes as codes
+from requests import codes
 import pytest
 import configparser
 import json
@@ -12,84 +12,61 @@ from faker import Faker
 
 
 from panoptes import host, auth
+from ..authentication import getTokenPasswordGrant, registerUser
 
-from . import fake
+from . import fake, getMeProducts, getMe
 
-from panoptes import authentication
+# TODO: make user set up and tear down a test fixture
 
+logger = logging.getLogger('ME Tests')
 
+def setUp():
 
-logger = logging.getLogger(__name__)
+    user = registerUser()
+    logger.debug(user)
 
-
-# @pytest.mark(usefixture('setEnv('')'))
-#class TestAuth():
-
-
-# Me List Endpoints
-
-def getMe(token):
-    headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
-    logger.debug('headers: ')
-    logger.debug(headers)
-    r = requests.get(host + '/v1/me', headers=headers)
-    assert r.status_code is codes.ok
-
-    return r
-
-
-def getMeProducts(buyerUsername, buyerPassword, search='', productID=''):
-    if productID != '':
-        productID = '/' + productID
-
-        logger.debug('getMeProducts')
-        token = getTokenPasswordGrant(buyerUsername, buyerPassword, 'Shopper')
-        logger.debug('token: ' + token)
-        headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
-        logger.debug('headers: ')
-        logger.debug(headers)
-        r = requests.get(host+'/v1/me/products' + productID, headers=headers, params=search)
-        return (r)
+    return user
 
 
 # 1
 def test_MeGet():
+    #logger = logging.getLogger(test_MeGet.__name__)
     # get me succeeds, and user is active
 
-    token = getTokenPasswordGrant(auth['buyerUsername'], auth['buyerPassword'], 'Shopper')
+
+    token = setUp['access_token']
     user = getMe(token)
     logger.debug('user: ')
-    logger.debug(json.dumps(user.json(), indent= 2))
-    assert user.status_code == 200
-    assert user.is_redirect is False
-    assert user.json()['Username'] == auth['buyerUsername']
-    assert user.json()['Active'] == True
-    logger.info(user)
+    logger.debug(json.dumps(user, indent= 2))
+    #assert user['Username'] == auth['buyerUsername']
+    assert user['Active'] == True
+    logger.debug(user)
 
 
 # 2
 def test_MeProduct():
+    logger = logging.getLogger(test_MeProduct.__name__)
 
-    logger.debug('test_MeProduct: Product List')
-    productList = getMeProducts(auth['buyerUsername'], auth['buyerPassword'])
+    token = getTokenPasswordGrant(auth['buyerUsername'], auth['buyerPassword'], 'Shopper')
+    productList = getMeProducts(token)
     logger.debug(productList.url)
     assert productList.status_code == 200
     assert productList.is_redirect is False
 
     assert productList.json()['Meta']['TotalCount'] > 5
     randProduct = productList.json()['Items'][randint(0, productList.json()['Meta']['PageSize'] - 1)]
-    logger.info("Random Product: " + str(randProduct))
+    logger.debug("Random Product: " + str(randProduct))
 
     logger.debug('test_MeProduct: Product GET')
-    productList = getMeProducts(auth['buyerUsername'], auth['buyerPassword'], productID=randProduct['ID'])
-    logger.debug(productList.url)
+    product = getMeProducts(token, productID=randProduct['ID'])
     logger.debug(str(randProduct['ID']))
+    
+    print(product)
+    print(productList)
 
-    assert productList.status_code == 200
-    assert productList.is_redirect is False
 
 
-# logger.info("Product List: "+str(productList))
+#logger.info("Product List: "+str(productList))
 
 
 searchParams = (["catalogID", "smokebuyer01"], ["search", "*w*"], ["sortBy", "name"], ["page", 5], ["pageSize", 100])
@@ -101,11 +78,13 @@ for item in searchParams:
     ids.append(item[0] + '-' + str(item[1]))
 
 
-@pytest.mark.parametrize("searchParams", searchParams, ids=ids, )
+#@pytest.mark.parametrize("searchParams", searchParams, ids=ids, )
 # 3
 def test_MeProductFilter(searchParams):
+    logger = logging.getLogger(test_MeProductFilter.__name__)
+
     allProducts = getMeProducts(auth['buyerUsername'], auth['buyerPassword'])
-    logger.debug(allProducts.url)
+   
     assert allProducts.status_code == 200
     totalProducts = allProducts.json()['Meta']['TotalCount']
     totalPages = allProducts.json()['Meta']['TotalPages']
@@ -132,52 +111,4 @@ def test_MeProductFilter(searchParams):
 
 
 # what we want: 'catalogID','search',"sortBy","page","pageSize" x filters
-
-
-def meCardCreate(username, password):
-    logger.debug('ME: Create Credit Card ')
-
-    user = getMe(username, password, 'MeCreditCardAdmin')
-    # TODO: refactor scope to be array of strings
-    assert user.status_code == codes.ok
-
-    headers = user.request.headers
-    # assert headers.json()['Authorization'] TODO: to be able to assert user has current priv, add jwt decode
-    logger.debug(headers)
-    logger.debug(json.dumps(user.json(), indent=2))
-
-    cardNumber = fake.credit_card_number(card_type=None)
-
-    fullCard = {
-        "BuyerID": '',
-        "TransactionType": "createCreditCard",
-        "CardDetails": {
-            "CardholderName": user.json()['FirstName'] + ' ' + user.json()['LastName'],
-            "CardType": fake.credit_card_provider(card_type=None),
-            "CardNumber": cardNumber,
-            "ExpirationDate": fake.credit_card_expire(start="now", end="+10y", date_format="%Y/%m/%d"),
-            "CardCode": cardNumber[-4:],
-            "Shared": False
-        }
-    }
-
-    partialCard = {
-        "CardType": fullCard["CardDetails"]['CardType'],
-        "CardholderName": fullCard["CardDetails"]['CardholderName'],
-        "ExpirationDate": fullCard["CardDetails"]['ExpirationDate'],
-        "PartialAccountNumber": fullCard["CardDetails"]['CardCode'],
-        "Token": "",
-        "xp": {}
-    }
-
-    # logger.debug(partialCard)
-    logger.debug(fullCard)
-
-    card = requests.post(host+'/v1/me/creditcards', headers=headers, json=partialCard)
-    logger.debug(card.url)
-    logger.debug(card.request.body)
-    logger.debug(json.dumps(card.json(), indent=2))
-    assert card.status_code == codes.created
-
-    return (fullCard)
 
