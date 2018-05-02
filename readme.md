@@ -1,11 +1,7 @@
 
 # OrderCloud API Checking & Integration Test Suite
 
-## to do:
-
-- [ ] set up test fixtures for set up, tear down
-- [ ] set up locust
-
+code name `panoptes`
 
 ## mvp/demo goals:
 
@@ -14,16 +10,10 @@
 - to be able to demonstrate locust locally
 
 
+## todo
 
-
-
-
-## long term considerations
-
-### the long term build up of cruft.
-
-- yes to creating more new users, addresses, orders
-- no to eternal products -- initial product catalog load?
-- discuss further when demo
-
-### future azure locust integration
+- tests for the package structure/setup
+- figure out a more comprehensive logging solution
+- make this a nice, neat package
+- integrate panoptes with locus
+- move user stuff in integretions __init__ to me/user inits

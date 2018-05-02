@@ -37,23 +37,26 @@ auth = config['LOCUST-AUTH']
 
 # models
 
+faker_credit_card_types = ('maestro', 'mastercard','visa16', 'visa13', 'amex','discover','diners')
 
+authnet_credit_card_types = ()
 
 def createCreditCardObj():
- 
-    cardNumber = fake.credit_card_number(card_type=None)
+ #[ :visa, :mastercard,  :discover, :american_express, :diners_club, :jcb, :switch, :solo, :dankort, :maestro, :forbrugsforeningen, :laser ]
+    cardNumber = fake.credit_card_number(card_type='visa')
 
     cc = {
             "CardholderName": fake.name(),
-            "CardType": fake.credit_card_provider(card_type=None),
+            "CardType": 'Visa',
             "CardNumber": cardNumber,
-            "ExpirationDate": fake.credit_card_expire(start="now", end="+10y", date_format="%Y/%m/%d"),
+            "ExpirationDate": datetime.strptime(fake.credit_card_expire(start="now", end="+10y", date_format="%Y-%m-%d"), "%Y-%m-%d").isoformat(),
             "CardCode": cardNumber[-4:],
             "Shared": False
         }
 
     return cc
-    
+
+
 
 def createUserObj():
     """

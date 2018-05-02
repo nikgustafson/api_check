@@ -29,8 +29,8 @@ def test_MeGet():
     #logger = logging.getLogger(test_MeGet.__name__)
     # get me succeeds, and user is active
 
-
-    token = setUp['access_token']
+    newUser = setUp()
+    token = newUser['access_token']
     user = getMe(token)
     #assert user['Username'] == auth['buyerUsername']
     assert user['Active'] == True
@@ -63,10 +63,11 @@ searchParams = (["catalogID", "smokebuyer01"], ["search", "*w*"], ["sortBy", "na
 # filterParams =
 
 ids = []
-
+"""
+this fixture doesn't work
 for item in searchParams:
     ids.append(item[0] + '-' + str(item[1]))
-
+"""
 
 #@pytest.mark.parametrize("searchParams", searchParams, ids=ids, )
 # 3
