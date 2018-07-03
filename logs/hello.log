@@ -1,3 +1,8 @@
-INFO | test_base : test_fixtures_for_options | 2018-07-03 09:55:37 | api environment set to: QA
-INFO | test_base : test_configData | 2018-07-03 09:55:37 | API: https://qaapi.ordercloud.io/
-INFO | test_base : test_configData | 2018-07-03 09:55:37 | AUTH: https://qaauth.ordercloud.io/
+DEBUG | test_auth : get_Token_UsernamePassword | 2018-07-03 10:37:09 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-07-03 10:37:09 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-07-03 10:37:09 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 539
+DEBUG | test_auth : get_Token_UsernamePassword | 2018-07-03 10:37:09 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMDY2ODIyOSwibmJmIjoxNTMwNjMyMjI5fQ.3IBnQat1772TxYngz6WESQsEPSZLcaC_aWhqzmnLhdo",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
