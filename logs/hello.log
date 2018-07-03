@@ -1,0 +1,3 @@
+INFO | test_base : test_fixtures_for_options | 2018-07-03 09:55:37 | api environment set to: QA
+INFO | test_base : test_configData | 2018-07-03 09:55:37 | API: https://qaapi.ordercloud.io/
+INFO | test_base : test_configData | 2018-07-03 09:55:37 | AUTH: https://qaauth.ordercloud.io/

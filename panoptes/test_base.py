@@ -2,12 +2,19 @@
 
 import pytest
 import requests
+import logging
 
 
-@pytest.fixture()
-def apiEnv(pytestconfig):
-	return pytest.option.ENV 
+
+log = logging.getLogger(__name__)
+
 
 def test_fixtures_for_options(apiEnv):
-	print('api environment set to: ', apiEnv)
+
+	log.info('api environment set to: '+str(apiEnv))
+
+def test_configData(configInfo):
+
+	log.info('API: '+ configInfo['API'])
+	log.info('AUTH: '+ configInfo['AUTH'])
 
