@@ -12,3 +12,11 @@ if you wish to run it against production:
 ## Documentation
 
 
+## TODO:
+
+- [ ] switch all request calls to try/catch
+- [ ] add sphinx documentation
+
+- [ ] add non established buyer user runs to tests -- ex, anon, etc
+
+

@@ -46,6 +46,35 @@ def get_Token_UsernamePassword(configInfo, client_id, username, password, scope 
 
 
 
+def post_resetPassword(configInfo, token, resetUrl):
+	"""
+	Sends a temporary verification code via email, which must subsequently be passed in a Reset Password call.
+	"""
+
+	user = test_me.get_Me(configInfo, token)
+	#log.debug(user)
+
+	payload = {
+	    'ClientID': configInfo['BUYER-CLIENTID'],
+	    'Email': user['Email'],
+	    'username': user['Username'],
+	    'URL': resetUrl 
+	}
+	log.debug(json.dumps(payload, indent=2))
+
+	headers = {
+	'Content-Type': 'application/json',
+	'Autentication': 'Bearer '+ token['access_token']}
+
+	log.debug(headers)
+
+
+
+	reset = requests.post(configInfo['API']+'v1/password/reset', json = payload, headers = headers)
+	log.debug(reset)
+	assert reset.status_code is codes.no_content
+
+
 
 
 #-----------------------------------------#
@@ -54,6 +83,7 @@ def get_Token_UsernamePassword(configInfo, client_id, username, password, scope 
 
 log.info('Auth Tests Begun...')
 
+@pytest.mark.description("Given a buyer user's username, password, and client-id, the buyer user can get a token and use it to make calls")
 def test_usernamePasswordGrant(configInfo):
 
 	client_id = configInfo['BUYER-CLIENTID']
@@ -70,6 +100,14 @@ def test_usernamePasswordGrant(configInfo):
 	me = test_me.get_Me(configInfo, token['access_token'])
 
 
+@pytest.mark.description("Given a buyer with anonymous shopping enabled, a user can authenticate as an anon user and register themselves as a buyer user for the org.")
+def test_anonGrant():
+	pass
+
+
+@pytest.mark.description("Given a client id and client secret, can get a client credentials token and make calls to the api.")
+def test_clientCredentialsGrant():
+	pass
 
 
 
