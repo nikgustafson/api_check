@@ -7,6 +7,8 @@ from requests import codes
 import logging
 import json
 
+import test_me
+
 
 
 log = logging.getLogger(__name__)
@@ -40,6 +42,8 @@ def get_Token_UsernamePassword(configInfo, client_id, username, password, scope 
 	log.debug(json.dumps(token.json(), indent=2))
 	assert token.status_code is codes.ok
 
+	return token.json()
+
 
 
 
@@ -58,8 +62,14 @@ def test_usernamePasswordGrant(configInfo):
 	scope = ['Shopper', 'MeAdmin']
 
 
-
+	# can successfully get a token
 	token = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+
+	# can use that token to make calls 
+
+	me = test_me.get_Me(configInfo, token['access_token'])
+
+
 
 
 
