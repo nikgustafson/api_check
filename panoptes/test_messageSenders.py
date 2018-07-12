@@ -71,7 +71,7 @@ def test_ForgottenPassword(configInfo):
 
 	resetUrl = fake.url()
 
-	user = test_me.get_Me(configInfo, token)
+	user = test_me.get_Me(configInfo, token['access_token'])
 	userEmail = user['Email']
 
 	# make sure the user has the right email server

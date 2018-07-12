@@ -14,8 +14,11 @@ log = logging.getLogger(__name__)
 
 def get_Me(configInfo, token):
 
+	if type(token) is dict:
+		token = token['access_token']
+
 	headers = {
-		'Authorization': 'Bearer '+token['access_token'],
+		'Authorization': 'Bearer '+ token,
 		'Content-Type': 'application/json',
 		'charset': 'UTF-8'
 	}
