@@ -1,0 +1,2488 @@
+============================= test session starts =============================
+platform win32 -- Python 3.7.0, pytest-3.6.2, py-1.5.4, pluggy-0.6.0 -- c:\program files (x86)\python37-32\python.exe
+cachedir: .pytest_cache
+rootdir: C:\api-check, inifile: pytest.ini
+collecting ... collected 120 items
+
+panoptes/test_auth.py::test_usernamePasswordGrant PASSED                 [  0%]
+panoptes/test_auth.py::test_anonGrant PASSED                             [  1%]
+panoptes/test_auth.py::test_clientCredentialsGrant PASSED                [  2%]
+panoptes/test_base.py::test_fixtures_for_options 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:26:11 INFO api environment set to: QA
+PASSED                                                                   [  3%]
+panoptes/test_base.py::test_configData 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:26:11 INFO API: https://qaapi.ordercloud.io/
+2018-08-03 13:26:11 INFO AUTH: https://qaauth.ordercloud.io/
+PASSED                                                                   [  4%]
+panoptes/test_base.py::test_api_env_vars 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:26:11 INFO API ENV: {
+  "Environment": "qa",
+  "Version": "1.0.80.967",
+  "Branch": "dev",
+  "Commit": "723f6f1e310fa6e443c68f881fa1e3d30a4bf1cb",
+  "CommitDate": "2018-07-31T20:00:48+00:00",
+  "BuildDate": "2018-08-03T09:20:22+00:00"
+}
+2018-08-03 13:26:12 INFO AUTH ENV: {
+  "Environment": "qa",
+  "Version": "1.0.80.967",
+  "Branch": "dev",
+  "Commit": "723f6f1e310fa6e443c68f881fa1e3d30a4bf1cb",
+  "CommitDate": "2018-07-31T20:00:48+00:00",
+  "BuildDate": "2018-08-03T09:20:22+00:00"
+}
+2018-08-03 13:26:12 INFO INTEGRATIONS ENV: {
+  "Environment": "qa",
+  "Version": "1.0.80.967",
+  "Branch": "dev",
+  "Commit": "723f6f1e310fa6e443c68f881fa1e3d30a4bf1cb",
+  "CommitDate": "2018-07-31T20:00:48+00:00",
+  "BuildDate": "2018-08-03T09:20:22+00:00"
+}
+PASSED                                                                   [  5%]
+panoptes/test_me.py::test_sessions FAILED                                [  5%]
+panoptes/test_messageSenders.py::test_ForgottenPassword PASSED           [  6%]
+panoptes/test_messageSenders.py::test_OrderSubmitted PASSED              [  7%]
+panoptes/test_messageSenders.py::test_ShipmentCreated PASSED             [  8%]
+panoptes/test_messageSenders.py::test_OrderApproved PASSED               [  9%]
+panoptes/test_messageSenders.py::test_OrderDeclined PASSED               [ 10%]
+panoptes/test_messageSenders.py::test_OrderSubmittedForApproval PASSED   [ 10%]
+panoptes/test_messageSenders.py::test_OrderSubmittedForYourApprovalHasBeenApproved PASSED [ 11%]
+panoptes/test_messageSenders.py::test_OrderSubmittedForYourApprovalHasBeenDeclined PASSED [ 12%]
+panoptes/test_search.py::test_productSearch FAILED                       [ 13%]
+panoptes/test_search.py::test_SearchAndCompare[None-None-Clinical biochemist] PASSED [ 14%]
+panoptes/test_search.py::test_SearchAndCompare[None-None-clearly] PASSED [ 15%]
+panoptes/test_search.py::test_SearchAndCompare[None-None-Scene very instead each receive treatment food.] PASSED [ 15%]
+panoptes/test_search.py::test_SearchAndCompare[None-None-search3] PASSED [ 16%]
+panoptes/test_search.py::test_SearchAndCompare[None-None-False] PASSED   [ 17%]
+panoptes/test_search.py::test_SearchAndCompare[None-None-teal] PASSED    [ 18%]
+panoptes/test_search.py::test_SearchAndCompare[None-None-true] PASSED    [ 19%]
+panoptes/test_search.py::test_SearchAndCompare[None-None-1329821955754] PASSED [ 20%]
+panoptes/test_search.py::test_SearchAndCompare[None-ID-Clinical biochemist] PASSED [ 20%]
+panoptes/test_search.py::test_SearchAndCompare[None-ID-clearly] PASSED   [ 21%]
+panoptes/test_search.py::test_SearchAndCompare[None-ID-Scene very instead each receive treatment food.] PASSED [ 22%]
+panoptes/test_search.py::test_SearchAndCompare[None-ID-search3] PASSED   [ 23%]
+panoptes/test_search.py::test_SearchAndCompare[None-ID-False] PASSED     [ 24%]
+panoptes/test_search.py::test_SearchAndCompare[None-ID-teal] PASSED      [ 25%]
+panoptes/test_search.py::test_SearchAndCompare[None-ID-true] PASSED      [ 25%]
+panoptes/test_search.py::test_SearchAndCompare[None-ID-1329821955754] PASSED [ 26%]
+panoptes/test_search.py::test_SearchAndCompare[None-Name-Clinical biochemist] PASSED [ 27%]
+panoptes/test_search.py::test_SearchAndCompare[None-Name-clearly] PASSED [ 28%]
+panoptes/test_search.py::test_SearchAndCompare[None-Name-Scene very instead each receive treatment food.] PASSED [ 29%]
+panoptes/test_search.py::test_SearchAndCompare[None-Name-search3] PASSED [ 30%]
+panoptes/test_search.py::test_SearchAndCompare[None-Name-False] PASSED   [ 30%]
+panoptes/test_search.py::test_SearchAndCompare[None-Name-teal] PASSED    [ 31%]
+panoptes/test_search.py::test_SearchAndCompare[None-Name-true] PASSED    [ 32%]
+panoptes/test_search.py::test_SearchAndCompare[None-Name-1329821955754] PASSED [ 33%]
+panoptes/test_search.py::test_SearchAndCompare[None-Description-Clinical biochemist] PASSED [ 34%]
+panoptes/test_search.py::test_SearchAndCompare[None-Description-clearly] PASSED [ 35%]
+panoptes/test_search.py::test_SearchAndCompare[None-Description-Scene very instead each receive treatment food.] PASSED [ 35%]
+panoptes/test_search.py::test_SearchAndCompare[None-Description-search3] PASSED [ 36%]
+panoptes/test_search.py::test_SearchAndCompare[None-Description-False] PASSED [ 37%]
+panoptes/test_search.py::test_SearchAndCompare[None-Description-teal] PASSED [ 38%]
+panoptes/test_search.py::test_SearchAndCompare[None-Description-true] PASSED [ 39%]
+panoptes/test_search.py::test_SearchAndCompare[None-Description-1329821955754] PASSED [ 40%]
+panoptes/test_search.py::test_SearchAndCompare[ID-None-Clinical biochemist] PASSED [ 40%]
+panoptes/test_search.py::test_SearchAndCompare[ID-None-clearly] PASSED   [ 41%]
+panoptes/test_search.py::test_SearchAndCompare[ID-None-Scene very instead each receive treatment food.] PASSED [ 42%]
+panoptes/test_search.py::test_SearchAndCompare[ID-None-search3] PASSED   [ 43%]
+panoptes/test_search.py::test_SearchAndCompare[ID-None-False] PASSED     [ 44%]
+panoptes/test_search.py::test_SearchAndCompare[ID-None-teal] PASSED      [ 45%]
+panoptes/test_search.py::test_SearchAndCompare[ID-None-true] PASSED      [ 45%]
+panoptes/test_search.py::test_SearchAndCompare[ID-None-1329821955754] PASSED [ 46%]
+panoptes/test_search.py::test_SearchAndCompare[ID-ID-Clinical biochemist] PASSED [ 47%]
+panoptes/test_search.py::test_SearchAndCompare[ID-ID-clearly] PASSED     [ 48%]
+panoptes/test_search.py::test_SearchAndCompare[ID-ID-Scene very instead each receive treatment food.] PASSED [ 49%]
+panoptes/test_search.py::test_SearchAndCompare[ID-ID-search3] PASSED     [ 50%]
+panoptes/test_search.py::test_SearchAndCompare[ID-ID-False] PASSED       [ 50%]
+panoptes/test_search.py::test_SearchAndCompare[ID-ID-teal] PASSED        [ 51%]
+panoptes/test_search.py::test_SearchAndCompare[ID-ID-true] PASSED        [ 52%]
+panoptes/test_search.py::test_SearchAndCompare[ID-ID-1329821955754] PASSED [ 53%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Name-Clinical biochemist] PASSED [ 54%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Name-clearly] PASSED   [ 55%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Name-Scene very instead each receive treatment food.] PASSED [ 55%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Name-search3] PASSED   [ 56%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Name-False] PASSED     [ 57%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Name-teal] PASSED      [ 58%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Name-true] PASSED      [ 59%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Name-1329821955754] PASSED [ 60%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Description-Clinical biochemist] PASSED [ 60%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Description-clearly] PASSED [ 61%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Description-Scene very instead each receive treatment food.] PASSED [ 62%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Description-search3] PASSED [ 63%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Description-False] PASSED [ 64%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Description-teal] PASSED [ 65%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Description-true] PASSED [ 65%]
+panoptes/test_search.py::test_SearchAndCompare[ID-Description-1329821955754] PASSED [ 66%]
+panoptes/test_search.py::test_SearchAndCompare[Name-None-Clinical biochemist] PASSED [ 67%]
+panoptes/test_search.py::test_SearchAndCompare[Name-None-clearly] PASSED [ 68%]
+panoptes/test_search.py::test_SearchAndCompare[Name-None-Scene very instead each receive treatment food.] PASSED [ 69%]
+panoptes/test_search.py::test_SearchAndCompare[Name-None-search3] PASSED [ 70%]
+panoptes/test_search.py::test_SearchAndCompare[Name-None-False] PASSED   [ 70%]
+panoptes/test_search.py::test_SearchAndCompare[Name-None-teal] PASSED    [ 71%]
+panoptes/test_search.py::test_SearchAndCompare[Name-None-true] PASSED    [ 72%]
+panoptes/test_search.py::test_SearchAndCompare[Name-None-1329821955754] PASSED [ 73%]
+panoptes/test_search.py::test_SearchAndCompare[Name-ID-Clinical biochemist] PASSED [ 74%]
+panoptes/test_search.py::test_SearchAndCompare[Name-ID-clearly] PASSED   [ 75%]
+panoptes/test_search.py::test_SearchAndCompare[Name-ID-Scene very instead each receive treatment food.] PASSED [ 75%]
+panoptes/test_search.py::test_SearchAndCompare[Name-ID-search3] PASSED   [ 76%]
+panoptes/test_search.py::test_SearchAndCompare[Name-ID-False] PASSED     [ 77%]
+panoptes/test_search.py::test_SearchAndCompare[Name-ID-teal] PASSED      [ 78%]
+panoptes/test_search.py::test_SearchAndCompare[Name-ID-true] PASSED      [ 79%]
+panoptes/test_search.py::test_SearchAndCompare[Name-ID-1329821955754] PASSED [ 80%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Name-Clinical biochemist] PASSED [ 80%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Name-clearly] PASSED [ 81%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Name-Scene very instead each receive treatment food.] PASSED [ 82%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Name-search3] PASSED [ 83%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Name-False] PASSED   [ 84%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Name-teal] PASSED    [ 85%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Name-true] PASSED    [ 85%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Name-1329821955754] PASSED [ 86%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Description-Clinical biochemist] PASSED [ 87%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Description-clearly] PASSED [ 88%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Description-Scene very instead each receive treatment food.] PASSED [ 89%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Description-search3] PASSED [ 90%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Description-False] PASSED [ 90%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Description-teal] PASSED [ 91%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Description-true] PASSED [ 92%]
+panoptes/test_search.py::test_SearchAndCompare[Name-Description-1329821955754] PASSED [ 93%]
+panoptes/test_search.py::test_FacetSearch[True-colors.spring-colors-spring-colors.spring] 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:29:00 INFO utf-8
+2018-08-03 13:29:00 INFO https://qaapi.ordercloud.io/v1/products?xp.colors.spring=True
+2018-08-03 13:29:01 INFO Patched Product 978-0-313-92703-4
+2018-08-03 13:29:01 INFO Patched Product 978-1-01-431839-8
+2018-08-03 13:29:01 INFO Patched Product 978-0-570-34146-8
+2018-08-03 13:29:02 INFO Patched Product 978-1-268-34130-2
+2018-08-03 13:29:02 INFO Patched Product 978-0-7507-6701-9
+2018-08-03 13:29:03 INFO Patched Product 978-0-676-67405-7
+2018-08-03 13:29:03 INFO Patched Product 978-1-881561-83-5
+2018-08-03 13:29:03 INFO Patched Product 978-0-915854-77-6
+2018-08-03 13:29:04 INFO Patched Product 978-0-8028-5400-1
+2018-08-03 13:29:04 INFO Patched Product 978-0-7890-1764-2
+2018-08-03 13:29:04 INFO Patched Product 978-1-01-587840-2
+2018-08-03 13:29:05 INFO Patched Product 978-0-7464-4052-0
+2018-08-03 13:29:05 INFO Patched Product 978-1-152-12041-9
+2018-08-03 13:29:05 INFO Patched Product 978-1-876180-86-7
+2018-08-03 13:29:06 INFO Patched Product 978-0-331-50877-2
+2018-08-03 13:29:06 INFO Patched Product 978-0-11-426949-4
+2018-08-03 13:29:07 INFO Patched Product 978-1-924337-12-0
+2018-08-03 13:29:07 INFO Patched Product 978-1-62954-997-2
+2018-08-03 13:29:07 INFO Patched Product 978-0-484-54657-7
+2018-08-03 13:29:08 INFO Patched Product 978-1-309-44463-4
+2018-08-03 13:30:08 INFO okay, the index should be rebuilt now!
+2018-08-03 13:30:38 INFO facet value: True
+2018-08-03 13:30:38 INFO facet value: true
+2018-08-03 13:30:38 INFO found values: []
+FAILED                                                                   [ 94%]
+panoptes/test_search.py::test_FacetSearch[True-job-job-job] 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:30:43 INFO utf-8
+2018-08-03 13:30:43 INFO https://qaapi.ordercloud.io/v1/products?xp.job=True
+2018-08-03 13:30:44 INFO Patched Product 978-0-313-92703-4
+2018-08-03 13:30:44 INFO Patched Product 978-1-01-431839-8
+2018-08-03 13:30:45 INFO Patched Product 978-0-570-34146-8
+2018-08-03 13:30:48 INFO Patched Product 978-1-268-34130-2
+2018-08-03 13:30:48 INFO Patched Product 978-0-7507-6701-9
+2018-08-03 13:30:49 INFO Patched Product 978-0-676-67405-7
+2018-08-03 13:30:49 INFO Patched Product 978-1-881561-83-5
+2018-08-03 13:30:50 INFO Patched Product 978-0-915854-77-6
+2018-08-03 13:30:50 INFO Patched Product 978-0-8028-5400-1
+2018-08-03 13:30:50 INFO Patched Product 978-0-7890-1764-2
+2018-08-03 13:30:51 INFO Patched Product 978-1-01-587840-2
+2018-08-03 13:30:51 INFO Patched Product 978-0-7464-4052-0
+2018-08-03 13:30:51 INFO Patched Product 978-1-152-12041-9
+2018-08-03 13:30:52 INFO Patched Product 978-1-876180-86-7
+2018-08-03 13:30:52 INFO Patched Product 978-0-331-50877-2
+2018-08-03 13:30:53 INFO Patched Product 978-0-11-426949-4
+2018-08-03 13:30:53 INFO Patched Product 978-1-924337-12-0
+2018-08-03 13:30:54 INFO Patched Product 978-1-62954-997-2
+2018-08-03 13:30:54 INFO Patched Product 978-0-484-54657-7
+2018-08-03 13:30:54 INFO Patched Product 978-1-309-44463-4
+2018-08-03 13:31:54 INFO okay, the index should be rebuilt now!
+2018-08-03 13:32:25 INFO facet value: True
+2018-08-03 13:32:25 INFO facet value: true
+2018-08-03 13:32:25 INFO found values: []
+FAILED                                                                   [ 95%]
+panoptes/test_search.py::test_FacetSearch[maroon-colors.spring-colors-spring-colors.spring] 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:32:30 INFO utf-8
+2018-08-03 13:32:30 INFO https://qaapi.ordercloud.io/v1/products?xp.colors.spring=maroon
+2018-08-03 13:32:30 INFO Patched Product 978-0-313-92703-4
+2018-08-03 13:32:31 INFO Patched Product 978-1-01-431839-8
+2018-08-03 13:32:31 INFO Patched Product 978-0-570-34146-8
+2018-08-03 13:32:32 INFO Patched Product 978-1-268-34130-2
+2018-08-03 13:32:32 INFO Patched Product 978-0-7507-6701-9
+2018-08-03 13:32:32 INFO Patched Product 978-0-676-67405-7
+2018-08-03 13:32:33 INFO Patched Product 978-1-881561-83-5
+2018-08-03 13:32:33 INFO Patched Product 978-0-915854-77-6
+2018-08-03 13:32:34 INFO Patched Product 978-0-8028-5400-1
+2018-08-03 13:32:34 INFO Patched Product 978-0-7890-1764-2
+2018-08-03 13:32:35 INFO Patched Product 978-1-01-587840-2
+2018-08-03 13:32:35 INFO Patched Product 978-0-7464-4052-0
+2018-08-03 13:32:36 INFO Patched Product 978-1-152-12041-9
+2018-08-03 13:32:36 INFO Patched Product 978-1-876180-86-7
+2018-08-03 13:32:37 INFO Patched Product 978-0-331-50877-2
+2018-08-03 13:32:37 INFO Patched Product 978-0-11-426949-4
+2018-08-03 13:32:38 INFO Patched Product 978-1-924337-12-0
+2018-08-03 13:32:38 INFO Patched Product 978-1-62954-997-2
+2018-08-03 13:32:39 INFO Patched Product 978-0-484-54657-7
+2018-08-03 13:32:39 INFO Patched Product 978-1-309-44463-4
+2018-08-03 13:33:39 INFO okay, the index should be rebuilt now!
+2018-08-03 13:34:10 INFO facet value: maroon
+2018-08-03 13:34:10 INFO found values: []
+FAILED                                                                   [ 95%]
+panoptes/test_search.py::test_FacetSearch[maroon-job-job-job] 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:34:12 INFO utf-8
+2018-08-03 13:34:12 INFO https://qaapi.ordercloud.io/v1/products?xp.job=maroon
+2018-08-03 13:34:12 INFO Patched Product 978-0-313-92703-4
+2018-08-03 13:34:13 INFO Patched Product 978-1-01-431839-8
+2018-08-03 13:34:13 INFO Patched Product 978-0-570-34146-8
+2018-08-03 13:34:13 INFO Patched Product 978-1-268-34130-2
+2018-08-03 13:34:14 INFO Patched Product 978-0-7507-6701-9
+2018-08-03 13:34:14 INFO Patched Product 978-0-676-67405-7
+2018-08-03 13:34:15 INFO Patched Product 978-1-881561-83-5
+2018-08-03 13:34:15 INFO Patched Product 978-0-915854-77-6
+2018-08-03 13:34:15 INFO Patched Product 978-0-8028-5400-1
+2018-08-03 13:34:16 INFO Patched Product 978-0-7890-1764-2
+2018-08-03 13:34:16 INFO Patched Product 978-1-01-587840-2
+2018-08-03 13:34:17 INFO Patched Product 978-0-7464-4052-0
+2018-08-03 13:34:17 INFO Patched Product 978-1-152-12041-9
+2018-08-03 13:34:17 INFO Patched Product 978-1-876180-86-7
+2018-08-03 13:34:18 INFO Patched Product 978-0-331-50877-2
+2018-08-03 13:34:18 INFO Patched Product 978-0-11-426949-4
+2018-08-03 13:34:18 INFO Patched Product 978-1-924337-12-0
+2018-08-03 13:34:19 INFO Patched Product 978-1-62954-997-2
+2018-08-03 13:34:19 INFO Patched Product 978-0-484-54657-7
+2018-08-03 13:34:20 INFO Patched Product 978-1-309-44463-4
+2018-08-03 13:35:20 INFO okay, the index should be rebuilt now!
+2018-08-03 13:35:51 INFO facet value: maroon
+2018-08-03 13:35:51 INFO found values: ['maroon']
+PASSED                                                                   [ 96%]
+panoptes/test_search.py::test_FacetSearch[false-colors.spring-colors-spring-colors.spring] 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:35:59 INFO utf-8
+2018-08-03 13:35:59 INFO https://qaapi.ordercloud.io/v1/products?xp.colors.spring=false
+2018-08-03 13:36:00 INFO Patched Product 978-0-313-92703-4
+2018-08-03 13:36:00 INFO Patched Product 978-1-01-431839-8
+2018-08-03 13:36:01 INFO Patched Product 978-0-570-34146-8
+2018-08-03 13:36:01 INFO Patched Product 978-1-268-34130-2
+2018-08-03 13:36:01 INFO Patched Product 978-0-7507-6701-9
+2018-08-03 13:36:05 INFO Patched Product 978-0-676-67405-7
+2018-08-03 13:36:05 INFO Patched Product 978-1-881561-83-5
+2018-08-03 13:36:06 INFO Patched Product 978-0-915854-77-6
+2018-08-03 13:36:06 INFO Patched Product 978-0-8028-5400-1
+2018-08-03 13:36:07 INFO Patched Product 978-0-7890-1764-2
+2018-08-03 13:36:08 INFO Patched Product 978-1-01-587840-2
+2018-08-03 13:36:08 INFO Patched Product 978-0-7464-4052-0
+2018-08-03 13:36:09 INFO Patched Product 978-1-152-12041-9
+2018-08-03 13:36:09 INFO Patched Product 978-1-876180-86-7
+2018-08-03 13:36:10 INFO Patched Product 978-0-331-50877-2
+2018-08-03 13:36:10 INFO Patched Product 978-0-11-426949-4
+2018-08-03 13:36:10 INFO Patched Product 978-1-924337-12-0
+2018-08-03 13:36:11 INFO Patched Product 978-1-62954-997-2
+2018-08-03 13:36:11 INFO Patched Product 978-0-484-54657-7
+2018-08-03 13:36:12 INFO Patched Product 978-1-309-44463-4
+2018-08-03 13:37:12 INFO okay, the index should be rebuilt now!
+2018-08-03 13:37:42 INFO facet value: false
+2018-08-03 13:37:42 INFO found values: ['maroon']
+FAILED                                                                   [ 97%]
+panoptes/test_search.py::test_FacetSearch[false-job-job-job] 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:37:44 INFO utf-8
+2018-08-03 13:37:44 INFO https://qaapi.ordercloud.io/v1/products?xp.job=false
+2018-08-03 13:37:45 INFO Patched Product 978-0-313-92703-4
+2018-08-03 13:37:45 INFO Patched Product 978-1-01-431839-8
+2018-08-03 13:37:45 INFO Patched Product 978-0-570-34146-8
+2018-08-03 13:37:46 INFO Patched Product 978-1-268-34130-2
+2018-08-03 13:37:46 INFO Patched Product 978-0-7507-6701-9
+2018-08-03 13:37:47 INFO Patched Product 978-0-676-67405-7
+2018-08-03 13:37:47 INFO Patched Product 978-1-881561-83-5
+2018-08-03 13:37:47 INFO Patched Product 978-0-915854-77-6
+2018-08-03 13:37:48 INFO Patched Product 978-0-8028-5400-1
+2018-08-03 13:37:48 INFO Patched Product 978-0-7890-1764-2
+2018-08-03 13:37:49 INFO Patched Product 978-1-01-587840-2
+2018-08-03 13:37:49 INFO Patched Product 978-0-7464-4052-0
+2018-08-03 13:37:49 INFO Patched Product 978-1-152-12041-9
+2018-08-03 13:37:50 INFO Patched Product 978-1-876180-86-7
+2018-08-03 13:37:50 INFO Patched Product 978-0-331-50877-2
+2018-08-03 13:37:51 INFO Patched Product 978-0-11-426949-4
+2018-08-03 13:37:51 INFO Patched Product 978-1-924337-12-0
+2018-08-03 13:37:51 INFO Patched Product 978-1-62954-997-2
+2018-08-03 13:37:52 INFO Patched Product 978-0-484-54657-7
+2018-08-03 13:37:52 INFO Patched Product 978-1-309-44463-4
+2018-08-03 13:38:52 INFO okay, the index should be rebuilt now!
+2018-08-03 13:39:23 INFO facet value: false
+2018-08-03 13:39:23 INFO found values: ['false']
+PASSED                                                                   [ 98%]
+panoptes/test_search.py::test_FacetSearch[1088024887185-colors.spring-colors-spring-colors.spring] 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:39:37 INFO utf-8
+2018-08-03 13:39:37 INFO https://qaapi.ordercloud.io/v1/products?xp.colors.spring=1088024887185
+2018-08-03 13:39:38 INFO Patched Product 978-0-313-92703-4
+2018-08-03 13:39:39 INFO Patched Product 978-1-01-431839-8
+2018-08-03 13:39:39 INFO Patched Product 978-0-570-34146-8
+2018-08-03 13:39:39 INFO Patched Product 978-1-268-34130-2
+2018-08-03 13:39:40 INFO Patched Product 978-0-7507-6701-9
+2018-08-03 13:39:40 INFO Patched Product 978-0-676-67405-7
+2018-08-03 13:39:40 INFO Patched Product 978-1-881561-83-5
+2018-08-03 13:39:41 INFO Patched Product 978-0-915854-77-6
+2018-08-03 13:39:41 INFO Patched Product 978-0-8028-5400-1
+2018-08-03 13:39:42 INFO Patched Product 978-0-7890-1764-2
+2018-08-03 13:39:42 INFO Patched Product 978-1-01-587840-2
+2018-08-03 13:39:42 INFO Patched Product 978-0-7464-4052-0
+2018-08-03 13:39:43 INFO Patched Product 978-1-152-12041-9
+2018-08-03 13:39:43 INFO Patched Product 978-1-876180-86-7
+2018-08-03 13:39:44 INFO Patched Product 978-0-331-50877-2
+2018-08-03 13:39:44 INFO Patched Product 978-0-11-426949-4
+2018-08-03 13:39:44 INFO Patched Product 978-1-924337-12-0
+2018-08-03 13:39:45 INFO Patched Product 978-1-62954-997-2
+2018-08-03 13:39:45 INFO Patched Product 978-0-484-54657-7
+2018-08-03 13:39:45 INFO Patched Product 978-1-309-44463-4
+2018-08-03 13:40:45 INFO okay, the index should be rebuilt now!
+2018-08-03 13:41:16 INFO facet value: 1088024887185
+2018-08-03 13:41:16 INFO found values: ['false']
+FAILED                                                                   [ 99%]
+panoptes/test_search.py::test_FacetSearch[1088024887185-job-job-job] 
+-------------------------------- live log call --------------------------------
+2018-08-03 13:41:22 INFO utf-8
+2018-08-03 13:41:22 INFO https://qaapi.ordercloud.io/v1/products?xp.job=1088024887185
+2018-08-03 13:41:22 INFO Patched Product 978-0-313-92703-4
+2018-08-03 13:41:22 INFO Patched Product 978-1-01-431839-8
+2018-08-03 13:41:23 INFO Patched Product 978-0-570-34146-8
+2018-08-03 13:41:23 INFO Patched Product 978-1-268-34130-2
+2018-08-03 13:41:24 INFO Patched Product 978-0-7507-6701-9
+2018-08-03 13:41:24 INFO Patched Product 978-0-676-67405-7
+2018-08-03 13:41:24 INFO Patched Product 978-1-881561-83-5
+2018-08-03 13:41:25 INFO Patched Product 978-0-915854-77-6
+2018-08-03 13:41:25 INFO Patched Product 978-0-8028-5400-1
+2018-08-03 13:41:25 INFO Patched Product 978-0-7890-1764-2
+2018-08-03 13:41:26 INFO Patched Product 978-1-01-587840-2
+2018-08-03 13:41:26 INFO Patched Product 978-0-7464-4052-0
+2018-08-03 13:41:26 INFO Patched Product 978-1-152-12041-9
+2018-08-03 13:41:27 INFO Patched Product 978-1-876180-86-7
+2018-08-03 13:41:27 INFO Patched Product 978-0-331-50877-2
+2018-08-03 13:41:27 INFO Patched Product 978-0-11-426949-4
+2018-08-03 13:41:28 INFO Patched Product 978-1-924337-12-0
+2018-08-03 13:41:28 INFO Patched Product 978-1-62954-997-2
+2018-08-03 13:41:29 INFO Patched Product 978-0-484-54657-7
+2018-08-03 13:41:29 INFO Patched Product 978-1-309-44463-4
+2018-08-03 13:42:29 INFO okay, the index should be rebuilt now!
+2018-08-03 13:43:00 INFO facet value: 1088024887185
+2018-08-03 13:43:00 INFO found values: []
+FAILED                                                                   [100%]
+
+================================== FAILURES ===================================
+________________________________ test_sessions ________________________________
+
+    def test_sessions():
+    
+>   	client_id = configInfo['BUYER-CLIENTID']
+E    NameError: name 'configInfo' is not defined
+
+
+panoptes\test_me.py:82: NameError
+_____________________________ test_productSearch ______________________________
+
+configInfo = <Section: QA-CONFIG>
+
+    @pytest.mark.description("Test verifies that search works over xp and nested xp, and notates the performance")
+    
+    def test_productSearch(configInfo):
+    
+    	# auth as an admin user
+    
+    	client_id = configInfo['ADMIN-CLIENTID']
+    	username = configInfo['ADMIN-USERNAME']
+    	password = configInfo['ADMIN-PASSWORD']
+    	scope = ['FullAccess']
+    
+    
+    	# can successfully get a token
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    	client_id = configInfo['BUYER-CLIENTID']
+    	username = configInfo['BUYER-USERNAME']
+    	password = configInfo['BUYER-PASSWORD']
+    	scope = ['Shopper']
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    	# add xp to products
+    
+    	search = {
+    		'search': 'blue',
+    		'searchOn': 'xp.*'
+    
+    	}
+    
+    
+>   	products = get_meProducts(configInfo, buyerToken, search) # admin sear h
+
+adminToken = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS0...c3NSwibmJmIjoxNTMzMzIwNzc1fQ.SXfPYm0bdwQhunny8tKfHyojxYIJge0ItBOYAf6YN0c', 'expires_in': 35999, 'token_type': 'bearer'}
+buyerToken = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi0...3NzYsIm5iZiI6MTUzMzMyMDc3Nn0.Kt9IuR4f4KOGTdtfL20wsBzVlTFD3jAuRTMttmBbzEM', 'expires_in': 36000, 'token_type': 'bearer'}
+client_id  = '1AA9B54E-B31D-48E6-94E2-7454208D82E0'
+configInfo = <Section: QA-CONFIG>
+password   = 'W5TKMCsq1wQq'
+scope      = ['Shopper']
+search     = {'search': 'blue', 'searchOn': 'xp.*'}
+username   = 'hgomez'
+
+panoptes\test_search.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+configInfo = <Section: QA-CONFIG>
+token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAi...3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTY3NzYsIm5iZiI6MTUzMzMyMDc3Nn0.Kt9IuR4f4KOGTdtfL20wsBzVlTFD3jAuRTMttmBbzEM'
+params = {'search': 'blue', 'searchOn': 'xp.*'}
+
+    def get_meProducts(configInfo, token, params):
+    
+    	if type(token) is dict:
+    		token = token['access_token']
+    
+    	headers = {
+    		'Authorization': 'Bearer '+ token,
+    		'Content-Type': 'application/json',
+    		'charset': 'UTF-8'
+    	}
+    
+    	try:
+    		me = requests.get(configInfo['API']+'v1/me/products', headers = headers, params=params)
+    
+    		#log.debug(me.request.headers)
+    		log.debug(me.request.url)
+    		#log.debug(json.dumps(me.json(), indent=2))
+>   		assert me.status_code is codes.ok
+E     AssertionError: assert 500 is 200
+E      +  where 500 = <Response [500]>.status_code
+E      +  and   200 = <lookup 'status_codes'>.ok
+
+configInfo = <Section: QA-CONFIG>
+headers    = {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTY...I6MTUzMzMyMDc3Nn0.Kt9IuR4f4KOGTdtfL20wsBzVlTFD3jAuRTMttmBbzEM', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+me         = <Response [500]>
+params     = {'search': 'blue', 'searchOn': 'xp.*'}
+token      = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAi...3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTY3NzYsIm5iZiI6MTUzMzMyMDc3Nn0.Kt9IuR4f4KOGTdtfL20wsBzVlTFD3jAuRTMttmBbzEM'
+
+panoptes\test_me.py:73: AssertionError
+------------------------------ Captured log call ------------------------------
+test_auth.py                33 DEBUG    {'client_id': '7E1ABEAB-C619-48CE-9080-2EF6475204F1', 'grant_type': 'password', 'username': 'sellerAdmin', 'password': 'UeQFatZktmkp7DJe', 'Scope': 'FullAccess'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 514
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUyMDRmMSIsInVzcnR5cGUiOiJhZG1pbiIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1Njc3NSwibmJmIjoxNTMzMzIwNzc1fQ.SXfPYm0bdwQhunny8tKfHyojxYIJge0ItBOYAf6YN0c",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+test_auth.py                33 DEBUG    {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 506
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTY3NzYsIm5iZiI6MTUzMzMyMDc3Nn0.Kt9IuR4f4KOGTdtfL20wsBzVlTFD3jAuRTMttmBbzEM",
+  "token_type": "bearer",
+  "expires_in": 36000
+}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?search=blue&searchOn=xp.%2A HTTP/1.1" 500 16034
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?search=blue&searchOn=xp.%2A
+______ test_FacetSearch[True-colors.spring-colors-spring-colors.spring] _______
+
+configInfo = <Section: QA-CONFIG>, facetName = 'colors.spring'
+facetID = 'colors-spring', facetPath = 'colors.spring', facetValue = 'true'
+
+    @pytest.mark.parametrize("facetName,facetID,facetPath", [
+        ('colors.spring', 'colors-spring', 'colors.spring'),
+        ('job', 'job', 'job')
+    ])
+    @pytest.mark.parametrize("facetValue", [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo['BUYER-CLIENTID']
+    	username = 'dbrown'
+    	password = 'fails345!!'
+    	scope = ['Shopper']
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo['ADMIN-CLIENTID']
+    	username = configInfo['ADMIN-USERNAME']
+    	password = configInfo['ADMIN-PASSWORD']
+    	scope = ['FullAccess']
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)['access_token']
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		'ID': facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet['Items'], indent=4))
+    
+    
+    
+    	if productFacet['Meta']['TotalCount'] == 0:
+    		log.debug('create new facet '+facetName+'!')
+    		newFacet = {
+    			"ID": facetID,
+    			"Name": facetName,
+    			"XpPath": facetPath,
+    			"ListOrder": 1,
+    			"MinCount": 1, # defaults to 1, 0 includes 0 results
+    			"xp": {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + ' Facets Exist!')
+    
+    
+    	# me/products list for buyer user & save list of product ids
+    
+    	log.debug('buyer product list!')
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	assert buyerProducts['Meta']['Facets']
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts['Items']:
+    		buyerProductIDs.append(item['ID'])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({'xp.'+facetPath : facetValue})
+    
+    	log.debug('XP filters are: '+str(filters))
+    
+    	numXP = len(filters) #number of filters we're looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug('Admin List of Products with Facet XP: '+str(adminProductList['Meta']['TotalCount']))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts['Meta']['Facets']:
+    		log.debug(facet)
+    		facets.append(facet['Name'])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts['Meta'])
+    
+    
+    	if adminProductList['Meta']['TotalCount'] == 0:
+    		log.debug('No Products With XP for Product Facets!')
+    
+    		#log.debug(facet.keys())
+    		log.debug('creating '+str(len(buyerProductIDs))+' Products with XP '+facet['ID']+'!')
+    		newXP = {
+    			'xp': {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, '', newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    
+    	time.sleep(60)
+    	log.info('okay, the index should be rebuilt now!')
+    	time.sleep(30)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'])
+    	assert newBuyerProducts['Meta']['Facets']
+    
+    	foundFacets = []
+    	for item in newBuyerProducts['Meta']['Facets']:
+    		foundFacets.append(item['ID'])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item['ID'])
+    	log.debug('index: '+str(index))
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'][index]['Values'])
+    
+    	foundValues = []
+    	for item in newBuyerProducts['Meta']['Facets'][index]['Values']:
+    		log.debug(item.keys())
+    		foundValues.append(item['ID'])
+    
+    	log.info('facet value: '+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info('facet value: '+str(facetValue))
+    	log.info('found values: '+str(foundValues))
+>   	assert facetValue in foundValues
+E    AssertionError: assert 'true' in []
+
+adminProductList = {'Items': [], 'Meta': {'Facets': None, 'ItemRange': [1, 0], 'Page': 1, 'PageSize': 20, ...}}
+adminToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUy...cWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1Njk0MCwibmJmIjoxNTMzMzIwOTQwfQ.wG9NZJpgsNIMgu5UsvYjGoLeMvat2V8sbqVfdA2y5Kg'
+buyerProductIDs = ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', ...]
+buyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...ng', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+buyerToken = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi0...5MzksIm5iZiI6MTUzMzMyMDkzOX0.rSpYnXwJugQo5oJljqP3hPcmnbsFNyUYjeXArdoTu04', 'expires_in': 35999, 'token_type': 'bearer'}
+client_id  = '7E1ABEAB-C619-48CE-9080-2EF6475204F1'
+configInfo = <Section: QA-CONFIG>
+facet      = {'ID': 'job', 'Name': 'job', 'Values': []}
+facetID    = 'colors-spring'
+facetName  = 'colors.spring'
+facetPath  = 'colors.spring'
+facetValue = 'true'
+facets     = ['colors.spring', 'job']
+fil        = {'xp.colors.spring': True}
+filters    = [{'xp.colors.spring': True}]
+foundFacets = ['colors-spring', 'job']
+foundValues = []
+index      = 1
+item       = {'ID': 'job', 'Name': 'job', 'Values': []}
+key        = 'xp.colors.spring'
+newBuyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...ng', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+newXP      = {'xp': {'colors.spring': True}}
+numXP      = 1
+params     = {'ID': 'colors-spring'}
+password   = 'UeQFatZktmkp7DJe'
+productFacet = {'Items': [{'ID': 'colors-spring', 'ListOrder': 1, 'MinCount': 1, 'Name': 'colors.spring', ...}], 'Meta': {'Facets': None, 'ItemRange': [1, 1], 'Page': 1, 'PageSize': 20, ...}}
+scope      = ['FullAccess']
+username   = 'sellerAdmin'
+
+panoptes\test_search.py:401: AssertionError
+------------------------------ Captured log call ------------------------------
+test_auth.py                33 DEBUG    {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'dbrown', 'password': 'fails345!!', 'Scope': 'Shopper'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 506
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTY5MzksIm5iZiI6MTUzMzMyMDkzOX0.rSpYnXwJugQo5oJljqP3hPcmnbsFNyUYjeXArdoTu04",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+test_auth.py                33 DEBUG    {'client_id': '7E1ABEAB-C619-48CE-9080-2EF6475204F1', 'grant_type': 'password', 'username': 'sellerAdmin', 'password': 'UeQFatZktmkp7DJe', 'Scope': 'FullAccess'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 513
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUyMDRmMSIsInVzcnR5cGUiOiJhZG1pbiIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1Njk0MCwibmJmIjoxNTMzMzIwOTQwfQ.wG9NZJpgsNIMgu5UsvYjGoLeMvat2V8sbqVfdA2y5Kg",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/ProductFacets/?ID=colors-spring HTTP/1.1" 200 261
+test_search.py             212 DEBUG    https://qaapi.ordercloud.io/v1/ProductFacets/?ID=colors-spring
+test_search.py             213 DEBUG    200
+test_search.py             214 DEBUG    {
+  "Meta": {
+    "Page": 1,
+    "PageSize": 20,
+    "TotalCount": 1,
+    "TotalPages": 1,
+    "ItemRange": [
+      1,
+      1
+    ],
+    "Facets": null
+  },
+  "Items": [
+    {
+      "ID": "colors-spring",
+      "Name": "colors.spring",
+      "XpPath": "colors.spring",
+      "ListOrder": 1,
+      "MinCount": 1,
+      "xp": {}
+    }
+  ]
+}
+test_search.py             286 DEBUG    [
+    {
+        "ID": "colors-spring",
+        "Name": "colors.spring",
+        "XpPath": "colors.spring",
+        "ListOrder": 1,
+        "MinCount": 1,
+        "xp": {}
+    }
+]
+test_search.py             303 DEBUG    colors.spring Facets Exist!
+test_search.py             308 DEBUG    buyer product list!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4419
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             319 DEBUG    ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', '978-1-881561-83-5', '978-0-915854-77-6', '978-0-8028-5400-1', '978-0-7890-1764-2', '978-1-01-587840-2', '978-0-7464-4052-0', '978-1-152-12041-9', '978-1-876180-86-7', '978-0-331-50877-2', '978-0-11-426949-4', '978-1-924337-12-0', '978-1-62954-997-2', '978-0-484-54657-7', '978-1-309-44463-4']
+test_search.py             328 DEBUG    XP filters are: [{'xp.colors.spring': True}]
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/products?xp.colors.spring=True HTTP/1.1" 200 200
+test_products.py            45 INFO     utf-8
+test_products.py            46 INFO     https://qaapi.ordercloud.io/v1/products?xp.colors.spring=True
+test_search.py             334 DEBUG    Admin List of Products with Facet XP: 0
+test_search.py             340 DEBUG    {'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}
+test_search.py             340 DEBUG    {'ID': 'job', 'Name': 'job', 'Values': []}
+test_search.py             347 DEBUG    {'Page': 1, 'PageSize': 20, 'TotalCount': 267, 'TotalPages': 14, 'ItemRange': [1, 20], 'Facets': [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}]}
+test_search.py             351 DEBUG    No Products With XP for Product Facets!
+test_search.py             354 DEBUG    creating 20 Products with XP job!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-313-92703-4 HTTP/1.1" 200 665
+test_products.py            79 INFO     Patched Product 978-0-313-92703-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-431839-8 HTTP/1.1" 200 684
+test_products.py            79 INFO     Patched Product 978-1-01-431839-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-570-34146-8 HTTP/1.1" 200 685
+test_products.py            79 INFO     Patched Product 978-0-570-34146-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-268-34130-2 HTTP/1.1" 200 600
+test_products.py            79 INFO     Patched Product 978-1-268-34130-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7507-6701-9 HTTP/1.1" 200 660
+test_products.py            79 INFO     Patched Product 978-0-7507-6701-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-676-67405-7 HTTP/1.1" 200 623
+test_products.py            79 INFO     Patched Product 978-0-676-67405-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-881561-83-5 HTTP/1.1" 200 668
+test_products.py            79 INFO     Patched Product 978-1-881561-83-5
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-915854-77-6 HTTP/1.1" 200 667
+test_products.py            79 INFO     Patched Product 978-0-915854-77-6
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-8028-5400-1 HTTP/1.1" 200 646
+test_products.py            79 INFO     Patched Product 978-0-8028-5400-1
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7890-1764-2 HTTP/1.1" 200 593
+test_products.py            79 INFO     Patched Product 978-0-7890-1764-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-587840-2 HTTP/1.1" 200 606
+test_products.py            79 INFO     Patched Product 978-1-01-587840-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7464-4052-0 HTTP/1.1" 200 625
+test_products.py            79 INFO     Patched Product 978-0-7464-4052-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-152-12041-9 HTTP/1.1" 200 644
+test_products.py            79 INFO     Patched Product 978-1-152-12041-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-876180-86-7 HTTP/1.1" 200 625
+test_products.py            79 INFO     Patched Product 978-1-876180-86-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-331-50877-2 HTTP/1.1" 200 609
+test_products.py            79 INFO     Patched Product 978-0-331-50877-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-11-426949-4 HTTP/1.1" 200 639
+test_products.py            79 INFO     Patched Product 978-0-11-426949-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-924337-12-0 HTTP/1.1" 200 633
+test_products.py            79 INFO     Patched Product 978-1-924337-12-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-62954-997-2 HTTP/1.1" 200 606
+test_products.py            79 INFO     Patched Product 978-1-62954-997-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-484-54657-7 HTTP/1.1" 200 622
+test_products.py            79 INFO     Patched Product 978-0-484-54657-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-309-44463-4 HTTP/1.1" 200 667
+test_products.py            79 INFO     Patched Product 978-1-309-44463-4
+test_search.py             369 INFO     okay, the index should be rebuilt now!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4410
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             374 DEBUG    [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}]
+test_search.py             387 DEBUG    index: 1
+test_search.py             389 DEBUG    []
+test_search.py             396 INFO     facet value: True
+test_search.py             399 INFO     facet value: true
+test_search.py             400 INFO     found values: []
+_____________________ test_FacetSearch[True-job-job-job] ______________________
+
+configInfo = <Section: QA-CONFIG>, facetName = 'job', facetID = 'job'
+facetPath = 'job', facetValue = 'true'
+
+    @pytest.mark.parametrize("facetName,facetID,facetPath", [
+        ('colors.spring', 'colors-spring', 'colors.spring'),
+        ('job', 'job', 'job')
+    ])
+    @pytest.mark.parametrize("facetValue", [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo['BUYER-CLIENTID']
+    	username = 'dbrown'
+    	password = 'fails345!!'
+    	scope = ['Shopper']
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo['ADMIN-CLIENTID']
+    	username = configInfo['ADMIN-USERNAME']
+    	password = configInfo['ADMIN-PASSWORD']
+    	scope = ['FullAccess']
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)['access_token']
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		'ID': facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet['Items'], indent=4))
+    
+    
+    
+    	if productFacet['Meta']['TotalCount'] == 0:
+    		log.debug('create new facet '+facetName+'!')
+    		newFacet = {
+    			"ID": facetID,
+    			"Name": facetName,
+    			"XpPath": facetPath,
+    			"ListOrder": 1,
+    			"MinCount": 1, # defaults to 1, 0 includes 0 results
+    			"xp": {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + ' Facets Exist!')
+    
+    
+    	# me/products list for buyer user & save list of product ids
+    
+    	log.debug('buyer product list!')
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	assert buyerProducts['Meta']['Facets']
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts['Items']:
+    		buyerProductIDs.append(item['ID'])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({'xp.'+facetPath : facetValue})
+    
+    	log.debug('XP filters are: '+str(filters))
+    
+    	numXP = len(filters) #number of filters we're looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug('Admin List of Products with Facet XP: '+str(adminProductList['Meta']['TotalCount']))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts['Meta']['Facets']:
+    		log.debug(facet)
+    		facets.append(facet['Name'])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts['Meta'])
+    
+    
+    	if adminProductList['Meta']['TotalCount'] == 0:
+    		log.debug('No Products With XP for Product Facets!')
+    
+    		#log.debug(facet.keys())
+    		log.debug('creating '+str(len(buyerProductIDs))+' Products with XP '+facet['ID']+'!')
+    		newXP = {
+    			'xp': {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, '', newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    
+    	time.sleep(60)
+    	log.info('okay, the index should be rebuilt now!')
+    	time.sleep(30)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'])
+    	assert newBuyerProducts['Meta']['Facets']
+    
+    	foundFacets = []
+    	for item in newBuyerProducts['Meta']['Facets']:
+    		foundFacets.append(item['ID'])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item['ID'])
+    	log.debug('index: '+str(index))
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'][index]['Values'])
+    
+    	foundValues = []
+    	for item in newBuyerProducts['Meta']['Facets'][index]['Values']:
+    		log.debug(item.keys())
+    		foundValues.append(item['ID'])
+    
+    	log.info('facet value: '+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info('facet value: '+str(facetValue))
+    	log.info('found values: '+str(foundValues))
+>   	assert facetValue in foundValues
+E    AssertionError: assert 'true' in []
+
+adminProductList = {'Items': [], 'Meta': {'Facets': None, 'ItemRange': [1, 0], 'Page': 1, 'PageSize': 20, ...}}
+adminToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUy...cWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzA0MywibmJmIjoxNTMzMzIxMDQzfQ.gBP1-me3VlZPog5T-ozzDy-3RGO14espQOnSLPB94So'
+buyerProductIDs = ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', ...]
+buyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...ng', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+buyerToken = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi0...wMzksIm5iZiI6MTUzMzMyMTAzOX0.4CWE4vQpqh5uG8o5DFk2RgTY8ConbuBalmDgGcZMuNQ', 'expires_in': 36000, 'token_type': 'bearer'}
+client_id  = '7E1ABEAB-C619-48CE-9080-2EF6475204F1'
+configInfo = <Section: QA-CONFIG>
+facet      = {'ID': 'job', 'Name': 'job', 'Values': []}
+facetID    = 'job'
+facetName  = 'job'
+facetPath  = 'job'
+facetValue = 'true'
+facets     = ['colors.spring', 'job']
+fil        = {'xp.job': True}
+filters    = [{'xp.job': True}]
+foundFacets = ['colors-spring', 'job']
+foundValues = []
+index      = 1
+item       = {'ID': 'job', 'Name': 'job', 'Values': []}
+key        = 'xp.job'
+newBuyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...ng', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+newXP      = {'xp': {'job': True}}
+numXP      = 1
+params     = {'ID': 'job'}
+password   = 'UeQFatZktmkp7DJe'
+productFacet = {'Items': [{'ID': 'job', 'ListOrder': 1, 'MinCount': 1, 'Name': 'job', ...}], 'Meta': {'Facets': None, 'ItemRange': [1, 1], 'Page': 1, 'PageSize': 20, ...}}
+scope      = ['FullAccess']
+username   = 'sellerAdmin'
+
+panoptes\test_search.py:401: AssertionError
+------------------------------ Captured log call ------------------------------
+test_auth.py                33 DEBUG    {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'dbrown', 'password': 'fails345!!', 'Scope': 'Shopper'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 506
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTcwMzksIm5iZiI6MTUzMzMyMTAzOX0.4CWE4vQpqh5uG8o5DFk2RgTY8ConbuBalmDgGcZMuNQ",
+  "token_type": "bearer",
+  "expires_in": 36000
+}
+test_auth.py                33 DEBUG    {'client_id': '7E1ABEAB-C619-48CE-9080-2EF6475204F1', 'grant_type': 'password', 'username': 'sellerAdmin', 'password': 'UeQFatZktmkp7DJe', 'Scope': 'FullAccess'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 512
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUyMDRmMSIsInVzcnR5cGUiOiJhZG1pbiIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzA0MywibmJmIjoxNTMzMzIxMDQzfQ.gBP1-me3VlZPog5T-ozzDy-3RGO14espQOnSLPB94So",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/ProductFacets/?ID=job HTTP/1.1" 200 250
+test_search.py             212 DEBUG    https://qaapi.ordercloud.io/v1/ProductFacets/?ID=job
+test_search.py             213 DEBUG    200
+test_search.py             214 DEBUG    {
+  "Meta": {
+    "Page": 1,
+    "PageSize": 20,
+    "TotalCount": 1,
+    "TotalPages": 1,
+    "ItemRange": [
+      1,
+      1
+    ],
+    "Facets": null
+  },
+  "Items": [
+    {
+      "ID": "job",
+      "Name": "job",
+      "XpPath": "job",
+      "ListOrder": 1,
+      "MinCount": 1,
+      "xp": {}
+    }
+  ]
+}
+test_search.py             286 DEBUG    [
+    {
+        "ID": "job",
+        "Name": "job",
+        "XpPath": "job",
+        "ListOrder": 1,
+        "MinCount": 1,
+        "xp": {}
+    }
+]
+test_search.py             303 DEBUG    job Facets Exist!
+test_search.py             308 DEBUG    buyer product list!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4410
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             319 DEBUG    ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', '978-1-881561-83-5', '978-0-915854-77-6', '978-0-8028-5400-1', '978-0-7890-1764-2', '978-1-01-587840-2', '978-0-7464-4052-0', '978-1-152-12041-9', '978-1-876180-86-7', '978-0-331-50877-2', '978-0-11-426949-4', '978-1-924337-12-0', '978-1-62954-997-2', '978-0-484-54657-7', '978-1-309-44463-4']
+test_search.py             328 DEBUG    XP filters are: [{'xp.job': True}]
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/products?xp.job=True HTTP/1.1" 200 200
+test_products.py            45 INFO     utf-8
+test_products.py            46 INFO     https://qaapi.ordercloud.io/v1/products?xp.job=True
+test_search.py             334 DEBUG    Admin List of Products with Facet XP: 0
+test_search.py             340 DEBUG    {'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}
+test_search.py             340 DEBUG    {'ID': 'job', 'Name': 'job', 'Values': []}
+test_search.py             347 DEBUG    {'Page': 1, 'PageSize': 20, 'TotalCount': 268, 'TotalPages': 14, 'ItemRange': [1, 20], 'Facets': [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}]}
+test_search.py             351 DEBUG    No Products With XP for Product Facets!
+test_search.py             354 DEBUG    creating 20 Products with XP job!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-313-92703-4 HTTP/1.1" 200 655
+test_products.py            79 INFO     Patched Product 978-0-313-92703-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-431839-8 HTTP/1.1" 200 673
+test_products.py            79 INFO     Patched Product 978-1-01-431839-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-570-34146-8 HTTP/1.1" 200 675
+test_products.py            79 INFO     Patched Product 978-0-570-34146-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-268-34130-2 HTTP/1.1" 200 588
+test_products.py            79 INFO     Patched Product 978-1-268-34130-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7507-6701-9 HTTP/1.1" 200 648
+test_products.py            79 INFO     Patched Product 978-0-7507-6701-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-676-67405-7 HTTP/1.1" 200 612
+test_products.py            79 INFO     Patched Product 978-0-676-67405-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-881561-83-5 HTTP/1.1" 200 657
+test_products.py            79 INFO     Patched Product 978-1-881561-83-5
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-915854-77-6 HTTP/1.1" 200 656
+test_products.py            79 INFO     Patched Product 978-0-915854-77-6
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-8028-5400-1 HTTP/1.1" 200 634
+test_products.py            79 INFO     Patched Product 978-0-8028-5400-1
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7890-1764-2 HTTP/1.1" 200 582
+test_products.py            79 INFO     Patched Product 978-0-7890-1764-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-587840-2 HTTP/1.1" 200 595
+test_products.py            79 INFO     Patched Product 978-1-01-587840-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7464-4052-0 HTTP/1.1" 200 614
+test_products.py            79 INFO     Patched Product 978-0-7464-4052-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-152-12041-9 HTTP/1.1" 200 633
+test_products.py            79 INFO     Patched Product 978-1-152-12041-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-876180-86-7 HTTP/1.1" 200 611
+test_products.py            79 INFO     Patched Product 978-1-876180-86-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-331-50877-2 HTTP/1.1" 200 598
+test_products.py            79 INFO     Patched Product 978-0-331-50877-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-11-426949-4 HTTP/1.1" 200 625
+test_products.py            79 INFO     Patched Product 978-0-11-426949-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-924337-12-0 HTTP/1.1" 200 622
+test_products.py            79 INFO     Patched Product 978-1-924337-12-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-62954-997-2 HTTP/1.1" 200 594
+test_products.py            79 INFO     Patched Product 978-1-62954-997-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-484-54657-7 HTTP/1.1" 200 610
+test_products.py            79 INFO     Patched Product 978-0-484-54657-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-309-44463-4 HTTP/1.1" 200 656
+test_products.py            79 INFO     Patched Product 978-1-309-44463-4
+test_search.py             369 INFO     okay, the index should be rebuilt now!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4398
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             374 DEBUG    [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}]
+test_search.py             387 DEBUG    index: 1
+test_search.py             389 DEBUG    []
+test_search.py             396 INFO     facet value: True
+test_search.py             399 INFO     facet value: true
+test_search.py             400 INFO     found values: []
+_____ test_FacetSearch[maroon-colors.spring-colors-spring-colors.spring] ______
+
+configInfo = <Section: QA-CONFIG>, facetName = 'colors.spring'
+facetID = 'colors-spring', facetPath = 'colors.spring', facetValue = 'maroon'
+
+    @pytest.mark.parametrize("facetName,facetID,facetPath", [
+        ('colors.spring', 'colors-spring', 'colors.spring'),
+        ('job', 'job', 'job')
+    ])
+    @pytest.mark.parametrize("facetValue", [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo['BUYER-CLIENTID']
+    	username = 'dbrown'
+    	password = 'fails345!!'
+    	scope = ['Shopper']
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo['ADMIN-CLIENTID']
+    	username = configInfo['ADMIN-USERNAME']
+    	password = configInfo['ADMIN-PASSWORD']
+    	scope = ['FullAccess']
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)['access_token']
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		'ID': facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet['Items'], indent=4))
+    
+    
+    
+    	if productFacet['Meta']['TotalCount'] == 0:
+    		log.debug('create new facet '+facetName+'!')
+    		newFacet = {
+    			"ID": facetID,
+    			"Name": facetName,
+    			"XpPath": facetPath,
+    			"ListOrder": 1,
+    			"MinCount": 1, # defaults to 1, 0 includes 0 results
+    			"xp": {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + ' Facets Exist!')
+    
+    
+    	# me/products list for buyer user & save list of product ids
+    
+    	log.debug('buyer product list!')
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	assert buyerProducts['Meta']['Facets']
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts['Items']:
+    		buyerProductIDs.append(item['ID'])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({'xp.'+facetPath : facetValue})
+    
+    	log.debug('XP filters are: '+str(filters))
+    
+    	numXP = len(filters) #number of filters we're looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug('Admin List of Products with Facet XP: '+str(adminProductList['Meta']['TotalCount']))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts['Meta']['Facets']:
+    		log.debug(facet)
+    		facets.append(facet['Name'])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts['Meta'])
+    
+    
+    	if adminProductList['Meta']['TotalCount'] == 0:
+    		log.debug('No Products With XP for Product Facets!')
+    
+    		#log.debug(facet.keys())
+    		log.debug('creating '+str(len(buyerProductIDs))+' Products with XP '+facet['ID']+'!')
+    		newXP = {
+    			'xp': {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, '', newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    
+    	time.sleep(60)
+    	log.info('okay, the index should be rebuilt now!')
+    	time.sleep(30)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'])
+    	assert newBuyerProducts['Meta']['Facets']
+    
+    	foundFacets = []
+    	for item in newBuyerProducts['Meta']['Facets']:
+    		foundFacets.append(item['ID'])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item['ID'])
+    	log.debug('index: '+str(index))
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'][index]['Values'])
+    
+    	foundValues = []
+    	for item in newBuyerProducts['Meta']['Facets'][index]['Values']:
+    		log.debug(item.keys())
+    		foundValues.append(item['ID'])
+    
+    	log.info('facet value: '+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info('facet value: '+str(facetValue))
+    	log.info('found values: '+str(foundValues))
+>   	assert facetValue in foundValues
+E    AssertionError: assert 'maroon' in []
+
+adminProductList = {'Items': [], 'Meta': {'Facets': None, 'ItemRange': [1, 0], 'Page': 1, 'PageSize': 20, ...}}
+adminToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUy...cWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzE0OCwibmJmIjoxNTMzMzIxMTQ4fQ.38RxWq3WnUQVQrsb2kpr8v7nUNODOsoBbrcyiVJ7CzY'
+buyerProductIDs = ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', ...]
+buyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...ng', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+buyerToken = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi0...xNDcsIm5iZiI6MTUzMzMyMTE0N30.JZm2TI-NsifTcA7mf0Zs7RA2cit5R2nsr6SAW2K-ZRg', 'expires_in': 35999, 'token_type': 'bearer'}
+client_id  = '7E1ABEAB-C619-48CE-9080-2EF6475204F1'
+configInfo = <Section: QA-CONFIG>
+facet      = {'ID': 'job', 'Name': 'job', 'Values': []}
+facetID    = 'colors-spring'
+facetName  = 'colors.spring'
+facetPath  = 'colors.spring'
+facetValue = 'maroon'
+facets     = ['colors.spring', 'job']
+fil        = {'xp.colors.spring': 'maroon'}
+filters    = [{'xp.colors.spring': 'maroon'}]
+foundFacets = ['colors-spring', 'job']
+foundValues = []
+index      = 1
+item       = {'ID': 'job', 'Name': 'job', 'Values': []}
+key        = 'xp.colors.spring'
+newBuyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...'Value': 'true'}]}, {'ID': 'job', 'Name': 'job', 'Values': []}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+newXP      = {'xp': {'colors.spring': 'maroon'}}
+numXP      = 1
+params     = {'ID': 'colors-spring'}
+password   = 'UeQFatZktmkp7DJe'
+productFacet = {'Items': [{'ID': 'colors-spring', 'ListOrder': 1, 'MinCount': 1, 'Name': 'colors.spring', ...}], 'Meta': {'Facets': None, 'ItemRange': [1, 1], 'Page': 1, 'PageSize': 20, ...}}
+scope      = ['FullAccess']
+username   = 'sellerAdmin'
+
+panoptes\test_search.py:401: AssertionError
+------------------------------ Captured log call ------------------------------
+test_auth.py                33 DEBUG    {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'dbrown', 'password': 'fails345!!', 'Scope': 'Shopper'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 503
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTcxNDcsIm5iZiI6MTUzMzMyMTE0N30.JZm2TI-NsifTcA7mf0Zs7RA2cit5R2nsr6SAW2K-ZRg",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+test_auth.py                33 DEBUG    {'client_id': '7E1ABEAB-C619-48CE-9080-2EF6475204F1', 'grant_type': 'password', 'username': 'sellerAdmin', 'password': 'UeQFatZktmkp7DJe', 'Scope': 'FullAccess'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 513
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUyMDRmMSIsInVzcnR5cGUiOiJhZG1pbiIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzE0OCwibmJmIjoxNTMzMzIxMTQ4fQ.38RxWq3WnUQVQrsb2kpr8v7nUNODOsoBbrcyiVJ7CzY",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/ProductFacets/?ID=colors-spring HTTP/1.1" 200 261
+test_search.py             212 DEBUG    https://qaapi.ordercloud.io/v1/ProductFacets/?ID=colors-spring
+test_search.py             213 DEBUG    200
+test_search.py             214 DEBUG    {
+  "Meta": {
+    "Page": 1,
+    "PageSize": 20,
+    "TotalCount": 1,
+    "TotalPages": 1,
+    "ItemRange": [
+      1,
+      1
+    ],
+    "Facets": null
+  },
+  "Items": [
+    {
+      "ID": "colors-spring",
+      "Name": "colors.spring",
+      "XpPath": "colors.spring",
+      "ListOrder": 1,
+      "MinCount": 1,
+      "xp": {}
+    }
+  ]
+}
+test_search.py             286 DEBUG    [
+    {
+        "ID": "colors-spring",
+        "Name": "colors.spring",
+        "XpPath": "colors.spring",
+        "ListOrder": 1,
+        "MinCount": 1,
+        "xp": {}
+    }
+]
+test_search.py             303 DEBUG    colors.spring Facets Exist!
+test_search.py             308 DEBUG    buyer product list!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4398
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             319 DEBUG    ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', '978-1-881561-83-5', '978-0-915854-77-6', '978-0-8028-5400-1', '978-0-7890-1764-2', '978-1-01-587840-2', '978-0-7464-4052-0', '978-1-152-12041-9', '978-1-876180-86-7', '978-0-331-50877-2', '978-0-11-426949-4', '978-1-924337-12-0', '978-1-62954-997-2', '978-0-484-54657-7', '978-1-309-44463-4']
+test_search.py             328 DEBUG    XP filters are: [{'xp.colors.spring': 'maroon'}]
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/products?xp.colors.spring=maroon HTTP/1.1" 200 200
+test_products.py            45 INFO     utf-8
+test_products.py            46 INFO     https://qaapi.ordercloud.io/v1/products?xp.colors.spring=maroon
+test_search.py             334 DEBUG    Admin List of Products with Facet XP: 0
+test_search.py             340 DEBUG    {'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}
+test_search.py             340 DEBUG    {'ID': 'job', 'Name': 'job', 'Values': []}
+test_search.py             347 DEBUG    {'Page': 1, 'PageSize': 20, 'TotalCount': 268, 'TotalPages': 14, 'ItemRange': [1, 20], 'Facets': [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}]}
+test_search.py             351 DEBUG    No Products With XP for Product Facets!
+test_search.py             354 DEBUG    creating 20 Products with XP job!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-313-92703-4 HTTP/1.1" 200 661
+test_products.py            79 INFO     Patched Product 978-0-313-92703-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-431839-8 HTTP/1.1" 200 678
+test_products.py            79 INFO     Patched Product 978-1-01-431839-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-570-34146-8 HTTP/1.1" 200 680
+test_products.py            79 INFO     Patched Product 978-0-570-34146-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-268-34130-2 HTTP/1.1" 200 596
+test_products.py            79 INFO     Patched Product 978-1-268-34130-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7507-6701-9 HTTP/1.1" 200 658
+test_products.py            79 INFO     Patched Product 978-0-7507-6701-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-676-67405-7 HTTP/1.1" 200 618
+test_products.py            79 INFO     Patched Product 978-0-676-67405-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-881561-83-5 HTTP/1.1" 200 664
+test_products.py            79 INFO     Patched Product 978-1-881561-83-5
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-915854-77-6 HTTP/1.1" 200 662
+test_products.py            79 INFO     Patched Product 978-0-915854-77-6
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-8028-5400-1 HTTP/1.1" 200 644
+test_products.py            79 INFO     Patched Product 978-0-8028-5400-1
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7890-1764-2 HTTP/1.1" 200 589
+test_products.py            79 INFO     Patched Product 978-0-7890-1764-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-587840-2 HTTP/1.1" 200 602
+test_products.py            79 INFO     Patched Product 978-1-01-587840-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7464-4052-0 HTTP/1.1" 200 621
+test_products.py            79 INFO     Patched Product 978-0-7464-4052-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-152-12041-9 HTTP/1.1" 200 640
+test_products.py            79 INFO     Patched Product 978-1-152-12041-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-876180-86-7 HTTP/1.1" 200 620
+test_products.py            79 INFO     Patched Product 978-1-876180-86-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-331-50877-2 HTTP/1.1" 200 605
+test_products.py            79 INFO     Patched Product 978-0-331-50877-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-11-426949-4 HTTP/1.1" 200 634
+test_products.py            79 INFO     Patched Product 978-0-11-426949-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-924337-12-0 HTTP/1.1" 200 629
+test_products.py            79 INFO     Patched Product 978-1-924337-12-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-62954-997-2 HTTP/1.1" 200 602
+test_products.py            79 INFO     Patched Product 978-1-62954-997-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-484-54657-7 HTTP/1.1" 200 620
+test_products.py            79 INFO     Patched Product 978-0-484-54657-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-309-44463-4 HTTP/1.1" 200 664
+test_products.py            79 INFO     Patched Product 978-1-309-44463-4
+test_search.py             369 INFO     okay, the index should be rebuilt now!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4427
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             374 DEBUG    [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': [{'ID': 'maroon', 'Value': 'maroon', 'Count': 20}, {'ID': 'true', 'Value': 'true', 'Count': 1}]}, {'ID': 'job', 'Name': 'job', 'Values': []}]
+test_search.py             387 DEBUG    index: 1
+test_search.py             389 DEBUG    []
+test_search.py             396 INFO     facet value: maroon
+test_search.py             400 INFO     found values: []
+______ test_FacetSearch[false-colors.spring-colors-spring-colors.spring] ______
+
+configInfo = <Section: QA-CONFIG>, facetName = 'colors.spring'
+facetID = 'colors-spring', facetPath = 'colors.spring', facetValue = 'false'
+
+    @pytest.mark.parametrize("facetName,facetID,facetPath", [
+        ('colors.spring', 'colors-spring', 'colors.spring'),
+        ('job', 'job', 'job')
+    ])
+    @pytest.mark.parametrize("facetValue", [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo['BUYER-CLIENTID']
+    	username = 'dbrown'
+    	password = 'fails345!!'
+    	scope = ['Shopper']
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo['ADMIN-CLIENTID']
+    	username = configInfo['ADMIN-USERNAME']
+    	password = configInfo['ADMIN-PASSWORD']
+    	scope = ['FullAccess']
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)['access_token']
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		'ID': facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet['Items'], indent=4))
+    
+    
+    
+    	if productFacet['Meta']['TotalCount'] == 0:
+    		log.debug('create new facet '+facetName+'!')
+    		newFacet = {
+    			"ID": facetID,
+    			"Name": facetName,
+    			"XpPath": facetPath,
+    			"ListOrder": 1,
+    			"MinCount": 1, # defaults to 1, 0 includes 0 results
+    			"xp": {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + ' Facets Exist!')
+    
+    
+    	# me/products list for buyer user & save list of product ids
+    
+    	log.debug('buyer product list!')
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	assert buyerProducts['Meta']['Facets']
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts['Items']:
+    		buyerProductIDs.append(item['ID'])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({'xp.'+facetPath : facetValue})
+    
+    	log.debug('XP filters are: '+str(filters))
+    
+    	numXP = len(filters) #number of filters we're looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug('Admin List of Products with Facet XP: '+str(adminProductList['Meta']['TotalCount']))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts['Meta']['Facets']:
+    		log.debug(facet)
+    		facets.append(facet['Name'])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts['Meta'])
+    
+    
+    	if adminProductList['Meta']['TotalCount'] == 0:
+    		log.debug('No Products With XP for Product Facets!')
+    
+    		#log.debug(facet.keys())
+    		log.debug('creating '+str(len(buyerProductIDs))+' Products with XP '+facet['ID']+'!')
+    		newXP = {
+    			'xp': {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, '', newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    
+    	time.sleep(60)
+    	log.info('okay, the index should be rebuilt now!')
+    	time.sleep(30)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'])
+    	assert newBuyerProducts['Meta']['Facets']
+    
+    	foundFacets = []
+    	for item in newBuyerProducts['Meta']['Facets']:
+    		foundFacets.append(item['ID'])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item['ID'])
+    	log.debug('index: '+str(index))
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'][index]['Values'])
+    
+    	foundValues = []
+    	for item in newBuyerProducts['Meta']['Facets'][index]['Values']:
+    		log.debug(item.keys())
+    		foundValues.append(item['ID'])
+    
+    	log.info('facet value: '+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info('facet value: '+str(facetValue))
+    	log.info('found values: '+str(foundValues))
+>   	assert facetValue in foundValues
+E    AssertionError: assert 'false' in ['maroon']
+
+adminProductList = {'Items': [], 'Meta': {'Facets': None, 'ItemRange': [1, 0], 'Page': 1, 'PageSize': 20, ...}}
+adminToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUy...cWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzM1NiwibmJmIjoxNTMzMzIxMzU2fQ.RPh4L_sWK5OoqnM7wyaWqK6-WHme-wAler4gXTYN2AQ'
+buyerProductIDs = ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', ...]
+buyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus... 'Values': [{'Count': 20, 'ID': 'maroon', 'Value': 'maroon'}]}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+buyerToken = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi0...zNTMsIm5iZiI6MTUzMzMyMTM1M30.ja1EszAW5eJlAfCquPNkpfEwkLJRIVoaDsrCT4BZd78', 'expires_in': 35999, 'token_type': 'bearer'}
+client_id  = '7E1ABEAB-C619-48CE-9080-2EF6475204F1'
+configInfo = <Section: QA-CONFIG>
+facet      = {'ID': 'job', 'Name': 'job', 'Values': [{'Count': 20, 'ID': 'maroon', 'Value': 'maroon'}]}
+facetID    = 'colors-spring'
+facetName  = 'colors.spring'
+facetPath  = 'colors.spring'
+facetValue = 'false'
+facets     = ['colors.spring', 'job']
+fil        = {'xp.colors.spring': 'false'}
+filters    = [{'xp.colors.spring': 'false'}]
+foundFacets = ['colors-spring', 'job']
+foundValues = ['maroon']
+index      = 1
+item       = {'Count': 20, 'ID': 'maroon', 'Value': 'maroon'}
+key        = 'xp.colors.spring'
+newBuyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus... 'Values': [{'Count': 20, 'ID': 'maroon', 'Value': 'maroon'}]}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+newXP      = {'xp': {'colors.spring': 'false'}}
+numXP      = 1
+params     = {'ID': 'colors-spring'}
+password   = 'UeQFatZktmkp7DJe'
+productFacet = {'Items': [{'ID': 'colors-spring', 'ListOrder': 1, 'MinCount': 1, 'Name': 'colors.spring', ...}], 'Meta': {'Facets': None, 'ItemRange': [1, 1], 'Page': 1, 'PageSize': 20, ...}}
+scope      = ['FullAccess']
+username   = 'sellerAdmin'
+
+panoptes\test_search.py:401: AssertionError
+------------------------------ Captured log call ------------------------------
+test_auth.py                33 DEBUG    {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'dbrown', 'password': 'fails345!!', 'Scope': 'Shopper'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 503
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTczNTMsIm5iZiI6MTUzMzMyMTM1M30.ja1EszAW5eJlAfCquPNkpfEwkLJRIVoaDsrCT4BZd78",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+test_auth.py                33 DEBUG    {'client_id': '7E1ABEAB-C619-48CE-9080-2EF6475204F1', 'grant_type': 'password', 'username': 'sellerAdmin', 'password': 'UeQFatZktmkp7DJe', 'Scope': 'FullAccess'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 511
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUyMDRmMSIsInVzcnR5cGUiOiJhZG1pbiIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzM1NiwibmJmIjoxNTMzMzIxMzU2fQ.RPh4L_sWK5OoqnM7wyaWqK6-WHme-wAler4gXTYN2AQ",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/ProductFacets/?ID=colors-spring HTTP/1.1" 200 261
+test_search.py             212 DEBUG    https://qaapi.ordercloud.io/v1/ProductFacets/?ID=colors-spring
+test_search.py             213 DEBUG    200
+test_search.py             214 DEBUG    {
+  "Meta": {
+    "Page": 1,
+    "PageSize": 20,
+    "TotalCount": 1,
+    "TotalPages": 1,
+    "ItemRange": [
+      1,
+      1
+    ],
+    "Facets": null
+  },
+  "Items": [
+    {
+      "ID": "colors-spring",
+      "Name": "colors.spring",
+      "XpPath": "colors.spring",
+      "ListOrder": 1,
+      "MinCount": 1,
+      "xp": {}
+    }
+  ]
+}
+test_search.py             286 DEBUG    [
+    {
+        "ID": "colors-spring",
+        "Name": "colors.spring",
+        "XpPath": "colors.spring",
+        "ListOrder": 1,
+        "MinCount": 1,
+        "xp": {}
+    }
+]
+test_search.py             303 DEBUG    colors.spring Facets Exist!
+test_search.py             308 DEBUG    buyer product list!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4427
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             319 DEBUG    ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', '978-1-881561-83-5', '978-0-915854-77-6', '978-0-8028-5400-1', '978-0-7890-1764-2', '978-1-01-587840-2', '978-0-7464-4052-0', '978-1-152-12041-9', '978-1-876180-86-7', '978-0-331-50877-2', '978-0-11-426949-4', '978-1-924337-12-0', '978-1-62954-997-2', '978-0-484-54657-7', '978-1-309-44463-4']
+test_search.py             328 DEBUG    XP filters are: [{'xp.colors.spring': 'false'}]
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/products?xp.colors.spring=false HTTP/1.1" 200 200
+test_products.py            45 INFO     utf-8
+test_products.py            46 INFO     https://qaapi.ordercloud.io/v1/products?xp.colors.spring=false
+test_search.py             334 DEBUG    Admin List of Products with Facet XP: 0
+test_search.py             340 DEBUG    {'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': [{'ID': 'maroon', 'Value': 'maroon', 'Count': 20}, {'ID': 'true', 'Value': 'true', 'Count': 1}]}
+test_search.py             340 DEBUG    {'ID': 'job', 'Name': 'job', 'Values': [{'ID': 'maroon', 'Value': 'maroon', 'Count': 20}]}
+test_search.py             347 DEBUG    {'Page': 1, 'PageSize': 20, 'TotalCount': 268, 'TotalPages': 14, 'ItemRange': [1, 20], 'Facets': [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': [{'ID': 'maroon', 'Value': 'maroon', 'Count': 20}, {'ID': 'true', 'Value': 'true', 'Count': 1}]}, {'ID': 'job', 'Name': 'job', 'Values': [{'ID': 'maroon', 'Value': 'maroon', 'Count': 20}]}]}
+test_search.py             351 DEBUG    No Products With XP for Product Facets!
+test_search.py             354 DEBUG    creating 20 Products with XP job!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-313-92703-4 HTTP/1.1" 200 663
+test_products.py            79 INFO     Patched Product 978-0-313-92703-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-431839-8 HTTP/1.1" 200 682
+test_products.py            79 INFO     Patched Product 978-1-01-431839-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-570-34146-8 HTTP/1.1" 200 683
+test_products.py            79 INFO     Patched Product 978-0-570-34146-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-268-34130-2 HTTP/1.1" 200 601
+test_products.py            79 INFO     Patched Product 978-1-268-34130-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7507-6701-9 HTTP/1.1" 200 661
+test_products.py            79 INFO     Patched Product 978-0-7507-6701-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-676-67405-7 HTTP/1.1" 200 620
+test_products.py            79 INFO     Patched Product 978-0-676-67405-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-881561-83-5 HTTP/1.1" 200 667
+test_products.py            79 INFO     Patched Product 978-1-881561-83-5
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-915854-77-6 HTTP/1.1" 200 662
+test_products.py            79 INFO     Patched Product 978-0-915854-77-6
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-8028-5400-1 HTTP/1.1" 200 645
+test_products.py            79 INFO     Patched Product 978-0-8028-5400-1
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7890-1764-2 HTTP/1.1" 200 590
+test_products.py            79 INFO     Patched Product 978-0-7890-1764-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-587840-2 HTTP/1.1" 200 604
+test_products.py            79 INFO     Patched Product 978-1-01-587840-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7464-4052-0 HTTP/1.1" 200 622
+test_products.py            79 INFO     Patched Product 978-0-7464-4052-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-152-12041-9 HTTP/1.1" 200 643
+test_products.py            79 INFO     Patched Product 978-1-152-12041-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-876180-86-7 HTTP/1.1" 200 623
+test_products.py            79 INFO     Patched Product 978-1-876180-86-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-331-50877-2 HTTP/1.1" 200 607
+test_products.py            79 INFO     Patched Product 978-0-331-50877-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-11-426949-4 HTTP/1.1" 200 636
+test_products.py            79 INFO     Patched Product 978-0-11-426949-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-924337-12-0 HTTP/1.1" 200 631
+test_products.py            79 INFO     Patched Product 978-1-924337-12-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-62954-997-2 HTTP/1.1" 200 603
+test_products.py            79 INFO     Patched Product 978-1-62954-997-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-484-54657-7 HTTP/1.1" 200 622
+test_products.py            79 INFO     Patched Product 978-0-484-54657-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-309-44463-4 HTTP/1.1" 200 667
+test_products.py            79 INFO     Patched Product 978-1-309-44463-4
+test_search.py             369 INFO     okay, the index should be rebuilt now!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4437
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             374 DEBUG    [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': [{'ID': 'false', 'Value': 'false', 'Count': 20}, {'ID': 'true', 'Value': 'true', 'Count': 1}]}, {'ID': 'job', 'Name': 'job', 'Values': [{'ID': 'maroon', 'Value': 'maroon', 'Count': 20}]}]
+test_search.py             387 DEBUG    index: 1
+test_search.py             389 DEBUG    [{'ID': 'maroon', 'Value': 'maroon', 'Count': 20}]
+test_search.py             393 DEBUG    dict_keys(['ID', 'Value', 'Count'])
+test_search.py             396 INFO     facet value: false
+test_search.py             400 INFO     found values: ['maroon']
+__ test_FacetSearch[1088024887185-colors.spring-colors-spring-colors.spring] __
+
+configInfo = <Section: QA-CONFIG>, facetName = 'colors.spring'
+facetID = 'colors-spring', facetPath = 'colors.spring'
+facetValue = 1088024887185
+
+    @pytest.mark.parametrize("facetName,facetID,facetPath", [
+        ('colors.spring', 'colors-spring', 'colors.spring'),
+        ('job', 'job', 'job')
+    ])
+    @pytest.mark.parametrize("facetValue", [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo['BUYER-CLIENTID']
+    	username = 'dbrown'
+    	password = 'fails345!!'
+    	scope = ['Shopper']
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo['ADMIN-CLIENTID']
+    	username = configInfo['ADMIN-USERNAME']
+    	password = configInfo['ADMIN-PASSWORD']
+    	scope = ['FullAccess']
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)['access_token']
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		'ID': facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet['Items'], indent=4))
+    
+    
+    
+    	if productFacet['Meta']['TotalCount'] == 0:
+    		log.debug('create new facet '+facetName+'!')
+    		newFacet = {
+    			"ID": facetID,
+    			"Name": facetName,
+    			"XpPath": facetPath,
+    			"ListOrder": 1,
+    			"MinCount": 1, # defaults to 1, 0 includes 0 results
+    			"xp": {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + ' Facets Exist!')
+    
+    
+    	# me/products list for buyer user & save list of product ids
+    
+    	log.debug('buyer product list!')
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	assert buyerProducts['Meta']['Facets']
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts['Items']:
+    		buyerProductIDs.append(item['ID'])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({'xp.'+facetPath : facetValue})
+    
+    	log.debug('XP filters are: '+str(filters))
+    
+    	numXP = len(filters) #number of filters we're looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug('Admin List of Products with Facet XP: '+str(adminProductList['Meta']['TotalCount']))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts['Meta']['Facets']:
+    		log.debug(facet)
+    		facets.append(facet['Name'])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts['Meta'])
+    
+    
+    	if adminProductList['Meta']['TotalCount'] == 0:
+    		log.debug('No Products With XP for Product Facets!')
+    
+    		#log.debug(facet.keys())
+    		log.debug('creating '+str(len(buyerProductIDs))+' Products with XP '+facet['ID']+'!')
+    		newXP = {
+    			'xp': {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, '', newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    
+    	time.sleep(60)
+    	log.info('okay, the index should be rebuilt now!')
+    	time.sleep(30)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'])
+    	assert newBuyerProducts['Meta']['Facets']
+    
+    	foundFacets = []
+    	for item in newBuyerProducts['Meta']['Facets']:
+    		foundFacets.append(item['ID'])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item['ID'])
+    	log.debug('index: '+str(index))
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'][index]['Values'])
+    
+    	foundValues = []
+    	for item in newBuyerProducts['Meta']['Facets'][index]['Values']:
+    		log.debug(item.keys())
+    		foundValues.append(item['ID'])
+    
+    	log.info('facet value: '+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info('facet value: '+str(facetValue))
+    	log.info('found values: '+str(foundValues))
+>   	assert facetValue in foundValues
+E    AssertionError: assert 1088024887185 in ['false']
+
+adminProductList = {'Items': [], 'Meta': {'Facets': None, 'ItemRange': [1, 0], 'Page': 1, 'PageSize': 20, ...}}
+adminToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUy...cWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzU2OCwibmJmIjoxNTMzMzIxNTY4fQ.vRYfneoTG_IZQqZKzcyxc2IcLDRjzkU1tjYSsAyagwg'
+buyerProductIDs = ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', ...]
+buyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...', 'Values': [{'Count': 20, 'ID': 'false', 'Value': 'false'}]}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+buyerToken = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi0...1NjcsIm5iZiI6MTUzMzMyMTU2N30.YtMcmDzU-mPRafKReh-UCeQoThqP7JHLs7lXShS3aQE', 'expires_in': 36001, 'token_type': 'bearer'}
+client_id  = '7E1ABEAB-C619-48CE-9080-2EF6475204F1'
+configInfo = <Section: QA-CONFIG>
+facet      = {'ID': 'job', 'Name': 'job', 'Values': [{'Count': 20, 'ID': 'false', 'Value': 'false'}]}
+facetID    = 'colors-spring'
+facetName  = 'colors.spring'
+facetPath  = 'colors.spring'
+facetValue = 1088024887185
+facets     = ['colors.spring', 'job']
+fil        = {'xp.colors.spring': 1088024887185}
+filters    = [{'xp.colors.spring': 1088024887185}]
+foundFacets = ['colors-spring', 'job']
+foundValues = ['false']
+index      = 1
+item       = {'Count': 20, 'ID': 'false', 'Value': 'false'}
+key        = 'xp.colors.spring'
+newBuyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...', 'Values': [{'Count': 20, 'ID': 'false', 'Value': 'false'}]}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+newXP      = {'xp': {'colors.spring': 1088024887185}}
+numXP      = 1
+params     = {'ID': 'colors-spring'}
+password   = 'UeQFatZktmkp7DJe'
+productFacet = {'Items': [{'ID': 'colors-spring', 'ListOrder': 1, 'MinCount': 1, 'Name': 'colors.spring', ...}], 'Meta': {'Facets': None, 'ItemRange': [1, 1], 'Page': 1, 'PageSize': 20, ...}}
+scope      = ['FullAccess']
+username   = 'sellerAdmin'
+
+panoptes\test_search.py:401: AssertionError
+------------------------------ Captured log call ------------------------------
+test_auth.py                33 DEBUG    {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'dbrown', 'password': 'fails345!!', 'Scope': 'Shopper'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 504
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTc1NjcsIm5iZiI6MTUzMzMyMTU2N30.YtMcmDzU-mPRafKReh-UCeQoThqP7JHLs7lXShS3aQE",
+  "token_type": "bearer",
+  "expires_in": 36001
+}
+test_auth.py                33 DEBUG    {'client_id': '7E1ABEAB-C619-48CE-9080-2EF6475204F1', 'grant_type': 'password', 'username': 'sellerAdmin', 'password': 'UeQFatZktmkp7DJe', 'Scope': 'FullAccess'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 512
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUyMDRmMSIsInVzcnR5cGUiOiJhZG1pbiIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzU2OCwibmJmIjoxNTMzMzIxNTY4fQ.vRYfneoTG_IZQqZKzcyxc2IcLDRjzkU1tjYSsAyagwg",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/ProductFacets/?ID=colors-spring HTTP/1.1" 200 261
+test_search.py             212 DEBUG    https://qaapi.ordercloud.io/v1/ProductFacets/?ID=colors-spring
+test_search.py             213 DEBUG    200
+test_search.py             214 DEBUG    {
+  "Meta": {
+    "Page": 1,
+    "PageSize": 20,
+    "TotalCount": 1,
+    "TotalPages": 1,
+    "ItemRange": [
+      1,
+      1
+    ],
+    "Facets": null
+  },
+  "Items": [
+    {
+      "ID": "colors-spring",
+      "Name": "colors.spring",
+      "XpPath": "colors.spring",
+      "ListOrder": 1,
+      "MinCount": 1,
+      "xp": {}
+    }
+  ]
+}
+test_search.py             286 DEBUG    [
+    {
+        "ID": "colors-spring",
+        "Name": "colors.spring",
+        "XpPath": "colors.spring",
+        "ListOrder": 1,
+        "MinCount": 1,
+        "xp": {}
+    }
+]
+test_search.py             303 DEBUG    colors.spring Facets Exist!
+test_search.py             308 DEBUG    buyer product list!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4422
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             319 DEBUG    ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', '978-1-881561-83-5', '978-0-915854-77-6', '978-0-8028-5400-1', '978-0-7890-1764-2', '978-1-01-587840-2', '978-0-7464-4052-0', '978-1-152-12041-9', '978-1-876180-86-7', '978-0-331-50877-2', '978-0-11-426949-4', '978-1-924337-12-0', '978-1-62954-997-2', '978-0-484-54657-7', '978-1-309-44463-4']
+test_search.py             328 DEBUG    XP filters are: [{'xp.colors.spring': 1088024887185}]
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/products?xp.colors.spring=1088024887185 HTTP/1.1" 200 200
+test_products.py            45 INFO     utf-8
+test_products.py            46 INFO     https://qaapi.ordercloud.io/v1/products?xp.colors.spring=1088024887185
+test_search.py             334 DEBUG    Admin List of Products with Facet XP: 0
+test_search.py             340 DEBUG    {'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': [{'ID': 'false', 'Value': 'false', 'Count': 20}, {'ID': 'true', 'Value': 'true', 'Count': 1}]}
+test_search.py             340 DEBUG    {'ID': 'job', 'Name': 'job', 'Values': [{'ID': 'false', 'Value': 'false', 'Count': 20}]}
+test_search.py             347 DEBUG    {'Page': 1, 'PageSize': 20, 'TotalCount': 268, 'TotalPages': 14, 'ItemRange': [1, 20], 'Facets': [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': [{'ID': 'false', 'Value': 'false', 'Count': 20}, {'ID': 'true', 'Value': 'true', 'Count': 1}]}, {'ID': 'job', 'Name': 'job', 'Values': [{'ID': 'false', 'Value': 'false', 'Count': 20}]}]}
+test_search.py             351 DEBUG    No Products With XP for Product Facets!
+test_search.py             354 DEBUG    creating 20 Products with XP job!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-313-92703-4 HTTP/1.1" 200 669
+test_products.py            79 INFO     Patched Product 978-0-313-92703-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-431839-8 HTTP/1.1" 200 689
+test_products.py            79 INFO     Patched Product 978-1-01-431839-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-570-34146-8 HTTP/1.1" 200 692
+test_products.py            79 INFO     Patched Product 978-0-570-34146-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-268-34130-2 HTTP/1.1" 200 610
+test_products.py            79 INFO     Patched Product 978-1-268-34130-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7507-6701-9 HTTP/1.1" 200 667
+test_products.py            79 INFO     Patched Product 978-0-7507-6701-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-676-67405-7 HTTP/1.1" 200 629
+test_products.py            79 INFO     Patched Product 978-0-676-67405-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-881561-83-5 HTTP/1.1" 200 675
+test_products.py            79 INFO     Patched Product 978-1-881561-83-5
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-915854-77-6 HTTP/1.1" 200 673
+test_products.py            79 INFO     Patched Product 978-0-915854-77-6
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-8028-5400-1 HTTP/1.1" 200 653
+test_products.py            79 INFO     Patched Product 978-0-8028-5400-1
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7890-1764-2 HTTP/1.1" 200 599
+test_products.py            79 INFO     Patched Product 978-0-7890-1764-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-587840-2 HTTP/1.1" 200 612
+test_products.py            79 INFO     Patched Product 978-1-01-587840-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7464-4052-0 HTTP/1.1" 200 631
+test_products.py            79 INFO     Patched Product 978-0-7464-4052-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-152-12041-9 HTTP/1.1" 200 651
+test_products.py            79 INFO     Patched Product 978-1-152-12041-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-876180-86-7 HTTP/1.1" 200 631
+test_products.py            79 INFO     Patched Product 978-1-876180-86-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-331-50877-2 HTTP/1.1" 200 617
+test_products.py            79 INFO     Patched Product 978-0-331-50877-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-11-426949-4 HTTP/1.1" 200 644
+test_products.py            79 INFO     Patched Product 978-0-11-426949-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-924337-12-0 HTTP/1.1" 200 640
+test_products.py            79 INFO     Patched Product 978-1-924337-12-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-62954-997-2 HTTP/1.1" 200 613
+test_products.py            79 INFO     Patched Product 978-1-62954-997-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-484-54657-7 HTTP/1.1" 200 632
+test_products.py            79 INFO     Patched Product 978-0-484-54657-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-309-44463-4 HTTP/1.1" 200 675
+test_products.py            79 INFO     Patched Product 978-1-309-44463-4
+test_search.py             369 INFO     okay, the index should be rebuilt now!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4427
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             374 DEBUG    [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': [{'ID': 'false', 'Value': 'false', 'Count': 20}]}]
+test_search.py             387 DEBUG    index: 1
+test_search.py             389 DEBUG    [{'ID': 'false', 'Value': 'false', 'Count': 20}]
+test_search.py             393 DEBUG    dict_keys(['ID', 'Value', 'Count'])
+test_search.py             396 INFO     facet value: 1088024887185
+test_search.py             400 INFO     found values: ['false']
+_________________ test_FacetSearch[1088024887185-job-job-job] _________________
+
+configInfo = <Section: QA-CONFIG>, facetName = 'job', facetID = 'job'
+facetPath = 'job', facetValue = 1088024887185
+
+    @pytest.mark.parametrize("facetName,facetID,facetPath", [
+        ('colors.spring', 'colors-spring', 'colors.spring'),
+        ('job', 'job', 'job')
+    ])
+    @pytest.mark.parametrize("facetValue", [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo['BUYER-CLIENTID']
+    	username = 'dbrown'
+    	password = 'fails345!!'
+    	scope = ['Shopper']
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo['ADMIN-CLIENTID']
+    	username = configInfo['ADMIN-USERNAME']
+    	password = configInfo['ADMIN-PASSWORD']
+    	scope = ['FullAccess']
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)['access_token']
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		'ID': facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet['Items'], indent=4))
+    
+    
+    
+    	if productFacet['Meta']['TotalCount'] == 0:
+    		log.debug('create new facet '+facetName+'!')
+    		newFacet = {
+    			"ID": facetID,
+    			"Name": facetName,
+    			"XpPath": facetPath,
+    			"ListOrder": 1,
+    			"MinCount": 1, # defaults to 1, 0 includes 0 results
+    			"xp": {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + ' Facets Exist!')
+    
+    
+    	# me/products list for buyer user & save list of product ids
+    
+    	log.debug('buyer product list!')
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	assert buyerProducts['Meta']['Facets']
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts['Items']:
+    		buyerProductIDs.append(item['ID'])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({'xp.'+facetPath : facetValue})
+    
+    	log.debug('XP filters are: '+str(filters))
+    
+    	numXP = len(filters) #number of filters we're looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug('Admin List of Products with Facet XP: '+str(adminProductList['Meta']['TotalCount']))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts['Meta']['Facets']:
+    		log.debug(facet)
+    		facets.append(facet['Name'])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts['Meta'])
+    
+    
+    	if adminProductList['Meta']['TotalCount'] == 0:
+    		log.debug('No Products With XP for Product Facets!')
+    
+    		#log.debug(facet.keys())
+    		log.debug('creating '+str(len(buyerProductIDs))+' Products with XP '+facet['ID']+'!')
+    		newXP = {
+    			'xp': {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, '', newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    
+    	time.sleep(60)
+    	log.info('okay, the index should be rebuilt now!')
+    	time.sleep(30)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'])
+    	assert newBuyerProducts['Meta']['Facets']
+    
+    	foundFacets = []
+    	for item in newBuyerProducts['Meta']['Facets']:
+    		foundFacets.append(item['ID'])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item['ID'])
+    	log.debug('index: '+str(index))
+    
+    	log.debug(newBuyerProducts['Meta']['Facets'][index]['Values'])
+    
+    	foundValues = []
+    	for item in newBuyerProducts['Meta']['Facets'][index]['Values']:
+    		log.debug(item.keys())
+    		foundValues.append(item['ID'])
+    
+    	log.info('facet value: '+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info('facet value: '+str(facetValue))
+    	log.info('found values: '+str(foundValues))
+>   	assert facetValue in foundValues
+E    assert 1088024887185 in []
+
+adminProductList = {'Items': [], 'Meta': {'Facets': None, 'ItemRange': [1, 0], 'Page': 1, 'PageSize': 20, ...}}
+adminToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUy...cWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzY4MSwibmJmIjoxNTMzMzIxNjgxfQ.1ns9quU4hwbPNg9zvRhn1MknYcS99NEdZxIK_MngO_s'
+buyerProductIDs = ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', ...]
+buyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...', 'Values': [{'Count': 20, 'ID': 'false', 'Value': 'false'}]}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+buyerToken = {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi0...2ODEsIm5iZiI6MTUzMzMyMTY4MX0.WTY43RIe2vS8cgrEq5n27oiwgRMO5CMTGSl1a6VWtw4', 'expires_in': 35999, 'token_type': 'bearer'}
+client_id  = '7E1ABEAB-C619-48CE-9080-2EF6475204F1'
+configInfo = <Section: QA-CONFIG>
+facet      = {'ID': 'job', 'Name': 'job', 'Values': [{'Count': 20, 'ID': 'false', 'Value': 'false'}]}
+facetID    = 'job'
+facetName  = 'job'
+facetPath  = 'job'
+facetValue = 1088024887185
+facets     = ['colors.spring', 'job']
+fil        = {'xp.job': 1088024887185}
+filters    = [{'xp.job': 1088024887185}]
+foundFacets = ['colors-spring', 'job']
+foundValues = []
+index      = 1
+item       = {'ID': 'job', 'Name': 'job', 'Values': []}
+key        = 'xp.job'
+newBuyerProducts = {'Items': [{'Active': True, 'AutoForwardSupplierID': None, 'Description': 'Data yes listen join article. Behind becaus...ng', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}], 'ItemRange': [1, 20], 'Page': 1, 'PageSize': 20, ...}}
+newXP      = {'xp': {'job': 1088024887185}}
+numXP      = 1
+params     = {'ID': 'job'}
+password   = 'UeQFatZktmkp7DJe'
+productFacet = {'Items': [{'ID': 'job', 'ListOrder': 1, 'MinCount': 1, 'Name': 'job', ...}], 'Meta': {'Facets': None, 'ItemRange': [1, 1], 'Page': 1, 'PageSize': 20, ...}}
+scope      = ['FullAccess']
+username   = 'sellerAdmin'
+
+panoptes\test_search.py:401: AssertionError
+------------------------------ Captured log call ------------------------------
+test_auth.py                33 DEBUG    {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'dbrown', 'password': 'fails345!!', 'Scope': 'Shopper'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 504
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJkYnJvd24iLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzMzNTc2ODEsIm5iZiI6MTUzMzMyMTY4MX0.WTY43RIe2vS8cgrEq5n27oiwgRMO5CMTGSl1a6VWtw4",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+test_auth.py                33 DEBUG    {'client_id': '7E1ABEAB-C619-48CE-9080-2EF6475204F1', 'grant_type': 'password', 'username': 'sellerAdmin', 'password': 'UeQFatZktmkp7DJe', 'Scope': 'FullAccess'}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 515
+test_auth.py                42 DEBUG    {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJzZWxsZXJBZG1pbiIsImNpZCI6IjdlMWFiZWFiLWM2MTktNDhjZS05MDgwLTJlZjY0NzUyMDRmMSIsInVzcnR5cGUiOiJhZG1pbiIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzMzM1NzY4MSwibmJmIjoxNTMzMzIxNjgxfQ.1ns9quU4hwbPNg9zvRhn1MknYcS99NEdZxIK_MngO_s",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/ProductFacets/?ID=job HTTP/1.1" 200 250
+test_search.py             212 DEBUG    https://qaapi.ordercloud.io/v1/ProductFacets/?ID=job
+test_search.py             213 DEBUG    200
+test_search.py             214 DEBUG    {
+  "Meta": {
+    "Page": 1,
+    "PageSize": 20,
+    "TotalCount": 1,
+    "TotalPages": 1,
+    "ItemRange": [
+      1,
+      1
+    ],
+    "Facets": null
+  },
+  "Items": [
+    {
+      "ID": "job",
+      "Name": "job",
+      "XpPath": "job",
+      "ListOrder": 1,
+      "MinCount": 1,
+      "xp": {}
+    }
+  ]
+}
+test_search.py             286 DEBUG    [
+    {
+        "ID": "job",
+        "Name": "job",
+        "XpPath": "job",
+        "ListOrder": 1,
+        "MinCount": 1,
+        "xp": {}
+    }
+]
+test_search.py             303 DEBUG    job Facets Exist!
+test_search.py             308 DEBUG    buyer product list!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4427
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             319 DEBUG    ['978-0-313-92703-4', '978-1-01-431839-8', '978-0-570-34146-8', '978-1-268-34130-2', '978-0-7507-6701-9', '978-0-676-67405-7', '978-1-881561-83-5', '978-0-915854-77-6', '978-0-8028-5400-1', '978-0-7890-1764-2', '978-1-01-587840-2', '978-0-7464-4052-0', '978-1-152-12041-9', '978-1-876180-86-7', '978-0-331-50877-2', '978-0-11-426949-4', '978-1-924337-12-0', '978-1-62954-997-2', '978-0-484-54657-7', '978-1-309-44463-4']
+test_search.py             328 DEBUG    XP filters are: [{'xp.job': 1088024887185}]
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/products?xp.job=1088024887185 HTTP/1.1" 200 200
+test_products.py            45 INFO     utf-8
+test_products.py            46 INFO     https://qaapi.ordercloud.io/v1/products?xp.job=1088024887185
+test_search.py             334 DEBUG    Admin List of Products with Facet XP: 0
+test_search.py             340 DEBUG    {'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}
+test_search.py             340 DEBUG    {'ID': 'job', 'Name': 'job', 'Values': [{'ID': 'false', 'Value': 'false', 'Count': 20}]}
+test_search.py             347 DEBUG    {'Page': 1, 'PageSize': 20, 'TotalCount': 267, 'TotalPages': 14, 'ItemRange': [1, 20], 'Facets': [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': [{'ID': 'false', 'Value': 'false', 'Count': 20}]}]}
+test_search.py             351 DEBUG    No Products With XP for Product Facets!
+test_search.py             354 DEBUG    creating 20 Products with XP job!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-313-92703-4 HTTP/1.1" 200 666
+test_products.py            79 INFO     Patched Product 978-0-313-92703-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-431839-8 HTTP/1.1" 200 688
+test_products.py            79 INFO     Patched Product 978-1-01-431839-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-570-34146-8 HTTP/1.1" 200 687
+test_products.py            79 INFO     Patched Product 978-0-570-34146-8
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-268-34130-2 HTTP/1.1" 200 610
+test_products.py            79 INFO     Patched Product 978-1-268-34130-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7507-6701-9 HTTP/1.1" 200 668
+test_products.py            79 INFO     Patched Product 978-0-7507-6701-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-676-67405-7 HTTP/1.1" 200 624
+test_products.py            79 INFO     Patched Product 978-0-676-67405-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-881561-83-5 HTTP/1.1" 200 672
+test_products.py            79 INFO     Patched Product 978-1-881561-83-5
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-915854-77-6 HTTP/1.1" 200 668
+test_products.py            79 INFO     Patched Product 978-0-915854-77-6
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-8028-5400-1 HTTP/1.1" 200 651
+test_products.py            79 INFO     Patched Product 978-0-8028-5400-1
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7890-1764-2 HTTP/1.1" 200 595
+test_products.py            79 INFO     Patched Product 978-0-7890-1764-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-01-587840-2 HTTP/1.1" 200 608
+test_products.py            79 INFO     Patched Product 978-1-01-587840-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-7464-4052-0 HTTP/1.1" 200 625
+test_products.py            79 INFO     Patched Product 978-0-7464-4052-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-152-12041-9 HTTP/1.1" 200 646
+test_products.py            79 INFO     Patched Product 978-1-152-12041-9
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-876180-86-7 HTTP/1.1" 200 625
+test_products.py            79 INFO     Patched Product 978-1-876180-86-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-331-50877-2 HTTP/1.1" 200 609
+test_products.py            79 INFO     Patched Product 978-0-331-50877-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-11-426949-4 HTTP/1.1" 200 640
+test_products.py            79 INFO     Patched Product 978-0-11-426949-4
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-924337-12-0 HTTP/1.1" 200 630
+test_products.py            79 INFO     Patched Product 978-1-924337-12-0
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-62954-997-2 HTTP/1.1" 200 608
+test_products.py            79 INFO     Patched Product 978-1-62954-997-2
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-0-484-54657-7 HTTP/1.1" 200 626
+test_products.py            79 INFO     Patched Product 978-0-484-54657-7
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "PATCH /v1/products/978-1-309-44463-4 HTTP/1.1" 200 665
+test_products.py            79 INFO     Patched Product 978-1-309-44463-4
+test_search.py             369 INFO     okay, the index should be rebuilt now!
+connectionpool.py          823 DEBUG    Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+connectionpool.py          393 DEBUG    https://qaapi.ordercloud.io:443 "GET /v1/me/products?PageSize=20 HTTP/1.1" 200 4424
+test_me.py                  71 DEBUG    https://qaapi.ordercloud.io/v1/me/products?PageSize=20
+test_search.py             374 DEBUG    [{'ID': 'colors-spring', 'Name': 'colors.spring', 'Values': []}, {'ID': 'job', 'Name': 'job', 'Values': []}]
+test_search.py             387 DEBUG    index: 1
+test_search.py             389 DEBUG    []
+test_search.py             396 INFO     facet value: 1088024887185
+test_search.py             400 INFO     found values: []
+=================== 8 failed, 112 passed in 1013.65 seconds ===================

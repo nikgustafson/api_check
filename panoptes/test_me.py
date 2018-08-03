@@ -51,3 +51,49 @@ def patch_Me(configInfo, token, newUser):
 	assert me.status_code is codes.ok
 
 	return me.json()
+
+
+def get_meProducts(configInfo, token, params):
+
+	if type(token) is dict:
+		token = token['access_token']
+
+	headers = {
+		'Authorization': 'Bearer '+ token,
+		'Content-Type': 'application/json',
+		'charset': 'UTF-8'
+	}
+
+	try:
+		me = requests.get(configInfo['API']+'v1/me/products', headers = headers, params=params)
+
+		#log.debug(me.request.headers)
+		log.debug(me.request.url)
+		#log.debug(json.dumps(me.json(), indent=2))
+		assert me.status_code is codes.ok
+	except requests.exceptions.RequestException as e: 
+		print(e)
+		sys.exit(1)
+
+	return me.json()
+
+def test_sessions():
+
+	client_id = configInfo['BUYER-CLIENTID']
+	username = 'dbrown'
+	password = 'fails345!!'
+	scope = ['Shopper']
+
+	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+
+	buyer = requests.Session()
+
+	headers = {
+		'Authorization': 'Bearer '+ buyerToken['access_token'],
+		'Content-Type': 'application/json',
+		'charset': 'UTF-8'
+	}
+
+	buyer.headers.update(headers)
+	
+	log.info(buyer.get(configInfo['API']+'v1/me').json())

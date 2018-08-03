@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="6" name="pytest" skips="0" tests="8" time="2014.362"><testcase classname="panoptes.test_search" file="panoptes\test_search.py" line="229" name="test_FacetSearch[True-colors.spring-colors-spring-colors.spring]" time="244.2609314918518"><failure message="AssertionError: assert &apos;true&apos; in []">configInfo = &lt;Section: QA-CONFIG&gt;, facetName = &apos;colors.spring&apos;
+facetID = &apos;colors-spring&apos;, facetPath = &apos;colors.spring&apos;, facetValue = &apos;true&apos;
+
+    @pytest.mark.parametrize(&quot;facetName,facetID,facetPath&quot;, [
+        (&apos;colors.spring&apos;, &apos;colors-spring&apos;, &apos;colors.spring&apos;),
+        (&apos;job&apos;, &apos;job&apos;, &apos;job&apos;)
+    ])
+    @pytest.mark.parametrize(&quot;facetValue&quot;, [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo[&apos;BUYER-CLIENTID&apos;]
+    	username = &apos;dbrown&apos;
+    	password = &apos;fails345!!&apos;
+    	scope = [&apos;Shopper&apos;]
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo[&apos;ADMIN-CLIENTID&apos;]
+    	username = configInfo[&apos;ADMIN-USERNAME&apos;]
+    	password = configInfo[&apos;ADMIN-PASSWORD&apos;]
+    	scope = [&apos;FullAccess&apos;]
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)[&apos;access_token&apos;]
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		&apos;ID&apos;: facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet[&apos;Items&apos;], indent=4))
+    
+    
+    
+    	if productFacet[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;create new facet &apos;+facetName+&apos;!&apos;)
+    		newFacet = {
+    			&quot;ID&quot;: facetID,
+    			&quot;Name&quot;: facetName,
+    			&quot;XpPath&quot;: facetPath,
+    			&quot;ListOrder&quot;: 1,
+    			&quot;MinCount&quot;: 1, # defaults to 1, 0 includes 0 results
+    			&quot;xp&quot;: {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + &apos; Facets Exist!&apos;)
+    
+    
+    	# me/products list for buyer user &amp; save list of product ids
+    
+    	log.debug(&apos;buyer product list!&apos;)
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	assert buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts[&apos;Items&apos;]:
+    		buyerProductIDs.append(item[&apos;ID&apos;])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({&apos;xp.&apos;+facetPath : facetValue})
+    
+    	log.debug(&apos;XP filters are: &apos;+str(filters))
+    
+    	numXP = len(filters) #number of filters we&apos;re looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug(&apos;Admin List of Products with Facet XP: &apos;+str(adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;]))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		log.debug(facet)
+    		facets.append(facet[&apos;Name&apos;])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts[&apos;Meta&apos;])
+    
+    
+    	if adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;No Products With XP for Product Facets!&apos;)
+    
+    		#log.debug(facet.keys())
+    		log.debug(&apos;creating &apos;+str(len(buyerProductIDs))+&apos; Products with XP &apos;+facet[&apos;ID&apos;]+&apos;!&apos;)
+    		newXP = {
+    			&apos;xp&apos;: {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, &apos;&apos;, newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    	l = 60 * 3
+    	time.sleep(60)
+    	log.info(&apos;okay, the index should be rebuilt now!&apos;)
+    	time.sleep(l)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;])
+    	assert newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	foundFacets = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		foundFacets.append(item[&apos;ID&apos;])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item[&apos;ID&apos;])
+    	log.debug(&apos;index: &apos;+str(index))
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;])
+    
+    	foundValues = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;]:
+    		log.debug(item.keys())
+    		foundValues.append(item[&apos;ID&apos;])
+    
+    	log.info(&apos;facet value: &apos;+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info(&apos;facet value: &apos;+str(facetValue))
+    	log.info(&apos;found values: &apos;+str(foundValues))
+&gt;   	assert facetValue in foundValues
+E    AssertionError: assert &apos;true&apos; in []
+
+panoptes\test_search.py:384: AssertionError</failure></testcase><testcase classname="panoptes.test_search" file="panoptes\test_search.py" line="229" name="test_FacetSearch[True-job-job-job]" time="243.95511078834534"><failure message="AssertionError: assert &apos;true&apos; in []">configInfo = &lt;Section: QA-CONFIG&gt;, facetName = &apos;job&apos;, facetID = &apos;job&apos;
+facetPath = &apos;job&apos;, facetValue = &apos;true&apos;
+
+    @pytest.mark.parametrize(&quot;facetName,facetID,facetPath&quot;, [
+        (&apos;colors.spring&apos;, &apos;colors-spring&apos;, &apos;colors.spring&apos;),
+        (&apos;job&apos;, &apos;job&apos;, &apos;job&apos;)
+    ])
+    @pytest.mark.parametrize(&quot;facetValue&quot;, [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo[&apos;BUYER-CLIENTID&apos;]
+    	username = &apos;dbrown&apos;
+    	password = &apos;fails345!!&apos;
+    	scope = [&apos;Shopper&apos;]
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo[&apos;ADMIN-CLIENTID&apos;]
+    	username = configInfo[&apos;ADMIN-USERNAME&apos;]
+    	password = configInfo[&apos;ADMIN-PASSWORD&apos;]
+    	scope = [&apos;FullAccess&apos;]
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)[&apos;access_token&apos;]
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		&apos;ID&apos;: facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet[&apos;Items&apos;], indent=4))
+    
+    
+    
+    	if productFacet[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;create new facet &apos;+facetName+&apos;!&apos;)
+    		newFacet = {
+    			&quot;ID&quot;: facetID,
+    			&quot;Name&quot;: facetName,
+    			&quot;XpPath&quot;: facetPath,
+    			&quot;ListOrder&quot;: 1,
+    			&quot;MinCount&quot;: 1, # defaults to 1, 0 includes 0 results
+    			&quot;xp&quot;: {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + &apos; Facets Exist!&apos;)
+    
+    
+    	# me/products list for buyer user &amp; save list of product ids
+    
+    	log.debug(&apos;buyer product list!&apos;)
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	assert buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts[&apos;Items&apos;]:
+    		buyerProductIDs.append(item[&apos;ID&apos;])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({&apos;xp.&apos;+facetPath : facetValue})
+    
+    	log.debug(&apos;XP filters are: &apos;+str(filters))
+    
+    	numXP = len(filters) #number of filters we&apos;re looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug(&apos;Admin List of Products with Facet XP: &apos;+str(adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;]))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		log.debug(facet)
+    		facets.append(facet[&apos;Name&apos;])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts[&apos;Meta&apos;])
+    
+    
+    	if adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;No Products With XP for Product Facets!&apos;)
+    
+    		#log.debug(facet.keys())
+    		log.debug(&apos;creating &apos;+str(len(buyerProductIDs))+&apos; Products with XP &apos;+facet[&apos;ID&apos;]+&apos;!&apos;)
+    		newXP = {
+    			&apos;xp&apos;: {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, &apos;&apos;, newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    	l = 60 * 3
+    	time.sleep(60)
+    	log.info(&apos;okay, the index should be rebuilt now!&apos;)
+    	time.sleep(l)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;])
+    	assert newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	foundFacets = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		foundFacets.append(item[&apos;ID&apos;])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item[&apos;ID&apos;])
+    	log.debug(&apos;index: &apos;+str(index))
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;])
+    
+    	foundValues = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;]:
+    		log.debug(item.keys())
+    		foundValues.append(item[&apos;ID&apos;])
+    
+    	log.info(&apos;facet value: &apos;+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info(&apos;facet value: &apos;+str(facetValue))
+    	log.info(&apos;found values: &apos;+str(foundValues))
+&gt;   	assert facetValue in foundValues
+E    AssertionError: assert &apos;true&apos; in []
+
+panoptes\test_search.py:384: AssertionError</failure></testcase><testcase classname="panoptes.test_search" file="panoptes\test_search.py" line="229" name="test_FacetSearch[olive-colors.spring-colors-spring-colors.spring]" time="261.31362771987915"><failure message="AssertionError: assert &apos;olive&apos; in []">configInfo = &lt;Section: QA-CONFIG&gt;, facetName = &apos;colors.spring&apos;
+facetID = &apos;colors-spring&apos;, facetPath = &apos;colors.spring&apos;, facetValue = &apos;olive&apos;
+
+    @pytest.mark.parametrize(&quot;facetName,facetID,facetPath&quot;, [
+        (&apos;colors.spring&apos;, &apos;colors-spring&apos;, &apos;colors.spring&apos;),
+        (&apos;job&apos;, &apos;job&apos;, &apos;job&apos;)
+    ])
+    @pytest.mark.parametrize(&quot;facetValue&quot;, [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo[&apos;BUYER-CLIENTID&apos;]
+    	username = &apos;dbrown&apos;
+    	password = &apos;fails345!!&apos;
+    	scope = [&apos;Shopper&apos;]
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo[&apos;ADMIN-CLIENTID&apos;]
+    	username = configInfo[&apos;ADMIN-USERNAME&apos;]
+    	password = configInfo[&apos;ADMIN-PASSWORD&apos;]
+    	scope = [&apos;FullAccess&apos;]
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)[&apos;access_token&apos;]
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		&apos;ID&apos;: facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet[&apos;Items&apos;], indent=4))
+    
+    
+    
+    	if productFacet[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;create new facet &apos;+facetName+&apos;!&apos;)
+    		newFacet = {
+    			&quot;ID&quot;: facetID,
+    			&quot;Name&quot;: facetName,
+    			&quot;XpPath&quot;: facetPath,
+    			&quot;ListOrder&quot;: 1,
+    			&quot;MinCount&quot;: 1, # defaults to 1, 0 includes 0 results
+    			&quot;xp&quot;: {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + &apos; Facets Exist!&apos;)
+    
+    
+    	# me/products list for buyer user &amp; save list of product ids
+    
+    	log.debug(&apos;buyer product list!&apos;)
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	assert buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts[&apos;Items&apos;]:
+    		buyerProductIDs.append(item[&apos;ID&apos;])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({&apos;xp.&apos;+facetPath : facetValue})
+    
+    	log.debug(&apos;XP filters are: &apos;+str(filters))
+    
+    	numXP = len(filters) #number of filters we&apos;re looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug(&apos;Admin List of Products with Facet XP: &apos;+str(adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;]))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		log.debug(facet)
+    		facets.append(facet[&apos;Name&apos;])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts[&apos;Meta&apos;])
+    
+    
+    	if adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;No Products With XP for Product Facets!&apos;)
+    
+    		#log.debug(facet.keys())
+    		log.debug(&apos;creating &apos;+str(len(buyerProductIDs))+&apos; Products with XP &apos;+facet[&apos;ID&apos;]+&apos;!&apos;)
+    		newXP = {
+    			&apos;xp&apos;: {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, &apos;&apos;, newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    	l = 60 * 3
+    	time.sleep(60)
+    	log.info(&apos;okay, the index should be rebuilt now!&apos;)
+    	time.sleep(l)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;])
+    	assert newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	foundFacets = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		foundFacets.append(item[&apos;ID&apos;])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item[&apos;ID&apos;])
+    	log.debug(&apos;index: &apos;+str(index))
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;])
+    
+    	foundValues = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;]:
+    		log.debug(item.keys())
+    		foundValues.append(item[&apos;ID&apos;])
+    
+    	log.info(&apos;facet value: &apos;+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info(&apos;facet value: &apos;+str(facetValue))
+    	log.info(&apos;found values: &apos;+str(foundValues))
+&gt;   	assert facetValue in foundValues
+E    AssertionError: assert &apos;olive&apos; in []
+
+panoptes\test_search.py:384: AssertionError</failure></testcase><testcase classname="panoptes.test_search" file="panoptes\test_search.py" line="229" name="test_FacetSearch[olive-job-job-job]" time="258.5282049179077"><failure message="AssertionError: assert &apos;olive&apos; in [&apos;yellow&apos;, &apos;false&apos;, &apos;navy&apos;, &apos;2546804563921&apos;, &apos;5048623196763&apos;, &apos;1795365976454&apos;, ...]">configInfo = &lt;Section: QA-CONFIG&gt;, facetName = &apos;job&apos;, facetID = &apos;job&apos;
+facetPath = &apos;job&apos;, facetValue = &apos;olive&apos;
+
+    @pytest.mark.parametrize(&quot;facetName,facetID,facetPath&quot;, [
+        (&apos;colors.spring&apos;, &apos;colors-spring&apos;, &apos;colors.spring&apos;),
+        (&apos;job&apos;, &apos;job&apos;, &apos;job&apos;)
+    ])
+    @pytest.mark.parametrize(&quot;facetValue&quot;, [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo[&apos;BUYER-CLIENTID&apos;]
+    	username = &apos;dbrown&apos;
+    	password = &apos;fails345!!&apos;
+    	scope = [&apos;Shopper&apos;]
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo[&apos;ADMIN-CLIENTID&apos;]
+    	username = configInfo[&apos;ADMIN-USERNAME&apos;]
+    	password = configInfo[&apos;ADMIN-PASSWORD&apos;]
+    	scope = [&apos;FullAccess&apos;]
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)[&apos;access_token&apos;]
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		&apos;ID&apos;: facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet[&apos;Items&apos;], indent=4))
+    
+    
+    
+    	if productFacet[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;create new facet &apos;+facetName+&apos;!&apos;)
+    		newFacet = {
+    			&quot;ID&quot;: facetID,
+    			&quot;Name&quot;: facetName,
+    			&quot;XpPath&quot;: facetPath,
+    			&quot;ListOrder&quot;: 1,
+    			&quot;MinCount&quot;: 1, # defaults to 1, 0 includes 0 results
+    			&quot;xp&quot;: {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + &apos; Facets Exist!&apos;)
+    
+    
+    	# me/products list for buyer user &amp; save list of product ids
+    
+    	log.debug(&apos;buyer product list!&apos;)
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	assert buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts[&apos;Items&apos;]:
+    		buyerProductIDs.append(item[&apos;ID&apos;])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({&apos;xp.&apos;+facetPath : facetValue})
+    
+    	log.debug(&apos;XP filters are: &apos;+str(filters))
+    
+    	numXP = len(filters) #number of filters we&apos;re looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug(&apos;Admin List of Products with Facet XP: &apos;+str(adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;]))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		log.debug(facet)
+    		facets.append(facet[&apos;Name&apos;])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts[&apos;Meta&apos;])
+    
+    
+    	if adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;No Products With XP for Product Facets!&apos;)
+    
+    		#log.debug(facet.keys())
+    		log.debug(&apos;creating &apos;+str(len(buyerProductIDs))+&apos; Products with XP &apos;+facet[&apos;ID&apos;]+&apos;!&apos;)
+    		newXP = {
+    			&apos;xp&apos;: {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, &apos;&apos;, newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    	l = 60 * 3
+    	time.sleep(60)
+    	log.info(&apos;okay, the index should be rebuilt now!&apos;)
+    	time.sleep(l)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;])
+    	assert newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	foundFacets = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		foundFacets.append(item[&apos;ID&apos;])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item[&apos;ID&apos;])
+    	log.debug(&apos;index: &apos;+str(index))
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;])
+    
+    	foundValues = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;]:
+    		log.debug(item.keys())
+    		foundValues.append(item[&apos;ID&apos;])
+    
+    	log.info(&apos;facet value: &apos;+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info(&apos;facet value: &apos;+str(facetValue))
+    	log.info(&apos;found values: &apos;+str(foundValues))
+&gt;   	assert facetValue in foundValues
+E    AssertionError: assert &apos;olive&apos; in [&apos;yellow&apos;, &apos;false&apos;, &apos;navy&apos;, &apos;2546804563921&apos;, &apos;5048623196763&apos;, &apos;1795365976454&apos;, ...]
+
+panoptes\test_search.py:384: AssertionError</failure></testcase><testcase classname="panoptes.test_search" file="panoptes\test_search.py" line="229" name="test_FacetSearch[true-colors.spring-colors-spring-colors.spring]" time="244.1467444896698"></testcase><testcase classname="panoptes.test_search" file="panoptes\test_search.py" line="229" name="test_FacetSearch[true-job-job-job]" time="243.62500619888306"></testcase><testcase classname="panoptes.test_search" file="panoptes\test_search.py" line="229" name="test_FacetSearch[9713858266117-colors.spring-colors-spring-colors.spring]" time="256.6044023036957"><failure message="AssertionError: assert 9713858266117 in [&apos;yellow&apos;, &apos;false&apos;, &apos;navy&apos;, &apos;2546804563921&apos;, &apos;5048623196763&apos;, &apos;1795365976454&apos;, ...]">configInfo = &lt;Section: QA-CONFIG&gt;, facetName = &apos;colors.spring&apos;
+facetID = &apos;colors-spring&apos;, facetPath = &apos;colors.spring&apos;
+facetValue = 9713858266117
+
+    @pytest.mark.parametrize(&quot;facetName,facetID,facetPath&quot;, [
+        (&apos;colors.spring&apos;, &apos;colors-spring&apos;, &apos;colors.spring&apos;),
+        (&apos;job&apos;, &apos;job&apos;, &apos;job&apos;)
+    ])
+    @pytest.mark.parametrize(&quot;facetValue&quot;, [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo[&apos;BUYER-CLIENTID&apos;]
+    	username = &apos;dbrown&apos;
+    	password = &apos;fails345!!&apos;
+    	scope = [&apos;Shopper&apos;]
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo[&apos;ADMIN-CLIENTID&apos;]
+    	username = configInfo[&apos;ADMIN-USERNAME&apos;]
+    	password = configInfo[&apos;ADMIN-PASSWORD&apos;]
+    	scope = [&apos;FullAccess&apos;]
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)[&apos;access_token&apos;]
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		&apos;ID&apos;: facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet[&apos;Items&apos;], indent=4))
+    
+    
+    
+    	if productFacet[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;create new facet &apos;+facetName+&apos;!&apos;)
+    		newFacet = {
+    			&quot;ID&quot;: facetID,
+    			&quot;Name&quot;: facetName,
+    			&quot;XpPath&quot;: facetPath,
+    			&quot;ListOrder&quot;: 1,
+    			&quot;MinCount&quot;: 1, # defaults to 1, 0 includes 0 results
+    			&quot;xp&quot;: {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + &apos; Facets Exist!&apos;)
+    
+    
+    	# me/products list for buyer user &amp; save list of product ids
+    
+    	log.debug(&apos;buyer product list!&apos;)
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	assert buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts[&apos;Items&apos;]:
+    		buyerProductIDs.append(item[&apos;ID&apos;])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({&apos;xp.&apos;+facetPath : facetValue})
+    
+    	log.debug(&apos;XP filters are: &apos;+str(filters))
+    
+    	numXP = len(filters) #number of filters we&apos;re looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug(&apos;Admin List of Products with Facet XP: &apos;+str(adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;]))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		log.debug(facet)
+    		facets.append(facet[&apos;Name&apos;])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts[&apos;Meta&apos;])
+    
+    
+    	if adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;No Products With XP for Product Facets!&apos;)
+    
+    		#log.debug(facet.keys())
+    		log.debug(&apos;creating &apos;+str(len(buyerProductIDs))+&apos; Products with XP &apos;+facet[&apos;ID&apos;]+&apos;!&apos;)
+    		newXP = {
+    			&apos;xp&apos;: {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, &apos;&apos;, newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    	l = 60 * 3
+    	time.sleep(60)
+    	log.info(&apos;okay, the index should be rebuilt now!&apos;)
+    	time.sleep(l)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;])
+    	assert newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	foundFacets = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		foundFacets.append(item[&apos;ID&apos;])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item[&apos;ID&apos;])
+    	log.debug(&apos;index: &apos;+str(index))
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;])
+    
+    	foundValues = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;]:
+    		log.debug(item.keys())
+    		foundValues.append(item[&apos;ID&apos;])
+    
+    	log.info(&apos;facet value: &apos;+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info(&apos;facet value: &apos;+str(facetValue))
+    	log.info(&apos;found values: &apos;+str(foundValues))
+&gt;   	assert facetValue in foundValues
+E    AssertionError: assert 9713858266117 in [&apos;yellow&apos;, &apos;false&apos;, &apos;navy&apos;, &apos;2546804563921&apos;, &apos;5048623196763&apos;, &apos;1795365976454&apos;, ...]
+
+panoptes\test_search.py:384: AssertionError</failure></testcase><testcase classname="panoptes.test_search" file="panoptes\test_search.py" line="229" name="test_FacetSearch[9713858266117-job-job-job]" time="258.9280045032501"><failure message="assert 9713858266117 in []">configInfo = &lt;Section: QA-CONFIG&gt;, facetName = &apos;job&apos;, facetID = &apos;job&apos;
+facetPath = &apos;job&apos;, facetValue = 9713858266117
+
+    @pytest.mark.parametrize(&quot;facetName,facetID,facetPath&quot;, [
+        (&apos;colors.spring&apos;, &apos;colors-spring&apos;, &apos;colors.spring&apos;),
+        (&apos;job&apos;, &apos;job&apos;, &apos;job&apos;)
+    ])
+    @pytest.mark.parametrize(&quot;facetValue&quot;, [
+        (fake.boolean(chance_of_getting_true=50)),
+        (fake.safe_color_name()),
+        (str(fake.boolean(chance_of_getting_true=50)).lower()),
+        (int(fake.msisdn()))
+    ])
+    def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
+    
+    
+    	client_id = configInfo[&apos;BUYER-CLIENTID&apos;]
+    	username = &apos;dbrown&apos;
+    	password = &apos;fails345!!&apos;
+    	scope = [&apos;Shopper&apos;]
+    
+    	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+    
+    
+    	#get auth tokens
+    
+    	client_id = configInfo[&apos;ADMIN-CLIENTID&apos;]
+    	username = configInfo[&apos;ADMIN-USERNAME&apos;]
+    	password = configInfo[&apos;ADMIN-PASSWORD&apos;]
+    	scope = [&apos;FullAccess&apos;]
+    
+    	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)[&apos;access_token&apos;]
+    
+    
+    
+    	# admin checks if facet exists
+    
+    	params = {
+    		&apos;ID&apos;: facetID
+    	}
+    
+    	productFacet = getProductFacets(configInfo, adminToken, params)
+    	log.debug(json.dumps(productFacet[&apos;Items&apos;], indent=4))
+    
+    
+    
+    	if productFacet[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;create new facet &apos;+facetName+&apos;!&apos;)
+    		newFacet = {
+    			&quot;ID&quot;: facetID,
+    			&quot;Name&quot;: facetName,
+    			&quot;XpPath&quot;: facetPath,
+    			&quot;ListOrder&quot;: 1,
+    			&quot;MinCount&quot;: 1, # defaults to 1, 0 includes 0 results
+    			&quot;xp&quot;: {}
+    			}
+    
+    		facet = adminProductFacet(configInfo, adminToken, newFacet)
+    	else:
+    		log.debug(facetName + &apos; Facets Exist!&apos;)
+    
+    
+    	# me/products list for buyer user &amp; save list of product ids
+    
+    	log.debug(&apos;buyer product list!&apos;)
+    
+    	buyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	assert buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	buyerProductIDs = []
+    
+    	for item in buyerProducts[&apos;Items&apos;]:
+    		buyerProductIDs.append(item[&apos;ID&apos;])
+    
+    	log.debug(buyerProductIDs)
+    
+    
+    	# admin looks for any products with the facet XP
+    
+    	filters = []
+    
+    	filters.append({&apos;xp.&apos;+facetPath : facetValue})
+    
+    	log.debug(&apos;XP filters are: &apos;+str(filters))
+    
+    	numXP = len(filters) #number of filters we&apos;re looking for
+    
+    	for fil in filters:
+    		adminProductList = get_Products(configInfo, adminToken, fil )
+    		log.debug(&apos;Admin List of Products with Facet XP: &apos;+str(adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;]))
+    
+    
+    
+    	facets = []
+    	for facet in buyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		log.debug(facet)
+    		facets.append(facet[&apos;Name&apos;])
+    
+    	for item in filters:
+    		for key in item.keys():
+    			assert key[3:] in facets
+    
+    	log.debug(buyerProducts[&apos;Meta&apos;])
+    
+    
+    	if adminProductList[&apos;Meta&apos;][&apos;TotalCount&apos;] == 0:
+    		log.debug(&apos;No Products With XP for Product Facets!&apos;)
+    
+    		#log.debug(facet.keys())
+    		log.debug(&apos;creating &apos;+str(len(buyerProductIDs))+&apos; Products with XP &apos;+facet[&apos;ID&apos;]+&apos;!&apos;)
+    		newXP = {
+    			&apos;xp&apos;: {
+    				facetPath : facetValue
+    			}
+    		}
+    
+    		for item in buyerProductIDs:
+    			patch_Product(configInfo, adminToken, item, &apos;&apos;, newXP)
+    
+    
+    
+    	# check buyer me/product list for expected facet
+    	l = 60 * 3
+    	time.sleep(60)
+    	log.info(&apos;okay, the index should be rebuilt now!&apos;)
+    	time.sleep(l)
+    
+    	newBuyerProducts = get_meProducts(configInfo, buyerToken, {&apos;PageSize&apos;:20})
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;])
+    	assert newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]
+    
+    	foundFacets = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;]:
+    		foundFacets.append(item[&apos;ID&apos;])
+    
+    
+    	assert facetID in foundFacets
+    
+    	# check that facetValue is collected in facet meta
+    
+    	index = foundFacets.index(item[&apos;ID&apos;])
+    	log.debug(&apos;index: &apos;+str(index))
+    
+    	log.debug(newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;])
+    
+    	foundValues = []
+    	for item in newBuyerProducts[&apos;Meta&apos;][&apos;Facets&apos;][index][&apos;Values&apos;]:
+    		log.debug(item.keys())
+    		foundValues.append(item[&apos;ID&apos;])
+    
+    	log.info(&apos;facet value: &apos;+str(facetValue))
+    	if type(facetValue) == bool:
+    		facetValue = str(facetValue).lower()
+    		log.info(&apos;facet value: &apos;+str(facetValue))
+    	log.info(&apos;found values: &apos;+str(foundValues))
+&gt;   	assert facetValue in foundValues
+E    assert 9713858266117 in []
+
+panoptes\test_search.py:384: AssertionError</failure></testcase></testsuite>

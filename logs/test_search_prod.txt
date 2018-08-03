@@ -1,0 +1,1380 @@
+Me/Product Search Results for `script` in prod
+{
+    "Page": 1,
+    "PageSize": 20,
+    "TotalCount": 89,
+    "TotalPages": 5,
+    "ItemRange": [
+        1,
+        20
+    ]
+}
+
+ID: 978-0-915854-77-6
+Name: ' autofocus onkeyup='javascript:alert(123)
+Description: Radio of land would gas. Agency treatment new partner phone opportunity.
+Sit image finally heavy help quickly. Political production final music spring.
+
+
+ID: 978-0-313-92703-4
+Name: "`'><script>\x3Bjavascript:alert(1)</script>
+Description: Data yes listen join article. Behind because rest provide particular lay agreement.
+Friend raise say call. Season go art financial thus discussion.
+
+
+ID: 978-1-01-431839-8
+Name: "`'><script>\xE2\x80\x84javascript:alert(1)</script>
+Description: Government activity enough study approach quite truth. Than woman guy person church actually. Strategy itself total big level child prevent. Address training set capital enough.
+
+
+ID: 978-0-570-34146-8
+Name: "`'><script>\xE2\x80\x8Bjavascript:alert(1)</script>
+Description: Hope amount make visit too history yeah save. Firm modern visit improve exist. Wear safe sort white religious.
+Glass high work.
+Issue help institution. Although southern line.
+
+
+ID: 978-1-5305-9879-3
+Name: `"'><img src=xxx:x \x0Conerror=javascript:alert(1)>
+Description: Debate bad eye high. Whom measure at meeting phone build.
+Factor record popular series occur. Production attorney stand effect food summer.
+
+
+ID: 978-1-64807-376-2
+Name: `"'><img src=xxx:x \x0Donerror=javascript:alert(1)>
+Description: Process contain art write. Lose local what enough discuss show. Necessary matter trip doctor.
+
+
+ID: 978-0-7700-1676-0
+Name: <a href="\x13javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+Description: Young oil medical heavy example call guy. Spring need play different none put.
+Few executive place level trial political TV. After property guy threat. Either easy network reality job health.
+
+
+ID: 978-1-934027-50-9
+Name: <a href="\x16javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+Description: Peace skin take there near listen development open. Role nation do wait describe. Early parent court process make.
+Soldier feeling possible.
+
+
+ID: 978-0-14-385312-1
+Name: <a href="\x1Ajavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+Description: Lead wall everyone society authority police. Hear success program citizen government.
+Decade attention all police use. Short put down picture soon single company.
+
+
+ID: 978-0-304-40928-0
+Name: <a href="\x1Djavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+Description: Me issue five civil teacher. Huge trade appear development mind. Important leave message development law.
+
+
+ID: 978-0-7562-4614-3
+Name: <a href="\x1Djavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+Description: Catch suddenly brother of. Vote south history wish matter. Everyone sound kid believe agent.
+Ask about material service word herself. Goal partner scientist window environmental including.
+
+
+ID: 978-1-961482-96-8
+Name: <a href="\x20javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+Description: Physical business leg. Put new police join compare fine. City way stock outside someone.
+Owner same they although keep three decide. Seven scene mission site.
+
+
+ID: 978-0-332-41116-3
+Name: <a href="\xE2\x80\x83javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+Description: Chance hundred enough alone perhaps another center. Thought party film data later small. Third government page site population.
+
+
+ID: 978-0-04-457064-6
+Name: <a href="\xE2\x80\xA9javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+Description: Machine even suffer fine ever. Floor writer figure. Especially address because stay include. Democrat administration he perhaps.
+Everything peace data. Fear edge television capital.
+
+
+ID: 978-0-14-116735-0
+Name: <a href=http://foo.bar/#x=`y></a><img alt="`><img src=x:x onerror=javascript:alert(1)></a>">
+Description: Main provide treatment team. Though main partner response lot start according. Seven central guess yard well.
+
+
+ID: 978-0-6483274-1-7
+Name: <img \x11src=x onerror="javascript:alert(1)">
+Description: Feeling education white network card. Meeting picture event various send. Must employee participant drop.
+
+
+ID: 978-0-8146-7708-7
+Name: <img \x11src=x onerror="javascript:alert(1)">
+Description: Imagine since action sport give light. Street cost report usually win life tell. Could decision commercial choice.
+
+
+ID: 978-0-305-86903-8
+Name: <img \x12src=x onerror="javascript:alert(1)">
+Description: Realize just law set ahead we picture. Finally top break agent white coach. Nice people main someone article phone. Money throw right half available.
+
+
+ID: 978-0-201-07292-1
+Name: <img src\x10=x onerror="javascript:alert(1)">
+Description: Support area anything where term. Along treat have war tax. Hundred know individual focus. Land particular size both spring open.
+
+
+ID: 978-0-583-22141-2
+Name: <IMG SRC="jav   ascript:alert('XSS');">
+Description: Morning picture seat seem.
+Wear simply side practice pull hour. Out religious small pass point.
+Computer before note service. Admit show tree skin green assume chair.
+
+Me/Product Search Results for prod
+Search Data: 
+{
+    "search": "script",
+    "searchOn": null,
+    "PageSize": "100"
+}
+{
+    "Page": 1,
+    "PageSize": 100,
+    "TotalCount": 89,
+    "TotalPages": 1,
+    "ItemRange": [
+        1,
+        89
+    ]
+}
+
+ID: 978-0-915854-77-6
+Name: ' autofocus onkeyup='javascript:alert(123)
+
+
+ID: 978-0-313-92703-4
+Name: "`'><script>\x3Bjavascript:alert(1)</script>
+
+
+ID: 978-1-01-431839-8
+Name: "`'><script>\xE2\x80\x84javascript:alert(1)</script>
+
+
+ID: 978-0-570-34146-8
+Name: "`'><script>\xE2\x80\x8Bjavascript:alert(1)</script>
+
+
+ID: 978-1-5305-9879-3
+Name: `"'><img src=xxx:x \x0Conerror=javascript:alert(1)>
+
+
+ID: 978-1-64807-376-2
+Name: `"'><img src=xxx:x \x0Donerror=javascript:alert(1)>
+
+
+ID: 978-0-7700-1676-0
+Name: <a href="\x13javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-1-934027-50-9
+Name: <a href="\x16javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-14-385312-1
+Name: <a href="\x1Ajavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-304-40928-0
+Name: <a href="\x1Djavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-7562-4614-3
+Name: <a href="\x1Djavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-1-961482-96-8
+Name: <a href="\x20javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-332-41116-3
+Name: <a href="\xE2\x80\x83javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-04-457064-6
+Name: <a href="\xE2\x80\xA9javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-14-116735-0
+Name: <a href=http://foo.bar/#x=`y></a><img alt="`><img src=x:x onerror=javascript:alert(1)></a>">
+
+
+ID: 978-0-6483274-1-7
+Name: <img \x11src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-8146-7708-7
+Name: <img \x11src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-305-86903-8
+Name: <img \x12src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-201-07292-1
+Name: <img src\x10=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-583-22141-2
+Name: <IMG SRC="jav   ascript:alert('XSS');">
+
+
+ID: 978-0-14-640357-6
+Name: <IMG SRC="jav&#x0A;ascript:alert('XSS');">
+
+
+ID: 978-1-4614-0521-4
+Name: <img src=x\x13onerror="javascript:alert(1)">
+
+
+ID: 978-0-15-540013-9
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-458-01486-6
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-7202-4444-1
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-18-300517-7
+Name: ABC<div style="x:\xE2\x80\x8Aexpression(javascript:alert(1)">DEF
+
+
+ID: 978-1-272-77571-1
+Name: ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-0-7745-6783-1
+Name: ABCdivstylexxE2x80x8Aexpressionjavascriptalert1DEF
+
+
+ID: 978-1-4238-5952-9
+Name: ahrefjavascriptx0Djavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-02-452715-5
+Name: hello ABCdivstylexx00expressionjavascriptalert1DEF
+
+
+ID: 978-1-83984-937-4
+Name: hello ABCdivstylexx0Dexpressionjavascriptalert1DEF
+
+
+ID: 978-1-288-72261-7
+Name: hello ABCdivstylexx3Aexpressionjavascriptalert1DEF
+
+
+ID: 978-0-09-038947-6
+Name: hello ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-1-178-62411-3
+Name: hello ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-1-78292-103-5
+Name: hello ahrefjavascriptx00javascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-86313-626-9
+Name: hello ahrefx04javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-72455-370-6
+Name: hello ahrefx0Ajavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-323-82855-7
+Name: hello ahrefx0Bjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-7630-4302-5
+Name: hello ahrefx0Ejavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-109-75915-0
+Name: hello ahrefx11javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-198-45228-4
+Name: hello ahrefx13javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-55672-908-9
+Name: hello ahrefx15javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-145-39083-6
+Name: hello ahrefx19javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-582-74663-3
+Name: hello ahrefx1Cjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-5142-7077-6
+Name: hello ahrefx1Djavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-551-98393-9
+Name: hello ahrefx20javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-968130-02-2
+Name: hello ahrefxE1x9Ax80javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-320-69122-2
+Name: hello ahrefxE2x80x80javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-5017-1678-2
+Name: hello ahrefxE2x80xAFjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-920739-58-4
+Name: hello ahrefxE2x80xAFjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-412-30820-8
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-0-445-45011-0
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-1-156-85825-7
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-1-85567-403-5
+Name: hello ifimgsrcxonerrorjavascriptalert1
+
+
+ID: 978-0-940048-10-2
+Name: hello IMGSRCjavx0AascriptalertXSS
+
+
+ID: 978-0-7797-4462-6
+Name: hello imgsrcx00xonerrorjavascriptalert1
+
+
+ID: 978-0-9907340-9-3
+Name: hello imgsrcx09xonerrorjavascriptalert1
+
+
+ID: 978-0-512-33306-3
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-0-563-51982-9
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-0-609-33711-0
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-1-4461-7580-4
+Name: hello imgsrcxx13onerrorjavascriptalert1
+
+
+ID: 978-0-679-84047-3
+Name: hello imgsrcxxxxx00onerrorjavascriptalert1
+
+
+ID: 978-0-9790041-3-1
+Name: hello imgsrcxxxxx22onerrorjavascriptalert1
+
+
+ID: 978-0-9815385-0-1
+Name: hello imgsrcxxxxx22onerrorjavascriptalert1
+
+
+ID: 978-1-362-42558-8
+Name: hello imgsrcxxxxx2Fonerrorjavascriptalert1
+
+
+ID: 978-1-922397-93-5
+Name: hello imgx00srcxonerrorjavascriptalert1
+
+
+ID: 978-0-11-718141-0
+Name: hello imgx11srcxonerrorjavascriptalert1
+
+
+ID: 978-0-449-38152-6
+Name: hello imgx11srcxonerrorjavascriptalert1
+
+
+ID: 978-0-944945-08-7
+Name: hello imgx47srcxonerrorjavascriptalert1
+
+
+ID: 978-0-00-832055-3
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-0-545-84629-5
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-1-7347700-3-2
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-0-345-51103-4
+Name: hello scriptalert123script
+
+
+ID: 978-0-200-65195-0
+Name: hello scriptjavascriptalert1script
+
+
+ID: 978-1-86481-820-8
+Name: hello scriptx0Cjavascriptalert1script
+
+
+ID: 978-0-7696-4568-1
+Name: hello scriptx20typetextjavascriptjavascriptalert1script
+
+
+ID: 978-0-03-334244-5
+Name: hello scriptxE2x80x81javascriptalert1script
+
+
+ID: 978-0-448-65703-5
+Name: hello scriptxE2x80x82javascriptalert1script
+
+
+ID: 978-1-375-41336-7
+Name: hello scriptxE2x80x85javascriptalert1script
+
+
+ID: 978-0-02-768322-6
+Name: hello scriptxE2x80x86javascriptalert1script
+
+
+ID: 978-1-961056-00-8
+Name: hello scriptxE2x80x86javascriptalert1script
+
+
+ID: 978-0-591-60996-7
+Name: hello scriptxE2x80x87javascriptalert1script
+
+
+ID: 978-1-181-26310-1
+Name: hello scriptxE2x80xAFjavascriptalert1script
+
+
+ID: 978-0-7164-3633-1
+Name: hello titleonpropertychangejavascriptalert1titletitletitle
+
+
+ID: 978-1-147-12458-3
+Name: hello x00scriptjavascriptalert1script
+
+
+ID: 978-0-11-723945-6
+Name: imgsrcx13xonerrorjavascriptalert1
+
+
+ID: 978-0-05-593058-3
+Name: imgx10srcxonerrorjavascriptalert1
+
+
+ID: 978-0-12-883170-0
+Name: scriptalert123scriptx
+
+
+ID: 978-1-61113-648-7
+Name: scriptx20javascriptalert1script
+
+Me/Product Search Results for prod
+Search Data: 
+{
+    "search": "scripts",
+    "searchOn": null,
+    "PageSize": "100"
+}
+{
+    "Page": 1,
+    "PageSize": 100,
+    "TotalCount": 0,
+    "TotalPages": 0,
+    "ItemRange": [
+        1,
+        0
+    ]
+}
+Me/Product Search Results for prod
+Search Data: 
+{
+    "search": "javascript",
+    "searchOn": null,
+    "PageSize": "100"
+}
+{
+    "Page": 1,
+    "PageSize": 100,
+    "TotalCount": 84,
+    "TotalPages": 1,
+    "ItemRange": [
+        1,
+        84
+    ]
+}
+
+ID: 978-0-915854-77-6
+Name: ' autofocus onkeyup='javascript:alert(123)
+
+
+ID: 978-0-313-92703-4
+Name: "`'><script>\x3Bjavascript:alert(1)</script>
+
+
+ID: 978-1-01-431839-8
+Name: "`'><script>\xE2\x80\x84javascript:alert(1)</script>
+
+
+ID: 978-0-570-34146-8
+Name: "`'><script>\xE2\x80\x8Bjavascript:alert(1)</script>
+
+
+ID: 978-1-5305-9879-3
+Name: `"'><img src=xxx:x \x0Conerror=javascript:alert(1)>
+
+
+ID: 978-1-64807-376-2
+Name: `"'><img src=xxx:x \x0Donerror=javascript:alert(1)>
+
+
+ID: 978-0-7700-1676-0
+Name: <a href="\x13javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-1-934027-50-9
+Name: <a href="\x16javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-14-385312-1
+Name: <a href="\x1Ajavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-304-40928-0
+Name: <a href="\x1Djavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-7562-4614-3
+Name: <a href="\x1Djavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-1-961482-96-8
+Name: <a href="\x20javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-332-41116-3
+Name: <a href="\xE2\x80\x83javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-04-457064-6
+Name: <a href="\xE2\x80\xA9javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-14-116735-0
+Name: <a href=http://foo.bar/#x=`y></a><img alt="`><img src=x:x onerror=javascript:alert(1)></a>">
+
+
+ID: 978-0-6483274-1-7
+Name: <img \x11src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-8146-7708-7
+Name: <img \x11src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-305-86903-8
+Name: <img \x12src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-201-07292-1
+Name: <img src\x10=x onerror="javascript:alert(1)">
+
+
+ID: 978-1-4614-0521-4
+Name: <img src=x\x13onerror="javascript:alert(1)">
+
+
+ID: 978-0-15-540013-9
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-458-01486-6
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-7202-4444-1
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-18-300517-7
+Name: ABC<div style="x:\xE2\x80\x8Aexpression(javascript:alert(1)">DEF
+
+
+ID: 978-1-272-77571-1
+Name: ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-0-7745-6783-1
+Name: ABCdivstylexxE2x80x8Aexpressionjavascriptalert1DEF
+
+
+ID: 978-1-4238-5952-9
+Name: ahrefjavascriptx0Djavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-02-452715-5
+Name: hello ABCdivstylexx00expressionjavascriptalert1DEF
+
+
+ID: 978-1-83984-937-4
+Name: hello ABCdivstylexx0Dexpressionjavascriptalert1DEF
+
+
+ID: 978-1-288-72261-7
+Name: hello ABCdivstylexx3Aexpressionjavascriptalert1DEF
+
+
+ID: 978-0-09-038947-6
+Name: hello ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-1-178-62411-3
+Name: hello ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-1-78292-103-5
+Name: hello ahrefjavascriptx00javascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-86313-626-9
+Name: hello ahrefx04javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-72455-370-6
+Name: hello ahrefx0Ajavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-323-82855-7
+Name: hello ahrefx0Bjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-7630-4302-5
+Name: hello ahrefx0Ejavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-109-75915-0
+Name: hello ahrefx11javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-198-45228-4
+Name: hello ahrefx13javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-55672-908-9
+Name: hello ahrefx15javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-145-39083-6
+Name: hello ahrefx19javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-582-74663-3
+Name: hello ahrefx1Cjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-5142-7077-6
+Name: hello ahrefx1Djavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-551-98393-9
+Name: hello ahrefx20javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-968130-02-2
+Name: hello ahrefxE1x9Ax80javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-320-69122-2
+Name: hello ahrefxE2x80x80javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-5017-1678-2
+Name: hello ahrefxE2x80xAFjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-920739-58-4
+Name: hello ahrefxE2x80xAFjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-412-30820-8
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-0-445-45011-0
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-1-156-85825-7
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-1-85567-403-5
+Name: hello ifimgsrcxonerrorjavascriptalert1
+
+
+ID: 978-0-7797-4462-6
+Name: hello imgsrcx00xonerrorjavascriptalert1
+
+
+ID: 978-0-9907340-9-3
+Name: hello imgsrcx09xonerrorjavascriptalert1
+
+
+ID: 978-0-512-33306-3
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-0-563-51982-9
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-0-609-33711-0
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-1-4461-7580-4
+Name: hello imgsrcxx13onerrorjavascriptalert1
+
+
+ID: 978-0-679-84047-3
+Name: hello imgsrcxxxxx00onerrorjavascriptalert1
+
+
+ID: 978-0-9790041-3-1
+Name: hello imgsrcxxxxx22onerrorjavascriptalert1
+
+
+ID: 978-0-9815385-0-1
+Name: hello imgsrcxxxxx22onerrorjavascriptalert1
+
+
+ID: 978-1-362-42558-8
+Name: hello imgsrcxxxxx2Fonerrorjavascriptalert1
+
+
+ID: 978-1-922397-93-5
+Name: hello imgx00srcxonerrorjavascriptalert1
+
+
+ID: 978-0-11-718141-0
+Name: hello imgx11srcxonerrorjavascriptalert1
+
+
+ID: 978-0-449-38152-6
+Name: hello imgx11srcxonerrorjavascriptalert1
+
+
+ID: 978-0-944945-08-7
+Name: hello imgx47srcxonerrorjavascriptalert1
+
+
+ID: 978-0-00-832055-3
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-0-545-84629-5
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-1-7347700-3-2
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-0-200-65195-0
+Name: hello scriptjavascriptalert1script
+
+
+ID: 978-1-86481-820-8
+Name: hello scriptx0Cjavascriptalert1script
+
+
+ID: 978-0-7696-4568-1
+Name: hello scriptx20typetextjavascriptjavascriptalert1script
+
+
+ID: 978-0-03-334244-5
+Name: hello scriptxE2x80x81javascriptalert1script
+
+
+ID: 978-0-448-65703-5
+Name: hello scriptxE2x80x82javascriptalert1script
+
+
+ID: 978-1-375-41336-7
+Name: hello scriptxE2x80x85javascriptalert1script
+
+
+ID: 978-0-02-768322-6
+Name: hello scriptxE2x80x86javascriptalert1script
+
+
+ID: 978-1-961056-00-8
+Name: hello scriptxE2x80x86javascriptalert1script
+
+
+ID: 978-0-591-60996-7
+Name: hello scriptxE2x80x87javascriptalert1script
+
+
+ID: 978-1-181-26310-1
+Name: hello scriptxE2x80xAFjavascriptalert1script
+
+
+ID: 978-0-7164-3633-1
+Name: hello titleonpropertychangejavascriptalert1titletitletitle
+
+
+ID: 978-1-147-12458-3
+Name: hello x00scriptjavascriptalert1script
+
+
+ID: 978-0-11-723945-6
+Name: imgsrcx13xonerrorjavascriptalert1
+
+
+ID: 978-0-05-593058-3
+Name: imgx10srcxonerrorjavascriptalert1
+
+
+ID: 978-1-61113-648-7
+Name: scriptx20javascriptalert1script
+
+Me/Product Search Results for prod
+Search Data: 
+{
+    "search": "*script",
+    "searchOn": null,
+    "PageSize": "100"
+}
+{
+    "Page": 1,
+    "PageSize": 100,
+    "TotalCount": 89,
+    "TotalPages": 1,
+    "ItemRange": [
+        1,
+        89
+    ]
+}
+
+ID: 978-0-915854-77-6
+Name: ' autofocus onkeyup='javascript:alert(123)
+
+
+ID: 978-0-313-92703-4
+Name: "`'><script>\x3Bjavascript:alert(1)</script>
+
+
+ID: 978-1-01-431839-8
+Name: "`'><script>\xE2\x80\x84javascript:alert(1)</script>
+
+
+ID: 978-0-570-34146-8
+Name: "`'><script>\xE2\x80\x8Bjavascript:alert(1)</script>
+
+
+ID: 978-1-5305-9879-3
+Name: `"'><img src=xxx:x \x0Conerror=javascript:alert(1)>
+
+
+ID: 978-1-64807-376-2
+Name: `"'><img src=xxx:x \x0Donerror=javascript:alert(1)>
+
+
+ID: 978-0-7700-1676-0
+Name: <a href="\x13javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-1-934027-50-9
+Name: <a href="\x16javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-14-385312-1
+Name: <a href="\x1Ajavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-304-40928-0
+Name: <a href="\x1Djavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-7562-4614-3
+Name: <a href="\x1Djavascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-1-961482-96-8
+Name: <a href="\x20javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-332-41116-3
+Name: <a href="\xE2\x80\x83javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-04-457064-6
+Name: <a href="\xE2\x80\xA9javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+
+ID: 978-0-14-116735-0
+Name: <a href=http://foo.bar/#x=`y></a><img alt="`><img src=x:x onerror=javascript:alert(1)></a>">
+
+
+ID: 978-0-6483274-1-7
+Name: <img \x11src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-8146-7708-7
+Name: <img \x11src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-305-86903-8
+Name: <img \x12src=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-201-07292-1
+Name: <img src\x10=x onerror="javascript:alert(1)">
+
+
+ID: 978-0-583-22141-2
+Name: <IMG SRC="jav   ascript:alert('XSS');">
+
+
+ID: 978-0-14-640357-6
+Name: <IMG SRC="jav&#x0A;ascript:alert('XSS');">
+
+
+ID: 978-1-4614-0521-4
+Name: <img src=x\x13onerror="javascript:alert(1)">
+
+
+ID: 978-0-15-540013-9
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-458-01486-6
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-7202-4444-1
+Name: ABC<div style="x:\xE2\x80\x83expression(javascript:alert(1)">DEF
+
+
+ID: 978-0-18-300517-7
+Name: ABC<div style="x:\xE2\x80\x8Aexpression(javascript:alert(1)">DEF
+
+
+ID: 978-1-272-77571-1
+Name: ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-0-7745-6783-1
+Name: ABCdivstylexxE2x80x8Aexpressionjavascriptalert1DEF
+
+
+ID: 978-1-4238-5952-9
+Name: ahrefjavascriptx0Djavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-02-452715-5
+Name: hello ABCdivstylexx00expressionjavascriptalert1DEF
+
+
+ID: 978-1-83984-937-4
+Name: hello ABCdivstylexx0Dexpressionjavascriptalert1DEF
+
+
+ID: 978-1-288-72261-7
+Name: hello ABCdivstylexx3Aexpressionjavascriptalert1DEF
+
+
+ID: 978-0-09-038947-6
+Name: hello ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-1-178-62411-3
+Name: hello ABCdivstylexxE2x80x85expressionjavascriptalert1DEF
+
+
+ID: 978-1-78292-103-5
+Name: hello ahrefjavascriptx00javascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-86313-626-9
+Name: hello ahrefx04javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-72455-370-6
+Name: hello ahrefx0Ajavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-323-82855-7
+Name: hello ahrefx0Bjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-7630-4302-5
+Name: hello ahrefx0Ejavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-109-75915-0
+Name: hello ahrefx11javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-198-45228-4
+Name: hello ahrefx13javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-55672-908-9
+Name: hello ahrefx15javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-145-39083-6
+Name: hello ahrefx19javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-582-74663-3
+Name: hello ahrefx1Cjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-5142-7077-6
+Name: hello ahrefx1Djavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-551-98393-9
+Name: hello ahrefx20javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-968130-02-2
+Name: hello ahrefxE1x9Ax80javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-320-69122-2
+Name: hello ahrefxE2x80x80javascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-5017-1678-2
+Name: hello ahrefxE2x80xAFjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-1-920739-58-4
+Name: hello ahrefxE2x80xAFjavascriptjavascriptalert1idfuzzelement1testa
+
+
+ID: 978-0-412-30820-8
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-0-445-45011-0
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-1-156-85825-7
+Name: hello autofocusonkeyupjavascriptalert123
+
+
+ID: 978-1-85567-403-5
+Name: hello ifimgsrcxonerrorjavascriptalert1
+
+
+ID: 978-0-940048-10-2
+Name: hello IMGSRCjavx0AascriptalertXSS
+
+
+ID: 978-0-7797-4462-6
+Name: hello imgsrcx00xonerrorjavascriptalert1
+
+
+ID: 978-0-9907340-9-3
+Name: hello imgsrcx09xonerrorjavascriptalert1
+
+
+ID: 978-0-512-33306-3
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-0-563-51982-9
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-0-609-33711-0
+Name: hello imgsrcx10xonerrorjavascriptalert1
+
+
+ID: 978-1-4461-7580-4
+Name: hello imgsrcxx13onerrorjavascriptalert1
+
+
+ID: 978-0-679-84047-3
+Name: hello imgsrcxxxxx00onerrorjavascriptalert1
+
+
+ID: 978-0-9790041-3-1
+Name: hello imgsrcxxxxx22onerrorjavascriptalert1
+
+
+ID: 978-0-9815385-0-1
+Name: hello imgsrcxxxxx22onerrorjavascriptalert1
+
+
+ID: 978-1-362-42558-8
+Name: hello imgsrcxxxxx2Fonerrorjavascriptalert1
+
+
+ID: 978-1-922397-93-5
+Name: hello imgx00srcxonerrorjavascriptalert1
+
+
+ID: 978-0-11-718141-0
+Name: hello imgx11srcxonerrorjavascriptalert1
+
+
+ID: 978-0-449-38152-6
+Name: hello imgx11srcxonerrorjavascriptalert1
+
+
+ID: 978-0-944945-08-7
+Name: hello imgx47srcxonerrorjavascriptalert1
+
+
+ID: 978-0-00-832055-3
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-0-545-84629-5
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-1-7347700-3-2
+Name: hello onfocusJaVaSCriptalert123autofocus
+
+
+ID: 978-0-345-51103-4
+Name: hello scriptalert123script
+
+
+ID: 978-0-200-65195-0
+Name: hello scriptjavascriptalert1script
+
+
+ID: 978-1-86481-820-8
+Name: hello scriptx0Cjavascriptalert1script
+
+
+ID: 978-0-7696-4568-1
+Name: hello scriptx20typetextjavascriptjavascriptalert1script
+
+
+ID: 978-0-03-334244-5
+Name: hello scriptxE2x80x81javascriptalert1script
+
+
+ID: 978-0-448-65703-5
+Name: hello scriptxE2x80x82javascriptalert1script
+
+
+ID: 978-1-375-41336-7
+Name: hello scriptxE2x80x85javascriptalert1script
+
+
+ID: 978-0-02-768322-6
+Name: hello scriptxE2x80x86javascriptalert1script
+
+
+ID: 978-1-961056-00-8
+Name: hello scriptxE2x80x86javascriptalert1script
+
+
+ID: 978-0-591-60996-7
+Name: hello scriptxE2x80x87javascriptalert1script
+
+
+ID: 978-1-181-26310-1
+Name: hello scriptxE2x80xAFjavascriptalert1script
+
+
+ID: 978-0-7164-3633-1
+Name: hello titleonpropertychangejavascriptalert1titletitletitle
+
+
+ID: 978-1-147-12458-3
+Name: hello x00scriptjavascriptalert1script
+
+
+ID: 978-0-11-723945-6
+Name: imgsrcx13xonerrorjavascriptalert1
+
+
+ID: 978-0-05-593058-3
+Name: imgx10srcxonerrorjavascriptalert1
+
+
+ID: 978-0-12-883170-0
+Name: scriptalert123scriptx
+
+
+ID: 978-1-61113-648-7
+Name: scriptx20javascriptalert1script
+
+Me/Product Search Results for prod
+Search Data: 
+{
+    "search": "green",
+    "searchOn": null,
+    "PageSize": "100"
+}
+{
+    "Page": 1,
+    "PageSize": 100,
+    "TotalCount": 5,
+    "TotalPages": 1,
+    "ItemRange": [
+        1,
+        5
+    ]
+}
+
+ID: 978-0-583-22141-2
+Name: <IMG SRC="jav   ascript:alert('XSS');">
+Description: Morning picture seat seem.
+Wear simply side practice pull hour. Out religious small pass point.
+Computer before note service. Admit show tree skin green assume chair.
+
+
+ID: 978-1-4569-9546-1
+Name: hello 00
+Description: Smile door hot. Keep discuss others.
+Claim inside land many who. Resource try green base white. Serve president factor. Never data safe.
+
+
+ID: 978-0-7797-4462-6
+Name: hello imgsrcx00xonerrorjavascriptalert1
+Description: Drop the west long baby. Wear individual especially above list.
+Arm green hotel through. Key able fire clear. Price involve none political best serve along.
+
+
+ID: 978-0-259-70960-2
+Name: hello lsal
+Description: Note Republican glass half. Quickly beyond purpose stuff power.
+Power consumer college much this. Soldier old statement determine focus organization. Green environment money education alone fish.
+
+
+ID: 978-1-117-06493-2
+Name: ihusbandmhusbandghusbandshusbandrhusbandchusbandohusbandnhusbandehusbandrhusbandrhusbandohusbandrhu
+Description: Day game or player exactly. Race ready green. Somebody very ten inside most anyone hour risk.
+Simple sense military with certain.
+
+Me/Product Search Results for prod
+Search Data: 
+{
+    "search": "gren",
+    "searchOn": null,
+    "PageSize": "100"
+}
+{
+    "Page": 1,
+    "PageSize": 100,
+    "TotalCount": 0,
+    "TotalPages": 0,
+    "ItemRange": [
+        1,
+        0
+    ]
+}
+Me/Product Search Results for prod
+Search Data: 
+{
+    "search": "blue",
+    "searchOn": null,
+    "PageSize": "100"
+}
+{
+    "Page": 1,
+    "PageSize": 100,
+    "TotalCount": 7,
+    "TotalPages": 1,
+    "ItemRange": [
+        1,
+        7
+    ]
+}
+
+ID: 978-0-331-50877-2
+Name: 0/0
+Description: Skill young language attack main feel. Message hour single other number. Beat blue market sing writer investment style sister.
+
+
+ID: 978-1-63055-127-8
+Name: hello 
+Description: Hand remain scene fast sound gas.
+White sort see force. Which same hot need add during rest.
+All across structure four impact. Guy customer growth first. Industry blue center material.
+
+
+ID: 978-0-01-687939-5
+Name: hello ENVHOME
+Description: Individual street natural name. Sense eye per your. Everything worker blue interesting we.
+Few happen rock above how score. Sit budget city recognize something money future.
+
+
+ID: 978-0-10-313741-4
+Name: hello Kernelexeclsal
+Description: Meeting practice meet. Teach effect blue reach unit word food. Term letter paper single issue.
+Very nothing mouth.
+
+
+ID: 978-1-00-114551-8
+Name: hello NIL
+Description: Camera computer personal name another act. Ever heart travel form news concern system. Still several dog including.
+Thus far head effect language blue involve produce.
+
+
+ID: 978-1-7347700-3-2
+Name: hello onfocusJaVaSCriptalert123autofocus
+Description: Item million responsibility imagine building. Blue skill herself miss camera evidence. Manage hundred play role million result.
+
+
+ID: 978-0-05-593058-3
+Name: imgx10srcxonerrorjavascriptalert1
+Description: Much blue mean quickly direction. Spring site perform we see pass.
+Book bit society east seek computer close. Develop ten himself value who. National deal audience activity wrong.
+
+Me/Product Search Results for prod
+Search Data: 
+{
+    "search": "PinK",
+    "searchOn": null,
+    "PageSize": "100"
+}
+{
+    "Page": 1,
+    "PageSize": 100,
+    "TotalCount": 0,
+    "TotalPages": 0,
+    "ItemRange": [
+        1,
+        0
+    ]
+}

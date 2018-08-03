@@ -3,8 +3,10 @@ import configparser
 import tesults
 import sys
 import os
+import logging
 from _pytest.runner import runtestprotocol
 
+log = logging.getLogger(__name__)
 
 
 def pytest_addoption(parser):
@@ -28,29 +30,36 @@ def configInfo(apiEnv):
 	else:
 		return configData
 
-
+'''
 #----------------------------# tesults set up
-"""
+
 # The data variable holds test results and tesults target information, at the end of test run it is uploaded to tesults for reporting.
 
-
-def setKey(pytestconfig):
+@pytest.fixture()
+def setData(pytestconfig, apiEnv):
+  
   config = configparser.ConfigParser()
   config.read('config.ini') # local config file
   configData = config['QA-CONFIG']
+  log.info(configData)
 
+  log.info(apiEnv(pytestconfig))
 
-  if str.lower(pytestconfig.option.ENV) == 'prod':
+  if str.lower(str(apiEnv)) == 'prod':
     configData = config['PROD-CONFIG']
+  
 
-  tesultsKey = configData['TESULTS-KEY']
+  target = configData['TESULTS-KEY']
 
-  return tesultsKey
+  data = {
+    'target': target,
+    'results': { 'cases': [] }
+  }
 
-data = {
-  'target': setKey(apiEnv),
-  'results': { 'cases': [] }
-}
+  log.info(data)
+
+  return data
+
 
 # Converts pytest test outcome to a tesults friendly result (for example pytest uses 'passed', tesults uses 'pass')
 def tesultsFriendlyResult (outcome):
@@ -98,7 +107,8 @@ def filesForTest (item):
 
 # A pytest hook, called by pytest automatically - used to extract test case data and append it to the data global variable defined above.
 def pytest_runtest_protocol(item, nextitem):
-  global data
+  data = setData(pytestconfig, apiEnv)
+  
   reports = runtestprotocol(item, nextitem=nextitem)
   for report in reports:
     if report.when == 'call':
@@ -126,7 +136,7 @@ def pytest_runtest_protocol(item, nextitem):
 
 # A pytest hook, called by pytest automatically - used to upload test results to tesults.
 def pytest_unconfigure (config):
-  global data
+  data = setData(apiEnv)
 
   # Report Build Information (Optional)
   # buildcase = {
@@ -148,4 +158,5 @@ def pytest_unconfigure (config):
   else:
     print ('No test results.')
 
-"""
+'''
+
