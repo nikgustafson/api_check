@@ -76,24 +76,3 @@ def get_meProducts(configInfo, token, params):
 		sys.exit(1)
 
 	return me.json()
-
-def test_sessions():
-
-	client_id = configInfo['BUYER-CLIENTID']
-	username = 'dbrown'
-	password = 'fails345!!'
-	scope = ['Shopper']
-
-	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
-
-	buyer = requests.Session()
-
-	headers = {
-		'Authorization': 'Bearer '+ buyerToken['access_token'],
-		'Content-Type': 'application/json',
-		'charset': 'UTF-8'
-	}
-
-	buyer.headers.update(headers)
-	
-	log.info(buyer.get(configInfo['API']+'v1/me').json())

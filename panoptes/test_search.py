@@ -4,9 +4,9 @@ from requests import codes
 import logging
 import json
 
-from test_auth import get_Token_UsernamePassword
-from test_products import get_Products, patch_Product
-from test_me import get_meProducts
+from auth import get_Token_UsernamePassword
+from products import get_Products, patch_Product
+from me import get_meProducts
 from faker import Faker
 import urllib
 
@@ -51,14 +51,14 @@ def test_productSearch(configInfo):
 
 
 	# can successfully get a token
-	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	adminToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
 
 	client_id = configInfo['BUYER-CLIENTID']
 	username = configInfo['BUYER-USERNAME']
 	password = configInfo['BUYER-PASSWORD']
 	scope = ['Shopper']
 
-	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	buyerToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
 
 	# add xp to products
 
