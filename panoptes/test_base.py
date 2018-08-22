@@ -5,21 +5,25 @@ import requests
 from requests import codes
 import logging
 import json
+from . import me
+from . import getConfigData
 
 
 log = logging.getLogger(__name__)
 
 
-def test_fixtures_for_options(apiEnv):
+def test_fixtures_for_options(configInfo):
 
-	log.info('api environment set to: '+str(apiEnv))
+	log.info('api environment set to: '+str(configInfo))
+
 
 def test_configData(configInfo):
 
-	log.info('API: '+ configInfo['API'])
-	log.info('AUTH: '+ configInfo['AUTH'])
+	log.info(getConfigData(configInfo))
 
-def test_api_env_vars(configInfo, apiEnv):
+@pytest.mark.smoke
+@pytest.mark.description('Verifies that the ENVs reported for API, AUTH, INTEGRATIONS are a) responding and b) consistent.')
+def test_api_env_vars(configInfo):
 
 	env = requests.get(configInfo['API']+'env')
 	assert env.status_code is codes.ok
@@ -33,7 +37,7 @@ def test_api_env_vars(configInfo, apiEnv):
 	assert intEnv.status_code is codes.ok
 	log.info('INTEGRATIONS ENV: '+ json.dumps(intEnv.json(), indent=2))
 
-	assert str.lower(env.json()['Environment']) == str.lower(apiEnv)
+	assert str.lower(env.json()['Environment']) == str.lower(getConfigData(configInfo))
 
 	assert authEnv.json() == env.json()
 	assert authEnv.json() == intEnv.json()

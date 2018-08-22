@@ -6,9 +6,10 @@ import requests
 from requests import codes
 import logging
 import json
-from auth import get_Token_UsernamePassword, post_resetPassword
 
-import me
+
+from ..auth import get_Token_UsernamePassword, post_resetPassword
+from .. import me
 
 
 
@@ -21,8 +22,10 @@ log = logging.getLogger(__name__)
 #-----------------------------------------#
 
 log.info('Auth Tests Begun...')
-
-@pytest.mark.description("Given a buyer user's username, password, and client-id, the buyer user can get a token and use it to make calls")
+@pytest.mark.smoke
+@pytest.mark.description('''Given a buyer user\'s username, password, and client-id,\n
+						when the user attempts to get a token via Username/Password Grant,\n
+						then the user receives a valid auth token with the expected roles and can use it to make calls''')
 def test_usernamePasswordGrant(configInfo):
 
 	client_id = configInfo['BUYER-CLIENTID']
@@ -38,13 +41,18 @@ def test_usernamePasswordGrant(configInfo):
 
 	user = me.get_Me(configInfo, token['access_token'])
 
-
-@pytest.mark.description("Given a buyer with anonymous shopping enabled, a user can authenticate as an anon user and register themselves as a buyer user for the org.")
+@pytest.mark.smoke
+@pytest.mark.description('''Given a buyer with anonymous shopping enabled,\n
+						When an unregistered user authenticates as an Anonymous Shopper\n
+						Then they can register themselves as a new buyer user for the org.''')
 def test_anonGrant():
 	pass
 
-
-@pytest.mark.description("Given a client id and client secret, can get a client credentials token and make calls to the api.")
+@pytest.mark.smoke
+@pytest.mark.skip(reason='Unimplemented currently.')
+@pytest.mark.description('''Given a client id and client secret,\n
+						When a user/backend system attempts to get an auth token via Client Credentials Grant,\n
+						Then they receive a valid auth token with the expected roles and make calls to the API.''')
 def test_clientCredentialsGrant():
 	pass
 

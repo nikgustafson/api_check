@@ -3,16 +3,18 @@ import requests
 from requests import codes
 import logging
 import json
-
-from auth import get_Token_UsernamePassword
-from products import get_Products, patch_Product
-from me import get_meProducts
 from faker import Faker
+import random
+from random import randint
 import urllib
-
 import time
 
-fake=Faker()
+from .auth import get_Token_UsernamePassword
+from .products import get_Products, patch_Product
+from .me import get_meProducts
+
+
+fake = Faker()
 
 log = logging.getLogger(__name__)
 
@@ -21,7 +23,7 @@ def createProductFacet(configInfo, products, token):
 
 	newXP = {
 		"xp": {
-			"blue" : True
+			"blue": True
 		}
 	}
 
@@ -29,7 +31,8 @@ def createProductFacet(configInfo, products, token):
 	newProducts = []
 	for item in products:
 		log.debug(item['ID'])
-		product = patch_Product(configInfo, token, item['ID'], params = '', body= newXP)
+		product = patch_Product(
+			configInfo, token, item['ID'], params='', body=newXP)
 		log.debug(product)
 		newProducts.append(product)
 
@@ -38,9 +41,16 @@ def createProductFacet(configInfo, products, token):
 
 log.debug('Search Tests Begun...')
 
-@pytest.mark.description("Test verifies that search works over xp and nested xp, and notates the performance")
 
+@pytest.mark.skipif(pytest.config.oc_env == 'prod',
+					reason="feature not in Prod yet")
+@pytest.mark.search
+@pytest.mark.description("Test verifies that search works over xp and nested xp, and notates the performance")
 def test_productSearch(configInfo):
+
+	log.info('API ENV = '+pytest.global_env)
+
+	log.info('GLOBAL ENV TYPE = '+repr(type(pytest.global_env)))
 
 	# auth as an admin user
 
@@ -49,16 +59,17 @@ def test_productSearch(configInfo):
 	password = configInfo['ADMIN-PASSWORD']
 	scope = ['FullAccess']
 
-
 	# can successfully get a token
-	adminToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	adminToken = get_Token_UsernamePassword(
+		configInfo, client_id, username, password, scope)
 
 	client_id = configInfo['BUYER-CLIENTID']
 	username = configInfo['BUYER-USERNAME']
 	password = configInfo['BUYER-PASSWORD']
 	scope = ['Shopper']
 
-	buyerToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	buyerToken = get_Token_UsernamePassword(
+		configInfo, client_id, username, password, scope)
 
 	# add xp to products
 
@@ -68,58 +79,50 @@ def test_productSearch(configInfo):
 
 	}
 
-
-	products = get_meProducts(configInfo, buyerToken, search) # admin sear h
+	products = get_meProducts(configInfo, buyerToken, search)  # admin sear h
 
 	log.debug(products['Meta'])
 
 	if products['Meta']['TotalCount'] == 0:
 		log.debug("Time to make more XP!")
 
-		params = { 
+		params = {
 			'pageSize': '5',
 			'page': '3'
 		}
 		products = get_meProducts(configInfo, buyerToken, params)
-		patchedProducts = createProductFacet(configInfo, products['Items'], adminToken)
+		patchedProducts = createProductFacet(
+			configInfo, products['Items'], adminToken)
 		log.debug(patchedProducts)
 
-	products = get_meProducts(configInfo, buyerToken, search) # admin sear h
+	products = get_meProducts(configInfo, buyerToken, search)  # admin sear h
 
 	log.debug(products['Meta'])
 
-
-
 	# add xp to users
-
-
-
 
 	# nested xp!
 
 	# search and record times
 
 
-
-
 def printAndCompare(term, data):
-	#data = ['Items']
+	# data = ['Items']
 	for item in data:
 		print(any([]))
 
 
-
-
-
+@pytest.mark.skipif(pytest.config.oc_env == 'prod',
+					reason="feature not in Prod yet")
 @pytest.mark.parametrize("search", [
-    (fake.job()),
-    (fake.word(ext_word_list=None)),
-    (fake.paragraph(nb_sentences=3, variable_nb_sentences=True, ext_word_list=None)),
-    (fake.words(nb=3, ext_word_list=None)),
-    (fake.boolean(chance_of_getting_true=50)),
-    (fake.safe_color_name()),
-    (str(fake.boolean(chance_of_getting_true=50)).lower()),
-    (int(fake.msisdn()))
+	(fake.job()),
+	(fake.word(ext_word_list=None)),
+	(fake.paragraph(nb_sentences=3, variable_nb_sentences=True, ext_word_list=None)),
+	(fake.words(nb=3, ext_word_list=None)),
+	(fake.boolean(chance_of_getting_true=50)),
+	(fake.safe_color_name()),
+	(str(fake.boolean(chance_of_getting_true=50)).lower()),
+	(int(fake.msisdn()))
 ])
 @pytest.mark.parametrize("searchOn", [
 	(None),
@@ -132,8 +135,8 @@ def printAndCompare(term, data):
 	('ID'),
 	('Name')
 ])
-#TODO: make the reporting on this pretty
-def test_SearchAndCompare(configInfo, apiEnv, search, searchOn, sortBy):
+# TODO: make the reporting on this pretty
+def test_SearchAndCompare(configInfo, search, searchOn, sortBy):
 
 	# auth as dbrown
 
@@ -142,7 +145,8 @@ def test_SearchAndCompare(configInfo, apiEnv, search, searchOn, sortBy):
 	password = 'fails345!!'
 	scope = ['Shopper']
 
-	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	buyerToken = get_Token_UsernamePassword(
+		configInfo, client_id, username, password, scope)
 
 	# list me/products
 
@@ -154,11 +158,11 @@ def test_SearchAndCompare(configInfo, apiEnv, search, searchOn, sortBy):
 
 	}
 
-
-	products = get_meProducts(configInfo, buyerToken, search) 
+	products = get_meProducts(configInfo, buyerToken, search)
 
 	log.debug(json.dumps(products['Meta'], indent=4))
-	#log.debug(products['Items'])
+	# log.debug(products['Items'])
+
 
 '''
 	# write product id, name, description to file
@@ -175,25 +179,26 @@ def test_SearchAndCompare(configInfo, apiEnv, search, searchOn, sortBy):
 			f.write('\n')
 '''
 
+
 def createProductFacet(configInfo, productList, productFacet, token=''):
 
 	headers = {
-		'Authorization': 'Bearer '+ token,
+		'Authorization': 'Bearer ' + token,
 		'Content-Type': 'application/json',
 		'charset': 'UTF-8'
 	}
 
-
 	for ID in productList:
 		try:
-			xp = requests.post(configInfo['API']+'v1/ProductFacets/', headers = headers, params=params, json=productFacet)
+			xp = requests.post(configInfo['API']+'v1/ProductFacets/',
+							   headers=headers, params=params, json=productFacet)
 			log.debug(xp.request.url)
 			log.debug(xp.status_code)
 			log.debug(json.dumps(xp.json(), indent=2))
 
 			assert xp.status_code is codes.ok
 			return xp.json()
-		except requests.exceptions.RequestException as e: 
+		except requests.exceptions.RequestException as e:
 			log.debug(json.dumps(xp.json(), indent=2))
 			print(e)
 			sys.exit(1)
@@ -202,20 +207,21 @@ def createProductFacet(configInfo, productList, productFacet, token=''):
 def getProductFacets(configInfo, token, params):
 
 	headers = {
-		'Authorization': 'Bearer '+ token,
+		'Authorization': 'Bearer ' + token,
 		'Content-Type': 'application/json',
 		'charset': 'UTF-8'
 	}
 
 	try:
-		pFacet = requests.get(configInfo['API']+'v1/ProductFacets/', headers = headers, params=params)
+		pFacet = requests.get(
+			configInfo['API']+'v1/ProductFacets/', headers=headers, params=params)
 		log.debug(pFacet.request.url)
 		log.debug(pFacet.status_code)
 		log.debug(json.dumps(pFacet.json(), indent=2))
 
 		assert pFacet.status_code is codes.ok
 		return pFacet.json()
-	except requests.exceptions.RequestException as e: 
+	except requests.exceptions.RequestException as e:
 		log.debug(json.dumps(pFacet.json(), indent=2))
 		print(e)
 		sys.exit(1)
@@ -224,57 +230,58 @@ def getProductFacets(configInfo, token, params):
 def adminProductFacet(configInfo, token, facet):
 
 	headers = {
-		'Authorization': 'Bearer '+ token,
+		'Authorization': 'Bearer ' + token,
 		'Content-Type': 'application/json',
 		'charset': 'UTF-8'
 	}
 
 	try:
-		pFacet = requests.post(configInfo['API']+'v1/ProductFacets/', headers = headers, json=facet)
+		pFacet = requests.post(
+			configInfo['API']+'v1/ProductFacets/', headers=headers, json=facet)
 		log.debug(pFacet.request.url)
 		log.debug(pFacet.status_code)
 		log.debug(json.dumps(pFacet.json(), indent=2))
 
 		assert pFacet.status_code is codes.created
 		return pFacet.json()
-	except requests.exceptions.RequestException as e: 
+	except requests.exceptions.RequestException as e:
 		log.debug(json.dumps(pFacet.json(), indent=2))
 		print(e)
 		sys.exit(1)
 
 
-
+@pytest.mark.skipif(pytest.config.oc_env == 'prod',
+					reason="feature not in Prod yet")
+@pytest.mark.search
 @pytest.mark.parametrize("facetName,facetID,facetPath", [
-    ('colors.spring', 'colors-spring', 'colors.spring'),
-    ('job', 'job', 'job')
+	('colors.spring', 'colors-spring', 'colors.spring'),
+	('job', 'job', 'job')
 ])
 @pytest.mark.parametrize("facetValue", [
-    (fake.boolean(chance_of_getting_true=50)),
-    (fake.safe_color_name()),
-    (str(fake.boolean(chance_of_getting_true=50)).lower()),
-    (int(fake.msisdn()))
+	(fake.boolean(chance_of_getting_true=50)),
+	(fake.safe_color_name()),
+	(str(fake.boolean(chance_of_getting_true=50)).lower()),
+	(int(fake.msisdn()))
 ])
 def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
-
 
 	client_id = configInfo['BUYER-CLIENTID']
 	username = 'dbrown'
 	password = 'fails345!!'
 	scope = ['Shopper']
 
-	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	buyerToken = get_Token_UsernamePassword(
+		configInfo, client_id, username, password, scope)
 
-
-	#get auth tokens
+	# get auth tokens
 
 	client_id = configInfo['ADMIN-CLIENTID']
 	username = configInfo['ADMIN-USERNAME']
 	password = configInfo['ADMIN-PASSWORD']
 	scope = ['FullAccess']
 
-	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)['access_token']
-
-
+	adminToken = get_Token_UsernamePassword(
+		configInfo, client_id, username, password, scope)['access_token']
 
 	# admin checks if facet exists
 
@@ -285,8 +292,6 @@ def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
 	productFacet = getProductFacets(configInfo, adminToken, params)
 	log.debug(json.dumps(productFacet['Items'], indent=4))
 
-
-
 	if productFacet['Meta']['TotalCount'] == 0:
 		log.debug('create new facet '+facetName+'!')
 		newFacet = {
@@ -294,46 +299,43 @@ def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
 			"Name": facetName,
 			"XpPath": facetPath,
 			"ListOrder": 1,
-			"MinCount": 1, # defaults to 1, 0 includes 0 results
+			"MinCount": 1,  # defaults to 1, 0 includes 0 results
 			"xp": {}
-			}
+		}
 
 		facet = adminProductFacet(configInfo, adminToken, newFacet)
 	else:
 		log.debug(facetName + ' Facets Exist!')
 
-
 	# me/products list for buyer user & save list of product ids
 
 	log.debug('buyer product list!')
-	
-	buyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+
+	buyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize': 20})
 
 	assert buyerProducts['Meta']['Facets']
 
 	buyerProductIDs = []
-	
+
 	for item in buyerProducts['Items']:
 		buyerProductIDs.append(item['ID'])
 
 	log.debug(buyerProductIDs)
 
-
 	# admin looks for any products with the facet XP
 
 	filters = []
 
-	filters.append({'xp.'+facetPath : facetValue})
+	filters.append({'xp.'+facetPath: facetValue})
 
 	log.debug('XP filters are: '+str(filters))
 
-	numXP = len(filters) #number of filters we're looking for
+	numXP = len(filters)  # number of filters we're looking for
 
 	for fil in filters:
-		adminProductList = get_Products(configInfo, adminToken, fil )
-		log.debug('Admin List of Products with Facet XP: '+str(adminProductList['Meta']['TotalCount']))
-	
-
+		adminProductList = get_Products(configInfo, adminToken, fil)
+		log.debug('Admin List of Products with Facet XP: ' +
+				  str(adminProductList['Meta']['TotalCount']))
 
 	facets = []
 	for facet in buyerProducts['Meta']['Facets']:
@@ -346,30 +348,28 @@ def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
 
 	log.debug(buyerProducts['Meta'])
 
-
 	if adminProductList['Meta']['TotalCount'] == 0:
 		log.debug('No Products With XP for Product Facets!')
 
-		#log.debug(facet.keys())
-		log.debug('creating '+str(len(buyerProductIDs))+' Products with XP '+facet['ID']+'!')
+		# log.debug(facet.keys())
+		log.debug('creating '+str(len(buyerProductIDs)) +
+				  ' Products with XP '+facet['ID']+'!')
 		newXP = {
 			'xp': {
-				facetPath : facetValue
+				facetPath: facetValue
 			}
 		}
-		
+
 		for item in buyerProductIDs:
 			patch_Product(configInfo, adminToken, item, '', newXP)
 
+	# check buyer me/product list for expected facet
 
-		
-	# check buyer me/product list for expected facet 
-	
 	time.sleep(60)
 	log.info('okay, the index should be rebuilt now!')
 	time.sleep(30)
 
-	newBuyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize':20})
+	newBuyerProducts = get_meProducts(configInfo, buyerToken, {'PageSize': 20})
 
 	log.debug(newBuyerProducts['Meta']['Facets'])
 	assert newBuyerProducts['Meta']['Facets']
@@ -377,7 +377,6 @@ def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
 	foundFacets = []
 	for item in newBuyerProducts['Meta']['Facets']:
 		foundFacets.append(item['ID'])
-
 
 	assert facetID in foundFacets
 
@@ -401,8 +400,6 @@ def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
 	assert facetValue in foundValues
 
 
-	
-
 '''
 	for item in newBuyerProducts['Items']:
 		if item['ID'] in buyerProductIDs:
@@ -420,6 +417,165 @@ def test_FacetSearch(configInfo, facetName, facetID, facetPath, facetValue):
 
 print('end!')
 
+
+def test_EX1663(configInfo):
+
+# 1. create a product facet such as "colors.spring"
+# 2. add the xp "colors.spring": true to various products that are assigned to a user
+# 3. impersonate said user, and list me/products
+# 4. see the new Facets subobject on Meta, but there are no values populated
+
+
+# auth as an admin user
+
+	client_id = configInfo['ADMIN-CLIENTID']
+	username = configInfo['ADMIN-USERNAME']
+	password = configInfo['ADMIN-PASSWORD']
+	scope = ['FullAccess']
+
+	# can successfully get a token
+	adminToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+
+	client_id = configInfo['BUYER-CLIENTID']
+	username = configInfo['BUYER-USERNAME']
+	password = configInfo['BUYER-PASSWORD']
+	scope = ['Shopper']
+
+	buyerToken = get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+
+
+	buyer = requests.Session()
+
+	headers = {
+		'Authorization': 'Bearer ' + buyerToken['access_token'],
+		'Content-Type': 'application/json',
+		'charset': 'UTF-8'
+	}
+
+	buyer.headers.update(headers)
+
+
+	admin = requests.Session()
+
+	headers = {
+		'Authorization': 'Bearer ' + adminToken['access_token'],
+		'Content-Type': 'application/json',
+		'charset': 'UTF-8'
+	}
+
+	admin.headers.update(headers)
+
+
+	log.info(json.dumps(buyer.get(configInfo['API']+'v1/me').json(), indent=4))
+	log.info(json.dumps(admin.get(configInfo['API']+'v1/me').json(), indent=4))
+
+
+	facetList = admin.get(configInfo['API']+'v1/ProductFacets')
+
+	assert facetList.status_code is codes.ok
+	log.info('Total Initial Facets: '+ str(facetList.json()['Meta']['TotalCount']))
+
+	newFacets = {
+		'facet01' : {
+			  "ID": 'ex-1663-'+fake.uuid4(),
+			  "Name": "Sizes",
+			  "XpPath": "sizes",
+			  "ListOrder": 3,
+			  "MinCount": 0
+			},
+
+		'facet02' : {
+			  "ID": 'ex-1663-'+fake.uuid4(),
+			  "Name": "ExtendedSizes",
+			  "XpPath": "sizes.extended",
+			  "ListOrder": 1,
+			  "MinCount": 0
+			},
+
+		'facet03' : {
+			  "ID": 'ex-1663-'+fake.uuid4(),
+			  "Name": "PetiteSizes",
+			  "XpPath": "sizes.petite",
+			  "ListOrder": 2,
+			  "MinCount": 0
+			}
+		}
+
+	if facetList.json()['Meta']['TotalCount'] == 0:
+		for item in newFacets:
+			try:
+				log.info(item)
+				facet = admin.post(configInfo['API']+'v1/ProductFacets', json = newFacets[item])
+				assert facet.status_code is codes.created
+				log.info('Created '+ str(facet.json()['ID']))
+			except requests.exceptions.RequestException as e:  # This is the correct syntax
+				log.info(e)
+				sys.exit(1)
+
+		facetList = admin.get(configInfo['API']+'v1/ProductFacets')
+
+		assert facetList.status_code is codes.ok
+		log.info('Total Facets After Creation: '+ str(facetList.json()['Meta']['TotalCount']))
+
+
+
+	# update ten random products to have these facets
+
+	pageSize = '10'
+	productList = admin.get(configInfo['API']+'v1/Products', params={'pageSize': pageSize}).json()
+
+	productTotal = productList['Meta']['TotalCount']
+	pageTotal = productList['Meta']['TotalPages']
+
+	randomPage = random.choice(range(1, pageTotal-1))
+
+
+	selectedProducts = admin.get(configInfo['API']+'v1/Products', params={'page': randomPage, 'pageSize':pageSize})
+	log.info(selectedProducts.url)
+	log.info(json.dumps(selectedProducts.json()['Meta'], indent=4))
+	selectedProducts = selectedProducts.json()['Items']
+	#log.info(json.dumps(selectedProducts, indent=4))
+
+	productIDs = []
+
+
+	for item in selectedProducts:
+		#log.info(item)
+		productIDs.append(item['ID'])
+
+	
+	log.info(productIDs, len(productIDs))
+	patchBody = {'xp':{}}
+	sizeList = ['xs/0-4', 's/5-8', 'm/9-12', 'l/13-16', 'xl/17-22', 'xxl/23-28']
+	log.info(random.choice(sizeList))
+
+	for facet in newFacets:
+		log.info(newFacets[facet]['XpPath'])
+		if newFacets[facet]['XpPath'] == 'sizes':
+			print(newFacets[facet]['XpPath'])
+			patchBody['xp'][newFacets[facet]['XpPath']] = random.choice(sizeList)
+			
+		else:
+			patchBody['xp'][newFacets[facet]['XpPath']] = bool(random.getrandbits(1))	
+
+	log.info(json.dumps(patchBody, indent=4))		
+
+	assert len(productIDs) > 0
+
+	for productID in productIDs:
+		try:
+			patched = admin.patch(configInfo['API']+'v1/products/'+productID, json = patchBody)
+			log.info(patched.status_code)
+			log.info(patched.request.headers)
+			log.info(patched.request.url)
+			log.info(patched.request.body)
+			log.info(patched.text)
+			assert patched.status_code is codes.ok
+			log.info(patched.json())
+
+		except requests.exceptions.RequestException as e:  # This is the correct syntax
+			log.info(e)
+			sys.exit(1)
 
 
 

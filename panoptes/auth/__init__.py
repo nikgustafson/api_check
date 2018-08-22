@@ -5,7 +5,7 @@ from requests import codes
 import logging
 import json
 
-import me
+from .. import me
 
 
 

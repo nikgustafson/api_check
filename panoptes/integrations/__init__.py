@@ -9,8 +9,8 @@ import json
 from faker import Faker
 from random import randint
 
-import me
-import auth
+from .. import me
+from .. import auth
 
 from mailosaur import MailosaurClient
 from mailosaur.models import SearchCriteria

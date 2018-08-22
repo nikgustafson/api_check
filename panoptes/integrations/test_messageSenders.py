@@ -9,10 +9,9 @@ import json
 from faker import Faker
 from random import randint
 
-import me
-import auth
-
-from integrations import findEmail
+from .. import me
+from .. import auth
+from ..integrations import findEmail
 
 from mailosaur import MailosaurClient
 from mailosaur.models import SearchCriteria
@@ -33,6 +32,7 @@ variation: user types
 	- previously registered buyer user
 	- registered admin user in buyer app
 """
+@pytest.mark.smoke
 @pytest.mark.description("Verifies that the ForgottenPassword message sender successfully sends an email when triggered. NOTE: this message sender is only triggered by the '/v1/password/reset' endpoint.")
 def test_ForgottenPassword(configInfo):
 

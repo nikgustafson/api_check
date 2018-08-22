@@ -1,21 +1,35 @@
 import pytest
 import configparser
 import tesults
+import logging
 import sys
 import os
 from _pytest.runner import runtestprotocol
 
+log = logging.getLogger(__name__)
 
 
 def pytest_addoption(parser):
 		parser.addoption("--ENV", action="store", help="Choose the API Environment to run against: QA or PROD", default="QA")
 
-@pytest.fixture()
+def pytest_configure(config):
+    environment = config.getoption('--ENV')
+    config.oc_env = str.lower(environment)
+    
+@pytest.fixture
+def somefixture(pytestconfig):
+    assert pytestconfig.foo == 'bar'
+
+
+
+@pytest.fixture(scope='session', autouse=True)
 def configInfo(pytestconfig):
 		global data
 		environment = pytestconfig.getoption('--ENV')
 		print(environment)
 		environment = str.lower(environment)
+		pytest.global_env = environment
+
 		config = configparser.ConfigParser()
 		config.read('config.ini') # local config file
 		configData = config['QA-CONFIG']
@@ -30,6 +44,13 @@ def configInfo(pytestconfig):
 		data['target'] = tesultsKey
 
 		return configData
+
+
+
+@pytest.fixture(scope="session", autouse=True)
+def mod_header(request):
+    log.info('\n------------------------------\n| '+pytest.global_env+' |\n------------------------------\n')
+    return(pytest.global_env)
 
 
 #----------------------------# tesults set up
@@ -58,23 +79,33 @@ def reasonForFailure (report):
 				return report.longreprtext
 
 def paramsForTest (item):
-		paramKeys = item.get_marker('parametrize')
-		if (paramKeys):
-				paramKeys = paramKeys.args[0]
-				params = {}
-				values = item.name.split('[')
-				if len(values) > 1:
-						values = values[1]
-						values = values[:-1] # removes ']'
-						values = values.split("-") # values now separated
-				else:
-						return None
-				for key in paramKeys:
-						if (len(values) > 0):
-								params[key] = values.pop(0)
-						return params
-		else:
-				return None
+    paramKeysObj = item.get_marker('parametrize')
+    if (paramKeysObj):
+        index = 0
+        paramKeys = []
+        while (index < len(paramKeysObj.args)):
+            keys = paramKeysObj.args[index]
+            keys = keys.split(",")
+            for key in keys:
+                paramKeys.append(key)
+            index = index + 2
+        params = {}
+        values = item.name.split('[')
+        if len(values) > 1:
+            values = values[1]
+            values = values[:-1] # removes ']'
+            valuesSplit = values.split("-") # values now separated
+            if len(valuesSplit) > len(paramKeys):
+                params["[" + "-".join(paramKeys) + "]"] = "[" + values + "]"
+            else:
+                for key in paramKeys:
+                    if (len(valuesSplit) > 0):
+                        params[key] = valuesSplit.pop(0)
+            return params
+        else:
+            return None
+    else:
+        return None
 
 def filesForTest (item):
 	files = []
