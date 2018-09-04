@@ -9,8 +9,8 @@ def getConfigData(configInfo):
 	log.info('AUTH: '+ repr(configInfo['AUTH']))
 
 	if 'qa' in configInfo['API']:
-		print('api environment is QA!')
+		log.info('api environment is QA!')
 		return('QA')
 	else:
-		print('api env is prod!!')
+		log.info('api env is prod!!')
 		return('PROD')
