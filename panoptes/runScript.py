@@ -14,5 +14,5 @@ print(str(path))
 
 pytest.main(['-m smoke', '--ENV=prod', '--junitxml='+str(path)+'-prod-smoke.xml'])
 #pytest.main(['-m', '--ENV=prod', '--junitxml='+str(path)+'-prod-search.xml'])
-#pytest.main(['-m smoke', '--ENV=qa', '--junitxml='+str(path)+'-qa-smoke.xml'])
+pytest.main(['-m smoke', '--ENV=qa', '--junitxml='+str(path)+'-qa-smoke.xml'])
 #pytest.main(['-m search', '--ENV=qa', '--junitxml='+str(path)+'-qa-search.xml'])
