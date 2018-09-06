@@ -26,9 +26,14 @@ Smoke Tests verify:
 
 `pytest panoptes -m search`
 
-The Search suite is two purpose:
 
-In Prod, this verifies that commonly used 
+## Docker Build & Run
+
+to build dockerfile:
+    from containing `api-check` folder:
+    `docker build -t panoptes panoptes`
+to run dockerfile:
+    `docker run panoptes`
 
 
 ## TODO:
