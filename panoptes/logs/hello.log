@@ -1,0 +1,226 @@
+INFO | panoptes.conftest : mod_header | 2018-09-05 20:04:09 | 
+------------------------------
+| qa |
+------------------------------
+
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:09 | Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:10 | https://qaapi.ordercloud.io:443 "GET /env HTTP/1.1" 200 274
+INFO | panoptes.test_base : test_api_env_vars | 2018-09-05 20:04:10 | API ENV: {
+  "Environment": "qa",
+  "Version": "1.0.82.1035",
+  "Branch": "dev",
+  "Commit": "48adcf240a33605653180941dbda888c302262fc",
+  "CommitDate": "2018-09-04T14:41:20+00:00",
+  "BuildDate": "2018-09-05T06:50:53+00:00"
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:10 | Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:10 | https://qaauth.ordercloud.io:443 "GET /env HTTP/1.1" 200 281
+INFO | panoptes.test_base : test_api_env_vars | 2018-09-05 20:04:10 | AUTH ENV: {
+  "Environment": "qa",
+  "Version": "1.0.82.1035",
+  "Branch": "dev",
+  "Commit": "48adcf240a33605653180941dbda888c302262fc",
+  "CommitDate": "2018-09-04T14:41:20+00:00",
+  "BuildDate": "2018-09-05T06:50:53+00:00"
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:10 | Starting new HTTPS connection (1): qaintegrations.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:12 | https://qaintegrations.ordercloud.io:443 "GET /env HTTP/1.1" 200 274
+INFO | panoptes.test_base : test_api_env_vars | 2018-09-05 20:04:12 | INTEGRATIONS ENV: {
+  "Environment": "qa",
+  "Version": "1.0.82.1035",
+  "Branch": "dev",
+  "Commit": "48adcf240a33605653180941dbda888c302262fc",
+  "CommitDate": "2018-09-04T14:41:20+00:00",
+  "BuildDate": "2018-09-05T06:50:53+00:00"
+}
+INFO | panoptes : getConfigData | 2018-09-05 20:04:12 | API: 'https://qaapi.ordercloud.io/'
+INFO | panoptes : getConfigData | 2018-09-05 20:04:13 | AUTH: 'https://qaauth.ordercloud.io/'
+INFO | panoptes : getConfigData | 2018-09-05 20:04:13 | api environment is QA!
+DEBUG | panoptes.auth : get_Token_UsernamePassword | 2018-09-05 20:04:13 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:13 | Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:15 | https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 522
+DEBUG | panoptes.auth : get_Token_UsernamePassword | 2018-09-05 20:04:15 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIl0sImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzYyMzE4NTQsIm5iZiI6MTUzNjE5NTg1NH0.zSOUGcS-RSFSb87j8yhwXWisol7N6T2-eTY3b3GbIZk",
+  "token_type": "bearer",
+  "expires_in": 36001
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:15 | Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:16 | https://qaapi.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 404
+DEBUG | panoptes.me : get_Me | 2018-09-05 20:04:16 | {
+  "Buyer": {
+    "ID": "LocustBuyer",
+    "DefaultCatalogID": "LocustBuyer"
+  },
+  "ID": "74465019",
+  "Username": "hgomez",
+  "Password": null,
+  "FirstName": "Amy",
+  "LastName": "Acevedo",
+  "Email": "hgomez.ldlhaugt@mailosaur.io",
+  "Phone": "271-702-1354",
+  "TermsAccepted": "2018-05-04T00:00:00+00:00",
+  "Active": true,
+  "xp": {},
+  "AvailableRoles": [
+    "MeAddressAdmin",
+    "MeAdmin",
+    "MeCreditCardAdmin",
+    "MeXpAdmin",
+    "OverrideUnitPrice",
+    "PasswordReset",
+    "Shopper"
+  ]
+}
+DEBUG | panoptes.auth : get_Token_UsernamePassword | 2018-09-05 20:04:16 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:16 | Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:16 | https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 519
+DEBUG | panoptes.auth : get_Token_UsernamePassword | 2018-09-05 20:04:16 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIl0sImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzYyMzE4NTYsIm5iZiI6MTUzNjE5NTg1Nn0.4i-3leNBou472G9f2NApoFwEKuGtKpIvDOaCERVE4w0",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:16 | Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:17 | https://qaapi.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 404
+DEBUG | panoptes.me : get_Me | 2018-09-05 20:04:17 | {
+  "Buyer": {
+    "ID": "LocustBuyer",
+    "DefaultCatalogID": "LocustBuyer"
+  },
+  "ID": "74465019",
+  "Username": "hgomez",
+  "Password": null,
+  "FirstName": "Amy",
+  "LastName": "Acevedo",
+  "Email": "hgomez.ldlhaugt@mailosaur.io",
+  "Phone": "271-702-1354",
+  "TermsAccepted": "2018-05-04T00:00:00+00:00",
+  "Active": true,
+  "xp": {},
+  "AvailableRoles": [
+    "MeAddressAdmin",
+    "MeAdmin",
+    "MeCreditCardAdmin",
+    "MeXpAdmin",
+    "OverrideUnitPrice",
+    "PasswordReset",
+    "Shopper"
+  ]
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:17 | Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:17 | https://qaapi.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 404
+DEBUG | panoptes.me : get_Me | 2018-09-05 20:04:17 | {
+  "Buyer": {
+    "ID": "LocustBuyer",
+    "DefaultCatalogID": "LocustBuyer"
+  },
+  "ID": "74465019",
+  "Username": "hgomez",
+  "Password": null,
+  "FirstName": "Amy",
+  "LastName": "Acevedo",
+  "Email": "hgomez.ldlhaugt@mailosaur.io",
+  "Phone": "271-702-1354",
+  "TermsAccepted": "2018-05-04T00:00:00+00:00",
+  "Active": true,
+  "xp": {},
+  "AvailableRoles": [
+    "MeAddressAdmin",
+    "MeAdmin",
+    "MeCreditCardAdmin",
+    "MeXpAdmin",
+    "OverrideUnitPrice",
+    "PasswordReset",
+    "Shopper"
+  ]
+}
+DEBUG | panoptes.auth : post_resetPassword | 2018-09-05 20:04:17 | {
+  "ClientID": "1AA9B54E-B31D-48E6-94E2-7454208D82E0",
+  "Email": "hgomez.ldlhaugt@mailosaur.io",
+  "username": "hgomez",
+  "URL": "https://www.wilson-williams.com/"
+}
+DEBUG | panoptes.auth : post_resetPassword | 2018-09-05 20:04:17 | {'Content-Type': 'application/json', 'Autentication': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIl0sImlzcyI6Imh0dHBzOi8vcWFhdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL3FhYXBpLm9yZGVyY2xvdWQuaW8iLCJleHAiOjE1MzYyMzE4NTYsIm5iZiI6MTUzNjE5NTg1Nn0.4i-3leNBou472G9f2NApoFwEKuGtKpIvDOaCERVE4w0'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:17 | Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:22 | https://qaapi.ordercloud.io:443 "POST /v1/password/reset HTTP/1.1" 204 0
+DEBUG | panoptes.auth : post_resetPassword | 2018-09-05 20:04:22 | <Response [204]>
+DEBUG | panoptes.auth : get_Token_UsernamePassword | 2018-09-05 20:04:22 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin MeAddressAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:22 | Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:23 | https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 547
+DEBUG | panoptes.auth : get_Token_UsernamePassword | 2018-09-05 20:04:23 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIiwiTWVBZGRyZXNzQWRtaW4iXSwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzNjIzMTg2MiwibmJmIjoxNTM2MTk1ODYyfQ.5zHKpv1aJM7alCFBCn8wjmDsbrBz_1GE6g-LMu_YKig",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:23 | Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:23 | https://qaapi.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 404
+INFO | panoptes.me.test_me : test_meAddressesCreate | 2018-09-05 20:04:23 | {
+    "Buyer": {
+        "ID": "LocustBuyer",
+        "DefaultCatalogID": "LocustBuyer"
+    },
+    "ID": "74465019",
+    "Username": "hgomez",
+    "Password": null,
+    "FirstName": "Amy",
+    "LastName": "Acevedo",
+    "Email": "hgomez.ldlhaugt@mailosaur.io",
+    "Phone": "271-702-1354",
+    "TermsAccepted": "2018-05-04T00:00:00+00:00",
+    "Active": true,
+    "xp": {},
+    "AvailableRoles": [
+        "MeAddressAdmin",
+        "MeAdmin",
+        "MeCreditCardAdmin",
+        "MeXpAdmin",
+        "OverrideUnitPrice",
+        "PasswordReset",
+        "Shopper"
+    ]
+}
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:24 | https://qaapi.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1085
+INFO | panoptes.me.test_me : test_meAddressesCreate | 2018-09-05 20:04:24 | {"Meta": {"Page": 1, "PageSize": 20, "TotalCount": 4, "TotalPages": 1, "ItemRange": [1, 4]}, "Items": [{"ID": "fTlyQyX-tkmBsfUH8oBcDg", "Shipping": true, "Billing": true, "Editable": true, "DateCreated": "2018-08-31T19:25:35.943+00:00", "CompanyName": "Cox-Pierce", "FirstName": "Michaela", "LastName": "Hampton", "Street1": "94313 Nichols Road", "Street2": "Suite 018", "City": "Fergusonside", "State": "ID", "Zip": "36517-0101", "Country": "KH", "Phone": "(365)895-3680", "AddressName": "Customizable dedicated structure", "xp": {"fake": true}}, {"ID": "rmTL4LpnP06i2X8uR4wgEQ", "Shipping": true, "Billing": true, "Editable": true, "DateCreated": "2018-09-04T15:53:45.123+00:00", "CompanyName": "Mcknight, Wright and Mendez", "FirstName": "Jonathan", "LastName": "Erickson", "Street1": "936 Jacqueline Cliff Apt. 161", "Street2": "Apt. 548", "City": "Port Lisa", "State": "FL", "Zip": "46893-8375", "Country": "BW", "Phone": "1-827-145-7304", "AddressName": "Versatile executive projection", "xp": {"fake": true}}, {"ID": "0dR3X1c16UC8FdsisFaAow", "Shipping": true, "Billing": true, "Editable": true, "DateCreated": "2018-09-04T18:01:07.51+00:00", "CompanyName": "Parks-Martinez", "FirstName": "Justin", "LastName": "Martinez", "Street1": "150 Griffin View Suite 658", "Street2": "Apt. 142", "City": "New Gary", "State": "PW", "Zip": "59385-9675", "Country": "FI", "Phone": "398.777.5377x814", "AddressName": "Multi-tiered encompassing neural-net", "xp": {"fake": true}}, {"ID": "4ThaFX_hFEmiWR-VaR6hpA", "Shipping": true, "Billing": true, "Editable": true, "DateCreated": "2018-09-05T00:26:38.683+00:00", "CompanyName": "Green-English", "FirstName": "Jeffrey", "LastName": "Rangel", "Street1": "6634 Wright Tunnel Apt. 760", "Street2": "Suite 797", "City": "Kimberlyfurt", "State": "WY", "Zip": "01638-9488", "Country": "TN", "Phone": "+29(4)5116706980", "AddressName": "Proactive multi-state contingency", "xp": {"fake": true}}]}
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:25 | https://qaapi.ordercloud.io:443 "POST /v1/me/addresses HTTP/1.1" 201 423
+INFO | panoptes.me.test_me : createMeAddress | 2018-09-05 20:04:25 | {'ID': 'N-qv_2qCH0SHaFc6ttVrnQ', 'Shipping': True, 'Billing': False, 'Editable': True, 'DateCreated': '2018-09-06T01:04:23.553+00:00', 'CompanyName': 'Perez and Sons', 'FirstName': 'Robert', 'LastName': 'Velez', 'Street1': '33379 Thompson Road Suite 334', 'Street2': 'Apt. 943', 'City': 'East Michelle', 'State': 'NE', 'Zip': '08667-6825', 'Country': 'BH', 'Phone': '454.251.8302', 'AddressName': 'Fully-configurable local middleware', 'xp': {'fake': True}}
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:26 | https://qaapi.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1273
+DEBUG | panoptes.auth : get_Token_UsernamePassword | 2018-09-05 20:04:26 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin MeAddressAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:26 | Starting new HTTPS connection (1): qaauth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:26 | https://qaauth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 546
+DEBUG | panoptes.auth : get_Token_UsernamePassword | 2018-09-05 20:04:26 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIiwiTWVBZGRyZXNzQWRtaW4iXSwiaXNzIjoiaHR0cHM6Ly9xYWF1dGgub3JkZXJjbG91ZC5pbyIsImF1ZCI6Imh0dHBzOi8vcWFhcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzNjIzMTg2NSwibmJmIjoxNTM2MTk1ODY1fQ.C_nWHoWw48vD6c9mtKFMMzhFSGsoEmRhYss2AWFKw8E",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-09-05 20:04:26 | Starting new HTTPS connection (1): qaapi.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:26 | https://qaapi.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 404
+INFO | panoptes.me.test_me : test_meAddressesDelete | 2018-09-05 20:04:26 | {
+    "Buyer": {
+        "ID": "LocustBuyer",
+        "DefaultCatalogID": "LocustBuyer"
+    },
+    "ID": "74465019",
+    "Username": "hgomez",
+    "Password": null,
+    "FirstName": "Amy",
+    "LastName": "Acevedo",
+    "Email": "hgomez.ldlhaugt@mailosaur.io",
+    "Phone": "271-702-1354",
+    "TermsAccepted": "2018-05-04T00:00:00+00:00",
+    "Active": true,
+    "xp": {},
+    "AvailableRoles": [
+        "MeAddressAdmin",
+        "MeAdmin",
+        "MeCreditCardAdmin",
+        "MeXpAdmin",
+        "OverrideUnitPrice",
+        "PasswordReset",
+        "Shopper"
+    ]
+}
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:27 | https://qaapi.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1273
+INFO | panoptes.me.test_me : test_meAddressesDelete | 2018-09-05 20:04:27 | {"Meta": {"Page": 1, "PageSize": 20, "TotalCount": 5, "TotalPages": 1, "ItemRange": [1, 5]}, "Items": [{"ID": "fTlyQyX-tkmBsfUH8oBcDg", "Shipping": true, "Billing": true, "Editable": true, "DateCreated": "2018-08-31T19:25:35.943+00:00", "CompanyName": "Cox-Pierce", "FirstName": "Michaela", "LastName": "Hampton", "Street1": "94313 Nichols Road", "Street2": "Suite 018", "City": "Fergusonside", "State": "ID", "Zip": "36517-0101", "Country": "KH", "Phone": "(365)895-3680", "AddressName": "Customizable dedicated structure", "xp": {"fake": true}}, {"ID": "rmTL4LpnP06i2X8uR4wgEQ", "Shipping": true, "Billing": true, "Editable": true, "DateCreated": "2018-09-04T15:53:45.123+00:00", "CompanyName": "Mcknight, Wright and Mendez", "FirstName": "Jonathan", "LastName": "Erickson", "Street1": "936 Jacqueline Cliff Apt. 161", "Street2": "Apt. 548", "City": "Port Lisa", "State": "FL", "Zip": "46893-8375", "Country": "BW", "Phone": "1-827-145-7304", "AddressName": "Versatile executive projection", "xp": {"fake": true}}, {"ID": "0dR3X1c16UC8FdsisFaAow", "Shipping": true, "Billing": true, "Editable": true, "DateCreated": "2018-09-04T18:01:07.51+00:00", "CompanyName": "Parks-Martinez", "FirstName": "Justin", "LastName": "Martinez", "Street1": "150 Griffin View Suite 658", "Street2": "Apt. 142", "City": "New Gary", "State": "PW", "Zip": "59385-9675", "Country": "FI", "Phone": "398.777.5377x814", "AddressName": "Multi-tiered encompassing neural-net", "xp": {"fake": true}}, {"ID": "4ThaFX_hFEmiWR-VaR6hpA", "Shipping": true, "Billing": true, "Editable": true, "DateCreated": "2018-09-05T00:26:38.683+00:00", "CompanyName": "Green-English", "FirstName": "Jeffrey", "LastName": "Rangel", "Street1": "6634 Wright Tunnel Apt. 760", "Street2": "Suite 797", "City": "Kimberlyfurt", "State": "WY", "Zip": "01638-9488", "Country": "TN", "Phone": "+29(4)5116706980", "AddressName": "Proactive multi-state contingency", "xp": {"fake": true}}, {"ID": "N-qv_2qCH0SHaFc6ttVrnQ", "Shipping": true, "Billing": false, "Editable": true, "DateCreated": "2018-09-06T01:04:23.553+00:00", "CompanyName": "Perez and Sons", "FirstName": "Robert", "LastName": "Velez", "Street1": "33379 Thompson Road Suite 334", "Street2": "Apt. 943", "City": "East Michelle", "State": "NE", "Zip": "08667-6825", "Country": "BH", "Phone": "454.251.8302", "AddressName": "Fully-configurable local middleware", "xp": {"fake": true}}]}
+INFO | panoptes.me.test_me : test_meAddressesDelete | 2018-09-05 20:04:27 | Deleted Address ID: fTlyQyX-tkmBsfUH8oBcDg
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:29 | https://qaapi.ordercloud.io:443 "DELETE /v1/me/addresses/fTlyQyX-tkmBsfUH8oBcDg HTTP/1.1" 204 0
+INFO | panoptes.me.test_me : deleteMeAddress | 2018-09-05 20:04:29 | 204
+DEBUG | urllib3.connectionpool : _make_request | 2018-09-05 20:04:29 | https://qaapi.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1098

@@ -31,7 +31,8 @@ def configInfo(pytestconfig):
 		pytest.global_env = environment
 
 		config = configparser.ConfigParser()
-		config.read('config.ini') # local config file
+		config.read('..config.ini') # local config file
+		log.info(config)
 		configData = config['QA-CONFIG']
 		if environment == 'qa':
 				configData = config['QA-CONFIG']
