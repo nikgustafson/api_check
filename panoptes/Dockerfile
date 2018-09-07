@@ -1,3 +1,7 @@
+# build the panoptes api-check suite
+
+LABEL author="k.l.reeher"
+
 FROM python:3
 
 WORKDIR /api-check/panoptes/
