@@ -5,11 +5,16 @@
 
 ## How to Run Locally
 
->> pytest panoptes 
+> pytest panoptes 
 
 if you wish to run it against production:
 
->> pytest panoptes --ENV=prod
+> pytest panoptes --ENV=prod
+
+If you don't wish to return Tesults results, perhaps due to local dev, use the following:
+
+> pytest panoptes --REPORT=no
+
 
 ## Docker Build & Run
 
