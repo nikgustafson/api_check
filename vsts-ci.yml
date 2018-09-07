@@ -10,7 +10,7 @@ variables:
   imageName: 'kreeher/panoptes:$(build.buildId)'
 
 steps:
-- script: docker build panoptes
+- script: docker build panoptes -t panoptes
   displayName: 'docker build'
 - script: docker tag panoptes kreeher/panoptes
   displayName: 'docker tag'
