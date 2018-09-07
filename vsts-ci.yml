@@ -7,8 +7,9 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  imageName: 'klreeher/panoptes:$(build.buildId)'
+  imageName: 'kreeher/panoptes:$(build.buildId)'
 
 steps:
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: 'docker build'
+
