@@ -41,15 +41,14 @@ def configInfo(pytestconfig):
     
 
     config = configparser.ConfigParser()
+    print()
     config.read('config.ini') # local config file
-    log.info(config)
+    print(config)
     configData = config['QA-CONFIG']
     if environment == 'qa':
             configData = config['QA-CONFIG']
     if environment == 'prod':
             configData = config['PROD-CONFIG']
-    config = configparser.ConfigParser()
-    config.read('config.ini') # local config file
     tesultsKey = configData['TESULTS-KEY']
     print(tesultsKey)
     data['target'] = tesultsKey
