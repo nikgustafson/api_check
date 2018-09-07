@@ -11,5 +11,8 @@ variables:
 
 steps:
 - script: docker build panoptes
-  displayName: 'docker build'
-
+  displayName: 'docker tag panoptes kreeher/panoptes'
+- script: docker build panoptes
+  displayName: 'docker tag'
+- script: docker push kreeher/panoptes
+  displayName: 'docker push'
