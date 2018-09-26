@@ -76,3 +76,18 @@ def get_meProducts(configInfo, token, params):
 		sys.exit(1)
 
 	return me.json()
+
+
+
+def getMeOrders(configInfo, session):
+
+	orders = session.get(configInfo['API']+'v1/me/orders/')
+	log.info(orders.status_code)
+	#log.info(delete.json())
+
+	assert orders.status_code is codes.ok
+
+	log.info(json.dumps(orders.json(), indent=4))
+
+	return orders
+	
