@@ -14,5 +14,6 @@ steps:
   displayName: 'docker build'
 - script: docker tag panoptes kreeher/panoptes
   displayName: 'docker tag'
+- script: docker login -u $(docker-user) -p $(docker-pass)
 - script: docker push kreeher/panoptes
   displayName: 'docker push'
