@@ -6,6 +6,7 @@ import requests
 from requests import codes
 import logging
 import json
+import time
 from faker import Faker
 from random import randint
 
@@ -16,10 +17,6 @@ from ..integrations import findEmail
 
 from mailosaur import MailosaurClient
 from mailosaur.models import SearchCriteria
-
-
-
-
 
 
 fake = Faker()
@@ -40,14 +37,10 @@ def test_ForgottenPassword(configInfo):
 	"""
 	verifies that Forgotten Password (Password Reset) emails are sent and recieved for Ordercloud application users.
 	"""
-
-
 	client_id = configInfo['BUYER-CLIENTID']
 	username = configInfo['BUYER-USERNAME']
 	password = configInfo['BUYER-PASSWORD']
 	scope = ['Shopper', 'MeAdmin']
-
-
 
 	# auth as buyer user
 	token = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
@@ -66,24 +59,42 @@ def test_ForgottenPassword(configInfo):
 		user = me.patch_Me(configInfo, token, newUser = newEmail)
 		log.debug(user)
 
+		userEmail=user['Email']
+
 	# reset that password!
 	log.info('reset that password!')
 	resetcall = auth.post_resetPassword(configInfo, token, resetUrl)
 
 	# get that email
+	#time.sleep(300)
+
 	log.info('time to get the email')
 
 	client = MailosaurClient(configInfo['MAILOSAUR-KEY'])
 
 	pwEmailSubject = 'Here is the link to reset your password'
 
-	email = awaitEmail(configInfo, subject=pwEmailSubject)
+	email = awaitEmail(configInfo, subject=pwEmailSubject, sentTo=userEmail, body=None)
+
+	#log.info(json.dumps(email, indent=4))
 	
 	if email is codes.no_content:
 		pytest.fail(msg='The email was not found on the email server.')
 		log.info('NO EMAIL FOUND!')
 	else:
-		log.info(email.json())
+		emailID = email['id']
+		log.info(email.keys())
+
+'''	headers = email['metadata']['headers'][0]
+
+	date = ''
+
+	for item in headers:
+		if item['field'].value() == 'Date':
+			date = item['value']
+			log.info(date)'''
+
+
 
 
 

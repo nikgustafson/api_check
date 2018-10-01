@@ -71,7 +71,7 @@ def findEmail(configInfo, sentTo = None, subject = None, body = None):
 
 
 
-def awaitEmail(configInfo, sentTo = None, subject = None, body = None):
+def awaitEmail(configInfo, sentTo, subject, body):
 
 	user = configInfo['MAILOSAUR-KEY']
 	server = configInfo['MAILOSAUR-SERVER']
