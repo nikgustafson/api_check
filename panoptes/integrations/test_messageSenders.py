@@ -9,6 +9,7 @@ import json
 from faker import Faker
 from random import randint
 
+from . import listServers, listEmails, findEmail, awaitEmail
 from .. import me
 from .. import auth
 from ..integrations import findEmail
@@ -66,22 +67,28 @@ def test_ForgottenPassword(configInfo):
 		log.debug(user)
 
 	# reset that password!
+	log.info('reset that password!')
 	resetcall = auth.post_resetPassword(configInfo, token, resetUrl)
 
 	# get that email
+	log.info('time to get the email')
 
+	client = MailosaurClient(configInfo['MAILOSAUR-KEY'])
 
-
-
-
-
-
-	
 	pwEmailSubject = 'Here is the link to reset your password'
-	# logger.info(pwEmailSubject)
 
-   # logger.debug = "checking email for " + pwEmailSubject
-   # results = findEmail(newUser.email, pwEmailSubject)
+	email = awaitEmail(configInfo, subject=pwEmailSubject)
+	
+	if email is codes.no_content:
+		pytest.fail(msg='The email was not found on the email server.')
+		log.info('NO EMAIL FOUND!')
+	else:
+		log.info(email.json())
+
+
+
+
+
 
 @pytest.mark.description(
 	"Verifies that the OrderSubmitted message sender is working. \
