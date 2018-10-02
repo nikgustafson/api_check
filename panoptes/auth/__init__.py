@@ -4,9 +4,11 @@ import requests
 from requests import codes
 import logging
 import json
-
+from faker import Faker
 from .. import me
 
+
+fake = Faker()
 
 
 log = logging.getLogger(__name__)

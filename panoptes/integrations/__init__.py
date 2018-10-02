@@ -25,6 +25,9 @@ from requests.auth import HTTPBasicAuth
 fake = Faker()
 log = logging.getLogger(__name__)
 
+
+# message senders~~~
+
 def listServers(configInfo):
 
 	user = configInfo['MAILOSAUR-KEY']
@@ -120,4 +123,30 @@ def awaitEmail(configInfo, sentTo, subject, body):
 		return(queryMessages.json())
 
 	
+
+# auth.net
+
+def createCreditCard(configInfo, body, token):
+
+	buyer = requests.Session()
+
+	headers = {
+		'Authorization': 'Bearer ' + token['access_token'],
+		'Content-Type': 'application/json',
+		'charset': 'UTF-8'
+	}
+
+	buyer.headers.update(headers)
+
+	newCard = buyer.post(configInfo['API']+'v1/integrationproxy/authorizenet', json = body)
+
+	log.info(newCard.status_code)
+	log.info(json.dumps(newCard.json(), indent=4))
+
+	#auth.net needs another body check -- codes will lie
+
+	assert newCard.status_code is codes.created
+	assert newCard.json()['ResponseHttpStatusCode'] is codes.ok
+	return newCard.json()
 	
+		

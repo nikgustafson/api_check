@@ -7,6 +7,9 @@ from requests import codes
 import logging
 import json
 
+from faker import Faker
+
+fake = Faker()
 
 
 log = logging.getLogger(__name__)
@@ -91,3 +94,43 @@ def getMeOrders(configInfo, session):
 
 	return orders
 	
+
+def registerMe(configInfo, token):
+
+	#?anonUserToken={{anonUserToken}}
+
+	session = requests.Session()
+
+	headers = {
+		'Authorization': 'Bearer ' + token['access_token'],
+		'Content-Type': 'application/json',
+		'charset': 'UTF-8'
+	}
+
+	session.headers.update(headers)
+
+
+
+	profile = fake.profile()
+	log.info(profile)
+
+	newUser = {
+	  "Username": profile['username'],
+	  "Password": profile['ssn'],
+	  "FirstName": fake.first_name(),
+	  "LastName": fake.last_name(),
+	  "Email": profile['username']+'@.'+configInfo['MAILOSAUR-SERVER']+'@mailosaur.io',
+	  "Phone": fake.phone_number(),
+	  "Active": True,
+	  "xp": {'genFake':True}
+	}
+
+	user = session.put(configInfo['API']+'v1/me/register', json = newUser, params={'anonUserToken':token['access_token']} )
+	log.info(user.request)
+	log.info(user.status_code)
+	
+	log.info(user.json())
+
+	assert user.status_code is codes.ok
+
+	return user.json()
