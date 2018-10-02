@@ -43,9 +43,34 @@ def listEmails(configInfo):
 	emailList = requests.get('https://mailosaur.com/api/messages',  auth=(user, ''), params = {'server':server})
 
 	assert emailList.status_code is codes.ok
-	log.info(json.dumps(emailList.json(), indent=4))
+	log.debug(json.dumps(emailList.json(), indent=4))
 
 	return emailList.json()
+
+def getEmail(configInfo, emailID):
+
+	user = configInfo['MAILOSAUR-KEY']
+	server = configInfo['MAILOSAUR-SERVER']
+
+	gotEmail = requests.get('https://mailosaur.com/api/messages/'+emailID,  auth=(user, ''))
+
+	assert gotEmail.status_code is codes.ok
+	log.debug(json.dumps(gotEmail.json(), indent=4))
+
+	return gotEmail.json()
+
+
+def deleteEmail(configInfo, emailID):
+
+	user = configInfo['MAILOSAUR-KEY']
+	server = configInfo['MAILOSAUR-SERVER']
+
+	delEmail = requests.delete('https://mailosaur.com/api/messages/'+emailID,  auth=(user, ''))
+
+	assert delEmail.status_code is codes.no_content
+	log.info(delEmail)
+
+	return delEmail
 
 
 def findEmail(configInfo, sentTo = None, subject = None, body = None):
@@ -63,7 +88,7 @@ def findEmail(configInfo, sentTo = None, subject = None, body = None):
 
 	assert queryMessages.status_code is codes.ok
 
-	log.info(json.dumps(queryMessages.json(), indent=4))
+	log.debug(json.dumps(queryMessages.json(), indent=4))
 
 	return(queryMessages.json())
 	
@@ -83,7 +108,7 @@ def awaitEmail(configInfo, sentTo, subject, body):
 	}
 
 	queryMessages = requests.post('https://mailosaur.com/api/messages/await', auth=(user, ''), params = {'server':server}, json=criteria)
-	log.info(queryMessages.text)
+	log.debug(queryMessages.text)
 
 
 	assert queryMessages.status_code in (codes.ok, codes.no_content)

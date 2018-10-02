@@ -10,7 +10,7 @@ import time
 from faker import Faker
 from random import randint
 
-from . import listServers, listEmails, findEmail, awaitEmail
+from . import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail
 from .. import me
 from .. import auth
 from ..integrations import findEmail
@@ -84,6 +84,15 @@ def test_ForgottenPassword(configInfo):
 	else:
 		emailID = email['id']
 		log.info(email.keys())
+
+
+	# get email
+
+	checkEmail = getEmail(configInfo, emailID)
+
+	# delete email
+
+	deleteEmail(configInfo, emailID)
 
 '''	headers = email['metadata']['headers'][0]
 

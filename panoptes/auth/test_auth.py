@@ -165,17 +165,19 @@ def test_anonOrderNotFound(configInfo):
 
 	
 	test = anon.get(configInfo['API']+'v1/me')
+	log.info(test.text)
 	assert test.status_code is codes.ok
 
 
 	products = me.get_meProducts(configInfo, token, params = None)
-	#log.info(json.dumps(products, indent = 4))
+
+	log.info(json.dumps(products, indent = 4))
 	
 
 	assert products['Meta']['TotalCount'] > 0
 
 	productID = products['Items'][0]
-	log.info(json.dumps(productID, indent=4))
+	#log.info(json.dumps(productID, indent=4))
 	productID = productID['ID']
 
 	newOrder = {
