@@ -83,7 +83,7 @@ def test_ForgottenPassword(configInfo):
 		log.info('NO EMAIL FOUND!')
 	else:
 		emailID = email['id']
-		log.info(email.keys())
+		#log.info(email.keys())
 
 
 	# get email

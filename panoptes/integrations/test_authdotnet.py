@@ -55,7 +55,7 @@ def test_createCardNewUser(configInfo):
 
 
 	user = me.get_Me(configInfo, buyerToken)
-	log.info(json.dumps(user, indent=4))
+	#log.info(json.dumps(user, indent=4))
 
 	assert 'AuthorizeNetProfileID' not in user['xp'].keys()
 	#if 'AuthorizeNetProfileID' in user['xp'].keys():
@@ -77,7 +77,7 @@ def test_createCardNewUser(configInfo):
 		'buyerID': "AACBuyer"
 	}
 
-	log.info(json.dumps(requestBody, indent=4))
+	#log.info(json.dumps(requestBody, indent=4))
 
 
 	newCard = createCreditCard(configInfo, requestBody, buyerToken)
@@ -85,7 +85,7 @@ def test_createCardNewUser(configInfo):
 	assert newCard['ResponseHttpStatusCode'] is codes.ok
 
 	user = me.get_Me(configInfo, buyerToken)
-	log.info(json.dumps(user, indent=4))
+	#log.info(json.dumps(user, indent=4))
 
 	assert 'AuthorizeNetProfileID' in user['xp'].keys()
 
@@ -100,7 +100,7 @@ def test_createCardExistingUser(configInfo):
 	buyerToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
 
 	user = me.get_Me(configInfo, buyerToken)
-	log.info(json.dumps(user, indent=4))
+	#log.info(json.dumps(user, indent=4))
 
 	assert 'AuthorizeNetProfileID' in user['xp'].keys()
 
@@ -119,7 +119,7 @@ def test_createCardExistingUser(configInfo):
 		'buyerID': "AACBuyer"
 	}
 
-	log.info(json.dumps(requestBody, indent=4))
+	#log.info(json.dumps(requestBody, indent=4))
 
 
 	newCard = createCreditCard(configInfo, requestBody, buyerToken)
@@ -128,6 +128,6 @@ def test_createCardExistingUser(configInfo):
 	assert newCard['ResponseBody']['messages']['message'][0]['code'] == 'E00039'
 
 	user = me.get_Me(configInfo, buyerToken)
-	log.info(json.dumps(user, indent=4))
+	#log.info(json.dumps(user, indent=4))
 
 	assert 'AuthorizeNetProfileID' in user['xp'].keys()

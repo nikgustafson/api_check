@@ -165,13 +165,13 @@ def test_anonOrderNotFound(configInfo):
 
 	
 	test = anon.get(configInfo['API']+'v1/me')
-	log.info(test.text)
+	#log.info(test.text)
 	assert test.status_code is codes.ok
 
 
 	products = me.get_meProducts(configInfo, token, params = None)
 
-	log.info(json.dumps(products, indent = 4))
+	#log.info(json.dumps(products, indent = 4))
 	
 
 	assert products['Meta']['TotalCount'] > 0
@@ -186,7 +186,7 @@ def test_anonOrderNotFound(configInfo):
 
 	order = anon.post(configInfo['API']+'v1/orders/outgoing', json = newOrder)
 
-	log.info(json.dumps(order.json(), indent=4))
+	#log.info(json.dumps(order.json(), indent=4))
 	assert order.status_code is codes.created
 
 	orderID = order.json()['ID']
@@ -198,7 +198,8 @@ def test_anonOrderNotFound(configInfo):
 	}
 
 	lineitem = anon.post(configInfo['API']+'v1/orders/outgoing/'+orderID+'/lineitems', json = newLine)
-	log.info(json.dumps(lineitem.json(), indent=4))
+	log.debug(lineitem.status_code)
+	#log.info(json.dumps(lineitem.json(), indent=4))
 	assert lineitem.status_code is codes.created
 
 	#orders = me.getMeOrders(configInfo, anon)

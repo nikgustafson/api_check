@@ -29,8 +29,9 @@ def get_Me(configInfo, token):
 	me = requests.get(configInfo['API']+'v1/me', headers = headers)
 
 	#log.debug(me.request.headers)
-	#log.debug(me.request.body)
-	log.debug(json.dumps(me.json(), indent=2))
+	log.debug(me.request.url)
+	#log.debug(json.dumps(me.json(), indent=2))
+	log.debug(me.status_code)
 	assert me.status_code is codes.ok
 
 	return me.json()
@@ -49,8 +50,9 @@ def patch_Me(configInfo, token, newUser):
 	me = requests.patch(configInfo['API']+'v1/me', json= newUser, headers = headers)
 
 	#log.debug(me.request.headers)
-	#log.debug(me.request.body)
-	log.debug(json.dumps(me.json(), indent=2))
+	log.debug(me.request.url)
+	#log.debug(json.dumps(me.json(), indent=2))
+	log.debug(me.status_code)
 	assert me.status_code is codes.ok
 
 	return me.json()
@@ -73,6 +75,7 @@ def get_meProducts(configInfo, token, params):
 		#log.debug(me.request.headers)
 		log.debug(me.request.url)
 		#log.debug(json.dumps(me.json(), indent=2))
+		log.debug(me.status_code)
 		assert me.status_code is codes.ok
 	except requests.exceptions.RequestException as e: 
 		print(e)
@@ -85,12 +88,13 @@ def get_meProducts(configInfo, token, params):
 def getMeOrders(configInfo, session):
 
 	orders = session.get(configInfo['API']+'v1/me/orders/')
+	log.info(orders.request.url)
 	log.info(orders.status_code)
 	#log.info(delete.json())
 
 	assert orders.status_code is codes.ok
 
-	log.info(json.dumps(orders.json(), indent=4))
+	#log.info(json.dumps(orders.json(), indent=4))
 
 	return orders
 	
@@ -112,7 +116,7 @@ def registerMe(configInfo, token):
 
 
 	profile = fake.profile()
-	log.info(profile)
+	#log.info(profile)
 
 	newUser = {
 	  "Username": profile['username'],
@@ -126,10 +130,10 @@ def registerMe(configInfo, token):
 	}
 
 	user = session.put(configInfo['API']+'v1/me/register', json = newUser, params={'anonUserToken':token['access_token']} )
-	log.info(user.request)
+	log.info(user.request.url)
 	log.info(user.status_code)
 	
-	log.info(user.json())
+	#log.info(user.json())
 
 	assert user.status_code is codes.ok
 

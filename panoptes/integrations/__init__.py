@@ -34,7 +34,7 @@ def listServers(configInfo):
 
 	serverlist = requests.get('https://mailosaur.com/api/servers',  auth=(user, ''))
 	assert serverlist.status_code is codes.ok
-	log.info(json.dumps(serverlist.json(), indent=4))
+	#log.info(json.dumps(serverlist.json(), indent=4))
 
 	return serverlist.json()
 
@@ -46,7 +46,7 @@ def listEmails(configInfo):
 	emailList = requests.get('https://mailosaur.com/api/messages',  auth=(user, ''), params = {'server':server})
 
 	assert emailList.status_code is codes.ok
-	log.debug(json.dumps(emailList.json(), indent=4))
+	#log.debug(json.dumps(emailList.json(), indent=4))
 
 	return emailList.json()
 
@@ -58,7 +58,7 @@ def getEmail(configInfo, emailID):
 	gotEmail = requests.get('https://mailosaur.com/api/messages/'+emailID,  auth=(user, ''))
 
 	assert gotEmail.status_code is codes.ok
-	log.debug(json.dumps(gotEmail.json(), indent=4))
+	#log.debug(json.dumps(gotEmail.json(), indent=4))
 
 	return gotEmail.json()
 
@@ -71,7 +71,7 @@ def deleteEmail(configInfo, emailID):
 	delEmail = requests.delete('https://mailosaur.com/api/messages/'+emailID,  auth=(user, ''))
 
 	assert delEmail.status_code is codes.no_content
-	log.info(delEmail)
+	#log.info(delEmail)
 
 	return delEmail
 
@@ -91,7 +91,7 @@ def findEmail(configInfo, sentTo = None, subject = None, body = None):
 
 	assert queryMessages.status_code is codes.ok
 
-	log.debug(json.dumps(queryMessages.json(), indent=4))
+	#log.debug(json.dumps(queryMessages.json(), indent=4))
 
 	return(queryMessages.json())
 	
@@ -111,7 +111,7 @@ def awaitEmail(configInfo, sentTo, subject, body):
 	}
 
 	queryMessages = requests.post('https://mailosaur.com/api/messages/await', auth=(user, ''), params = {'server':server}, json=criteria)
-	log.debug(queryMessages.text)
+	#log.debug(queryMessages.text)
 
 
 	assert queryMessages.status_code in (codes.ok, codes.no_content)
@@ -119,7 +119,7 @@ def awaitEmail(configInfo, sentTo, subject, body):
 	if queryMessages.status_code is codes.no_content:
 		return(queryMessages.status_code)
 	else:
-		log.info(json.dumps(queryMessages.json(), indent=4))
+		#log.info(json.dumps(queryMessages.json(), indent=4))
 		return(queryMessages.json())
 
 	
@@ -139,9 +139,9 @@ def createCreditCard(configInfo, body, token):
 	buyer.headers.update(headers)
 
 	newCard = buyer.post(configInfo['API']+'v1/integrationproxy/authorizenet', json = body)
-
+	log.info(newCard.request.url)
 	log.info(newCard.status_code)
-	log.info(json.dumps(newCard.json(), indent=4))
+	#log.info(json.dumps(newCard.json(), indent=4))
 
 	#auth.net needs another body check -- codes will lie
 

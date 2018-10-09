@@ -19,11 +19,14 @@ fake=Faker()
 log = logging.getLogger(__name__)
 
 
-def test_sessions(configInfo):
+def getSessions(configInfo, client_id='', username=''):
 
+	#if client_id == '':
 	client_id = configInfo['BUYER-CLIENTID']
-	username = 'dbrown'
-	password = 'fails345!!'
+
+	#if username == '':
+	username = configInfo['BUYER-USERNAME']
+	password = configInfo['BUYER-PASSWORD']
 	scope = ['Shopper']
 
 	buyerToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
@@ -38,7 +41,7 @@ def test_sessions(configInfo):
 
 	buyer.headers.update(headers)
 
-	#log.info(buyer.headers)
+	log.info(buyer.headers)
 
 	
 	test = buyer.get(configInfo['API']+'v1/me')
@@ -46,6 +49,8 @@ def test_sessions(configInfo):
 	#log.info(test.url)
 	#log.info(test.headers)
 	#log.info(test.text)
+
+	return buyer
 
 def deleteMeAddress(configInfo, session, productID):
 
@@ -106,12 +111,12 @@ def test_meAddressesCreate(configInfo):
 
 	meGet = buyer.get(configInfo['API']+'v1/me')
 	assert meGet.status_code is codes.ok
-	log.info(json.dumps(meGet.json(), indent=4))
+	#log.info(json.dumps(meGet.json(), indent=4))
 
 	addList = buyer.get(configInfo['API']+'v1/me/addresses')
 	assert addList.status_code is codes.ok
 
-	log.info(json.dumps(addList.json()))
+	#log.info(json.dumps(addList.json()))
 
 	totalAdd = addList.json()['Meta']['TotalCount']
 
@@ -150,12 +155,12 @@ def test_meAddressesDelete(configInfo):
 
 	meGet = buyer.get(configInfo['API']+'v1/me')
 	assert meGet.status_code is codes.ok
-	log.info(json.dumps(meGet.json(), indent=4))
+	#log.info(json.dumps(meGet.json(), indent=4))
 
 	addList = buyer.get(configInfo['API']+'v1/me/addresses')
 	assert addList.status_code is codes.ok
 
-	log.info(json.dumps(addList.json()))
+	#log.info(json.dumps(addList.json()))
 
 	totalAdd = addList.json()['Meta']['TotalCount']
 
@@ -173,5 +178,36 @@ def test_meAddressesDelete(configInfo):
 
 	assert addList2.json()['Meta']['TotalCount'] == totalAdd-1
 
+
+@pytest.mark.smoke
+@pytest.mark.description('Tests all Me list endpoints.')
+@pytest.mark.parametrize("endpoint", [
+	"",
+	"products",
+	"costcenters",
+	"usergroups",
+	"addresses",
+	"creditcards",
+	"categories",
+	"orders",
+	"promotions",
+	"spendingAccounts",
+	"shipments",
+	"catalogs"
+
+])
+def test_me_gets(configInfo, endpoint):
+
+	session = getSessions(configInfo)
+
+	collection = session.get(configInfo['API']+'v1/me/'+endpoint)
+	log.info(collection.url)
+	log.info(collection.status_code)
+	log.info(repr(collection.elapsed.microseconds)+' microseconds')
+	#log.debug(collection.json())
+	if 'Meta' in collection.json().keys():
+		log.info(collection.json()['Meta']['TotalCount'])
+
+	assert collection.status_code is codes.ok
 
 
