@@ -1,6 +1,7 @@
 
 # ARGUS PANOPTES - api check suite for OrderCloud
 
+DOCKER [!](https://ordercloud.visualstudio.com/Ordercloud%20QA/_apis/build/status/Ordercloud%20QA-Docker%20CI)
 
 
 ## How to Run Locally
