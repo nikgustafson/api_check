@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/vsts/pipelines/languages/docker
 
 jobs:
-- job: 'install ALL THE THINGS'
+- job: 'install_ALL_THE_THINGS'
   steps:
     - script: echo $(Agent.HomeDirectory)
     - script: echo $(Agent.OS)
