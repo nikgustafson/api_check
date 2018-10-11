@@ -1,9 +1,9 @@
 import pytest
 import tempfile
+
 import os
 
-path = Path('logs')
-# tempfile.TemporaryDirectory().name
+path = tempfile.TemporaryDirectory().name
 print(str(path))
 
 # currently runs all tests
