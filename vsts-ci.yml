@@ -12,12 +12,10 @@ jobs:
       versionSpec: '3.6'
       architecture: 'x64'
   - script: . setup.sh
-  - script: pip install -r panoptes/requirements.txt
+  - script: pip install -r requirements.txt
     displayName: 'Install Requirements'
   - script: |
-      pip install pytest
-      pip install pytest-cov
       mkdir logs
-      pytest panoptes  --junitxml=logs/test-results.xml --cov=com --cov-report=xml --cov-report=html
+      pytest -m smoke --junitxml=logs/test-results.xml --ENV=prod
     displayName: 'Test with pytest'
 
