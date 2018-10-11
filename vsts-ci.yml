@@ -6,7 +6,7 @@
 jobs:
 - job: 'Test'
   steps:
-  - script: sudo python3 -m pip uninstall pip && sudo apt install python3-pip --reinstall.
+  - script: sudo python3 -m pip uninstall pip && sudo apt install python3-pip
     displayName: 'Upgrade Pip'
   - script: pip install -r panoptes/requirements.txt
     displayName: 'pip install requirements'
