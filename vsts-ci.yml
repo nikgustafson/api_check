@@ -6,8 +6,10 @@
 jobs:
 - job: 'Test'
   steps:
-  - script: pip install --upgrade pip
+  - script: sudo python3 -m pip uninstall pip && sudo apt install python3-pip --reinstall.
+    displayName: 'Upgrade Pip'
   - script: pip install -r panoptes/requirements.txt
+    displayName: 'pip install requirements'
   - script: pytest panoptes/runScript.py
     displayName: 'Running Smoke Tests'
 
