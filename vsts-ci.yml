@@ -13,8 +13,11 @@ jobs:
       architecture: 'x64'
   - script: . setup.sh
   - script: pip install -r panoptes/requirements.txt
-    displayName: 'pip install requirements'
-  - script: pwd
-  - script: pytest runScript.py
-    displayName: 'Running Smoke Tests'
+    displayName: 'Install Requirements'
+  - script: |
+      pip install pytest
+      pip install pytest-cov
+      mkdir logs
+      pytest panoptes  --junitxml=logs/test-results.xml --cov=com --cov-report=xml --cov-report=html
+    displayName: 'Test with pytest'
 

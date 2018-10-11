@@ -9,8 +9,8 @@ import json
 from faker import Faker
 
 
-from ..auth import get_Token_UsernamePassword, get_Token_ClientID, post_resetPassword, get_anon_user_token
-from .. import me
+from api_check.auth import get_Token_UsernamePassword, get_Token_ClientID, post_resetPassword, get_anon_user_token
+import api_check.me
 
 fake = Faker()
 
@@ -44,7 +44,7 @@ def test_usernamePasswordGrant(configInfo):
 
 	# can use that token to make calls 
 
-	user = me.get_Me(configInfo, token['access_token'])
+	user = api_check.me.get_Me(configInfo, token['access_token'])
 
 @pytest.mark.smoke
 @pytest.mark.description('''Given a buyer with anonymous shopping enabled,\n
@@ -61,7 +61,7 @@ def test_anonGrant(configInfo):
 
 	# can use that token to make calls 
 
-	user = me.get_Me(configInfo, token['access_token'])
+	user = api_check.me.get_Me(configInfo, token['access_token'])
 
 	assert user['ID'] == 'anon-template'
 
@@ -80,7 +80,7 @@ def test_clientCredentialsGrant(configInfo):
 
 	# can use that token to make calls 
 
-	user = me.get_Me(configInfo, token['access_token'])
+	user = api_check.me.get_Me(configInfo, token['access_token'])
 
 @pytest.mark.skip
 def test_updatePriceSchedules(configInfo):
@@ -149,7 +149,7 @@ def test_anonOrderNotFound(configInfo):
 	
 	token = get_anon_user_token(configInfo, client_id)
 
-	user = me.get_Me(configInfo, token['access_token'])
+	user = api_check.me.get_Me(configInfo, token['access_token'])
 
 	anon = requests.Session()
 
@@ -169,7 +169,7 @@ def test_anonOrderNotFound(configInfo):
 	assert test.status_code is codes.ok
 
 
-	products = me.get_meProducts(configInfo, token, params = None)
+	products = api_check.me.get_meProducts(configInfo, token, params = None)
 
 	#log.info(json.dumps(products, indent = 4))
 	
@@ -202,7 +202,7 @@ def test_anonOrderNotFound(configInfo):
 	#log.info(json.dumps(lineitem.json(), indent=4))
 	assert lineitem.status_code is codes.created
 
-	#orders = me.getMeOrders(configInfo, anon)
+	#orders = api_check.me.getMeOrders(configInfo, anon)
 
 	#log.info(json.dumps(orders.json(), indent=4))
 

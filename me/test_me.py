@@ -11,8 +11,8 @@ import json
 from faker import Faker
 
 
-from .. import auth
-from ..auth import get_Token_UsernamePassword
+import api_check.auth
+from api_check.auth import get_Token_UsernamePassword
 
 fake=Faker()
 
@@ -29,7 +29,7 @@ def getSessions(configInfo, client_id='', username=''):
 	password = configInfo['BUYER-PASSWORD']
 	scope = ['Shopper']
 
-	buyerToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	buyerToken = api_check.auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
 
 	buyer = requests.Session()
 

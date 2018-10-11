@@ -9,10 +9,10 @@ from random import randint
 import urllib
 import time
 
-from ..auth import get_Token_UsernamePassword
-from ..products import get_Products, patch_Product
-from ..me import get_meProducts
-from . import sessionInit
+from api_check.auth import get_Token_UsernamePassword
+from api_check.products import get_Products, patch_Product
+from api_check.me import get_meProducts
+from api_check.productFacets import sessionInit
 
 
 fake = Faker()

@@ -5,9 +5,9 @@ import requests
 from requests import codes
 import logging
 import json
-from . import me
-from . import getConfigData
+import api_check.me
 
+from api_check import getConfigData
 
 log = logging.getLogger(__name__)
 

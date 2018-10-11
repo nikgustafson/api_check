@@ -5,7 +5,7 @@ from requests import codes
 import logging
 import json
 from faker import Faker
-from .. import me
+import api_check.me
 
 
 fake = Faker()
@@ -82,7 +82,7 @@ def post_resetPassword(configInfo, token, resetUrl):
 	Sends a temporary verification code via email, which must subsequently be passed in a Reset Password call.
 	"""
 
-	user = me.get_Me(configInfo, token)
+	user = api_check.me.get_Me(configInfo, token)
 	#log.debug(user)
 
 	payload = {

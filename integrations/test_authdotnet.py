@@ -9,10 +9,10 @@ import time
 from faker import Faker
 from random import randint
 
-from . import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail, createCreditCard
-from .. import me
-from .. import auth
-from ..integrations import findEmail
+from api_check.integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail, createCreditCard
+import api_check.me
+import api_check.auth
+from api_check.integrations import findEmail
 
 
 
@@ -41,25 +41,25 @@ def test_createCardNewUser(configInfo):
 
 
 	# get an anon token
-	token = auth.get_anon_user_token(configInfo, client_id)
+	token = api_check.auth.get_anon_user_token(configInfo, client_id)
 
 	# can use that token to make calls 
 
-	user = me.get_Me(configInfo, token['access_token'])
+	user = api_check.me.get_Me(configInfo, token['access_token'])
 
 	#buyerToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJqb3JkYW5AbWFpbGluYXRvci5jb20iLCJjaWQiOiJhYTM2MTJhZC0wOThkLTQ0ZTEtOGQ1ZC00MWFlMTk5NGVlZmEiLCJpbXAiOiIzNjkyMCIsInVzcnR5cGUiOiJidXllciIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL2FwaS5vcmRlcmNsb3VkLmlvIiwiZXhwIjoxNTM4NDk0Mjc2LCJuYmYiOjE1Mzg0OTA2NzZ9.MyR7d_3XaBCRYqXCcONaPxmSlI-7SKO7oYfAWBgF77U'
 	#buyerToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
 
 	# register the anon user as a new user
-	buyerToken = me.registerMe(configInfo, token)
+	buyerToken = api_check.me.registerMe(configInfo, token)
 
 
-	user = me.get_Me(configInfo, buyerToken)
+	user = api_check.me.get_Me(configInfo, buyerToken)
 	#log.info(json.dumps(user, indent=4))
 
 	assert 'AuthorizeNetProfileID' not in user['xp'].keys()
 	#if 'AuthorizeNetProfileID' in user['xp'].keys():
-	#	me.patch_Me(configInfo, buyerToken, {'xp.AuthorizeNetProfileID':None})
+	#	api_check.me.patch_Me(configInfo, buyerToken, {'xp.AuthorizeNetProfileID':None})
 
 
 	#create a new card through auth.net 
@@ -84,7 +84,7 @@ def test_createCardNewUser(configInfo):
 
 	assert newCard['ResponseHttpStatusCode'] is codes.ok
 
-	user = me.get_Me(configInfo, buyerToken)
+	user = api_check.me.get_Me(configInfo, buyerToken)
 	#log.info(json.dumps(user, indent=4))
 
 	assert 'AuthorizeNetProfileID' in user['xp'].keys()
@@ -97,9 +97,9 @@ def test_createCardExistingUser(configInfo):
 	password = configInfo['BUYER-PASSWORD']
 	scope = ['Shopper', 'MeAdmin']
 
-	buyerToken = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	buyerToken = api_check.auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
 
-	user = me.get_Me(configInfo, buyerToken)
+	user = api_check.me.get_Me(configInfo, buyerToken)
 	#log.info(json.dumps(user, indent=4))
 
 	assert 'AuthorizeNetProfileID' in user['xp'].keys()
@@ -127,7 +127,7 @@ def test_createCardExistingUser(configInfo):
 	assert newCard['ResponseHttpStatusCode'] is codes.ok
 	assert newCard['ResponseBody']['messages']['message'][0]['code'] == 'E00039'
 
-	user = me.get_Me(configInfo, buyerToken)
+	user = api_check.me.get_Me(configInfo, buyerToken)
 	#log.info(json.dumps(user, indent=4))
 
 	assert 'AuthorizeNetProfileID' in user['xp'].keys()

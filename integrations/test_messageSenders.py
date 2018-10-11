@@ -10,10 +10,10 @@ import time
 from faker import Faker
 from random import randint
 
-from . import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail
-from .. import me
-from .. import auth
-from ..integrations import findEmail
+from api_check.integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail
+import api_check.me
+import api_check.auth
+from api_check.integrations import findEmail
 
 from mailosaur import MailosaurClient
 from mailosaur.models import SearchCriteria
@@ -42,12 +42,12 @@ def test_ForgottenPassword(configInfo):
 	password = configInfo['BUYER-PASSWORD']
 	scope = ['Shopper', 'MeAdmin']
 
-	# auth as buyer user
-	token = auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
+	# api_check.auth as buyer user
+	token = api_check.auth.get_Token_UsernamePassword(configInfo, client_id, username, password, scope)
 
 	resetUrl = fake.url()
 
-	user = me.get_Me(configInfo, token['access_token'])
+	user = api_check.me.get_Me(configInfo, token['access_token'])
 	userEmail = user['Email']
 
 	# make sure the user has the right email server
@@ -56,14 +56,14 @@ def test_ForgottenPassword(configInfo):
 		newEmail = { 'Email': user['Username']+'.'+configInfo['MAILOSAUR-SERVER']+'@mailosaur.io' }
 		log.debug(newEmail)
 
-		user = me.patch_Me(configInfo, token, newUser = newEmail)
+		user = api_check.me.patch_Me(configInfo, token, newUser = newEmail)
 		log.debug(user)
 
 		userEmail=user['Email']
 
 	# reset that password!
 	log.info('reset that password!')
-	resetcall = auth.post_resetPassword(configInfo, token, resetUrl)
+	resetcall = api_check.auth.post_resetPassword(configInfo, token, resetUrl)
 
 	# get that email
 	#time.sleep(300)
