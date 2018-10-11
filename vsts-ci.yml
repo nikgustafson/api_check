@@ -3,6 +3,24 @@
 # Add steps that use Docker Compose, tag images, push to a registry, run an image, and more:
 # https://docs.microsoft.com/vsts/pipelines/languages/docker
 
+jobs:
+- job: 'Test'
+  pool:
+  vmImage: 'Ubuntu 16.04'
+  strategy:
+    matrix:
+      Python35:
+        python.version: '3.5'
+      Python36:
+        python.version: '3.6'
+    maxParallel: 3
+
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(python.version)'
+        architecture: 'x64'
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
@@ -14,6 +32,6 @@ steps:
   displayName: 'docker build'
 - script: docker tag panoptes kreeher/panoptes
   displayName: 'docker tag'
-- script: docker login -u $(docker-user) -p $(docker-pass)
+- script: docker login -u $(docker-user) --password-stdin $(docker-pass) 
 - script: docker push kreeher/panoptes
   displayName: 'docker push'
