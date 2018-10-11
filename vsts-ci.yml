@@ -6,10 +6,8 @@
 jobs:
 - job: 'Test'
   steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '$(python.version)'
-      architecture: 'x64'
+  - script: pytest panoptes/runScript.py
+    displayName: 'Running Smoke Tests'
 
 - job: 'Docker'
 
