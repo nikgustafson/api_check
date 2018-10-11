@@ -21,17 +21,16 @@ jobs:
         versionSpec: '$(python.version)'
         architecture: 'x64'
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+- job: 'Docker'
 
-variables:
-  imageName: 'kreeher/panoptes:$(build.buildId)'
+  variables:
+    imageName: 'kreeher/panoptes:$(build.buildId)'
 
-steps:
-- script: docker build panoptes -t panoptes
-  displayName: 'docker build'
-- script: docker tag panoptes kreeher/panoptes
-  displayName: 'docker tag'
-- script: docker login -u $(docker-user) --password-stdin $(docker-pass) 
-- script: docker push kreeher/panoptes
-  displayName: 'docker push'
+  steps:
+  - script: docker build panoptes -t panoptes
+    displayName: 'docker build'
+  - script: docker tag panoptes kreeher/panoptes
+    displayName: 'docker tag'
+  - script: docker login -u $(docker-user) --password-stdin $(docker-pass) 
+  - script: docker push kreeher/panoptes
+    displayName: 'docker push'
