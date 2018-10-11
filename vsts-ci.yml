@@ -11,6 +11,9 @@ jobs:
     inputs:
       versionSpec: '3.6'
       architecture: 'x64'
+  - script: echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
+  - script: echo "##vso[task.setvariable variable=secret.Sauce;issecret=true]crushed tomatoes with garlic"
+  - script: echo "No problem reading $1 or $SAUCE" && echo "But I cannot read $SECRET_SAUCE" && echo "But I can read $2 (but the log is redacted so I do not spoil the secret)" 
   - script: pip install -r panoptes/requirements.txt
     displayName: 'pip install requirements'
   - script: mkdir logs
