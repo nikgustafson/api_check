@@ -14,8 +14,8 @@ jobs:
   - script: pip install -r panoptes/requirements.txt
     displayName: 'pip install requirements'
   - script: mkdir logs
-  - script: echo  $(Build.Repository.LocalPath)
-  - script: PANPATH = $(Build.Repository.LocalPath)/panoptes 
+  - script: echo  $Build.Repository.LocalPath
+  - script: PANPATH = $Build.Repository.LocalPath/panoptes
   - script: echo $PANPATH
   - script: cd $PANPATH
   - script: pytest runScript.py
