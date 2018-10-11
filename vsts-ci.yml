@@ -11,14 +11,12 @@ jobs:
     inputs:
       versionSpec: '3.6'
       architecture: 'x64'
-  - script: echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
-  - script: echo "##vso[task.setvariable variable=secret.Sauce;issecret=true]crushed tomatoes with garlic"
-  - script: echo "No problem reading $1 or $SAUCE" && echo "But I cannot read $SECRET_SAUCE" && echo "But I can read $2 (but the log is redacted so I do not spoil the secret)" 
+  - script: echo "AGENT_WORKFOLDER is $AGENT_WORKFOLDER" && echo "AGENT_WORKFOLDER contents:" && ls -1 $AGENT_WORKFOLDER
   - script: pip install -r panoptes/requirements.txt
     displayName: 'pip install requirements'
   - script: mkdir logs
-  - script: echo  $BUILD_REPOSITORY_LOCALPATH
-  - script: PANPATH = $BUILD_REPOSITORY_LOCALPATH/panoptes
+  - script: echo  "local path is $BUILD_REPOSITORY_LOCALPATH"
+  - script: echo "##vso[task.setvariable variable=panpath]$BUILD_REPOSITORY_LOCALPATH/panoptes"
   - script: echo $PANPATH
   - script: cd $PANPATH
   - script: pytest runScript.py
