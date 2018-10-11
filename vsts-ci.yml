@@ -15,6 +15,7 @@ jobs:
     displayName: 'pip install requirements'
   - script: mkdir logs
   - script: ls && cd panoptes
+  - script: pwd && ls
   - script: pytest runScript.py
     displayName: 'Running Smoke Tests'
 
