@@ -6,6 +6,7 @@
 jobs:
 - job: 'Test'
   steps:
+  - script: pip install --upgrade pip
   - script: pip install -r panoptes/requirements.txt
   - script: pytest panoptes/runScript.py
     displayName: 'Running Smoke Tests'

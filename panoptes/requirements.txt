@@ -1,4 +1,5 @@
 faker
+setuptools
 pytest
 requests
 tesults
