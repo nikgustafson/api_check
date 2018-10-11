@@ -11,12 +11,10 @@ jobs:
     inputs:
       versionSpec: '3.6'
       architecture: 'x64'
-  - script: echo $(Agent.HomeDirectory)
-  - script: echo $(Agent.OS)
-  - script: pip --version
   - script: pip install -r panoptes/requirements.txt
     displayName: 'pip install requirements'
   - script: mkdir logs
-  - script: pytest panoptes/runScript.py
+  - script: cd panoptes
+  - script: pytest runScript.py
     displayName: 'Running Smoke Tests'
 
