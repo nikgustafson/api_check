@@ -6,19 +6,7 @@
 jobs:
 - job: 'Test'
   steps:
+  - script: pip install -r panoptes/requirements.txt
   - script: pytest panoptes/runScript.py
     displayName: 'Running Smoke Tests'
 
-- job: 'Docker'
-
-  variables:
-    imageName: 'kreeher/panoptes:$(build.buildId)'
-
-  steps:
-  - script: docker build panoptes -t panoptes
-    displayName: 'docker build'
-  - script: docker tag panoptes kreeher/panoptes
-    displayName: 'docker tag'
-  - script: docker login -u $(docker-user) --password-stdin $(docker-pass) 
-  - script: docker push kreeher/panoptes
-    displayName: 'docker push'
