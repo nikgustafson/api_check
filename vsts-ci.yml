@@ -15,7 +15,8 @@ jobs:
     displayName: 'pip install requirements'
   - script: mkdir logs
   - script: echo  $Build.Repository.LocalPath
-  - script: PANPATH = $Build.Repository.LocalPath+"/panoptes" && echo $PANPATH
+  - script: PANPATH = $Build.Repository.LocalPath+"/panoptes" 
+  - script: echo $PANPATH
   - script: cd $PANPATH
   - script: pytest runScript.py
     displayName: 'Running Smoke Tests'
