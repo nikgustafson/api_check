@@ -11,7 +11,7 @@ jobs:
     inputs:
       versionSpec: '3.6'
       architecture: 'x64'
-  - script: . setup.sh
+#  - script: . setup.sh
   - script: pip install -r requirements.txt
     displayName: 'Install Requirements'
   - script: |
