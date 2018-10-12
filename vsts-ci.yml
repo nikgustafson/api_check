@@ -16,7 +16,7 @@ jobs:
     displayName: 'Install Requirements'
   - script: |
       echo $BUILD_REPOSITORY_LOCALPATH
-      echo "present working directory is %PWD"
+      ls
     displayName: 'Check Current Dir'
   - script: |
       mkdir logs
