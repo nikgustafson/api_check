@@ -11,7 +11,7 @@ jobs:
     inputs:
       versionSpec: '3.6'
       architecture: 'x64'
-  - task: UseSecureFile@1
+  - task: UseSecureFile@0
     inputs:
       secureFile: 'config.ini'
 #  - script: . setup.sh
