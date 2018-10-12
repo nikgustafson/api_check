@@ -12,7 +12,7 @@ jobs:
       versionSpec: '3.6'
       architecture: 'x64'
   - task: UseSecureFile@1
-    inputes:
+    inputs:
       secureFile: 'config.ini'
 #  - script: . setup.sh
   - script: pip install -r requirements.txt
