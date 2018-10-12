@@ -15,6 +15,10 @@ jobs:
   - script: pip install -r requirements.txt
     displayName: 'Install Requirements'
   - script: |
+      echo $BUILD_REPOSITORY_LOCALPATH
+      echo "present working directory is %PWD"
+    displayName: 'Check Current Dir'
+  - script: |
       mkdir logs
       pytest -m smoke --junitxml=logs/test-results.xml --ENV=prod
     displayName: 'Test with pytest'
