@@ -19,7 +19,6 @@ jobs:
       ls
     displayName: 'Check Current Dir'
   - script: |
-      mkdir logs
-      pytest -m smoke --junitxml=logs/test-results.xml --ENV=prod
+      pytest panoptes -m smoke --ENV=prod --log-file panoptes/logs/hello.log
     displayName: 'Test with pytest'
 
