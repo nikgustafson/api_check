@@ -1,0 +1,363 @@
+INFO | conftest : configInfo | 2018-10-11 16:41:01 | yes
+INFO | conftest : mod_header | 2018-10-11 16:41:01 | 
+------------------------------
+| API Environment: prod |
+------------------------------
+
+INFO | conftest : reporting_header | 2018-10-11 16:41:01 | 
+------------------------------
+| Reporting: yes |
+------------------------------
+
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:01 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:01 | https://api.ordercloud.io:443 "GET /env HTTP/1.1" 200 273
+INFO | test_base : test_api_env_vars | 2018-10-11 16:41:01 | API ENV: {
+  "Environment": "prod",
+  "Version": "1.0.84.1114",
+  "Branch": "default",
+  "Commit": "70029bdd27bc1961de518b4cf6e970f8968dfce5",
+  "CommitDate": "2018-10-05T00:57:29+00:00",
+  "BuildDate": "2018-10-05T01:32:05+00:00"
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:01 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:01 | https://auth.ordercloud.io:443 "GET /env HTTP/1.1" 200 280
+INFO | test_base : test_api_env_vars | 2018-10-11 16:41:01 | AUTH ENV: {
+  "Environment": "prod",
+  "Version": "1.0.84.1114",
+  "Branch": "default",
+  "Commit": "70029bdd27bc1961de518b4cf6e970f8968dfce5",
+  "CommitDate": "2018-10-05T00:57:29+00:00",
+  "BuildDate": "2018-10-05T01:32:05+00:00"
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:01 | Starting new HTTPS connection (1): integrations.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:02 | https://integrations.ordercloud.io:443 "GET /env HTTP/1.1" 200 273
+INFO | test_base : test_api_env_vars | 2018-10-11 16:41:02 | INTEGRATIONS ENV: {
+  "Environment": "prod",
+  "Version": "1.0.84.1114",
+  "Branch": "default",
+  "Commit": "70029bdd27bc1961de518b4cf6e970f8968dfce5",
+  "CommitDate": "2018-10-05T00:57:29+00:00",
+  "BuildDate": "2018-10-05T01:32:05+00:00"
+}
+INFO | api_check : getConfigData | 2018-10-11 16:41:02 | API: 'https://api.ordercloud.io/'
+INFO | api_check : getConfigData | 2018-10-11 16:41:02 | AUTH: 'https://auth.ordercloud.io/'
+INFO | api_check : getConfigData | 2018-10-11 16:41:02 | api env is prod!!
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:02 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:02 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:02 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 544
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:02 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA2MywibmJmIjoxNTM5Mjk0MDYzfQ.GTIW7wK_TTcxMSlJHiOjMUQk_tfMkv3NqZ-pxK874Ug",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:02 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:02 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | me : get_Me | 2018-10-11 16:41:02 | https://api.ordercloud.io/v1/me
+DEBUG | me : get_Me | 2018-10-11 16:41:02 | 200
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:02 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'client_credentials', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:02 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:02 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 567
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:02 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/html', 'Content-Length': '90'}
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:02 | client_id=1AA9B54E-B31D-48E6-94E2-7454208D82E0&grant_type=client_credentials&Scope=Shopper
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:02 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJhbm9uLXRlbXBsYXRlIiwiY2lkIjoiMWFhOWI1NGUtYjMxZC00OGU2LTk0ZTItNzQ1NDIwOGQ4MmUwIiwib3JkZXJpZCI6IjhvZGE0RTd1STBtUHctT2ZoUHlDTkEiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTg5ODg2MywibmJmIjoxNTM5Mjk0MDYzfQ.pXq-IhszTnEQ_ucKB9E2tECbnRVej2p88HLCuP-IuHo",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | auth : get_anon_user_token | 2018-10-11 16:41:02 | {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJhbm9uLXRlbXBsYXRlIiwiY2lkIjoiMWFhOWI1NGUtYjMxZC00OGU2LTk0ZTItNzQ1NDIwOGQ4MmUwIiwib3JkZXJpZCI6IjhvZGE0RTd1STBtUHctT2ZoUHlDTkEiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTg5ODg2MywibmJmIjoxNTM5Mjk0MDYzfQ.pXq-IhszTnEQ_ucKB9E2tECbnRVej2p88HLCuP-IuHo', 'token_type': 'bearer', 'expires_in': 35999}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:02 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:03 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 429
+DEBUG | me : get_Me | 2018-10-11 16:41:03 | https://api.ordercloud.io/v1/me
+DEBUG | me : get_Me | 2018-10-11 16:41:03 | 200
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:03 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'client_credentials', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:03 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:03 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 568
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:03 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/html', 'Content-Length': '90'}
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:03 | client_id=1AA9B54E-B31D-48E6-94E2-7454208D82E0&grant_type=client_credentials&Scope=Shopper
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:03 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJhbm9uLXRlbXBsYXRlIiwiY2lkIjoiMWFhOWI1NGUtYjMxZC00OGU2LTk0ZTItNzQ1NDIwOGQ4MmUwIiwib3JkZXJpZCI6IlpHUFJTdm95R2t5MGNPTzBzcC1qR2ciLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTg5ODg2NCwibmJmIjoxNTM5Mjk0MDY0fQ.v79w_zVDPmpc_cRO8E8712ApsnSwEKLejaQLAYADyZo",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:03 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:03 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 429
+DEBUG | me : get_Me | 2018-10-11 16:41:03 | https://api.ordercloud.io/v1/me
+DEBUG | me : get_Me | 2018-10-11 16:41:03 | 200
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:03 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'client_credentials', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:03 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:03 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 569
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:03 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'text/html', 'Content-Length': '90'}
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:03 | client_id=1AA9B54E-B31D-48E6-94E2-7454208D82E0&grant_type=client_credentials&Scope=Shopper
+DEBUG | auth : get_Token_ClientID | 2018-10-11 16:41:03 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJhbm9uLXRlbXBsYXRlIiwiY2lkIjoiMWFhOWI1NGUtYjMxZC00OGU2LTk0ZTItNzQ1NDIwOGQ4MmUwIiwib3JkZXJpZCI6IlNrZ04wUHc2U0V1bFJhUnhrZTF6TkEiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTg5ODg2NCwibmJmIjoxNTM5Mjk0MDY0fQ.ka_b1DZqUB6Lm6OrKNeuesNuPBKCaZHvf7LBX1w3VRk",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | auth : get_anon_user_token | 2018-10-11 16:41:03 | {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJhbm9uLXRlbXBsYXRlIiwiY2lkIjoiMWFhOWI1NGUtYjMxZC00OGU2LTk0ZTItNzQ1NDIwOGQ4MmUwIiwib3JkZXJpZCI6IlNrZ04wUHc2U0V1bFJhUnhrZTF6TkEiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTg5ODg2NCwibmJmIjoxNTM5Mjk0MDY0fQ.ka_b1DZqUB6Lm6OrKNeuesNuPBKCaZHvf7LBX1w3VRk', 'token_type': 'bearer', 'expires_in': 35999}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:04 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:04 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 429
+DEBUG | me : get_Me | 2018-10-11 16:41:04 | https://api.ordercloud.io/v1/me
+DEBUG | me : get_Me | 2018-10-11 16:41:04 | 200
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:04 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:04 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 429
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:04 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:04 | https://api.ordercloud.io:443 "GET /v1/me/products HTTP/1.1" 200 4614
+DEBUG | me : get_meProducts | 2018-10-11 16:41:04 | https://api.ordercloud.io/v1/me/products
+DEBUG | me : get_meProducts | 2018-10-11 16:41:04 | 200
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:04 | https://api.ordercloud.io:443 "POST /v1/orders/outgoing HTTP/1.1" 201 805
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:05 | https://api.ordercloud.io:443 "POST /v1/orders/outgoing/7OPkWovyPEqN1a3CHY04-g/lineitems HTTP/1.1" 201 1257
+DEBUG | auth.test_auth : test_anonOrderNotFound | 2018-10-11 16:41:05 | 201
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:05 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:05 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:05 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 539
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:05 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA2NiwibmJmIjoxNTM5Mjk0MDY2fQ.8PUxHRth-SlBu5zn-ygxwbSqoKVzLPz5zE0196VQ1c8",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:05 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:05 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | me : get_Me | 2018-10-11 16:41:05 | https://api.ordercloud.io/v1/me
+DEBUG | me : get_Me | 2018-10-11 16:41:05 | 200
+INFO | integrations.test_messageSenders : test_ForgottenPassword | 2018-10-11 16:41:05 | reset that password!
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:05 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:05 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | me : get_Me | 2018-10-11 16:41:05 | https://api.ordercloud.io/v1/me
+DEBUG | me : get_Me | 2018-10-11 16:41:05 | 200
+DEBUG | auth : post_resetPassword | 2018-10-11 16:41:05 | {
+  "ClientID": "1AA9B54E-B31D-48E6-94E2-7454208D82E0",
+  "Email": "hgomez.vyzygln2@mailosaur.io",
+  "username": "hgomez",
+  "URL": "https://www.james.info/"
+}
+DEBUG | auth : post_resetPassword | 2018-10-11 16:41:05 | {'Content-Type': 'application/json', 'Autentication': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIl0sImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA2NiwibmJmIjoxNTM5Mjk0MDY2fQ.8PUxHRth-SlBu5zn-ygxwbSqoKVzLPz5zE0196VQ1c8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:05 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:06 | https://api.ordercloud.io:443 "POST /v1/password/reset HTTP/1.1" 204 0
+DEBUG | auth : post_resetPassword | 2018-10-11 16:41:06 | <Response [204]>
+INFO | integrations.test_messageSenders : test_ForgottenPassword | 2018-10-11 16:41:06 | time to get the email
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:06 | Starting new HTTPS connection (1): mailosaur.com:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:08 | https://mailosaur.com:443 "POST /api/messages/await?server=vyzygln2 HTTP/1.1" 200 None
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:08 | Starting new HTTPS connection (1): mailosaur.com:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:08 | https://mailosaur.com:443 "GET /api/messages/d7962dfe-5194-4f86-819a-7fde1fabd859 HTTP/1.1" 200 None
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:08 | Starting new HTTPS connection (1): mailosaur.com:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:09 | https://mailosaur.com:443 "DELETE /api/messages/d7962dfe-5194-4f86-819a-7fde1fabd859 HTTP/1.1" 204 0
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:09 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin MeAddressAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:09 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:09 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 560
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:09 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIiwiTWVBZGRyZXNzQWRtaW4iXSwiaXNzIjoiaHR0cHM6Ly9hdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL2FwaS5vcmRlcmNsb3VkLmlvIiwiZXhwIjoxNTM5MzMwMDcwLCJuYmYiOjE1MzkyOTQwNzB9.xTIw1xRI2oRSJ4zL9n_kgHnWxcvQFVb09DM_j8QMfnE",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:09 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:09 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:09 | https://api.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1069
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:09 | https://api.ordercloud.io:443 "POST /v1/me/addresses HTTP/1.1" 201 404
+INFO | me.test_me : createMeAddress | 2018-10-11 16:41:09 | {'ID': '1mkSvFMOukGt0BLEMnbITQ', 'Shipping': True, 'Billing': True, 'Editable': True, 'DateCreated': '2018-10-11T21:41:10.76+00:00', 'CompanyName': 'Hall Inc', 'FirstName': 'Christopher', 'LastName': 'Freeman', 'Street1': '33042 Moore Courts', 'Street2': 'Apt. 455', 'City': 'Ellisburgh', 'State': 'MD', 'Zip': '15765-7451', 'Country': 'ES', 'Phone': '(398)035-5442', 'AddressName': 'Organized reciprocal structure', 'xp': {'fake': True}}
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:09 | https://api.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1239
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:09 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper MeAdmin MeAddressAdmin'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:09 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:10 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 558
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:10 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjpbIlNob3BwZXIiLCJNZUFkbWluIiwiTWVBZGRyZXNzQWRtaW4iXSwiaXNzIjoiaHR0cHM6Ly9hdXRoLm9yZGVyY2xvdWQuaW8iLCJhdWQiOiJodHRwczovL2FwaS5vcmRlcmNsb3VkLmlvIiwiZXhwIjoxNTM5MzMwMDcxLCJuYmYiOjE1MzkyOTQwNzF9.eV370Xmc6kR5_jTisZOrjnWbLyygq-LB2NfRAv5xIko",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:10 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:10 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:10 | https://api.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1239
+INFO | me.test_me : test_meAddressesDelete | 2018-10-11 16:41:10 | Deleted Address ID: uKu21fjUP0qtxtRhc8V1ZA
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:10 | https://api.ordercloud.io:443 "DELETE /v1/me/addresses/uKu21fjUP0qtxtRhc8V1ZA HTTP/1.1" 204 0
+INFO | me.test_me : deleteMeAddress | 2018-10-11 16:41:10 | 204
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:10 | https://api.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1072
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:10 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:10 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:11 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 527
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:11 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3MSwibmJmIjoxNTM5Mjk0MDcxfQ.MxSZy7r9KljfJz7V-tjYafFGwkG2nCgVPx_Wl0jOppk",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:11 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3MSwibmJmIjoxNTM5Mjk0MDcxfQ.MxSZy7r9KljfJz7V-tjYafFGwkG2nCgVPx_Wl0jOppk', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:11 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:11 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:11 | https://api.ordercloud.io:443 "GET /v1/me/ HTTP/1.1" 200 445
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:11 | https://api.ordercloud.io/v1/me/
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:11 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:11 | 65811 microseconds
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:11 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:11 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:11 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 525
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:11 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3MiwibmJmIjoxNTM5Mjk0MDcyfQ.GNbL32RCEAzYzkczsIQF0Y2SD00OYZ9R2qecwrokEJU",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:11 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3MiwibmJmIjoxNTM5Mjk0MDcyfQ.GNbL32RCEAzYzkczsIQF0Y2SD00OYZ9R2qecwrokEJU', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:11 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:11 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:12 | https://api.ordercloud.io:443 "GET /v1/me/products HTTP/1.1" 200 4614
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:12 | https://api.ordercloud.io/v1/me/products
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:12 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:12 | 110937 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:12 | 248
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:12 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:12 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:12 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 526
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:12 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3MywibmJmIjoxNTM5Mjk0MDczfQ.P3RCxrS0f7H32F2mZZvK2t6JWv5BUJHEjpJkvojTvSo",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:12 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3MywibmJmIjoxNTM5Mjk0MDczfQ.P3RCxrS0f7H32F2mZZvK2t6JWv5BUJHEjpJkvojTvSo', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:12 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:12 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:12 | https://api.ordercloud.io:443 "GET /v1/me/costcenters HTTP/1.1" 200 189
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:12 | https://api.ordercloud.io/v1/me/costcenters
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:12 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:12 | 65366 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:12 | 0
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:12 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:12 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:12 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 526
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:12 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3MywibmJmIjoxNTM5Mjk0MDczfQ.P3RCxrS0f7H32F2mZZvK2t6JWv5BUJHEjpJkvojTvSo",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:12 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3MywibmJmIjoxNTM5Mjk0MDczfQ.P3RCxrS0f7H32F2mZZvK2t6JWv5BUJHEjpJkvojTvSo', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:12 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:13 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:13 | https://api.ordercloud.io:443 "GET /v1/me/usergroups HTTP/1.1" 200 189
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:13 | https://api.ordercloud.io/v1/me/usergroups
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:13 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:13 | 70380 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:13 | 0
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:13 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:13 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:13 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 526
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:13 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NCwibmJmIjoxNTM5Mjk0MDc0fQ.HMNlxbdVeUdUtrbDKrGH7Sv_6_UWT753XTAG5Xoay50",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:13 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NCwibmJmIjoxNTM5Mjk0MDc0fQ.HMNlxbdVeUdUtrbDKrGH7Sv_6_UWT753XTAG5Xoay50', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:13 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:13 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:13 | https://api.ordercloud.io:443 "GET /v1/me/addresses HTTP/1.1" 200 1072
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:13 | https://api.ordercloud.io/v1/me/addresses
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:13 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:13 | 75729 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:13 | 4
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:13 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:13 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:14 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 523
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:14 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NSwibmJmIjoxNTM5Mjk0MDc1fQ.XwwW31qzWx01DScg3ofjzLu5utSDyffj5vlhtT8Us4c",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:14 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NSwibmJmIjoxNTM5Mjk0MDc1fQ.XwwW31qzWx01DScg3ofjzLu5utSDyffj5vlhtT8Us4c', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:14 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:14 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:14 | https://api.ordercloud.io:443 "GET /v1/me/creditcards HTTP/1.1" 200 390
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:14 | https://api.ordercloud.io/v1/me/creditcards
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:14 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:14 | 69157 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:14 | 1
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:14 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:14 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:14 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 523
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:14 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NSwibmJmIjoxNTM5Mjk0MDc1fQ.XwwW31qzWx01DScg3ofjzLu5utSDyffj5vlhtT8Us4c",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:14 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NSwibmJmIjoxNTM5Mjk0MDc1fQ.XwwW31qzWx01DScg3ofjzLu5utSDyffj5vlhtT8Us4c', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:14 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:15 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:15 | https://api.ordercloud.io:443 "GET /v1/me/categories HTTP/1.1" 200 3264
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:15 | https://api.ordercloud.io/v1/me/categories
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:15 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:15 | 152141 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:15 | 65
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:15 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:15 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:15 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 521
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:15 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NiwibmJmIjoxNTM5Mjk0MDc2fQ.lTeVzsl7e8IYM9QvrLoDmhyp7Jzeulw7vi1_7ZZru6M",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:15 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NiwibmJmIjoxNTM5Mjk0MDc2fQ.lTeVzsl7e8IYM9QvrLoDmhyp7Jzeulw7vi1_7ZZru6M', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:15 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:15 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:15 | https://api.ordercloud.io:443 "GET /v1/me/orders HTTP/1.1" 200 189
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:15 | https://api.ordercloud.io/v1/me/orders
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:15 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:15 | 78132 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:15 | 0
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:15 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:15 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:16 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 521
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:16 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NywibmJmIjoxNTM5Mjk0MDc3fQ.tA5441CTBenm7ySJiVHIxACS2UEU5htgcIB4_t-9lbI",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:16 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NywibmJmIjoxNTM5Mjk0MDc3fQ.tA5441CTBenm7ySJiVHIxACS2UEU5htgcIB4_t-9lbI', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:16 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:16 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:16 | https://api.ordercloud.io:443 "GET /v1/me/promotions HTTP/1.1" 200 189
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:16 | https://api.ordercloud.io/v1/me/promotions
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:16 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:16 | 66790 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:16 | 0
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:16 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:16 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:16 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 521
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:16 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NywibmJmIjoxNTM5Mjk0MDc3fQ.tA5441CTBenm7ySJiVHIxACS2UEU5htgcIB4_t-9lbI",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:16 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3NywibmJmIjoxNTM5Mjk0MDc3fQ.tA5441CTBenm7ySJiVHIxACS2UEU5htgcIB4_t-9lbI', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:16 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:17 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:17 | https://api.ordercloud.io:443 "GET /v1/me/spendingAccounts HTTP/1.1" 200 189
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:17 | https://api.ordercloud.io/v1/me/spendingAccounts
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:17 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:17 | 68275 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:17 | 0
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:17 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:17 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:17 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 527
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:17 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3OCwibmJmIjoxNTM5Mjk0MDc4fQ.WyZFFqSXGT_0wbNWI8RHtxS_31EvXjTnuRyhDa9ERyU",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:17 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3OCwibmJmIjoxNTM5Mjk0MDc4fQ.WyZFFqSXGT_0wbNWI8RHtxS_31EvXjTnuRyhDa9ERyU', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:17 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:17 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:17 | https://api.ordercloud.io:443 "GET /v1/me/shipments HTTP/1.1" 200 189
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:17 | https://api.ordercloud.io/v1/me/shipments
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:17 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:17 | 66157 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:17 | 0
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:17 | {'client_id': '1AA9B54E-B31D-48E6-94E2-7454208D82E0', 'grant_type': 'password', 'username': 'hgomez', 'password': 'W5TKMCsq1wQq', 'Scope': 'Shopper'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:17 | Starting new HTTPS connection (1): auth.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:17 | https://auth.ordercloud.io:443 "POST /oauth/token HTTP/1.1" 200 527
+DEBUG | auth : get_Token_UsernamePassword | 2018-10-11 16:41:17 | {
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3OCwibmJmIjoxNTM5Mjk0MDc4fQ.WyZFFqSXGT_0wbNWI8RHtxS_31EvXjTnuRyhDa9ERyU",
+  "token_type": "bearer",
+  "expires_in": 35999
+}
+INFO | me.test_me : getSessions | 2018-10-11 16:41:17 | {'User-Agent': 'python-requests/2.19.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJoZ29tZXoiLCJjaWQiOiIxYWE5YjU0ZS1iMzFkLTQ4ZTYtOTRlMi03NDU0MjA4ZDgyZTAiLCJ1c3J0eXBlIjoiYnV5ZXIiLCJyb2xlIjoiU2hvcHBlciIsImlzcyI6Imh0dHBzOi8vYXV0aC5vcmRlcmNsb3VkLmlvIiwiYXVkIjoiaHR0cHM6Ly9hcGkub3JkZXJjbG91ZC5pbyIsImV4cCI6MTUzOTMzMDA3OCwibmJmIjoxNTM5Mjk0MDc4fQ.WyZFFqSXGT_0wbNWI8RHtxS_31EvXjTnuRyhDa9ERyU', 'Content-Type': 'application/json', 'charset': 'UTF-8'}
+DEBUG | urllib3.connectionpool : _new_conn | 2018-10-11 16:41:17 | Starting new HTTPS connection (1): api.ordercloud.io:443
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:18 | https://api.ordercloud.io:443 "GET /v1/me HTTP/1.1" 200 445
+DEBUG | urllib3.connectionpool : _make_request | 2018-10-11 16:41:18 | https://api.ordercloud.io:443 "GET /v1/me/catalogs HTTP/1.1" 200 279
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:18 | https://api.ordercloud.io/v1/me/catalogs
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:18 | 200
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:18 | 77140 microseconds
+INFO | me.test_me : test_me_gets | 2018-10-11 16:41:18 | 1

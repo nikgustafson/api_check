@@ -12,10 +12,13 @@ log = logging.getLogger(__name__)
 def pytest_addoption(parser):
     parser.addoption("--ENV", action="store", help="Choose the API Environment to run against: QA or PROD", default="QA")
     parser.addoption("--REPORT", action="store", help="Reporting: YES or NO", default="YES")
+    parser.addoption("--CONFIG", action="store", help="Config.ini File Location", default="config.ini")
+
 
 def pytest_configure(config):
     environment = config.getoption('--ENV')
     reporting = config.getoption('--REPORT')
+    configLoc = config.getoption('--CONFIG')
     config.oc_env = str.lower(environment)
     
 @pytest.fixture
@@ -39,10 +42,12 @@ def configInfo(pytestconfig):
     reporting = str.lower(reporting)
     pytest.reporting = str.lower(reporting)
     
+    configLoc = pytestconfig.getoption('--CONFIG')
+    print(configLoc)
 
     config = configparser.ConfigParser()
     print()
-    config.read('config.ini') # local config file
+    config.read(configLoc) # local config file
     print(config)
     configData = config['QA-CONFIG']
     if environment == 'qa':
