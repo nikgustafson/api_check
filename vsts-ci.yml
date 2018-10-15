@@ -16,7 +16,7 @@ jobs:
         cp $DOWNLOADSECUREFILE_SECUREFILEPATH $BUILD_REPOSITORY_LOCALPATH/panoptesConfig.ini
         echo '-----------'
         echo $BUILD_REPOSITORY_LOCALPATH
-        file="panoptesConfig"
+        file="panoptesConfig.ini"
         if [ -f "$file" ]
         then
           echo "$file found."
