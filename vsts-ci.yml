@@ -12,9 +12,12 @@ jobs:
     - script: pip install -r requirements.txt
       displayName: 'Install Requirements'
     - script: |
-        echo $BUILD_REPOSITORY_LOCALPATH
         echo $DOWNLOADSECUREFILE_SECUREFILEPATH
         cp $DOWNLOADSECUREFILE_SECUREFILEPATH $BUILD_REPOSITORY_LOCALPATH/panoptesConfig.ini
+        echo '-----------'
+        echo $BUILD_REPOSITORY_LOCALPATH
+        if [ ! -f panoptesConfig.ini ]; then
+          echo "File not found!"
 
         ls
       displayName: 'Check Current Dir'
