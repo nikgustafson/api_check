@@ -14,9 +14,10 @@ jobs:
     - script: |
         echo $BUILD_REPOSITORY_LOCALPATH
         echo $DOWNLOADSECUREFILE_SECUREFILEPATH
+
         ls
       displayName: 'Check Current Dir'
     - script: |
-        pytest panoptes -m smoke --ENV=prod --CONFIG= $DOWNLOADSECUREFILE_SECUREFILEPATH --log-file panoptes/logs/hello.log
+        pytest panoptes -m smoke --ENV=prod --CONFIG= /home/vsts/work/_temp/panoptesConfig --log-file panoptes/logs/hello.log
       displayName: 'Test with pytest'
 
