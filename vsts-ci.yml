@@ -23,7 +23,7 @@ jobs:
         else
           echo "$file not found."
         fi
-
+        pwd
         ls
       displayName: 'Check Current Dir'
     - script: |
