@@ -35,6 +35,6 @@ jobs:
           echo "$file not found."
         fi
         echo "-----------"
-        pytest panoptes -m smoke --ENV=prod --CONFIG= $file --log-file panoptes/logs/hello.log
+        pytest panoptes -m smoke --ENV=prod --CONFIG= $file --log-file panoptes/logs/hello.log --collect-only
       displayName: 'Test with pytest'
 
