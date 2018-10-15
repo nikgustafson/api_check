@@ -32,8 +32,9 @@ def test_api_env_vars(configInfo):
         assert env.status_code is codes.ok
         log.info('API ENV: ' + json.dumps(env.json(), indent=2))
     except:
-        pytest.main()
+
         log.info('API Service is not available.')
+        pytest.exit(pytest.main())
         raise
 
     try:
@@ -41,16 +42,18 @@ def test_api_env_vars(configInfo):
         assert authEnv.status_code is codes.ok
         log.info('AUTH ENV: ' + json.dumps(authEnv.json(), indent=2))
     except:
-        pytest.main()
         log.info('Auth Service is not available')
+        pytest.exit(pytest.main())
+        raise
 
     try:
         intEnv = requests.get(configInfo['INTEGRATIONS'] + 'env')
         assert intEnv.status_code is codes.ok
         log.info('INTEGRATIONS ENV: ' + json.dumps(intEnv.json(), indent=2))
     except:
-        pytest.main()
         log.info("Integrations Service is not available")
+        pytest.exit(pytest.main())
+        raise
 
     assert str.lower(env.json()['Environment']) == str.lower(
         getConfigData(configInfo))
