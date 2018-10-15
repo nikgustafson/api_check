@@ -50,22 +50,26 @@ def configInfo(pytestconfig):
 
     configLoc = pytestconfig.getoption('--CONFIG')
 
-    loc = p / 'configLoc'
-    log.info(loc.pwd())
-    log.info(loc)
+    loc = p.joinpath(configLoc)
+    log.info(Path.cwd())
+    log.info(loc.resolve())
     log.info(loc.exists())
     log.info(loc.is_dir())
+    assert loc.exists() is True
+    assert loc.is_dir() is False
 
     log.info(configLoc)
 
     config = configparser.ConfigParser()
     print()
     config.read(configLoc)  # local config file
-    log.info(config)
+    log.info(repr(config.sections()))
     configData = config['QA-CONFIG']
     if environment == 'qa':
+        assert config.has_section('QA-CONFIG')
         configData = config['QA-CONFIG']
     if environment == 'prod':
+        assert config.has_section('PROD-CONFIG')
         configData = config['PROD-CONFIG']
     tesultsKey = configData['TESULTS-KEY']
     print(tesultsKey)
