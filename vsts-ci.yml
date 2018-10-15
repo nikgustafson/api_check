@@ -1,27 +1,19 @@
-# Docker image
-# Build a Docker image to run, deploy, or push to a container registry.
-# Add steps that use Docker Compose, tag images, push to a registry, run an image, and more:
-# https://docs.microsoft.com/vsts/pipelines/languages/docker
-# multiple jobs get run in paralell/out of order
-
 jobs:
-- job: 'RunTests'
+- job: CI-Build
+  trigger: [master, releases/*]
+- job: RunTests
   steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.6'
-      architecture: 'x64'
-  - task: DownloadSecureFile@1
-    inputs:
-      secureFile:  'panoptesConfig'
-#  - script: . setup.sh
-  - script: pip install -r requirements.txt
-    displayName: 'Install Requirements'
-  - script: |
-      echo $BUILD_REPOSITORY_LOCALPATH
-      ls
-    displayName: 'Check Current Dir'
-  - script: |
-      pytest panoptes -m smoke --ENV=prod --log-file panoptes/logs/hello.log
-    displayName: 'Test with pytest'
+  - inputs: {architecture: x64, versionSpec: '3.6'}
+    task: UsePythonVersion@0
+  - inputs: {secureFile: panoptesConfig}
+    task: DownloadSecureFile@1
+  - {displayName: Install Requirements, script: pip install -r requirements.txt}
+  - {displayName: Check Current Dir, script: 'echo $BUILD_REPOSITORY_LOCALPATH
 
+      ls
+
+      '}
+  - {displayName: Test with pytest, script: 'pytest panoptes -m smoke --ENV=prod --log-file
+      panoptes/logs/hello.log
+
+      '}
