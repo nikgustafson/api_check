@@ -19,6 +19,6 @@ jobs:
         ls
       displayName: 'Check Current Dir'
     - script: |
-        pytest panoptes -m smoke --ENV=prod --CONFIG= $BUILD_REPOSITORY_LOCALPATH/panoptesConfig.ini --log-file panoptes/logs/hello.log
+        pytest panoptes -m smoke --ENV=prod --CONFIG= panoptesConfig.ini --log-file panoptes/logs/hello.log
       displayName: 'Test with pytest'
 
