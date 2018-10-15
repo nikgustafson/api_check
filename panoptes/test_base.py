@@ -5,6 +5,7 @@ import requests
 from requests import codes
 import logging
 import json
+import sys
 
 from . import me
 from . import getConfigData
@@ -26,17 +27,30 @@ def test_configData(configInfo):
 @pytest.mark.description('Verifies that the ENVs reported for API, AUTH, INTEGRATIONS are a) responding and b) consistent.')
 def test_api_env_vars(configInfo):
 
-    env = requests.get(configInfo['API'] + 'env')
-    assert env.status_code is codes.ok
-    log.info('API ENV: ' + json.dumps(env.json(), indent=2))
+    try:
+        env = requests.get(configInfo['API'] + 'env')
+        assert env.status_code is codes.ok
+        log.info('API ENV: ' + json.dumps(env.json(), indent=2))
+    except:
+        pytest.main()
+        log.info('API Service is not available.')
+        raise
 
-    authEnv = requests.get(configInfo['AUTH'] + 'env')
-    assert authEnv.status_code is codes.ok
-    log.info('AUTH ENV: ' + json.dumps(authEnv.json(), indent=2))
+    try:
+        authEnv = requests.get(configInfo['AUTH'] + 'env')
+        assert authEnv.status_code is codes.ok
+        log.info('AUTH ENV: ' + json.dumps(authEnv.json(), indent=2))
+    except:
+        pytest.main()
+        log.info('Auth Service is not available')
 
-    intEnv = requests.get(configInfo['INTEGRATIONS'] + 'env')
-    assert intEnv.status_code is codes.ok
-    log.info('INTEGRATIONS ENV: ' + json.dumps(intEnv.json(), indent=2))
+    try:
+        intEnv = requests.get(configInfo['INTEGRATIONS'] + 'env')
+        assert intEnv.status_code is codes.ok
+        log.info('INTEGRATIONS ENV: ' + json.dumps(intEnv.json(), indent=2))
+    except:
+        pytest.main()
+        log.info("Integrations Service is not available")
 
     assert str.lower(env.json()['Environment']) == str.lower(
         getConfigData(configInfo))
