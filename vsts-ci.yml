@@ -1,5 +1,6 @@
 jobs:
-  - job: 'CI-Build'
+  - job: 
+    name: CI-Build
     trigger:
       branches:
         include:
