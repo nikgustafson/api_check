@@ -27,6 +27,33 @@ jobs:
         ls
       displayName: 'Check Current Dir'
     - script: |
-        pytest panoptes -m smoke --ENV=prod --log-file panoptes/logs/hello.log 
+        pytest panoptes -m smoke --ENV=prod --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello.log --junitxml="TEST-prod-smoke.xml"
       displayName: 'Test with pytest'
+    # Download Build Artifacts
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'current' # Options: current, specific
+        #project: # Required when buildType == Specific
+        #pipeline: # Required when buildType == Specific
+        #specificBuildWithTriggering: false # Optional
+        buildVersionToDownload: 'latest' # Required when buildType == Specific# Options: latest, latestFromBranch, specific
+        #branchName: 'refs/heads/master' # Required when buildType == Specific && BuildVersionToDownload == LatestFromBranch
+        #buildId: # Required when buildType == Specific && BuildVersionToDownload == Specific
+        #tags: # Optional
+        downloadType: 'single' # Options: single, specific
+        artifactName: 'hello.log'# Required when downloadType == Single
+        #itemPattern: '**' # Optional
+        downloadPath: '$SYSTEM_ARTIFACTSDIRECTORY' 
+        #parallelizationLimit: '8' # Optional
+    # PUBLISH JUNIT RESULTS
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit
+        testResultsFiles: '**/TEST-*.xml' 
+        #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+        #mergeTestResults: false # Optional
+        #testRunTitle: # Optional
+        #buildPlatform: # Optional
+        #buildConfiguration: # Optional
+        #publishRunAttachments: true # Optional
 

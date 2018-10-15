@@ -51,17 +51,17 @@ def configInfo(pytestconfig):
     configLoc = pytestconfig.getoption('--CONFIG')
 
     loc = p / 'configLoc'
-    print(p.pwd())
-    print(loc)
-    print(loc.exists())
-    print(loc.is_dir())
+    log.info(loc.pwd())
+    log.info(loc)
+    log.info(loc.exists())
+    log.info(loc.is_dir())
 
-    print(configLoc)
+    log.info(configLoc)
 
     config = configparser.ConfigParser()
     print()
     config.read(configLoc)  # local config file
-    print(config)
+    log.info(config)
     configData = config['QA-CONFIG']
     if environment == 'qa':
         configData = config['QA-CONFIG']
