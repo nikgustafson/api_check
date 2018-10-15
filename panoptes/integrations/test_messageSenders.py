@@ -95,18 +95,15 @@ def test_ForgottenPassword(configInfo):
 
     checkEmail = getEmail(configInfo, emailID)
 
+    assert checkEmail['subject'] == pwEmailSubject
+    assert checkEmail['to'][0]['email'] == userEmail
+    assert 'Password Reset' in checkEmail['text']['body']
+
+    # log.info(checkEmail['text'])
+
     # delete email
 
     deleteEmail(configInfo, emailID)
-
-'''	headers = email['metadata']['headers'][0]
-
-	date = ''
-
-	for item in headers:
-		if item['field'].value() == 'Date':
-			date = item['value']
-			log.info(date)'''
 
 
 @pytest.mark.description(

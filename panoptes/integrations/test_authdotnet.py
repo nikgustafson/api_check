@@ -18,21 +18,8 @@ from ..integrations import listServers, listEmails, findEmail, awaitEmail, getEm
 fake = Faker()
 log = logging.getLogger(__name__)
 
-'''
-If you google the Auth.net error code, this seems to be a nagging issue when you create a new profile and then immediately try to use it. Some users have indicated that introducing a delay is an effective work-around.
 
-Kate Reeher or Vince Fenton Here's a scenario it would be great if we could try:
-
-1. Send a createCreditCard transaction with a user where CardDetails.Shared (in the request body) is false AND user.xp.AuthorizeNetProfileID does not exist. You should get the error.
-
-2. Get that user and see if xp.AuthorizeNetProfileID was set in step 1, despite it ultimately failing.
-
-3. If xp.AuthorizeNetProfileID was populated, do another createCreditCard with that user and see if it succeeds the second time.
-
-If this all goes as I think it might, it means forcing a delay should help. I just don't know how to test it.
-'''
-
-
+@pytest.mark.smoke
 @pytest.mark.description('Attempting to create a card in auth.net for a newly registered user should work.')
 def test_createCardNewUser(configInfo):
 
@@ -86,6 +73,7 @@ def test_createCardNewUser(configInfo):
     assert 'AuthorizeNetProfileID' in user['xp'].keys()
 
 
+@pytest.mark.smoke
 @pytest.mark.description('Attempting to create a card that already exists should return an Auth.Net duplicate payment profile error')
 def test_createCardExistingUser(configInfo):
 

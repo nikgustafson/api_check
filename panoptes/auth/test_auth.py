@@ -200,15 +200,3 @@ def test_anonOrderNotFound(configInfo):
     #orders = me.getMeOrders(configInfo, anon)
 
     #log.info(json.dumps(orders.json(), indent=4))
-
-
-'''
-POST @ v1/orders/outgoing
-POST @ v1/orders/outgoing/STEP_1_RESPONSE_ID/lineitems
-IF SUCCESSFUL
-DELETE @ v1/orders/outgoing/STEP_1_RESPONSE_ID
-Start again at Step 1
-IF ERROR
-STOP
-Congratulations you've recreated the bug!
-'''
