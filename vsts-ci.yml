@@ -1,8 +1,10 @@
 jobs:
   - job: 'CI-Build'
     trigger:
-      - master
-      - releases/*
+      branches:
+        include:
+          - master
+          - releases/*
 
   - job: 'RunTests'
     steps:
