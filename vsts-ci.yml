@@ -27,6 +27,13 @@ jobs:
         ls
       displayName: 'Check Current Dir'
     - script: |
-        pytest panoptes -m smoke --ENV=prod --CONFIG= panoptesConfig.ini --log-file panoptes/logs/hello.log
+        file="panoptesConfig.ini"
+        if [ -f "$file" ]
+        then
+          echo "$file found."
+        else
+          echo "$file not found."
+        fi
+        pytest panoptes -m smoke --ENV=prod --CONFIG= $file --log-file panoptes/logs/hello.log
       displayName: 'Test with pytest'
 
