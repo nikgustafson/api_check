@@ -27,6 +27,6 @@ jobs:
         ls
       displayName: 'Check Current Dir'
     - script: |
-        pytest panoptes -m smoke --ENV=prod --log-file panoptes/logs/hello.log --collect-only
+        pytest panoptes -m smoke --ENV=prod --log-file panoptes/logs/hello.log 
       displayName: 'Test with pytest'
 
