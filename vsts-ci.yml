@@ -13,10 +13,10 @@ jobs:
       displayName: 'Install Requirements'
     - script: |
         echo $BUILD_REPOSITORY_LOCALPATH
-        echo $env:DOWNLOADSECUREFILE_SECUREFILEPATH
+        echo $DOWNLOADSECUREFILE_SECUREFILEPATH
         ls
       displayName: 'Check Current Dir'
     - script: |
-        pytest panoptes -m smoke --ENV=prod --CONFIG= $env:DOWNLOADSECUREFILE_SECUREFILEPATH --log-file panoptes/logs/hello.log
+        pytest panoptes -m smoke --ENV=prod --CONFIG= $DOWNLOADSECUREFILE_SECUREFILEPATH --log-file panoptes/logs/hello.log
       displayName: 'Test with pytest'
 
