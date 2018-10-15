@@ -1,12 +1,4 @@
 jobs:
-  - job: 
-    name: CI-Build
-    trigger:
-      branches:
-        include:
-          - master
-          - releases/*
-
   - job: 'RunTests'
     steps:
     - task: UsePythonVersion@0
