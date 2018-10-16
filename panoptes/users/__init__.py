@@ -6,7 +6,7 @@ import requests
 from requests import codes
 import logging
 import json
-
+import uuid
 from faker import Faker
 
 fake = Faker()
@@ -21,7 +21,8 @@ def createUser(configInfo, session):
     # log.info(profile)
 
     newUser = {
-        "Username": profile['username'],
+        "ID": str(uuid.uuid4()),
+        "Username": profile['username'] + '-' + str(uuid.uuid4()),
         "Password": profile['ssn'],
         "FirstName": fake.first_name(),
         "LastName": fake.last_name(),
