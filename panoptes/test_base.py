@@ -61,3 +61,11 @@ def test_api_env_vars(configInfo):
 
     assert authEnv.json() == env.json()
     assert authEnv.json() == intEnv.json()
+
+
+def test_sessionfixture(configInfo, connections):
+
+    log.info(json.dumps(
+        connections['buyer'].get(configInfo['API'] + 'v1/me').json(), indent=4))
+    log.info(json.dumps(
+        connections['admin'].get(configInfo['API'] + 'v1/me').json(), indent=4))

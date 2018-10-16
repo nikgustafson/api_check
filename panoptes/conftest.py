@@ -6,7 +6,7 @@ import sys
 import os
 from pathlib import Path
 from _pytest.runner import runtestprotocol
-from .auth import get_Token_UsernamePassword
+from .auth import get_Token_UsernamePassword, get_anon_user_token
 import requests
 
 log = logging.getLogger(__name__)
@@ -118,9 +118,24 @@ def connections(configInfo):
 
     admin.headers.update(headers)
 
+    client_id = configInfo['BUYER-CLIENTID']
+
+    anonToken = get_anon_user_token(configInfo, client_id)
+
+    anon = requests.Session()
+
+    headers = {
+        'Authorization': 'Bearer ' + anonToken['access_token'],
+        'Content-Type': 'application/json',
+        'charset': 'UTF-8'
+    }
+
+    anon.headers.update(headers)
+
     return {
         'admin': admin,
-        'buyer': buyer
+        'buyer': buyer,
+        'anon': anon
     }
 
 

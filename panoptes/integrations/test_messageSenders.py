@@ -15,7 +15,9 @@ from .. import me
 from .. import auth
 from .. import integrations
 from ..integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail
+from ..users import createUser
 
+from ..me import registerMe, get_Me
 
 from mailosaur import MailosaurClient
 from mailosaur.models import SearchCriteria
@@ -32,6 +34,26 @@ variation: user types
 	- previously registered buyer user
 	- registered admin user in buyer app
 """
+
+
+def resetEmail(configInfo, connections, user):
+
+    if configInfo['MAILOSAUR-SERVER'] not in user['Email']:
+
+        newEmail = {'Email': user['Username'] + '.' +
+                    configInfo['MAILOSAUR-SERVER'] + '@mailosaur.io'}
+        log.info(newEmail)
+
+        patchedUser = connections['admin'].patch(
+            configInfo['API'] + 'v1/buyers/' + configInfo['Buyer'] + '/users/' + user['ID'], json={'Email': newEmail['Email']})
+        log.info(patchedUser.url)
+        log.info(json.dumps(patchedUser.json(), indent=4))
+
+        assert patchedUser.status_code is codes.ok
+
+        userEmail = patchedUser.json()['Email']
+
+        return userEmail
 
 
 @pytest.mark.smoke
@@ -104,6 +126,78 @@ def test_ForgottenPassword(configInfo):
     # delete email
 
     deleteEmail(configInfo, emailID)
+
+
+@pytest.mark.description(
+    "Verifies that the NewUserInvited message sender is working for Registered users.")
+def test_NewUserInvitedRegister(configInfo, connections):
+    """
+
+    """
+
+    # anon user register
+
+    user = connections['anon'].get(
+        configInfo['API'] + 'v1/me')
+
+    userEmail = user.json()['Email']
+
+    # make sure the email is set to mailosaur
+    newEmail = resetEmail(configInfo, connections, user.json())
+
+    assert user.json()['ID'] == 'anon-template'
+
+    registeredUser = registerMe(configInfo, connections['anon'])
+    log.info(json.dumps(registeredUser, indent=4))
+
+    registeredUser = get_Me(configInfo, registeredUser['access_token'])
+    log.info(registeredUser)
+
+    # get that email
+    # time.sleep(300)
+
+    log.info('time to get the email')
+
+    client = MailosaurClient(configInfo['MAILOSAUR-KEY'])
+
+    inviteEmailSubject = 'You\'ve been invited to Ordercloud!'
+
+    email = awaitEmail(configInfo, subject=inviteEmailSubject,
+                       sentTo=registeredUser['Email'], body=None)
+
+    log.info(email)
+
+
+@pytest.mark.description(
+    "Verifies that the NewUserInvited message sender is working for created users.")
+def test_NewUserInvitedCreated(configInfo, connections):
+    """
+
+    """
+
+    # create a new user with admin
+
+    user = createUser(configInfo, connections['admin'])
+
+    registeredUser = registerMe(configInfo, connections['anon'])
+    log.info(json.dumps(registeredUser, indent=4))
+
+    registeredUser = get_Me(configInfo, registeredUser['access_token'])
+    log.info(registeredUser)
+
+    # get that email
+    # time.sleep(300)
+
+    log.info('time to get the email')
+
+    client = MailosaurClient(configInfo['MAILOSAUR-KEY'])
+
+    inviteEmailSubject = 'You\'ve been invited to Ordercloud!'
+
+    email = awaitEmail(configInfo, subject=inviteEmailSubject,
+                       sentTo=registeredUser['Email'], body=None)
+
+    log.info(email)
 
 
 @pytest.mark.description(
