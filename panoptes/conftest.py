@@ -6,6 +6,8 @@ import sys
 import os
 from pathlib import Path
 from _pytest.runner import runtestprotocol
+from .auth import get_Token_UsernamePassword
+import requests
 
 log = logging.getLogger(__name__)
 
@@ -24,11 +26,6 @@ def pytest_configure(config):
     reporting = config.getoption('--REPORT')
     configLoc = config.getoption('--CONFIG')
     config.oc_env = str.lower(environment)
-
-
-@pytest.fixture
-def somefixture(pytestconfig):
-    assert pytestconfig.foo == 'bar'
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -79,6 +76,52 @@ def configInfo(pytestconfig):
     log.info(reporting)
 
     return configData
+
+
+@pytest.fixture(scope='session', autouse=True)
+def connections(configInfo):
+
+    client_id = configInfo['ADMIN-CLIENTID']
+    username = configInfo['ADMIN-USERNAME']
+    password = configInfo['ADMIN-PASSWORD']
+    scope = ['FullAccess']
+
+    # can successfully get a token
+    adminToken = get_Token_UsernamePassword(
+        configInfo, client_id, username, password, scope)
+
+    client_id = configInfo['BUYER-CLIENTID']
+    username = configInfo['BUYER-USERNAME']
+    password = configInfo['BUYER-PASSWORD']
+    scope = ['Shopper']
+
+    buyerToken = get_Token_UsernamePassword(
+        configInfo, client_id, username, password, scope)
+
+    buyer = requests.Session()
+
+    headers = {
+        'Authorization': 'Bearer ' + buyerToken['access_token'],
+        'Content-Type': 'application/json',
+        'charset': 'UTF-8'
+    }
+
+    buyer.headers.update(headers)
+
+    admin = requests.Session()
+
+    headers = {
+        'Authorization': 'Bearer ' + adminToken['access_token'],
+        'Content-Type': 'application/json',
+        'charset': 'UTF-8'
+    }
+
+    admin.headers.update(headers)
+
+    return {
+        'admin': admin,
+        'buyer': buyer
+    }
 
 
 @pytest.fixture(scope="session", autouse=True)
