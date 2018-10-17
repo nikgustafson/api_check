@@ -2,8 +2,12 @@ import pytest
 import configparser
 import tesults
 import logging
+import json
 import sys
 import os
+import pytz
+import jwt
+from datetime import datetime
 from pathlib import Path
 from _pytest.runner import runtestprotocol
 from .auth import get_Token_UsernamePassword, get_anon_user_token
@@ -86,9 +90,32 @@ def connections(configInfo):
     password = configInfo['ADMIN-PASSWORD']
     scope = ['FullAccess']
 
-    # can successfully get a token
+    loc_tz = pytz.timezone('America/Chicago')
+
+    # admin token
     adminToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
+    log.debug('admin session token ' + json.dumps(adminToken, indent=2))
+
+    decoded = jwt.decode(adminToken['access_token'], verify=False)
+    log.info('--------')
+    log.info('today\'s date is:')
+    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
+    log.info(c_dt)
+    log.info('--------')
+
+    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['nbf']), is_dst=False)
+    expiration = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['exp']), is_dst=False)
+    log.info('--------')
+    log.info('Admin NBF: ' + str(notbefore))
+    log.info('Admin EXP: ' + str(expiration))
+    log.info('--------')
+
+    #log.info(json.dumps(user, indent=4))
+
+    # BUYER TOKEN
 
     client_id = configInfo['BUYER-CLIENTID']
     username = configInfo['BUYER-USERNAME']
@@ -97,6 +124,23 @@ def connections(configInfo):
 
     buyerToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
+    log.debug('buyer session token ' + json.dumps(buyerToken, indent=2))
+
+    decoded = jwt.decode(buyerToken['access_token'], verify=False)
+    log.info('--------')
+    log.info('today\'s date is:')
+    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
+    log.info(c_dt)
+    log.info('--------')
+
+    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['nbf']), is_dst=False)
+    expiration = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['exp']), is_dst=False)
+    log.info('--------')
+    log.info('BUYER NBF: ' + str(notbefore))
+    log.info('BUYER EXP: ' + str(expiration))
+    log.info('--------')
 
     buyer = requests.Session()
 
@@ -121,6 +165,23 @@ def connections(configInfo):
     client_id = configInfo['BUYER-CLIENTID']
 
     anonToken = get_anon_user_token(configInfo, client_id)
+    log.debug('anon session token ' + json.dumps(anonToken, indent=2))
+
+    decoded = jwt.decode(anonToken['access_token'], verify=False)
+    log.info('--------')
+    log.info('today\'s date is:')
+    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
+    log.info(c_dt)
+    log.info('--------')
+
+    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['nbf']), is_dst=False)
+    expiration = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['exp']), is_dst=False)
+    log.info('--------')
+    log.info('anon NBF: ' + str(notbefore))
+    log.info('anon EXP: ' + str(expiration))
+    log.info('--------')
 
     anon = requests.Session()
 

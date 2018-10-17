@@ -6,6 +6,7 @@ import requests
 from requests import codes
 import logging
 import json
+import uuid
 
 from faker import Faker
 
@@ -84,19 +85,19 @@ def get_meProducts(configInfo, token, params):
     }
 
     try:
-        me = requests.get(
+        products = requests.get(
             configInfo['API'] + 'v1/me/products', headers=headers, params=params)
 
         # log.debug(me.request.headers)
-        log.debug(me.request.url)
-        # log.debug(json.dumps(me.json(), indent=2))
-        log.debug(me.status_code)
-        assert me.status_code is codes.ok
+        log.debug(products.request.url)
+        log.debug(json.dumps(products.json(), indent=2))
+        log.debug(products.status_code)
+        assert products.status_code is codes.ok
     except requests.exceptions.RequestException as e:
         print(e)
         sys.exit(1)
 
-    return me.json()
+    return products.json()
 
 
 def getMeOrders(configInfo, session):
@@ -119,7 +120,7 @@ def registerMe(configInfo, session):
     # log.info(profile)
 
     newUser = {
-        "Username": profile['username'],
+        "Username": profile['username'] + str(uuid.uuid4()),
         "Password": profile['ssn'],
         "FirstName": fake.first_name(),
         "LastName": fake.last_name(),

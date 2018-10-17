@@ -7,49 +7,22 @@ import random
 from requests import codes
 import logging
 import json
+import jwt
+from datetime import datetime
+from pytz import timezone, common_timezones_set
+import pytz
 
 from faker import Faker
 
 
 from ..auth import get_Token_UsernamePassword
 
+from . import registerMe, get_Me
+
 fake = Faker()
 
+
 log = logging.getLogger(__name__)
-
-
-def getSessions(configInfo, client_id='', username=''):
-
-    # if client_id == '':
-    client_id = configInfo['BUYER-CLIENTID']
-
-    # if username == '':
-    username = configInfo['BUYER-USERNAME']
-    password = configInfo['BUYER-PASSWORD']
-    scope = ['Shopper']
-
-    buyerToken = get_Token_UsernamePassword(
-        configInfo, client_id, username, password, scope)
-
-    buyer = requests.Session()
-
-    headers = {
-        'Authorization': 'Bearer ' + buyerToken['access_token'],
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
-
-    buyer.headers.update(headers)
-
-    log.info(buyer.headers)
-
-    test = buyer.get(configInfo['API'] + 'v1/me')
-    assert test.status_code is codes.ok
-    # log.info(test.url)
-    # log.info(test.headers)
-    # log.info(test.text)
-
-    return buyer
 
 
 def deleteMeAddress(configInfo, session, productID):
@@ -113,7 +86,7 @@ def test_meAddressesCreate(configInfo):
 
     meGet = buyer.get(configInfo['API'] + 'v1/me')
     assert meGet.status_code is codes.ok
-    #log.info(json.dumps(meGet.json(), indent=4))
+    # log.info(json.dumps(meGet.json(), indent=4))
 
     addList = buyer.get(configInfo['API'] + 'v1/me/addresses')
     assert addList.status_code is codes.ok
@@ -159,7 +132,7 @@ def test_meAddressesDelete(configInfo):
 
     meGet = buyer.get(configInfo['API'] + 'v1/me')
     assert meGet.status_code is codes.ok
-    #log.info(json.dumps(meGet.json(), indent=4))
+    # log.info(json.dumps(meGet.json(), indent=4))
 
     addList = buyer.get(configInfo['API'] + 'v1/me/addresses')
     assert addList.status_code is codes.ok
@@ -183,8 +156,47 @@ def test_meAddressesDelete(configInfo):
     assert addList2.json()['Meta']['TotalCount'] == totalAdd - 1
 
 
+def test_meRegistration(configInfo, connections):
+
+    anonToken = connections['anon']
+
+    # register the anon user as a new user
+    newUserToken = registerMe(configInfo, anonToken)
+    log.info(json.dumps(newUserToken, indent=4))
+    jwtHeaders = jwt.get_unverified_header(newUserToken['access_token'])
+
+    decoded = jwt.decode(newUserToken['access_token'], verify=False)
+
+    #log.info('America/Chicago' in common_timezones_set)
+
+    loc_tz = pytz.timezone('America/Chicago')
+
+    log.info('--------')
+    log.info('today\'s date is:')
+    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
+    log.info(c_dt)
+    # log.info(loc_dt)
+    log.info('--------')
+    # log.info(decoded['nbf'])
+    # log.info(decoded['exp'])
+
+    # log.info(common_timezones_set)
+
+    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['nbf']), is_dst=False)
+    expiration = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['exp']), is_dst=False)
+
+    log.info('Registered User\'s NBF: ' + str(notbefore))
+    log.info('Registered User\'sEXP: ' + str(expiration))
+
+    user = get_Me(configInfo, newUserToken)
+    #log.info(json.dumps(user, indent=4))
+
+
 @pytest.mark.smoke
 @pytest.mark.description('Tests all Me list endpoints.')
+@pytest.mark.parametrize("sessions", ['buyer', 'anon'])
 @pytest.mark.parametrize("endpoint", [
     "",
     "products",
@@ -200,16 +212,17 @@ def test_meAddressesDelete(configInfo):
     "catalogs"
 
 ])
-def test_me_gets(configInfo, endpoint):
+def test_me_gets(configInfo, connections, sessions, endpoint):
 
-    session = getSessions(configInfo)
+    session = connections[sessions]
 
     collection = session.get(configInfo['API'] + 'v1/me/' + endpoint)
     log.info(collection.url)
-    log.info(collection.status_code)
-    log.info(repr(collection.elapsed.microseconds) + ' microseconds')
+    # log.info(collection.status_code)
+    log.info(repr(collection.elapsed.seconds) + ' seconds OR ' +
+             repr(collection.elapsed.microseconds) + ' microseconds')
     # log.debug(collection.json())
     if 'Meta' in collection.json().keys():
-        log.info(collection.json()['Meta']['TotalCount'])
+        log.debug(collection.json()['Meta']['TotalCount'])
 
     assert collection.status_code is codes.ok

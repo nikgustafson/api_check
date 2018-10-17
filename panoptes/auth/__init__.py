@@ -40,7 +40,7 @@ def get_Token_ClientID(configInfo, client_id, scope=[]):
         configInfo['AUTH'] + 'oauth/token', data=payload, headers=headers)
     log.debug(token.request.headers)
     log.debug(token.request.body)
-    log.debug(json.dumps(token.json(), indent=2))
+    #log.debug(json.dumps(token.json(), indent=2))
     assert token.status_code is codes.ok
 
     return token.json()
@@ -69,7 +69,7 @@ def get_Token_UsernamePassword(configInfo, client_id, username, password, scope=
         configInfo['AUTH'] + 'oauth/token', data=payload, headers=headers)
     # log.debug(token.request.headers)
     # log.debug(token.request.body)
-    log.debug(json.dumps(token.json(), indent=2))
+    #log.debug(json.dumps(token.json(), indent=2))
     assert token.status_code is codes.ok
 
     return token.json()

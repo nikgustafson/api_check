@@ -8,6 +8,9 @@ import logging
 import json
 from faker import Faker
 from random import randint
+import pytz
+import jwt
+from datetime import datetime
 
 from .. import me
 from .. import auth
@@ -20,6 +23,7 @@ from requests.auth import HTTPBasicAuth
 
 fake = Faker()
 log = logging.getLogger(__name__)
+loc_tz = pytz.timezone('America/Chicago')
 
 
 # message senders~~~
@@ -139,11 +143,30 @@ def createCreditCard(configInfo, body, token):
 
     buyer.headers.update(headers)
 
+    decoded = jwt.decode(buyer.headers['Authorization'][7:], verify=False)
+    log.info('--------')
+    log.info('today\'s date is:')
+    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
+    log.info(c_dt)
+    log.info('--------')
+
+    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['nbf']), is_dst=False)
+    expiration = loc_tz.localize(datetime.utcfromtimestamp(
+        decoded['exp']), is_dst=False)
+    log.info('--------')
+    log.info('Card User\'s NBF: ' + str(notbefore))
+    log.info('Card User\'s EXP: ' + str(expiration))
+    log.info('--------')
+
     newCard = buyer.post(
         configInfo['API'] + 'v1/integrationproxy/authorizenet', json=body)
     log.info(newCard.request.url)
     log.info(newCard.status_code)
-    #log.info(json.dumps(newCard.json(), indent=4))
+
+    log.info('NEW CARD')
+    log.info(newCard.text)
+    log.info(json.dumps(newCard.json(), indent=4))
 
     # auth.net needs another body check -- codes will lie
 

@@ -19,6 +19,7 @@ fake = Faker()
 log = logging.getLogger(__name__)
 
 
+@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
 @pytest.mark.smoke
 @pytest.mark.description('Attempting to create a card in auth.net for a newly registered user should work.')
 def test_createCardNewUser(configInfo, connections):
@@ -54,22 +55,22 @@ def test_createCardNewUser(configInfo, connections):
             'Shared': False
         },
         'TransactionType': "createCreditCard",
-        'buyerID': "AACBuyer"
+        'buyerID': configInfo['BUYER']
     }
 
     #log.info(json.dumps(requestBody, indent=4))
 
     newCard = createCreditCard(configInfo, requestBody, newUserToken)
-    #log.info(json.dumps(newCard, indent=4))
 
     assert newCard['ResponseHttpStatusCode'] is codes.ok
 
     user = me.get_Me(configInfo, newUserToken)
-    #log.info(json.dumps(user, indent=4))
+    log.info(json.dumps(user, indent=4))
 
     assert 'AuthorizeNetProfileID' in user['xp'].keys()
 
 
+@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
 @pytest.mark.smoke
 @pytest.mark.description('Attempting to create a card that already exists should return an Auth.Net duplicate payment profile error')
 def test_createCardExistingUser(configInfo):
@@ -99,7 +100,7 @@ def test_createCardExistingUser(configInfo):
             'Shared': False
         },
         'TransactionType': "createCreditCard",
-        'buyerID': "AACBuyer"
+        'buyerID': configInfo['BUYER']
     }
 
     #log.info(json.dumps(requestBody, indent=4))
