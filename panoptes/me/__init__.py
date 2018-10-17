@@ -19,20 +19,33 @@ def get_Me(configInfo, token):
 
     if type(token) is dict:
         token = token['access_token']
+        headers = {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
+            'charset': 'UTF-8'
+        }
+        me = requests.get(configInfo['API'] + 'v1/me', headers=headers)
 
-    headers = {
-        'Authorization': 'Bearer ' + token,
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
+        # log.debug(me.request.headers)
+        # log.debug(me.request.url)
+        # log.debug(json.dumps(me.json(), indent=2))
+        # log.debug(me.status_code)
+        assert me.status_code is codes.ok
 
-    me = requests.get(configInfo['API'] + 'v1/me', headers=headers)
-
-    # log.debug(me.request.headers)
-    log.debug(me.request.url)
-    #log.debug(json.dumps(me.json(), indent=2))
-    log.debug(me.status_code)
-    assert me.status_code is codes.ok
+    elif type(token) is requests.session:
+        try:
+            me = session.get(configInfo['API'] + 'v1/me')
+            assert me.status_code is codes.ok
+        except:
+            raise
+    else:
+        headers = {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
+            'charset': 'UTF-8'
+        }
+        me = requests.get(configInfo['API'] + 'v1/me', headers=headers)
+        assert me.status_code is codes.ok
 
     return me.json()
 
@@ -52,7 +65,7 @@ def patch_Me(configInfo, token, newUser):
 
     # log.debug(me.request.headers)
     log.debug(me.request.url)
-    #log.debug(json.dumps(me.json(), indent=2))
+    # log.debug(json.dumps(me.json(), indent=2))
     log.debug(me.status_code)
     assert me.status_code is codes.ok
 
@@ -76,7 +89,7 @@ def get_meProducts(configInfo, token, params):
 
         # log.debug(me.request.headers)
         log.debug(me.request.url)
-        #log.debug(json.dumps(me.json(), indent=2))
+        # log.debug(json.dumps(me.json(), indent=2))
         log.debug(me.status_code)
         assert me.status_code is codes.ok
     except requests.exceptions.RequestException as e:
@@ -95,21 +108,12 @@ def getMeOrders(configInfo, session):
 
     assert orders.status_code is codes.ok
 
-    #log.info(json.dumps(orders.json(), indent=4))
+    # log.info(json.dumps(orders.json(), indent=4))
 
     return orders
 
 
 def registerMe(configInfo, session):
-
-    #?anonUserToken={{anonUserToken}}
-
-    log.info(session.headers)
-
-    token = session.headers['Authorization']
-    log.info(token)
-    token = token[7:]
-    log.info(token)
 
     profile = fake.profile()
     # log.info(profile)
@@ -125,13 +129,29 @@ def registerMe(configInfo, session):
         "xp": {'genFake': True}
     }
 
-    user = session.put(configInfo['API'] + 'v1/me/register',
-                       json=newUser, params={'anonUserToken': token})
-    # log.info(user.request.url)
-    # log.info(user.status_code)
+    #?anonUserToken={{anonUserToken}}
+    if type(session) is dict:
+        log.info(session)
+        token = session['access_token']
+        log.info(token)
 
-    # log.info(user.json())
+        user = requests.put(configInfo['API'] + 'v1/me/register',
+                            json=newUser, params={'anonUserToken': token})
+        log.info(user.url)
+        log.info(user.status_code)
+        log.info(user.json())
+        assert user.status_code is codes.ok
+        return user.json()
 
-    assert user.status_code is codes.ok
+    else:
+        log.info(session.headers)
 
-    return user.json()
+        token = session.headers['Authorization']
+        log.info(token)
+        token = token[7:]
+        log.info(token)
+
+        user = session.put(configInfo['API'] + 'v1/me/register',
+                           json=newUser, params={'anonUserToken': token})
+        assert user.status_code is codes.ok
+        return user.json()
