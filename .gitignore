@@ -5,4 +5,5 @@ __pycache__
 
 config.ini
 
-*/logs/*.log
+**/logs/*.log
+panoptes/logs

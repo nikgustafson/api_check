@@ -20,49 +20,59 @@ fake = Faker()
 log = logging.getLogger(__name__)
 
 
-def sessionInit(configInfo):
+def getRandomProducts(configInfo, buyerSession, pageSize=10):
 
-    client_id = configInfo['ADMIN-CLIENTID']
-    username = configInfo['ADMIN-USERNAME']
-    password = configInfo['ADMIN-PASSWORD']
-    scope = ['FullAccess']
+    productList = buyerSession.get(
+        configInfo['API'] + 'v1/Me/Products', params={'pageSize': pageSize}).json()
 
-    # can successfully get a token
-    adminToken = get_Token_UsernamePassword(
-        configInfo, client_id, username, password, scope)
+    productTotal = productList['Meta']['TotalCount']
+    pageTotal = productList['Meta']['TotalPages']
 
-    client_id = configInfo['BUYER-CLIENTID']
-    username = configInfo['BUYER-USERNAME']
-    password = configInfo['BUYER-PASSWORD']
-    scope = ['Shopper']
+    randomPage = random.choice(range(1, pageTotal - 1))
 
-    buyerToken = get_Token_UsernamePassword(
-        configInfo, client_id, username, password, scope)
+    assert randomPage <= pageTotal
 
-    buyer = requests.Session()
+    log.info("Page " + str(randomPage) + " of " + str(pageTotal))
 
-    headers = {
-        'Authorization': 'Bearer ' + buyerToken['access_token'],
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
+    productIDs = []
 
-    buyer.headers.update(headers)
+    for item in productList['Items']:
+        productIDs.append(item['ID'])
 
-    admin = requests.Session()
+    log.info(productIDs)
 
-    headers = {
-        'Authorization': 'Bearer ' + adminToken['access_token'],
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
+    return productIDs
 
-    admin.headers.update(headers)
 
-    #log.info(json.dumps(buyer.get(configInfo['API']+'v1/me').json(), indent=4))
-    #log.info(json.dumps(admin.get(configInfo['API']+'v1/me').json(), indent=4))
+def patchXP(configInfo, admiSession, products, newFacets):
+    log.info(json.dumps(newFacets, indent=4))
 
-    return(buyer, admin)
+    for facet in newFacets:
+        log.info(facet)
+        # TODO: build out support for nested xp
+        patchBody = {
+            'xp': {
+                # TODO: make this parameterized and include wider array of
+                # values
+                newFacets[facet]['XpPath']: fake.word(ext_word_list=None)
+            }
+        }
+        for productID in products:
+            log.info(productID)
+            try:
+                patched = admiSession.patch(
+                    configInfo['API'] + 'v1/products/' + productID, json=patchBody)
+                log.info(patched.status_code)
+                log.info(patched.request.headers)
+                log.info(patched.request.url)
+                log.info(patched.request.body)
+                log.info(patched.text)
+                assert patched.status_code is codes.ok
+                log.info(json.dumps(patched.json(), indent=4))
+
+            except requests.exceptions.RequestException as e:  # This is the correct syntax
+                log.info(e)
+                sys.exit(1)
 
 
 def createProductFacet(configInfo, products, token):
