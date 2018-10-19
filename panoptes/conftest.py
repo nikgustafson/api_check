@@ -16,6 +16,20 @@ import requests
 log = logging.getLogger(__name__)
 
 
+def pytest_runtest_makereport(item, call):
+    if "incremental" in item.keywords:
+        if call.excinfo is not None:
+            parent = item.parent
+            parent._previousfailed = item
+
+
+def pytest_runtest_setup(item):
+    if "incremental" in item.keywords:
+        previousfailed = getattr(item.parent, "_previousfailed", None)
+        if previousfailed is not None:
+            pytest.xfail("previous test failed (%s)" % previousfailed.name)
+
+
 def pytest_addoption(parser):
     parser.addoption("--ENV", action="store",
                      help="Choose the API Environment to run against: QA or PROD", default="QA")
@@ -96,13 +110,13 @@ def connections(configInfo):
     adminToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
     log.debug('admin session token ' + json.dumps(adminToken, indent=2))
-
+    '''
     decoded = jwt.decode(adminToken['access_token'], verify=False)
-    log.info('--------')
-    log.info('today\'s date is:')
+    #log.info('--------')
+    #log.info('today\'s date is:')
     c_dt = loc_tz.localize(datetime.today(), is_dst=False)
-    log.info(c_dt)
-    log.info('--------')
+    #log.info(c_dt)
+    #log.info('--------')
 
     notbefore = loc_tz.localize(datetime.utcfromtimestamp(
         decoded['nbf']), is_dst=False)
@@ -114,6 +128,7 @@ def connections(configInfo):
     log.info('--------')
 
     #log.info(json.dumps(user, indent=4))
+    '''
 
     # BUYER TOKEN
 
@@ -125,7 +140,7 @@ def connections(configInfo):
     buyerToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
     log.debug('buyer session token ' + json.dumps(buyerToken, indent=2))
-
+    '''
     decoded = jwt.decode(buyerToken['access_token'], verify=False)
     log.info('--------')
     log.info('today\'s date is:')
@@ -141,7 +156,7 @@ def connections(configInfo):
     log.info('BUYER NBF: ' + str(notbefore))
     log.info('BUYER EXP: ' + str(expiration))
     log.info('--------')
-
+    '''
     buyer = requests.Session()
 
     headers = {
@@ -166,7 +181,7 @@ def connections(configInfo):
 
     anonToken = get_anon_user_token(configInfo, client_id)
     log.debug('anon session token ' + json.dumps(anonToken, indent=2))
-
+    '''
     decoded = jwt.decode(anonToken['access_token'], verify=False)
     log.info('--------')
     log.info('today\'s date is:')
@@ -182,7 +197,7 @@ def connections(configInfo):
     log.info('anon NBF: ' + str(notbefore))
     log.info('anon EXP: ' + str(expiration))
     log.info('--------')
-
+    '''
     anon = requests.Session()
 
     headers = {

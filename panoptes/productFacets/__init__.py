@@ -75,48 +75,54 @@ def patchXP(configInfo, admiSession, products, newFacets):
                 sys.exit(1)
 
 
-def createProductFacet(configInfo, products, token):
+def createProductFacet(configInfo, productFacet, session):
 
-    newXP = {
-        "xp": {
-            "blue": True
-        }
+    try:
+        facet = session.post(configInfo['API'] +
+                             'v1/ProductFacets', json=productFacet)
+        # log.info(facet.request.url)
+        # log.info(facet.request.body)
+        # log.info(facet.text)
+        assert facet.status_code is codes.created
+        # log.info(json.dumps(facet.json(), indent=4))
+        return facet.json()
+    except:
+        raise
+
+
+def assignProductFacet(configInfo, session, productID, facetPath, value):
+    '''
+        create a value for a facet by building up an xp dict (levels of facet, facet value), then patching the product with that xp dict
+    '''
+
+    xpBody = {
+        'xp': ''
     }
+    xp = {}
+    if '.' in facetPath:
+        levels = facetPath.split(sep='.')
+        xpBody['xp'] = xp
 
-    log.debug(newXP)
-    newProducts = []
-    for item in products:
-        log.debug(item['ID'])
-        product = patch_Product(
-            configInfo, token, item['ID'], params='', body=newXP)
-        log.debug(product)
-        newProducts.append(product)
+        l = len(levels)
+        i = 0
+        v = value
+        body = {}
+        while i < l:
+            body = {levels[l - 1]: v}
+            log.info(body)
+            l -= 1
+            v = body
+        xpBody['xp'] = body
+        log.info(xpBody)
 
-    return newProducts
+    else:
+        xpBody['xp'] = {facetPath: value}
+        log.info(xpBody)
 
-
-def createProductFacet(configInfo, productList, productFacet, token=''):
-
-    headers = {
-        'Authorization': 'Bearer ' + token,
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
-
-    for ID in productList:
-        try:
-            xp = requests.post(configInfo['API'] + 'v1/ProductFacets/',
-                               headers=headers, params=params, json=productFacet)
-            log.debug(xp.request.url)
-            log.debug(xp.status_code)
-            log.debug(json.dumps(xp.json(), indent=2))
-
-            assert xp.status_code is codes.ok
-            return xp.json()
-        except requests.exceptions.RequestException as e:
-            log.debug(json.dumps(xp.json(), indent=2))
-            print(e)
-            sys.exit(1)
+    patchedProduct = session.patch(configInfo['API'] + 'v1/products/' +
+                                   productID, json=xpBody)
+    log.info(json.dumps(patchedProduct.json(), indent=2))
+    log.info(patchedProduct.status_code)
 
 
 def getProductFacets(configInfo, token, params):

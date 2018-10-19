@@ -8,55 +8,142 @@ import random
 from random import randint
 import urllib
 import time
+from ..helpers import blns
 
 from ..auth import get_Token_UsernamePassword
 from ..products import get_Products, patch_Product
 from ..me import get_meProducts
-from ..productFacets import sessionInit
+from . import createProductFacet, assignProductFacet
 
 
 fake = Faker()
 
 log = logging.getLogger(__name__)
 
+# https://four51.atlassian.net/browse/EX-1678
 
-def test_facetCreation(configInfo):
+#@pytest.mark.parametrize("sessions", ['buyer', 'anon'])
 
-    sessions = sessionInit(configInfo)
-    buyer = sessions[0]
-    admin = sessions[1]
 
-    #log.info(json.dumps(buyer.get(configInfo['API']+'v1/me').json(), indent=4))
-    #log.info(json.dumps(admin.get(configInfo['API']+'v1/me').json(), indent=4))
+@pytest.mark.parametrize('nested', [True, False])
+@pytest.mark.description('A Facet\'s Min Count controls how many **VALUES** must exist for that facet before the facet will show up in the Facet Meta. Min Count = 1')
+def test_verifyMinCount1(configInfo, connections, nested):
 
-    # 1. create a facet as an admin user
+    admin = connections['admin']
+    buyer = connections['buyer']
 
-    facetList = admin.get(configInfo['API'] + 'v1/ProductFacets')
+    #----------------------------#
+    # buyer product list
+    buyerProducts = buyer.get(configInfo['API'] + 'v1/me/products')
+    assert buyerProducts.status_code is codes.ok
+    pageSize = buyerProducts.json()['Meta']['PageSize']
+    randomPick = random.randrange(0, pageSize - 1)
+    randomProductID = buyerProducts.json()['Items'][randomPick]['ID']
 
-    name = fake.sentences(nb=1, ext_word_list=None)[0]
-    path = name.replace(' ', '-')
+    # now, make some facets!
+    name = fake.words(nb=random.randrange(2, 6))
 
-    newFacets = {
-        'facet01': {
+    facetBody = {}
+
+    if nested == True:
+
+        facetBody = {
             "ID": 'facet-' + fake.uuid4(),
-            "Name": name,
-            "XpPath": path,
-            "ListOrder": 3,
+            "Name": str('.'.join(name)),
+            "XpPath": str('.'.join(name)),
+            "ListOrder": 0,
             "MinCount": 1
         }
+
+    else:
+        facetBody = {
+            "ID": 'facet-' + fake.uuid4(),
+            "Name": str(' '.join(name)),
+            "XpPath": str('-'.join(name)),
+            "ListOrder": 0,
+            "MinCount": 1
+        }
+
+    facetName = createProductFacet(configInfo, facetBody, admin)['Name']
+
+    # shouldn't show up in facet list
+    facetList = buyer.get(configInfo['API'] + 'v1/me/products')
+
+    # log.info(facetList.json()['Meta']['Facets'])
+
+    facetNames = []
+
+    for each in facetList.json()['Meta']['Facets']:
+        facetNames.append(each['Name'])
+
+    # value mincount = 1, thus facet should not appear yet in facet meta list
+    assert facetName not in facetNames
+
+    valueOptions = [True, False, fake.catch_phrase(), random.choice(blns.list)]
+    # add a value
+    facetValue = assignProductFacet(
+        configInfo, admin, productID=randomProductID, facetPath=facetBody['XpPath'], value=random.choice(valueOptions))
+
+    time.sleep(300)  # wait for the index....
+
+    # assert that the facet shows up now in facet meta list
+    facetList = buyer.get(configInfo['API'] + 'v1/me/products')
+
+    # log.info(facetList.json()['Meta']['Facets'])
+
+    facetNames = []
+
+    for each in facetList.json()['Meta']['Facets']:
+        facetNames.append(each['Name'])
+    log.info(facetNames)
+
+    # value created, thus facet should now appear yet in facet meta list
+    assert facetName in facetNames
+
+
+def test_verifyMinCount0(configInfo, connections):
+
+    admin = connections['admin']
+
+    name = fake.words(nb=3)
+
+    facetBody = {
+        "ID": 'facet-' + fake.uuid4(),
+        "Name": str(' '.join(name)),
+        "XpPath": str('-'.join(name)),
+        "ListOrder": 3,
+        "MinCount": 0
     }
 
-    # log.info((newFacets['facet01']['Name']))
-    # log.info((newFacets['facet01']['XpPath']))
+    facetName = createProductFacet(configInfo, facetBody, admin)['Name']
 
-    facet = admin.post(configInfo['API'] +
-                       'v1/ProductFacets', json=newFacets['facet01'])
-    assert facet.status_code is codes.created
-    log.info(json.dumps(facet.json(), indent=4))
+    buyer = connections['buyer']
 
-    # 2. create some products with that XP
+    facetList = buyer.get(configInfo['API'] + 'v1/me/products')
 
-    products = getRandomProducts(configInfo, buyer)
-    # log.info(products)
+    # log.info(facetList.json()['Meta']['Facets'])
 
-    patchXP(configInfo, admin, products, newFacets)
+    facetNames = []
+
+    for each in facetList.json()['Meta']['Facets']:
+        facetNames.append(each['Name'])
+
+    log.info(facetNames)
+
+    assert facetName in facetNames
+
+
+def test_deletion(configInfo, connections):
+    pass
+
+
+def test_normal(configInfo, connections):
+    pass
+
+
+def test_facetCreation(configInfo, connections):
+
+    buyer = connections['buyer']
+    admin = connections['admin']
+
+    # 1. create a facet as an admin user
