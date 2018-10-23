@@ -8,6 +8,7 @@ import random
 from random import randint
 import urllib
 import time
+from ..helpers import blns
 
 
 from ..auth import get_Token_UsernamePassword
@@ -85,7 +86,7 @@ def createProductFacet(configInfo, productFacet, session):
         # log.info(facet.text)
         assert facet.status_code is codes.created
         # log.info(json.dumps(facet.json(), indent=4))
-        return facet.json()
+        return facet
     except:
         raise
 
@@ -123,6 +124,96 @@ def assignProductFacet(configInfo, session, productID, facetPath, value):
                                    productID, json=xpBody)
     log.info(json.dumps(patchedProduct.json(), indent=2))
     log.info(patchedProduct.status_code)
+
+
+def makeAFacet(configInfo, admin, nested, mincount):
+
+    # now, make a facet!
+    name = fake.words(nb=random.randrange(2, 6))
+
+    facetBody = {}
+
+    if nested == True:
+        facetBody = {
+            "ID": 'facet-' + fake.uuid4(),
+            "Name": str('.'.join(name)),
+            "XpPath": str('.'.join(name)),
+            "ListOrder": 0,
+            "MinCount": mincount
+        }
+
+    else:
+        facetBody = {
+            "ID": 'facet-' + fake.uuid4(),
+            "Name": str(' '.join(name)),
+            "XpPath": str('-'.join(name)),
+            "ListOrder": 0,
+            "MinCount": mincount
+        }
+
+    newFacet = createProductFacet(configInfo, facetBody, admin)
+
+    return newFacet.json()
+
+
+def makeFacetAndAssignValues(configInfo, buyer, admin, nested, minCount, numValues):
+
+    # get the products to assign facet values to...
+
+    if numValues > 20:
+        pageSize = numValues
+    else:
+        pageSize = 20
+
+    # get some products to assign values to
+    buyerProducts = buyer.get(
+        configInfo['API'] + 'v1/me/products', params={'PageSize': pageSize})
+    assert buyerProducts.status_code is codes.ok
+
+    randomPick = random.randrange(0, pageSize - 1)
+    randomProducts = random.choices(buyerProducts.json()['Items'], k=numValues)
+    # log.info(randomProducts)
+
+    # make that facet
+    newFacet = makeAFacet(configInfo, admin, nested, minCount)
+
+    # check to see if the facet shows up in the meta facet
+    facetList = buyer.get(configInfo['API'] + 'v1/me/products')
+
+    # values should only show up if minCount = 0 here, because no values yet
+    facetNames = []
+    for each in facetList.json()['Meta']['Facets']:
+        facetNames.append(each['Name'])
+    log.info(facetNames)
+    #log.info('wait for the product index...')
+    # time.sleep(60)
+    if minCount > 0:
+        assert newFacet['Name'] not in facetNames
+    elif minCount == 0:
+        assert newFacet['Name'] not in facetNames
+
+    # let's assign some values
+
+    valueOptions = [True, False, fake.catch_phrase(), random.choice(blns.list)]
+    # add a value
+    for each in randomProducts:
+        facetValue = assignProductFacet(
+            configInfo, admin, productID=each['ID'], facetPath=newFacet['XpPath'], value=random.choice(valueOptions))
+
+    log.info('wait for the product index...')
+    time.sleep(100)
+
+    facetNames = []
+    for each in facetList.json()['Meta']['Facets']:
+        facetNames.append(each['Name'])
+
+    log.info(facetNames)
+    if minCount >= 0:
+        assert newFacet['Name'] in facetNames
+    else:
+        assert newFacet['Name'] not in facetNames
+
+    return True
 
 
 def getProductFacets(configInfo, token, params):

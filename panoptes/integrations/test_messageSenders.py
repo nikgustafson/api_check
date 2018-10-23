@@ -8,14 +8,15 @@ import logging
 import json
 import time
 from faker import Faker
-from random import randint
+from random import randint, choice, randrange
 
 
 from .. import me
 from .. import auth
 from .. import integrations
-from ..integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail
+from ..integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail, resetEmail
 from ..users import createUser
+from ..orders import orderCreate
 
 from ..me import registerMe, get_Me
 
@@ -34,26 +35,6 @@ variation: user types
 	- previously registered buyer user
 	- registered admin user in buyer app
 """
-
-
-def resetEmail(configInfo, connections, user):
-
-    if configInfo['MAILOSAUR-SERVER'] not in user['Email']:
-
-        newEmail = {'Email': user['Username'] + '.' +
-                    configInfo['MAILOSAUR-SERVER'] + '@mailosaur.io'}
-        log.info(newEmail)
-
-        patchedUser = connections['admin'].patch(
-            configInfo['API'] + 'v1/buyers/' + configInfo['Buyer'] + '/users/' + user['ID'], json={'Email': newEmail['Email']})
-        log.info(patchedUser.url)
-        log.info(json.dumps(patchedUser.json(), indent=4))
-
-        assert patchedUser.status_code is codes.ok
-
-        userEmail = patchedUser.json()['Email']
-
-        return userEmail
 
 
 @pytest.mark.smoke
@@ -104,7 +85,7 @@ def test_ForgottenPassword(configInfo):
     email = awaitEmail(configInfo, subject=pwEmailSubject,
                        sentTo=userEmail, body=None)
 
-    #log.info(json.dumps(email, indent=4))
+    # log.info(json.dumps(email, indent=4))
 
     if email is codes.no_content:
         pytest.fail(msg='The email was not found on the email server.')
@@ -203,23 +184,143 @@ def test_NewUserInvitedCreated(configInfo, connections):
 @pytest.mark.description(
         "Verifies that the OrderSubmitted message sender is working. \
 	Test registers an Anon User, creates an order with lineitem, and submits the order. After order submit, test verifies that an OrderSubmitted email was recieved by the order submitting user.")
-def test_OrderSubmitted():
+def test_OrderSubmitted(configInfo, connections):
     """
     verifies that Order Submit emails are being sent for the following types of users:
             1. Anon Users who do not register during checkout
             2. Anon Users who register during checkout process (after order is created)
-            3. Previously registered buyer users 
+            3. Previously registered buyer users
     returns: nothing
     """
+    buyer = connections['buyer']
 
-    pass
+    orders = buyer.get(configInfo['API'] +
+                       'v1/me/orders', params={'IsSubmitted': False, 'LineItemCount': '>=1'})
+    # log.info(orders.status_code)
+    # log.info(orders.json())
+    assert orders.status_code is codes.ok
+
+    if orders.json()['Meta']['TotalCount'] == 0:
+        newOrder = orderCreate(configInfo, buyer, 'outgoing', {"Comments": ""})
+        # log.info(newOrder)
+        orders = buyer.get(configInfo['API'] +
+                           'v1/me/orders', params={'IsSubmitted': False})
+    # log.info(orders.json()['Items'])
+
+    items = orders.json()['Items']
+    getOrder = randrange(orders.json()['Meta']['TotalCount'])
+
+    getOrder = orders.json()['Items'][getOrder]
+    # log.info(getOrder)
+    orderID = getOrder['ID']
+    # log.info(orderID)
+
+    if getOrder['LineItemCount'] == 0:
+        log.info('Need a new lineitem!')
+
+        meProducts = buyer.get(configInfo['API'] + 'v1/me/products')
+        # log.info(meProducts.json())
+        randProduct = choice(meProducts.json()['Items'])
+        # log.info(randProduct)
+        randQuant = randrange(randProduct['PriceSchedule']['MinQuantity'], randProduct[
+                              'PriceSchedule']['MaxQuantity'])
+        meAddresses = buyer.get(configInfo['API'] + 'v1/me/addresses')
+
+        log.info(randQuant)
+        # create line item
+        lineBody = {
+            "ProductID": randProduct['ID'],
+            "Quantity": randQuant,
+            "DateNeeded": '',
+            "xp": {}
+        }
+
+        if meAddresses.json()['Meta']['TotalCount'] > 0:
+            # set shipping address
+            lineBody['ShippingAddress'] = choice(meAddresses.json()['Items'])
+        log.info(lineBody)
+
+        newLineItem = buyer.post(
+            configInfo['API'] + 'v1/orders/outgoing/' + orderID + '/lineitems', json=lineBody)
+        log.info(newLineItem.json())
+        assert newLineItem.status_code is codes.created
+
+    assert buyer.get(configInfo['API'] +
+                     'v1/orders/outgoing/' + orderID).json()['LineItemCount'] > 0
+    lineitems = buyer.get(
+        configInfo['API'] + 'v1/orders/outgoing/' + orderID + '/lineitems')
+    assert lineitems.status_code is codes.ok
+    log.info(json.dumps(lineitems.json()['Items'], indent=4))
+
+    products = []
+    for item in lineitems.json()['Items']:
+        log.info(item['ProductID'])
+        line = item['ProductID']
+        products.append(line)
+    log.info(products)
+
+    # submit order
+
+    orderSubmitted = buyer.post(configInfo['API'] +
+                                'v1/orders/outgoing/' + orderID + '/submit')
+
+    assert orderSubmitted.status_code is codes.created
+    assert orderSubmitted.json()['IsSubmitted'] == True
+    assert orderSubmitted.json()['Status'] == 'Open'
+
+    # verify email
+
+    userEmail = orderSubmitted.json()['FromUser']['Email']
+
+    log.info('time to get the email')
+
+    client = MailosaurClient(configInfo['MAILOSAUR-KEY'])
+
+    pwEmailSubject = 'Hey, thanks for the order'
+
+    email = awaitEmail(configInfo, subject=pwEmailSubject,
+                       sentTo=userEmail, body=None)
+
+    # log.info(json.dumps(email, indent=4))
+
+    if email is codes.no_content:
+        pytest.fail(msg='The email was not found on the email server.')
+        log.info('NO EMAIL FOUND!')
+    else:
+        emailID = email['id']
+        # log.info(email.keys())
+
+    # get email
+
+    checkEmail = getEmail(configInfo, emailID)
+
+    assert checkEmail['subject'] == pwEmailSubject
+    assert checkEmail['to'][0]['email'] == userEmail
+    assert 'Your order has been received' in checkEmail['text']['body']
+    assert orderID in checkEmail['text']['body']
+
+    for product in products:
+        assert product in checkEmail['text']['body']
+
+    log.info(checkEmail['text'])
+
+    # delete email
+
+    deleteEmail(configInfo, emailID)
 
 
-def test_ShipmentCreated():
+def test_ShipmentCreated(configInfo, connections):
     """
     emails should be sent for Ordercloud application users.
     returns: nothing
     """
+
+    # auth as user
+    buyer = connections['buyer']
+    admin = connections['admin']
+
+    # select an unshipped order
+
     pass
 
 

@@ -28,6 +28,26 @@ loc_tz = pytz.timezone('America/Chicago')
 
 # message senders~~~
 
+def resetEmail(configInfo, connections, user):
+
+    if configInfo['MAILOSAUR-SERVER'] not in user['Email']:
+
+        newEmail = {'Email': user['Username'] + '.' +
+                    configInfo['MAILOSAUR-SERVER'] + '@mailosaur.io'}
+        log.info(newEmail)
+
+        patchedUser = connections['admin'].patch(
+            configInfo['API'] + 'v1/buyers/' + configInfo['Buyer'] + '/users/' + user['ID'], json={'Email': newEmail['Email']})
+        log.info(patchedUser.url)
+        log.info(json.dumps(patchedUser.json(), indent=4))
+
+        assert patchedUser.status_code is codes.ok
+
+        userEmail = patchedUser.json()['Email']
+
+        return userEmail
+
+
 def listServers(configInfo):
 
     user = configInfo['MAILOSAUR-KEY']
