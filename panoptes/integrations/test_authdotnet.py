@@ -19,7 +19,7 @@ fake = Faker()
 log = logging.getLogger(__name__)
 
 
-@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
+#@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
 @pytest.mark.smoke
 @pytest.mark.description('Attempting to create a card in auth.net for a newly registered user should work.')
 def test_createCardNewUser(configInfo, connections):
@@ -70,7 +70,7 @@ def test_createCardNewUser(configInfo, connections):
     assert 'AuthorizeNetProfileID' in user['xp'].keys()
 
 
-@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
+#@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
 @pytest.mark.smoke
 @pytest.mark.description('Attempting to create a card that already exists should return an Auth.Net duplicate payment profile error')
 def test_createCardExistingUser(configInfo):

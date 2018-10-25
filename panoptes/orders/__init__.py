@@ -43,3 +43,15 @@ def orderCreate(configInfo, session, direction, orderBody):
     assert newOrder.status_code is codes.created
 
     return newOrder.json()
+
+
+def getOrderLineitems(configInfo, connections, orderID):
+
+    #/orders/{direction}/{orderID}/lineitems
+
+    lineitemList = connections['admin'].get(
+        configInfo['API'] + 'v1/orders/incoming/' + orderID + '/lineitems')
+    log.info(lineitemList.json())
+    assert lineitemList.status_code is codes.ok
+
+    return lineitemList.json()

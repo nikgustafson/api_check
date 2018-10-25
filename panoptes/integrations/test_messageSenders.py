@@ -7,6 +7,7 @@ from requests import codes
 import logging
 import json
 import time
+from datetime import datetime, date, time
 from faker import Faker
 from random import randint, choice, randrange
 
@@ -16,7 +17,8 @@ from .. import auth
 from .. import integrations
 from ..integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail, resetEmail
 from ..users import createUser
-from ..orders import orderCreate
+from ..orders import orderCreate, getOrderLineitems
+from ..shipments import createAShipment, addItemsToShipment, patchShipment
 
 from ..me import registerMe, get_Me
 
@@ -247,6 +249,7 @@ def test_OrderSubmitted(configInfo, connections):
 
     assert buyer.get(configInfo['API'] +
                      'v1/orders/outgoing/' + orderID).json()['LineItemCount'] > 0
+
     lineitems = buyer.get(
         configInfo['API'] + 'v1/orders/outgoing/' + orderID + '/lineitems')
     assert lineitems.status_code is codes.ok
@@ -320,11 +323,135 @@ def test_ShipmentCreated(configInfo, connections):
     admin = connections['admin']
 
     # select an unshipped order
+    orderID = ''
+    order = {}
 
-    pass
+    filters = {
+        'Status': 'Open',
+        'LineItemCount': bytes('>0', 'utf-8')
+    }
+
+    orderList = buyer.get(configInfo['API'] + 'v1/me/orders', params=filters)
+    # log.info(orderList.request.headers)
+    # log.info(orderList.url)
+    #log.info(json.dumps(orderList.json(), indent=4))
+    assert orderList.status_code is codes.ok
+
+    if orderList.json()['Meta']['TotalCount'] < 1:
+        log.info('NEED MOAR ORDERS')
+        orderBody = {
+            'Comments': fake.company()
+        }
+        order = orderCreate(configInfo, buyer, 'outgoing', orderBody)
+        orderID = order['ID']
+    else:
+        order = choice(orderList.json()['Items'])
+        orderID = order['ID']
+
+    log.info(orderID)
+
+    shipmentList = buyer.get(
+        configInfo['API'] + 'v1/me/shipments/', params={'orderID': orderID})
+    log.info(shipmentList.url)
+    log.info(shipmentList.status_code)
+    assert shipmentList.status_code is codes.ok
+
+    products = []
+
+    shipmentID = ''
+
+    if shipmentList.json()['Meta']['TotalCount'] == 0:
+        log.info('LETS SHIP IT')
+        log.info(order.keys())
+        # adminOrder =
+        # ship all
+        shipBody = {
+            "BuyerID": configInfo['BUYER'],
+            "Shipper": fake.company(),
+            "DateShipped": None,
+            "TrackingNumber": fake.msisdn(),
+            "Cost": order['Total'],
+            "ShippedTo": order['FromUser']
+        }
+        log.info(shipBody)
+        newShipment = createAShipment(configInfo, connections, shipBody)
+
+        shipmentID = newShipment['ID']
+
+    else:
+        log.info(json.dumps(shipmentList.json(), indent=4))
+        shipmentID = shipmentList.json()['Items'][0]['ID']
+
+    log.info('add some hot hot ITEMS')
+
+    log.info(orderID)
+    lineitemList = getOrderLineitems(configInfo, connections, orderID)
+
+    shipmentItems = addItemsToShipment(
+        configInfo, connections, shipmentID, orderID, lineitemList['Items'])
+
+    log.info('patch that shipment so the email gets sent!')
+
+    patchBody = {
+        "DateShipped": str(datetime.utcnow())
+    }
+
+    patched = patchShipment(configInfo, connections, shipmentID, patchBody)
+
+    meShipment = buyer.get(
+        configInfo['API'] + 'v1/me/shipments/')  # + shipmentID)
+    log.info(json.dumps(meShipment.json(), indent=4))
+    assert meShipment.status_code is codes.ok
+
+    meShipmentItems = buyer.get(
+        configInfo['API'] + 'v1/me/shipments/' + shipmentID + '/items')
+    log.info(meShipmentItems.json())
+    assert meShipmentItems.status_code is codes.ok
+
+    # check for shipment email
+
+    # verify email
+
+    userEmail = shipAll.json()['FromUser']['Email']
+
+    log.info('time to get the email')
+
+    client = MailosaurClient(configInfo['MAILOSAUR-KEY'])
+
+    pwEmailSubject = 'Your order has been shipped'
+
+    email = awaitEmail(configInfo, subject=pwEmailSubject,
+                       sentTo=userEmail, body=None)
+
+    # log.info(json.dumps(email, indent=4))
+
+    if email is codes.no_content:
+        pytest.fail(msg='The email was not found on the email server.')
+        log.info('NO EMAIL FOUND!')
+    else:
+        emailID = email['id']
+        # log.info(email.keys())
+
+    # get email
+
+    checkEmail = getEmail(configInfo, emailID)
+
+    assert checkEmail['subject'] == pwEmailSubject
+    assert checkEmail['to'][0]['email'] == userEmail
+    assert 'A shipment has been sent for order ' + \
+        orderID in checkEmail['text']['body']
+
+    for product in products:
+        assert product in checkEmail['text']['body']
+
+    log.info(checkEmail['text'])
+
+    # delete email
+
+    #deleteEmail(configInfo, emailID)
 
 
-@pytest.mark.description("Verifies that User who submitted an order for approval recieves OrderApproved message sender email.\
+@pytest.mark.description("Verifies that User who submitted an order for approval receives OrderApproved message sender email.\
 	CURRENTLY A STUB.")
 def test_OrderApproved():
     """
