@@ -1,5 +1,6 @@
 jobs:
   - job: 'RunTestsPROD'
+    continueOnError: True
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -41,6 +42,7 @@ jobs:
         #buildConfiguration: # Optional
         publishRunAttachments: true # Optional
   - job: 'RunTestsQA'
+    continueOnError: True
     steps:
     - task: UsePythonVersion@0
       inputs:
