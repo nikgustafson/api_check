@@ -9,7 +9,7 @@ import json
 import time
 from datetime import datetime, date, time
 from faker import Faker
-from random import randint, choice, randrange
+from random import randint, choice, randrange, sample
 
 
 from .. import me
@@ -17,7 +17,7 @@ from .. import auth
 from .. import integrations
 from ..integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail, resetEmail
 from ..users import createUser
-from ..orders import orderCreate, getOrderLineitems
+from ..orders import orderCreate, getOrderLineitems, fakeOrderBody, findOrder, lineItemCreate
 from ..shipments import createAShipment, addItemsToShipment, patchShipment
 
 from ..me import registerMe, get_Me
@@ -331,24 +331,39 @@ def test_ShipmentCreated(configInfo, connections):
         'LineItemCount': bytes('>0', 'utf-8')
     }
 
-    orderList = buyer.get(configInfo['API'] + 'v1/me/orders', params=filters)
-    # log.info(orderList.request.headers)
-    # log.info(orderList.url)
-    #log.info(json.dumps(orderList.json(), indent=4))
-    assert orderList.status_code is codes.ok
+    orderList = findOrder(configInfo, buyer, filters)
 
-    if orderList.json()['Meta']['TotalCount'] < 1:
-        log.info('NEED MOAR ORDERS')
-        orderBody = {
-            'Comments': fake.company()
-        }
-        order = orderCreate(configInfo, buyer, 'outgoing', orderBody)
-        orderID = order['ID']
-    else:
+    i = 0
+    while not orderList['Items'] and i < 3:
+        log.info('No Orders Found :(')
+
+        newOrder = orderCreate(configInfo, buyer, 'outgoing', fakeOrderBody())
+        orderID = newOrder['ID']
+        # add lineitems
+        if not getOrderLineitems(configInfo, connections, orderID)['Items']:
+            log.info('need to create some line items...')
+            lineitems = lineItemCreate(configInfo, buyer, orderID)
+            log.info(lineitems)
+            log.info('SUBMIT - THAT - ORDER!!')
+            orderSubmitted = buyer.post(configInfo['API'] +
+                                        'v1/orders/outgoing/' + orderID + '/submit')
+            log.info(orderSubmitted)
+            assert orderSubmitted.status_code is codes.created
+
+            orderList = findOrder(configInfo, buyer, filters)
+            log.info(orderList)
+            i += 1
+
+    if len(orderList['Items']) > 1:
         order = choice(orderList.json()['Items'])
-        orderID = order['ID']
+    else:
+        orderID = orderList['Items'][0]['ID']
 
-    log.info(orderID)
+    log.info('Order List: ' + json.dumps(orderList))
+    log.info('Order ID: ' + str(orderID))
+
+    meOrder = buyer.get(configInfo['API'] + 'v1/orders/outgoing/' + orderID)
+    log.info(json.dumps(meOrder.json(), indent=4))
 
     shipmentList = buyer.get(
         configInfo['API'] + 'v1/me/shipments/', params={'orderID': orderID})
@@ -360,9 +375,9 @@ def test_ShipmentCreated(configInfo, connections):
 
     shipmentID = ''
 
-    if shipmentList.json()['Meta']['TotalCount'] == 0:
+    if not shipmentList.json()['Items']:
         log.info('LETS SHIP IT')
-        log.info(order.keys())
+        #log.info(json.dumps(shipmentList.json(), indent=4))
         # adminOrder =
         # ship all
         shipBody = {
@@ -370,11 +385,12 @@ def test_ShipmentCreated(configInfo, connections):
             "Shipper": fake.company(),
             "DateShipped": None,
             "TrackingNumber": fake.msisdn(),
-            "Cost": order['Total'],
-            "ShippedTo": order['FromUser']
+            "Cost": meOrder.json()['Total'],
+            "ShippedTo": meOrder.json()['FromUser']
         }
         log.info(shipBody)
         newShipment = createAShipment(configInfo, connections, shipBody)
+        log.info(newShipment)
 
         shipmentID = newShipment['ID']
 
@@ -405,14 +421,14 @@ def test_ShipmentCreated(configInfo, connections):
 
     meShipmentItems = buyer.get(
         configInfo['API'] + 'v1/me/shipments/' + shipmentID + '/items')
-    log.info(meShipmentItems.json())
+    log.info(json.dumps(meShipmentItems.json(), indent=4))
     assert meShipmentItems.status_code is codes.ok
 
     # check for shipment email
 
     # verify email
 
-    userEmail = shipAll.json()['FromUser']['Email']
+    userEmail = meOrder.json()['FromUser']['Email']
 
     log.info('time to get the email')
 
