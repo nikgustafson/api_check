@@ -36,7 +36,7 @@ jobs:
         testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit
         testResultsFiles: '**/TEST-*.xml' 
         #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
-        mergeTestResults: true # Optional
+        mergeTestResults: false # Optional
         testRunTitle: 'API_CHECK PROD'
         #buildPlatform: # Optional
         #buildConfiguration: # Optional
@@ -75,10 +75,11 @@ jobs:
     # PUBLISH JUNIT RESULTS
     - task: PublishTestResults@2
       inputs:
+        condition: succeededOrFailed()
         testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit
         testResultsFiles: '**/TEST-*.xml' 
         #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
-        mergeTestResults: true # Optional
+        mergeTestResults: false # Optional
         testRunTitle: 'API_CHECK QA'
         #buildPlatform: # Optional
         #buildConfiguration: # Optional
