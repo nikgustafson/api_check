@@ -109,6 +109,7 @@ def test_ForgottenPassword(configInfo):
     deleteEmail(configInfo, emailID)
 
 
+@pytest.mark.skip
 @pytest.mark.description(
     "Verifies that the NewUserInvited message sender is working for Registered users.")
 def test_NewUserInvitedRegister(configInfo, connections):
@@ -149,6 +150,7 @@ def test_NewUserInvitedRegister(configInfo, connections):
     log.info(email)
 
 
+@pytest.mark.skip
 @pytest.mark.description(
     "Verifies that the NewUserInvited message sender is working for created users.")
 def test_NewUserInvitedCreated(configInfo, connections):
@@ -181,6 +183,7 @@ def test_NewUserInvitedCreated(configInfo, connections):
     log.info(email)
 
 
+@pytest.mark.smoke
 @pytest.mark.description(
         "Verifies that the OrderSubmitted message sender is working. \
 	Test registers an Anon User, creates an order with lineitem, and submits the order. After order submit, test verifies that an OrderSubmitted email was recieved by the order submitting user.")
@@ -208,9 +211,16 @@ def test_OrderSubmitted(configInfo, connections):
     # log.info(orders.json()['Items'])
 
     items = orders.json()['Items']
-    getOrder = randrange(orders.json()['Meta']['TotalCount'])
+    assert len(items) > 0
 
-    getOrder = orders.json()['Items'][getOrder]
+    totalCount = orders.json()['Meta']['TotalCount']
+    #log.info("TOTAL COUNT = " + str(totalCount))
+    assert totalCount > 0
+
+    randomOrder = randrange(orders.json()['Meta']['PageSize'] - 1)
+    # log.info("Random Order # = " + str(randomOrder))
+
+    getOrder = orders.json()['Items'][randomOrder]
     # log.info(getOrder)
     orderID = getOrder['ID']
     # log.info(orderID)
@@ -242,7 +252,7 @@ def test_OrderSubmitted(configInfo, connections):
 
         newLineItem = buyer.post(
             configInfo['API'] + 'v1/orders/outgoing/' + orderID + '/lineitems', json=lineBody)
-        log.info(newLineItem.json())
+        # log.info(newLineItem.json())
         assert newLineItem.status_code is codes.created
 
     assert buyer.get(configInfo['API'] +
@@ -250,14 +260,14 @@ def test_OrderSubmitted(configInfo, connections):
     lineitems = buyer.get(
         configInfo['API'] + 'v1/orders/outgoing/' + orderID + '/lineitems')
     assert lineitems.status_code is codes.ok
-    log.info(json.dumps(lineitems.json()['Items'], indent=4))
+    #log.info(json.dumps(lineitems.json()['Items'], indent=4))
 
     products = []
     for item in lineitems.json()['Items']:
         log.info(item['ProductID'])
         line = item['ProductID']
         products.append(line)
-    log.info(products)
+    # log.info(products)
 
     # submit order
 

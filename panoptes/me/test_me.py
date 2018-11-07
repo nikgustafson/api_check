@@ -156,6 +156,8 @@ def test_meAddressesDelete(configInfo):
     assert addList2.json()['Meta']['TotalCount'] == totalAdd - 1
 
 
+@pytest.mark.smoke
+@pytest.mark.description(''' Verifies that an anon user can register.''')
 def test_meRegistration(configInfo, connections):
 
     anonToken = connections['anon']
@@ -226,3 +228,22 @@ def test_me_gets(configInfo, connections, sessions, endpoint):
         log.debug(collection.json()['Meta']['TotalCount'])
 
     assert collection.status_code is codes.ok
+
+
+@pytest.mark.smoke
+@pytest.mark.description('Verifies Facet Navigation appears on me/Products.')
+@pytest.mark.parametrize("sessions", ['buyer', 'anon'])
+def test_me_facets(configInfo, connections, sessions):
+
+    session = connections[sessions]
+
+    facets = session.get(configInfo['API'] + 'v1/me/products')
+    log.info(facets.url)
+    # log.info(facets.status_code)
+    log.info(repr(facets.elapsed.seconds) + ' seconds OR ' +
+             repr(facets.elapsed.microseconds) + ' microseconds')
+    #log.debug(json.dumps(facets.json()['Meta'], indent=4))
+
+    if 'Facets' in facets.json()['Meta'].keys():
+        assert facets.json()['Meta']['Facets'] is not None
+        log.debug(json.dumps(facets.json()['Meta']['Facets'], indent=4))
