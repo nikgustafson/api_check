@@ -109,7 +109,7 @@ def connections(configInfo):
     # admin token
     adminToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
-    log.debug('admin session token ' + json.dumps(adminToken, indent=2))
+    log.info('admin session token ' + json.dumps(adminToken, indent=2))
     '''
     decoded = jwt.decode(adminToken['access_token'], verify=False)
     #log.info('--------')
