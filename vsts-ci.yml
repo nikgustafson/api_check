@@ -55,30 +55,15 @@ jobs:
     - script: pip install -r requirements.txt
       displayName: 'Install Requirements'
     - script: |
-        echo $DOWNLOADSECUREFILE_SECUREFILEPATH
-        cp $DOWNLOADSECUREFILE_SECUREFILEPATH $BUILD_REPOSITORY_LOCALPATH/config.ini
-        echo '-----------'
-        echo $BUILD_REPOSITORY_LOCALPATH
-        file="config.ini"
-        if [ -f "$file" ]
-        then
-          echo "$file found."
-        else
-          echo "$file not found."
-        fi
-        pwd
-        ls
-      displayName: 'Check Current Dir'
-    - script: |
-        pytest panoptes -m smoke --ENV=qa --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml= "$SYSTEM_ARTIFACTSDIRECTORY/TEST-qa-smoke.xml"
+      pytest panoptes -m smoke --ENV=prod --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml="TEST-qa-smoke.xml"
+#        pytest panoptes -m smoke --ENV=qa --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml= "$SYSTEM_ARTIFACTSDIRECTORY/TEST-qa-smoke.xml"
       displayName: 'Test with pytest'
     # PUBLISH JUNIT RESULTS
     - task: PublishTestResults@2
       inputs:
-        condition: succeededOrFailed()
         testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit
-        testResultsFiles: 'TEST-*.xml' 
-        searchFolder: '$SYSTEM_ARTIFACTSDIRECTORY' # Optional
+        testResultsFiles: '**/TEST-*.xml' 
+        #searchFolder: '$SYSTEM_ARTIFACTSDIRECTORY' # Optional
         mergeTestResults: false # Optional
         testRunTitle: 'API_CHECK QA'
         #buildPlatform: # Optional
