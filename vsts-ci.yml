@@ -54,9 +54,8 @@ jobs:
   #  - script: . setup.sh
     - script: pip install -r requirements.txt
       displayName: 'Install Requirements'
-    - script: |
-      pytest panoptes -m smoke --ENV=prod --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml="TEST-qa-smoke.xml"
-    displayName: 'Test with pytest'
+    - script: pytest panoptes -m smoke --ENV=prod --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml="TEST-qa-smoke.xml"
+      displayName: 'Test with pytest'
     # PUBLISH JUNIT RESULTS
     - task: PublishTestResults@2
       inputs:
