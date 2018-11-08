@@ -70,14 +70,14 @@ jobs:
         ls
       displayName: 'Check Current Dir'
     - script: |
-        pytest panoptes -m smoke --ENV=qa --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml= $SYSTEM_ARTIFACTSDIRECTORY/TEST-qa-smoke.xml
+        pytest panoptes -m smoke --ENV=qa --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml= "$SYSTEM_ARTIFACTSDIRECTORY/TEST-qa-smoke.xml"
       displayName: 'Test with pytest'
     # PUBLISH JUNIT RESULTS
     - task: PublishTestResults@2
       inputs:
         condition: succeededOrFailed()
         testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit
-        testResultsFiles: '**/TEST-*.xml' 
+        testResultsFiles: 'TEST-*.xml' 
         searchFolder: '$SYSTEM_ARTIFACTSDIRECTORY' # Optional
         mergeTestResults: false # Optional
         testRunTitle: 'API_CHECK QA'
