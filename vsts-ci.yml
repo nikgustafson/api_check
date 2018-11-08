@@ -56,8 +56,7 @@ jobs:
       displayName: 'Install Requirements'
     - script: |
       pytest panoptes -m smoke --ENV=prod --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml="TEST-qa-smoke.xml"
-#        pytest panoptes -m smoke --ENV=qa --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello-qa.log --junitxml= "$SYSTEM_ARTIFACTSDIRECTORY/TEST-qa-smoke.xml"
-      displayName: 'Test with pytest'
+    displayName: 'Test with pytest'
     # PUBLISH JUNIT RESULTS
     - task: PublishTestResults@2
       inputs:
