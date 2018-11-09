@@ -16,7 +16,7 @@ jobs:
           overWrite: true # Optional
           #flattenFolders: false # Optional
       - script: ls $(Agent.WorkFolder)
-        name: ViewFile             
+        name: ViewFile2             
             
   - job: 'RunTestsPROD'
     dependsOn: DownloadSecureFile
