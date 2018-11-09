@@ -13,34 +13,8 @@ jobs:
     - script: pip install -r requirements.txt
       displayName: 'Install Requirements'
     - script: |
-        echo $DOWNLOADSECUREFILE_SECUREFILEPATH
-        cp $DOWNLOADSECUREFILE_SECUREFILEPATH $BUILD_REPOSITORY_LOCALPATH/config.ini
-        echo '-----------'
-        echo $BUILD_REPOSITORY_LOCALPATH
-        file="config.ini"
-        if [ -f "$file" ]
-        then
-          echo "$file found."
-        else
-          echo "$file not found."
-        fi
-        pwd
-        ls
-      displayName: 'Check Current Dir'
-    - script: |
         pytest panoptes -m smoke --ENV=prod --log-file $SYSTEM_ARTIFACTSDIRECTORY/hello.log --junitxml="TEST-prod-smoke.xml"
       displayName: 'Test with pytest'
-    # PUBLISH JUNIT RESULTS
-    - task: PublishTestResults@2
-      inputs:
-        testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit
-        testResultsFiles: '**/TEST-*.xml' 
-        #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
-        mergeTestResults: false # Optional
-        testRunTitle: 'API_CHECK PROD'
-        #buildPlatform: # Optional
-        #buildConfiguration: # Optional
-        publishRunAttachments: true # Optional
   - job: 'RunTestsQA'
     continueOnError: True
     steps:
@@ -71,17 +45,22 @@ jobs:
         itemPattern: '**' # Optional
         downloadPath: '$(System.ArtifactsDirectory)' 
         #parallelizationLimit: '8' # Optional
-    # PUBLISH JUNIT RESULTS
+  - job: UploadResults
+    dependsOn: RunTestsQA
+    steps:
+    - script: echo hello from the publish tests job  
+        # PUBLISH JUNIT RESULTS
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit
         testResultsFiles: '**/TEST-*.xml' 
-        #searchFolder: '$SYSTEM_ARTIFACTSDIRECTORY' # Optional
+        searchFolder: '$SYSTEM_ARTIFACTSDIRECTORY' # Optional
         mergeTestResults: false # Optional
         testRunTitle: 'API_CHECK QA'
         #buildPlatform: # Optional
         #buildConfiguration: # Optional
         publishRunAttachments: true # Optional
+
 
 
 
