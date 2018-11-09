@@ -5,8 +5,14 @@ jobs:
         name: GetConfigFile
         inputs:
           secureFile:  'panoptesConfig.ini'
-      - script: ls $(secureFilePath)
+      - script: |
+      ls
+      ls panoptes
+      ls 
+      pwd
+      echo $(GetConfigFile.secureFilePath)
         name: ViewFile 
+          
             
   - job: 'RunTestsPROD'
     dependsOn: DownloadSecureFile
@@ -19,7 +25,7 @@ jobs:
     - script: pip install -r requirements.txt
       displayName: 'Install Requirements'
     - script: |
-        pytest panoptes -m smoke --ENV=prod --CONFIG= $(secureFilePath) --junitxml=$SYSTEM_ARTIFACTSDIRECTORY/TEST-prod-smoke.xml
+        pytest panoptes -m smoke --ENV=prod --CONFIG= $(Agent.WorkFolder)/_temp/panoptesConfig.ini --junitxml=$SYSTEM_ARTIFACTSDIRECTORY/TEST-prod-smoke.xml
       displayName: 'Test with pytest'
 
   - job: 'RunTestsQA'
