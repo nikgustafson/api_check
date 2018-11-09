@@ -46,7 +46,9 @@ jobs:
         downloadPath: '$(System.ArtifactsDirectory)' 
         #parallelizationLimit: '8' # Optional
   - job: UploadResults
-    dependsOn: RunTestsQA
+    dependsOn: 
+      - RunTestsQA
+      - RunTestsPROD
     steps:
     - script: echo hello from the publish tests job  
         # PUBLISH JUNIT RESULTS
