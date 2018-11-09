@@ -23,12 +23,14 @@ jobs:
         versionSpec: '3.6'
         architecture: 'x64'
     - task: DownloadSecureFile@1
+      name: GetConfigFile
       inputs:
         secureFile:  'panoptesConfig'
+    - script: cat $(GetConfigFile.secureFilePath) 
   #  - script: . setup.sh
     - script: pip install -r requirements.txt
       displayName: 'Install Requirements'
-    - script: pytest panoptes -m smoke --ENV=qa --CONFIG= $(Agent.WorkFolder)/_temp/panoptesConfig --junitxml= $SYSTEM_ARTIFACTSDIRECTORY/TEST-qa-smoke.xml
+    - script: pytest panoptes -m smoke --ENV=qa --CONFIG= $(GetConfigFile.secureFilePath)  --junitxml= $SYSTEM_ARTIFACTSDIRECTORY/TEST-qa-smoke.xml
       displayName: 'Test with pytest'
     - task: DownloadBuildArtifacts@0
       inputs:
