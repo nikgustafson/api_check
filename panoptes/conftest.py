@@ -73,7 +73,7 @@ def configInfo(pytestconfig):
     assert loc.exists() is True
     assert loc.is_dir() is False
 
-    # log.info(configLoc)
+    log.info(configLoc)
 
     config = configparser.ConfigParser()
     print()
