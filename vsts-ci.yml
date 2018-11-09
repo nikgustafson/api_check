@@ -8,13 +8,13 @@ jobs:
       - script: ls $(GetConfigFile.secureFilePath)
         name: ViewFile 
       - task: CopyFiles@2
-          inputs:
-            sourceFolder: $(GetConfigFile.secureFilePath) # Optional
-            contents: '**.ini' 
-            targetFolder: $(Agent.WorkFolder)
-            #cleanTargetFolder: false # Optional
-            overWrite: true # Optional
-            #flattenFolders: false # Optional
+        inputs:
+          sourceFolder: $(GetConfigFile.secureFilePath) # Optional
+          contents: '**.ini' 
+          targetFolder: $(Agent.WorkFolder)
+          #cleanTargetFolder: false # Optional
+          overWrite: true # Optional
+          #flattenFolders: false # Optional
       - script: ls $(Agent.WorkFolder)
         name: ViewFile             
             
