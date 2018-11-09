@@ -6,12 +6,12 @@ jobs:
         inputs:
           secureFile:  'panoptesConfig.ini'
       - script: |
-      ls
-      ls panoptes
-      ls 
-      pwd
-      echo $(GetConfigFile.secureFilePath)
-        name: ViewFile 
+        ls
+        ls panoptes
+        ls 
+        pwd
+        echo $(GetConfigFile.secureFilePath)
+      name: ViewFile 
           
             
   - job: 'RunTestsPROD'
