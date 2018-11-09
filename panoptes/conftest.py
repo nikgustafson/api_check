@@ -65,13 +65,17 @@ def configInfo(pytestconfig):
 
     configLoc = pytestconfig.getoption('--CONFIG')
 
-    loc = p.joinpath(configLoc)
-    log.info(Path.cwd())
-    log.info(loc.resolve())
-    log.info(loc.exists())
-    log.info(loc.is_dir())
-    assert loc.exists() is True
-    assert loc.is_dir() is False
+    if configLoc == 'config.ini':
+        loc = p.joinpath(configLoc)
+        log.info(Path.cwd())
+        log.info(loc.resolve())
+        log.info(loc.exists())
+        log.info(loc.is_dir())
+        assert loc.exists() is True
+        assert loc.is_dir() is False
+    else:
+        assert configLoc.exists() is True
+        assert configLoc.is_dir() is False
 
     log.info(configLoc)
 
