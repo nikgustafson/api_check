@@ -66,10 +66,10 @@ def configInfo(pytestconfig):
     configLoc = pytestconfig.getoption('--CONFIG')
 
     loc = p.joinpath(configLoc)
-    # log.info(Path.cwd())
-    # log.info(loc.resolve())
-    # log.info(loc.exists())
-    # log.info(loc.is_dir())
+    log.info(Path.cwd())
+    log.info(loc.resolve())
+    log.info(loc.exists())
+    log.info(loc.is_dir())
     assert loc.exists() is True
     assert loc.is_dir() is False
 
