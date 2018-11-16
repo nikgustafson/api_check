@@ -73,6 +73,20 @@ def patch_Me(configInfo, token, newUser):
     return me.json()
 
 
+def getMeProducts(configInfo, session, params):
+
+    products = session.get(configInfo['API'] + 'v1/me/products', params=params)
+    log.info(products.request.url)
+    log.info(products.status_code)
+    # log.info(delete.json())
+
+    assert products.status_code is codes.ok
+
+    # log.info(json.dumps(orders.json(), indent=4))
+
+    return products.json()
+
+
 def get_meProducts(configInfo, token, params):
 
     if type(token) is dict:

@@ -14,6 +14,7 @@ from random import randint, choice, randrange
 from .. import me
 from .. import auth
 from .. import integrations
+from .. import suppliers
 from ..integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail, resetEmail
 from ..users import createUser
 from ..orders import orderCreate
@@ -39,14 +40,23 @@ variation: user types
 
 @pytest.mark.smoke
 @pytest.mark.description("Verifies that the ForgottenPassword message sender successfully sends an email when triggered. NOTE: this message sender is only triggered by the '/v1/password/reset' endpoint.")
-def test_ForgottenPassword(configInfo):
+@pytest.mark.parametrize("sessions", ['buyer', 'supplier'])
+def test_ForgottenPassword(configInfo, connections, sessions):
     """
     verifies that Forgotten Password (Password Reset) emails are sent and recieved for Ordercloud application users.
     """
-    client_id = configInfo['BUYER-CLIENTID']
-    username = configInfo['BUYER-USERNAME']
-    password = configInfo['BUYER-PASSWORD']
-    scope = ['Shopper', 'MeAdmin']
+    log.info('session is ' + sessions)
+    if sessions == 'supplier':
+        user = suppliers.getSupplierUser(configInfo, connections)
+        client_id = 'D69F2EF6-CD00-4157-A6D5-442C2A49ABB7'
+        username = user['Username']
+        password = configInfo['ADMIN-PASSWORD']
+        scope = ['FullAccess']
+    else:
+        client_id = '1AA9B54E-B31D-48E6-94E2-7454208D82E0'
+        username = configInfo['BUYER-USERNAME']
+        password = configInfo['BUYER-PASSWORD']
+        scope = ['Shopper', 'MeAdmin']
 
     # auth as buyer user
     token = auth.get_Token_UsernamePassword(
