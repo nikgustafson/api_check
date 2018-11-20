@@ -110,25 +110,6 @@ def connections(configInfo):
     adminToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
     log.info('admin session token ' + json.dumps(adminToken, indent=2))
-    '''
-    decoded = jwt.decode(adminToken['access_token'], verify=False)
-    #log.info('--------')
-    #log.info('today\'s date is:')
-    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
-    #log.info(c_dt)
-    #log.info('--------')
-
-    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
-        decoded['nbf']), is_dst=False)
-    expiration = loc_tz.localize(datetime.utcfromtimestamp(
-        decoded['exp']), is_dst=False)
-    log.info('--------')
-    log.info('Admin NBF: ' + str(notbefore))
-    log.info('Admin EXP: ' + str(expiration))
-    log.info('--------')
-
-    #log.info(json.dumps(user, indent=4))
-    '''
 
     # BUYER TOKEN
 
@@ -140,23 +121,7 @@ def connections(configInfo):
     buyerToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
     log.debug('buyer session token ' + json.dumps(buyerToken, indent=2))
-    '''
-    decoded = jwt.decode(buyerToken['access_token'], verify=False)
-    log.info('--------')
-    log.info('today\'s date is:')
-    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
-    log.info(c_dt)
-    log.info('--------')
 
-    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
-        decoded['nbf']), is_dst=False)
-    expiration = loc_tz.localize(datetime.utcfromtimestamp(
-        decoded['exp']), is_dst=False)
-    log.info('--------')
-    log.info('BUYER NBF: ' + str(notbefore))
-    log.info('BUYER EXP: ' + str(expiration))
-    log.info('--------')
-    '''
     buyer = requests.Session()
 
     headers = {
@@ -181,23 +146,7 @@ def connections(configInfo):
 
     anonToken = get_anon_user_token(configInfo, client_id)
     log.debug('anon session token ' + json.dumps(anonToken, indent=2))
-    '''
-    decoded = jwt.decode(anonToken['access_token'], verify=False)
-    log.info('--------')
-    log.info('today\'s date is:')
-    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
-    log.info(c_dt)
-    log.info('--------')
 
-    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
-        decoded['nbf']), is_dst=False)
-    expiration = loc_tz.localize(datetime.utcfromtimestamp(
-        decoded['exp']), is_dst=False)
-    log.info('--------')
-    log.info('anon NBF: ' + str(notbefore))
-    log.info('anon EXP: ' + str(expiration))
-    log.info('--------')
-    '''
     anon = requests.Session()
 
     headers = {
