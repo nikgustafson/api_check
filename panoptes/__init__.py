@@ -1,6 +1,10 @@
 import pytest
 import logging
 import requests
+from faker import Faker
+import json
+
+fake = Faker()
 
 from .auth import get_Token_UsernamePassword
 
@@ -20,52 +24,60 @@ def getConfigData(configInfo):
         return('PROD')
 
 
-@pytest.fixture(scope='session', autouse=True)
-def connections(configInfo):
+@pytest.fixture(scope='module')
+def buyer_setup(request, configInfo):
+    log.info('setting up a new buyer...')
+    buyerName = fake.company()
+    log.info(buyerName)
 
-    client_id = configInfo['SELLER-API-CLIENT']
-    username = configInfo['SELLER-ADMIN-USERNAME']
-    password = configInfo['SELLER-ADMIN-PASSWORD']
-    scope = ['FullAccess']
+    incrementors = configInfo[1].get(
+        configInfo[0]['API'] + 'v1/incrementors')
+    #log.info(json.dumps(incrementors.json(), indent=4))
 
-    # can successfully get a token
-    adminToken = get_Token_UsernamePassword(
-        configInfo, client_id, username, password, scope)
+    if incrementors.json()['Meta']['TotalCount'] == 0:
+        createIncrementors()
+        incrementors = configInfo[1].get(
+            configInfo[0]['API'] + 'v1/incrementors')
 
-    admin = requests.Session()
+    else:
+        assert incrementors.json()['Meta']['TotalCount'] == 3
 
-    headers = {
-        'Authorization': 'Bearer ' + adminToken['access_token'],
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
+    buyerBody = {
+        "ID": 'Buyer{buyer-incrementor}',
+        "Name": buyerName,
+        "Active": True,
+        "xp": {
+            'faker': True
+        }
+    }
+    log.info(json.dumps(buyerBody, indent=4))
+
+    filters = {
+        'AllowAnyBuyer': True,
+        'IsAnonBuyer': True
     }
 
-    admin.headers.update(headers)
+    apiClients = configInfo[1].get(
+        configInfo[0]['API'] + 'v1/apiclients', params=filters)
+    #log.info(json.dumps(apiClients.json(), indent=4))
 
-    return {
-        'admin': admin
-    }
+    newBuyer = configInfo[1].post(
+        configInfo[0]['API'] + 'v1/buyers', json=buyerBody)
+    log.info(json.dumps(newBuyer.json(), indent=4))
 
+    def buyer_teardown():
+        log.info('tearing down the ' + buyerName + ' buyer...')
 
-def setup_module(module):
-    log.info('\nsetup_module()')
+    request.addfinalizer(buyer_teardown)
 
 
 def teardown_module(module):
     log.info('teardown_module()')
 
 
-def setup_function(function):
-    log.info('\nsetup_function()')
-
-
-def teardown_function(function):
-    log.info('\nteardown_function()')
-
-
-def test_1():
+def test_1(buyer_setup):
     log.info('-  test_1()')
 
 
-def test_2():
+def test_2(buyer_setup):
     log.info('-  test_2()')

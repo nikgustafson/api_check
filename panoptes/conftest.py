@@ -66,10 +66,6 @@ def configInfo(pytestconfig):
     configLoc = pytestconfig.getoption('--CONFIG')
 
     loc = p.joinpath(configLoc)
-    log.info(Path.cwd())
-    log.info(loc.resolve())
-    log.info(loc.exists())
-    log.info(loc.is_dir())
     assert loc.exists() is True
     assert loc.is_dir() is False
 
@@ -93,44 +89,21 @@ def configInfo(pytestconfig):
     # print(reporting)
     log.info(reporting)
 
-    return configData
+    adminConnection = connections(configData)
+
+    return configData, adminConnection
 
 
-@pytest.fixture(scope='session', autouse=True)
 def connections(configInfo):
 
-    client_id = configInfo['ADMIN-CLIENTID']
-    username = configInfo['ADMIN-USERNAME']
-    password = configInfo['ADMIN-PASSWORD']
+    client_id = configInfo['SELLER-API-CLIENT']
+    username = configInfo['SELLER-ADMIN-USERNAME']
+    password = configInfo['SELLER-ADMIN-PASSWORD']
     scope = ['FullAccess']
 
-    loc_tz = pytz.timezone('America/Chicago')
-
-    # admin token
+    # can successfully get a token
     adminToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
-    log.info('admin session token ' + json.dumps(adminToken, indent=2))
-
-    # BUYER TOKEN
-
-    client_id = configInfo['BUYER-CLIENTID']
-    username = configInfo['BUYER-USERNAME']
-    password = configInfo['BUYER-PASSWORD']
-    scope = ['Shopper']
-
-    buyerToken = get_Token_UsernamePassword(
-        configInfo, client_id, username, password, scope)
-    log.debug('buyer session token ' + json.dumps(buyerToken, indent=2))
-
-    buyer = requests.Session()
-
-    headers = {
-        'Authorization': 'Bearer ' + buyerToken['access_token'],
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
-
-    buyer.headers.update(headers)
 
     admin = requests.Session()
 
@@ -142,26 +115,7 @@ def connections(configInfo):
 
     admin.headers.update(headers)
 
-    client_id = configInfo['BUYER-CLIENTID']
-
-    anonToken = get_anon_user_token(configInfo, client_id)
-    log.debug('anon session token ' + json.dumps(anonToken, indent=2))
-
-    anon = requests.Session()
-
-    headers = {
-        'Authorization': 'Bearer ' + anonToken['access_token'],
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
-
-    anon.headers.update(headers)
-
-    return {
-        'admin': admin,
-        'buyer': buyer,
-        'anon': anon
-    }
+    return admin
 
 
 @pytest.fixture(scope="session", autouse=True)
