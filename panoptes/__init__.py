@@ -1,5 +1,6 @@
 import pytest
 import logging
+import requests
 
 from .auth import get_Token_UsernamePassword
 
@@ -22,32 +23,14 @@ def getConfigData(configInfo):
 @pytest.fixture(scope='session', autouse=True)
 def connections(configInfo):
 
-    client_id = configInfo['ADMIN-CLIENTID']
-    username = configInfo['ADMIN-USERNAME']
-    password = configInfo['ADMIN-PASSWORD']
+    client_id = configInfo['SELLER-API-CLIENT']
+    username = configInfo['SELLER-ADMIN-USERNAME']
+    password = configInfo['SELLER-ADMIN-PASSWORD']
     scope = ['FullAccess']
 
     # can successfully get a token
     adminToken = get_Token_UsernamePassword(
         configInfo, client_id, username, password, scope)
-
-    client_id = configInfo['BUYER-CLIENTID']
-    username = configInfo['BUYER-USERNAME']
-    password = configInfo['BUYER-PASSWORD']
-    scope = ['Shopper']
-
-    buyerToken = get_Token_UsernamePassword(
-        configInfo, client_id, username, password, scope)
-
-    buyer = requests.Session()
-
-    headers = {
-        'Authorization': 'Bearer ' + buyerToken['access_token'],
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
-
-    buyer.headers.update(headers)
 
     admin = requests.Session()
 
@@ -60,6 +43,29 @@ def connections(configInfo):
     admin.headers.update(headers)
 
     return {
-        'admin': admin,
-        'buyer': buyer
+        'admin': admin
     }
+
+
+def setup_module(module):
+    log.info('\nsetup_module()')
+
+
+def teardown_module(module):
+    log.info('teardown_module()')
+
+
+def setup_function(function):
+    log.info('\nsetup_function()')
+
+
+def teardown_function(function):
+    log.info('\nteardown_function()')
+
+
+def test_1():
+    log.info('-  test_1()')
+
+
+def test_2():
+    log.info('-  test_2()')
