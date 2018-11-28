@@ -89,11 +89,10 @@ def configInfo(pytestconfig):
     # print(reporting)
     log.info(reporting)
 
-    adminConnection = connections(configData)
-
-    return configData, adminConnection
+    return configData
 
 
+@pytest.fixture(scope='session', autouse=True)
 def connections(configInfo):
 
     client_id = configInfo['SELLER-API-CLIENT']
@@ -115,7 +114,14 @@ def connections(configInfo):
 
     admin.headers.update(headers)
 
-    return admin
+    sessions = {
+        'admin': admin,
+        'anon': None,
+        'buyer': None,
+        'supplier': None
+    }
+
+    return sessions
 
 
 @pytest.fixture(scope="session", autouse=True)
