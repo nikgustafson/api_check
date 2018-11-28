@@ -47,7 +47,7 @@ def buyer_setup(request, configInfo, connections):
     # make sure an incrementor exists for buyer
     incrementors = admin.get(
         configInfo['API'] + 'v1/incrementors')
-    #log.info(json.dumps(incrementors.json(), indent=4))
+    # log.info(json.dumps(incrementors.json(), indent=4))
 
     if incrementors.json()['Meta']['TotalCount'] == 0:
         createIncrementors()
@@ -75,7 +75,7 @@ def buyer_setup(request, configInfo, connections):
 
     apiClients = admin.get(
         configInfo['API'] + 'v1/apiclients', params=filters)
-    #log.info(json.dumps(apiClients.json(), indent=4))
+    # log.info(json.dumps(apiClients.json(), indent=4))
     assert apiClients.json()['Meta']['TotalCount'] >= 1
     buyerSession['clientID'] = apiClients.json()['Items'][0]['ID']
 
@@ -166,6 +166,9 @@ def buyer_setup(request, configInfo, connections):
 
     # create a default catalog and assign to buyer
 
+    defaultCatalog = admin.get(
+        configInfo['API'] + 'v1/catalogs/' + buyerSession['buyerID'])
+
     def buyer_teardown():
         log.info('tearing down the buyer user ' +
                  buyerUser.json()['ID'] + '...')
@@ -185,6 +188,12 @@ def buyer_setup(request, configInfo, connections):
             configInfo['API'] + 'v1/buyers/' + buyerSession['buyerID'])
         log.debug(deleteBuyer.status_code)
         assert deleteBuyer.status_code is codes.no_content
+
+        log.info('tearing down the ' + buyerName + ' catalog...')
+        deleteCatalog = admin.delete(
+            configInfo['API'] + 'v1/catalogs/' + buyerSession['buyerID'])
+        log.debug(deleteCatalog.status_code)
+        assert deleteCatalog.status_code is codes.no_content
 
     request.addfinalizer(buyer_teardown)
 
