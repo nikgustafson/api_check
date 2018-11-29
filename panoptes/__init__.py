@@ -3,11 +3,14 @@ import logging
 import requests
 from requests import codes
 from faker import Faker
+import random
 import json
+
 
 fake = Faker()
 
 from .auth import get_Token_UsernamePassword
+from .products import get_Products, createProducts
 
 log = logging.getLogger(__name__)
 
@@ -119,11 +122,16 @@ def buyer_setup(request, configInfo, connections):
     }
     log.debug(json.dumps(userBody, indent=4))
 
+    buyerSession['password'] = userBody['Password']
+
     buyerUser = admin.post(
         configInfo['API'] + 'v1/buyers/' + buyerSession['buyerID'] + '/users', json=userBody)
     log.debug(buyerUser.status_code)
     assert buyerUser.status_code is codes.created
     log.info('Created ' + buyerUser.json()['ID'] + ' user.')
+
+    buyerSession['userID'] = buyerUser.json()['ID']
+    buyerSession['username'] = buyerUser.json()['Username']
 
     # assign security profile
 
@@ -169,6 +177,80 @@ def buyer_setup(request, configInfo, connections):
     defaultCatalog = admin.get(
         configInfo['API'] + 'v1/catalogs/' + buyerSession['buyerID'])
 
+    assert defaultCatalog.status_code is codes.ok
+
+    # price schedule
+
+    psBody = {
+        "Name": "defaultPriceSchedule",
+        "ApplyTax": True,
+        "ApplyShipping": True,
+        "MinQuantity": 1,
+        "MaxQuantity": random.randint(0, 100),
+        "UseCumulativeQuantity": True,
+        "RestrictedQuantity": False,
+        "PriceBreaks": [
+            {
+                "Quantity": 1,
+                "Price": random.randint(0, 1000)
+            }
+        ],
+        "xp": {}
+    }
+    log.debug(psBody)
+
+    createPS = admin.post(configInfo['API'] + 'v1/priceschedules', json=psBody)
+    log.debug(createPS.status_code)
+    assert createPS.status_code is codes.created
+
+    # products create & to catalog
+    allProducts = get_Products(configInfo, admin,  {'PageSize': 100})
+    log.debug(allProducts['Meta'])
+    #assert allProducts['Meta']['TotalCount'] == 0
+
+    newProducts = createProducts(
+        configInfo, admin, DefaultPriceScheduleID=createPS.json()['ID'], numberOfProducts=20)
+    log.debug(newProducts)
+
+    allProducts = get_Products(configInfo, admin, {'PageSize': 100})
+    log.debug(allProducts['Meta'])
+
+    for item in allProducts['Items']:
+        assignProductsBody = {
+            "CatalogID": buyerSession['buyerID'],
+            "ProductID": item['ID']
+        }
+        productCatalogAssign = admin.post(
+            configInfo['API'] + 'v1/catalogs/productassignments/', json=assignProductsBody)
+        log.debug(productCatalogAssign.text)
+        log.debug(productCatalogAssign.status_code)
+        assert productCatalogAssign.status_code is codes.no_content
+
+    # set up buyer user session
+
+    log.info(buyerSession)
+
+    client_id = buyerSession['clientID']
+    username = buyerSession['username']
+    password = buyerSession['password']
+    scope = ['FullAccess']
+
+    # can successfully get a token
+    token = get_Token_UsernamePassword(
+        configInfo, client_id, username, password, scope)
+
+    buyer = requests.Session()
+
+    headers = {
+        'Authorization': 'Bearer ' + token['access_token'],
+        'Content-Type': 'application/json',
+        'charset': 'UTF-8'
+    }
+
+    buyer.headers.update(headers)
+
+    buyerSession['session'] = buyer
+
     def buyer_teardown():
         log.info('tearing down the buyer user ' +
                  buyerUser.json()['ID'] + '...')
@@ -189,6 +271,13 @@ def buyer_setup(request, configInfo, connections):
         log.debug(deleteBuyer.status_code)
         assert deleteBuyer.status_code is codes.no_content
 
+        log.info('tearing down the all the products...')
+        for item in allProducts['Items']:
+            deleteProduct = admin.delete(
+                configInfo['API'] + 'v1/products/' + item['ID'])
+            log.debug(deleteProduct.status_code)
+            assert deleteProduct.status_code is codes.no_content
+
         log.info('tearing down the ' + buyerName + ' catalog...')
         deleteCatalog = admin.delete(
             configInfo['API'] + 'v1/catalogs/' + buyerSession['buyerID'])
@@ -200,6 +289,8 @@ def buyer_setup(request, configInfo, connections):
 
 def test_1(buyer_setup):
     log.info('-  test_1()')
+
+    log.info
 
 
 def test_2(buyer_setup):

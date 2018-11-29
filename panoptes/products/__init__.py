@@ -28,22 +28,13 @@ productParams = {
 }
 
 
-def get_Products(configInfo, token, params):
-
-    if type(token) is dict:
-        token = token['access_token']
-
-    headers = {
-        'Authorization': 'Bearer ' + token,
-        'Content-Type': 'application/json',
-        'charset': 'UTF-8'
-    }
+def get_Products(configInfo, session, params):
 
     try:
-        products = requests.get(
-            configInfo['API'] + 'v1/products', headers=headers, params=(params))
-        log.info(products.encoding)
-        log.info(products.request.url)
+        products = session.get(
+            configInfo['API'] + 'v1/products', params=(params))
+       # log.info(products.encoding)
+       # log.info(products.request.url)
         # log.debug(json.dumps(products.json(), indent=2))
 
         assert products.status_code is codes.ok
@@ -81,13 +72,13 @@ def patch_Product(configInfo, token, productID, params, body):
         sys.exit(1)
 
 
-def createProducts(configInfo, session, numberOfProducts=1):
+def createProducts(configInfo, session, DefaultPriceScheduleID='', numberOfProducts=1):
 
     products = []
     i = 0
     while numberOfProducts > i:
         body = {
-            "DefaultPriceScheduleID": "",
+            "DefaultPriceScheduleID": DefaultPriceScheduleID,
             "Name": fake.job(),
             "Description": fake.catch_phrase(),
             "QuantityMultiplier": choice(list(range(1, 10))),
@@ -100,12 +91,13 @@ def createProducts(configInfo, session, numberOfProducts=1):
 
         }
 
-        #log.info(json.dumps(body, indent=4))
+        log.debug(json.dumps(body, indent=4))
 
         try:
             newProduct = session.post(
                 configInfo['API'] + 'v1/products', json=body)
-            # log.info(newProduct.status_code)
+            log.debug(newProduct.text)
+            log.debug(newProduct.status_code)
             assert newProduct.status_code is codes.created
 
         except requests.exceptions.RequestException as e:
@@ -141,7 +133,7 @@ def assignProducts(configInfo, session, products, PriceScheduleID=None, BuyerID=
            # log.info(assignCat.request.body)
            # log.info(assignCat.text)
             assert assignCat.status_code in [
-                codes.created, codes.no_content, codes.ok, '204']
+                codes.created, codes.no_content, codes.ok]
 
         except requests.exceptions.RequestException as e:
             log.info(e)
