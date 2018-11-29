@@ -228,12 +228,13 @@ def buyer_setup(request, configInfo, connections):
 
     # set up buyer user session
 
-    log.info(buyerSession)
+    log.debug(buyerSession)
+    log.info(connections)
 
     client_id = buyerSession['clientID']
     username = buyerSession['username']
     password = buyerSession['password']
-    scope = ['FullAccess']
+    scope = ['Shopper', 'MeAdmin']
 
     # can successfully get a token
     token = get_Token_UsernamePassword(
@@ -250,6 +251,10 @@ def buyer_setup(request, configInfo, connections):
     buyer.headers.update(headers)
 
     buyerSession['session'] = buyer
+
+    log.debug(buyerSession)
+
+    connections['buyer'] = buyerSession['session']
 
     def buyer_teardown():
         log.info('tearing down the buyer user ' +
@@ -287,10 +292,11 @@ def buyer_setup(request, configInfo, connections):
     request.addfinalizer(buyer_teardown)
 
 
-def test_1(buyer_setup):
+def test_1(buyer_setup, connections):
     log.info('-  test_1()')
 
-    log.info
+    log.info(connections['admin'])
+    log.info(connections['buyer'])
 
 
 def test_2(buyer_setup):

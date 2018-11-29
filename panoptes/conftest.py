@@ -36,7 +36,7 @@ def pytest_addoption(parser):
     parser.addoption("--REPORT", action="store",
                      help="Reporting: YES or NO", default="YES")
     parser.addoption("--CONFIG", action="store",
-                     help="Config.ini File Location", default="config.ini")
+                     help="Config.ini File Location", default="config_new.ini")
 
 
 def pytest_configure(config):

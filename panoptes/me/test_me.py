@@ -64,7 +64,7 @@ def createMeAddress(configInfo, session):
 @pytest.mark.smoke
 @pytest.mark.description(''' Verifies that a buyer user can create a new private address.\n
 						In the Smoke Tests, this verifies that the API can write to the database.''')
-def test_meAddressesCreate(configInfo):
+def test_meAddressesCreate(buyer_setup, configInfo):
 
     client_id = configInfo['BUYER-CLIENTID']
     username = configInfo['BUYER-USERNAME']
@@ -110,7 +110,7 @@ def test_meAddressesCreate(configInfo):
 @pytest.mark.smoke
 @pytest.mark.description(''' Verifies that a buyer user can delete a private address.\n
 						In the Smoke Tests, this verifies that the API can write deletes to the database.''')
-def test_meAddressesDelete(configInfo):
+def test_meAddressesDelete(buyer_setup, configInfo):
 
     client_id = configInfo['BUYER-CLIENTID']
     username = configInfo['BUYER-USERNAME']
@@ -157,6 +157,7 @@ def test_meAddressesDelete(configInfo):
 
 
 @pytest.mark.smoke
+@pytest.mark.skip
 @pytest.mark.description(''' Verifies that an anon user can register.''')
 def test_meRegistration(configInfo, connections):
 
@@ -198,7 +199,7 @@ def test_meRegistration(configInfo, connections):
 
 @pytest.mark.smoke
 @pytest.mark.description('Tests all Me list endpoints.')
-@pytest.mark.parametrize("sessions", ['buyer', 'anon'])
+@pytest.mark.parametrize("sessions", ['buyer', 'admin'])
 @pytest.mark.parametrize("endpoint", [
     "",
     "products",
@@ -214,7 +215,7 @@ def test_meRegistration(configInfo, connections):
     "catalogs"
 
 ])
-def test_me_gets(configInfo, connections, sessions, endpoint):
+def test_me_gets(configInfo, buyer_setup, connections, sessions, endpoint):
 
     session = connections[sessions]
 
@@ -232,8 +233,8 @@ def test_me_gets(configInfo, connections, sessions, endpoint):
 
 @pytest.mark.smoke
 @pytest.mark.description('Verifies Facet Navigation appears on me/Products.')
-@pytest.mark.parametrize("sessions", ['buyer', 'anon'])
-def test_me_facets(configInfo, connections, sessions):
+@pytest.mark.parametrize("sessions", ['buyer', 'admin'])
+def test_me_facets(configInfo, buyer_setup, connections, sessions):
 
     session = connections[sessions]
 
