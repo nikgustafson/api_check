@@ -183,7 +183,7 @@ def test_NewUserInvitedCreated(configInfo, connections):
     log.info(email)
 
 
-@pytest.mark.smoke
+#@pytest.mark.smoke
 @pytest.mark.description(
         "Verifies that the OrderSubmitted message sender is working. \
 	Test registers an Anon User, creates an order with lineitem, and submits the order. After order submit, test verifies that an OrderSubmitted email was recieved by the order submitting user.")

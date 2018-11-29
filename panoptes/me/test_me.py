@@ -62,6 +62,7 @@ def createMeAddress(configInfo, session):
 
 
 @pytest.mark.smoke
+@pytest.mark.perf
 @pytest.mark.description(''' Verifies that a buyer user can create a new private address.\n
 						In the Smoke Tests, this verifies that the API can write to the database.''')
 def test_meAddressesCreate(configInfo):
@@ -108,6 +109,7 @@ def test_meAddressesCreate(configInfo):
 
 
 @pytest.mark.smoke
+@pytest.mark.perf
 @pytest.mark.description(''' Verifies that a buyer user can delete a private address.\n
 						In the Smoke Tests, this verifies that the API can write deletes to the database.''')
 def test_meAddressesDelete(configInfo):
@@ -197,8 +199,10 @@ def test_meRegistration(configInfo, connections):
 
 
 @pytest.mark.smoke
+@pytest.mark.perf
 @pytest.mark.description('Tests all Me list endpoints.')
-@pytest.mark.parametrize("sessions", ['buyer', 'anon'])
+#@pytest.mark.parametrize("sessions", ['buyer', 'anon'])
+@pytest.mark.parametrize("sessions", ['buyer'])
 @pytest.mark.parametrize("endpoint", [
     "",
     "products",
@@ -221,8 +225,8 @@ def test_me_gets(configInfo, connections, sessions, endpoint):
     collection = session.get(configInfo['API'] + 'v1/me/' + endpoint)
     log.info(collection.url)
     # log.info(collection.status_code)
-    log.info(repr(collection.elapsed.seconds) + ' seconds OR ' +
-             repr(collection.elapsed.microseconds) + ' microseconds')
+
+    log.info(repr(collection.elapsed.total_seconds()) + ' seconds elapsed.')
     # log.debug(collection.json())
     if 'Meta' in collection.json().keys():
         log.debug(collection.json()['Meta']['TotalCount'])
@@ -231,6 +235,7 @@ def test_me_gets(configInfo, connections, sessions, endpoint):
 
 
 @pytest.mark.smoke
+@pytest.mark.perf
 @pytest.mark.description('Verifies Facet Navigation appears on me/Products.')
 @pytest.mark.parametrize("sessions", ['buyer', 'anon'])
 def test_me_facets(configInfo, connections, sessions):

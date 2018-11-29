@@ -21,3 +21,20 @@ def test_xpDateFilter(configInfo, connections):
     }
     productList = admin.get(configInfo['API'] + 'v1/products', params=filters)
     log.info(json.dumps(productList.json()))
+
+
+@pytest.mark.perf
+@pytest.mark.smoke
+def test_adminGet(configInfo, connections):
+
+    admin = connections['admin']
+
+    filters = {
+        'pageSize': 100
+    }
+    productList = admin.get(configInfo['API'] + 'v1/products', params=filters)
+    # log.info(json.dumps(productList.json()))
+
+    log.info(productList.url)
+    log.info(productList.elapsed.total_seconds())
+    assert productList.status_code is codes.ok

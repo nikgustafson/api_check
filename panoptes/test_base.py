@@ -32,6 +32,7 @@ def test_configData(configInfo):
 
 #@pytest.mark.skip
 @pytest.mark.smoke
+@pytest.mark.perf
 @pytest.mark.description('Verifies that the ENVs reported for API, AUTH, INTEGRATIONS are a) responding and b) consistent.')
 def test_api_env_vars(configInfo):
 
