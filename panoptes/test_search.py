@@ -22,6 +22,7 @@ log.debug('Basic Search Tests Begun...')
 @pytest.mark.parametrize("buyer_endpoint", [
     "products"
 ])
+@pytest.mark.skip("tests currently don't support facets")
 @pytest.mark.Description("facets should only be returned in the meta for faceted lists, not all lists. current facet lists: me/products")
 def test_NoFacetsReturnedForNonFacetLists(configInfo, connections, buyer_endpoint):
     '''

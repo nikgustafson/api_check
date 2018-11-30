@@ -8,9 +8,12 @@ import json
 import time
 from faker import Faker
 from random import randint
+import jwt
+
 
 from .. import me
 from .. import auth
+from ..me import get_Me
 
 from ..integrations import listServers, listEmails, findEmail, awaitEmail, getEmail, deleteEmail, createCreditCard
 
@@ -21,56 +24,62 @@ log = logging.getLogger(__name__)
 
 #@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
 @pytest.mark.smoke
-@pytest.mark.description('Attempting to create a card in auth.net for a newly registered user should work.')
-def test_createCardNewUser(configInfo, connections):
+@pytest.mark.description('Attempting to create a card in auth.net for a newly registered user or established user should work.')
+@pytest.mark.parametrize("sessions", [
+    "anon",
+    "buyer",
+    "registered"
+])
+def test_createCardNewUser(configInfo, connections, sessions, registerAnonUser):
 
-    client_id = configInfo['BUYER-CLIENTID']
+    # log.info(connections[sessions].headers)
+    session = connections[sessions]
+
+    decoded = jwt.decode(connections[sessions].headers[
+                         'Authorization'][7:], verify=False)
+    log.debug(decoded)
+
+    client_id = decoded['cid']
+
     scope = ['Shopper']
 
-    # get an anon session
-    session = connections['anon']
-    # log.info(session.headers)
-    #token = auth.get_anon_user_token(configInfo, client_id)
+    user = get_Me(configInfo, session)
+    log.debug(json.dumps(user, indent=4))
 
-    # register the anon user as a new user
-    newUserToken = me.registerMe(configInfo, session)
-    #log.info(json.dumps(newUserToken, indent=4))
-
-    user = me.get_Me(configInfo, newUserToken)
-    #log.info(json.dumps(user, indent=4))
-
-    assert 'AuthorizeNetProfileID' not in user['xp'].keys()
-    # if 'AuthorizeNetProfileID' in user['xp'].keys():
-    #	me.patch_Me(configInfo, buyerToken, {'xp.AuthorizeNetProfileID':None})
+    if user['xp'] is not None:
+        log.debug(user['xp'])
+        assert 'AuthorizeNetProfileID' not in user['xp'].keys()
+        # if 'AuthorizeNetProfileID' in user['xp'].keys():
+        #	me.patch_Me(configInfo, buyerToken, {'xp.AuthorizeNetProfileID':None})
 
     # create a new card through auth.net
 
     requestBody = {
         'CardDetails': {
-            'CardCode': "123",
-            'CardNumber': "4111111111111111",
-            'CardType': "visa",
+            'CardCode': fake.credit_card_security_code(card_type='visa13'),
+            'CardNumber': fake.credit_card_number(card_type="visa13"),
+            'CardType': "Visa",
             'CardholderName': user['FirstName'] + ' ' + user['LastName'],
-            'ExpirationDate': "0321",
+            'ExpirationDate': fake.credit_card_expire(start="now", end="+10y", date_format="%m%y"),
             'Shared': False
         },
         'TransactionType': "createCreditCard",
         'buyerID': configInfo['BUYER']
     }
 
-    #log.info(json.dumps(requestBody, indent=4))
+    log.debug(json.dumps(requestBody, indent=4))
 
-    newCard = createCreditCard(configInfo, requestBody, newUserToken)
+    newCard = createCreditCard(configInfo, requestBody, session)
 
     assert newCard['ResponseHttpStatusCode'] is codes.ok
 
-    user = me.get_Me(configInfo, newUserToken)
-    log.info(json.dumps(user, indent=4))
+    user = me.get_Me(configInfo, session)
+    log.debug(json.dumps(user, indent=4))
 
     assert 'AuthorizeNetProfileID' in user['xp'].keys()
 
 
-#@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
+@pytest.mark.skip('Bugged in 1.0.85: EX-1705')
 @pytest.mark.smoke
 @pytest.mark.description('Attempting to create a card that already exists should return an Auth.Net duplicate payment profile error')
 def test_createCardExistingUser(configInfo):

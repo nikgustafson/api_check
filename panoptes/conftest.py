@@ -11,7 +11,7 @@ from datetime import datetime
 from pathlib import Path
 from _pytest.runner import runtestprotocol
 from .auth import get_Token_UsernamePassword, get_anon_user_token
-from .me import get_Me
+from .me import get_Me, registerMe
 import requests
 from requests import codes
 from faker import Faker
@@ -438,6 +438,41 @@ def buyer_setup(request, configInfo, connections):
         assert deleteCatalog.status_code is codes.no_content
 
     request.addfinalizer(buyer_teardown)
+
+
+@pytest.fixture(scope='module', autouse=True)
+def registerAnonUser(configInfo, connections):
+
+    log.info('Let\s REGISTER THAT USER!')
+
+    anon = connections['anon']
+
+    # register the anon user as a new user
+    newUser = registerMe(configInfo, anon)
+    log.debug(json.dumps(newUser, indent=4))
+    jwtHeaders = jwt.get_unverified_header(newUser['access_token'])
+    # log.debug(jwtHeaders)
+
+    decoded = jwt.decode(newUser['access_token'], verify=False)
+    log.debug(decoded)
+
+    client_id = decoded['cid']
+    username = decoded['usr']
+    scope = decoded['role']
+
+    registered = requests.Session()
+
+    headers = {
+        'Authorization': 'Bearer ' + newUser['access_token'],
+        'Content-Type': 'application/json',
+        'charset': 'UTF-8'
+    }
+
+    registered.headers.update(headers)
+
+    connections['registered'] = registered
+    user = get_Me(configInfo, registered)
+    log.debug(json.dumps(user, indent=4))
 
 
 #----------------------------# tesults set up
