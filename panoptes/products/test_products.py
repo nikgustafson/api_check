@@ -23,7 +23,52 @@ from ..me import getMeProducts
 log = logging.getLogger(__name__)
 
 
-def test_xpDateFilter(configInfo, connections):
+@pytest.fixture()
+def product_setup(configInfo, connections):
+
+    admin = connections['admin']
+
+    meAdmin = get_Me(configInfo, admin)
+
+    catalog = meAdmin['']
+
+# products create & to catalog
+    allProducts = get_Products(configInfo, admin,  {'PageSize': 100})
+    log.debug(allProducts['Meta'])
+    #assert allProducts['Meta']['TotalCount'] == 0
+
+    newProducts = createProducts(
+        configInfo, admin, DefaultPriceScheduleID=createPS.json()['ID'], numberOfProducts=100)
+    log.debug(newProducts)
+
+    allProducts = get_Products(configInfo, admin, {'PageSize': 100})
+    log.debug(allProducts['Meta'])
+
+    for item in newProducts:
+        assignProductsBody = {
+            "CatalogID": catalog,
+            "ProductID": item
+        }
+        productCatalogAssign = admin.post(
+            configInfo['API'] + 'v1/catalogs/productassignments/', json=assignProductsBody)
+        log.debug(productCatalogAssign.text)
+        log.debug(productCatalogAssign.status_code)
+        assert productCatalogAssign.status_code is codes.no_content
+    log.info('Created and Assigned 100 products to ' + buyerSession['buyerID'])
+    # set up buyer user session
+
+    def product_teardown():
+        log.info('tearing down the extra products...')
+        for item in newProducts:
+            deleteProduct = admin.delete(
+                configInfo['API'] + 'v1/products/' + item['ID'])
+            log.debug(deleteProduct.status_code)
+            assert deleteProduct.status_code is codes.no_content
+
+
+@pytest.mark.smoke
+@pytest.mark.Description("Admin List Products endpoint, with performance info.")
+def test_ListProducts(configInfo, connections):
 
     admin = connections['admin']
 
@@ -31,9 +76,14 @@ def test_xpDateFilter(configInfo, connections):
         'pageSize': 100
     }
     productList = admin.get(configInfo['API'] + 'v1/products', params=filters)
-    log.info(json.dumps(productList.json()))
+    log.info(productList.status_code)
+    log.info(productList.elapsed.total_seconds())
+    assert productList.status_code is codes.ok
+    log.debug(json.dumps(productList.json()))
 
 
+@pytest.mark.skip
+@pytest.mark.Description("Bug EX-1761 -- currently caching is holding up product assignment via usergroup.")
 def test_productAssignmentCaching(configInfo, connections):
 
     admin = connections['admin']
