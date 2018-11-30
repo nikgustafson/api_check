@@ -16,37 +16,16 @@ fake = Faker()
 log = logging.getLogger(__name__)
 
 
-def get_Me(configInfo, token):
+def get_Me(configInfo, session):
 
-    if type(token) is dict:
-        token = token['access_token']
-        headers = {
-            'Authorization': 'Bearer ' + token,
-            'Content-Type': 'application/json',
-            'charset': 'UTF-8'
-        }
-        me = requests.get(configInfo['API'] + 'v1/me', headers=headers)
-
-        # log.debug(me.request.headers)
-        # log.debug(me.request.url)
-        # log.debug(json.dumps(me.json(), indent=2))
-        # log.debug(me.status_code)
+    try:
+        me = session.get(configInfo['API'] + 'v1/me')
+        log.info(me.text)
+        log.info(me.status_code)
+        log.info(me.url)
         assert me.status_code is codes.ok
-
-    elif type(token) is requests.session:
-        try:
-            me = session.get(configInfo['API'] + 'v1/me')
-            assert me.status_code is codes.ok
-        except:
-            raise
-    else:
-        headers = {
-            'Authorization': 'Bearer ' + token,
-            'Content-Type': 'application/json',
-            'charset': 'UTF-8'
-        }
-        me = requests.get(configInfo['API'] + 'v1/me', headers=headers)
-        assert me.status_code is codes.ok
+    except:
+        raise
 
     return me.json()
 

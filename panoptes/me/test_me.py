@@ -17,7 +17,7 @@ from faker import Faker
 
 from ..auth import get_Token_UsernamePassword
 
-from . import registerMe, get_Me
+from . import registerMe, get_Me, getSessions
 
 fake = Faker()
 
@@ -64,7 +64,7 @@ def createMeAddress(configInfo, session):
 @pytest.mark.smoke
 @pytest.mark.description(''' Verifies that a buyer user can create a new private address.\n
 						In the Smoke Tests, this verifies that the API can write to the database.''')
-def test_meAddressesCreate(buyer_setup, connections, configInfo):
+def test_meAddressesCreate(connections, configInfo):
 
     buyer = connections['buyer']
     meGet = buyer.get(configInfo['API'] + 'v1/me')
@@ -93,7 +93,7 @@ def test_meAddressesCreate(buyer_setup, connections, configInfo):
 @pytest.mark.smoke
 @pytest.mark.description(''' Verifies that a buyer user can delete a private address.\n
 						In the Smoke Tests, this verifies that the API can write deletes to the database.''')
-def test_meAddressesDelete(buyer_setup, connections, configInfo):
+def test_meAddressesDelete(connections, configInfo):
     buyer = connections['buyer']
 
     meGet = buyer.get(configInfo['API'] + 'v1/me')
@@ -123,49 +123,42 @@ def test_meAddressesDelete(buyer_setup, connections, configInfo):
 
 
 @pytest.mark.smoke
-@pytest.mark.skip
 @pytest.mark.description(''' Verifies that an anon user can register.''')
 def test_meRegistration(configInfo, connections):
 
-    anonToken = connections['anon']
+    anon = connections['anon']
 
     # register the anon user as a new user
-    newUserToken = registerMe(configInfo, anonToken)
-    log.debug(json.dumps(newUserToken, indent=4))
-    jwtHeaders = jwt.get_unverified_header(newUserToken['access_token'])
+    newUser = registerMe(configInfo, anon)
+    log.debug(json.dumps(newUser, indent=4))
+    jwtHeaders = jwt.get_unverified_header(newUser['access_token'])
+    # log.debug(jwtHeaders)
 
-    decoded = jwt.decode(newUserToken['access_token'], verify=False)
+    decoded = jwt.decode(newUser['access_token'], verify=False)
+    log.debug(decoded)
 
-    #log.debug('America/Chicago' in common_timezones_set)
+    client_id = decoded['cid']
+    username = decoded['usr']
+    scope = decoded['role']
 
-    loc_tz = pytz.timezone('America/Chicago')
+    registered = requests.Session()
 
-    log.debug('--------')
-    log.debug('today\'s date is:')
-    c_dt = loc_tz.localize(datetime.today(), is_dst=False)
-    log.debug(c_dt)
-    # log.debug(loc_dt)
-    log.debug('--------')
-    # log.debug(decoded['nbf'])
-    # log.debug(decoded['exp'])
+    headers = {
+        'Authorization': 'Bearer ' + newUser['access_token'],
+        'Content-Type': 'application/json',
+        'charset': 'UTF-8'
+    }
 
-    # log.debug(common_timezones_set)
+    registered.headers.update(headers)
 
-    notbefore = loc_tz.localize(datetime.utcfromtimestamp(
-        decoded['nbf']), is_dst=False)
-    expiration = loc_tz.localize(datetime.utcfromtimestamp(
-        decoded['exp']), is_dst=False)
-
-    log.debug('Registered User\'s NBF: ' + str(notbefore))
-    log.debug('Registered User\'sEXP: ' + str(expiration))
-
-    user = get_Me(configInfo, newUserToken)
-    #log.debug(json.dumps(user, indent=4))
+    connections['registered'] = registered
+    user = get_Me(configInfo, registered)
+    log.debug(json.dumps(user, indent=4))
 
 
 @pytest.mark.smoke
 @pytest.mark.description('Tests all Me list endpoints.')
-@pytest.mark.parametrize("sessions", ['buyer', 'admin'])
+@pytest.mark.parametrize("sessions", ['admin', 'buyer', 'anon', 'registered'])
 @pytest.mark.parametrize("endpoint", [
     "",
     "products",
@@ -181,7 +174,7 @@ def test_meRegistration(configInfo, connections):
     "catalogs"
 
 ])
-def test_me_gets(configInfo, buyer_setup, connections, sessions, endpoint):
+def test_me_gets(configInfo, buyer_setup, sessions, connections, endpoint):
 
     session = connections[sessions]
 
@@ -200,7 +193,7 @@ def test_me_gets(configInfo, buyer_setup, connections, sessions, endpoint):
 @pytest.mark.smoke
 @pytest.mark.skip  # the buyer set up doesn't work with facets yet
 @pytest.mark.description('Verifies Facet Navigation appears on me/Products.')
-@pytest.mark.parametrize("sessions", ['buyer', 'admin'])
+@pytest.mark.parametrize("sessions", ['buyer', 'anon', 'admin'])
 def test_me_facets(configInfo, buyer_setup, connections, sessions):
 
     session = connections[sessions]

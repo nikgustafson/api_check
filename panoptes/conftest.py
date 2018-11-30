@@ -11,6 +11,7 @@ from datetime import datetime
 from pathlib import Path
 from _pytest.runner import runtestprotocol
 from .auth import get_Token_UsernamePassword, get_anon_user_token
+from .me import get_Me
 import requests
 from requests import codes
 from faker import Faker
@@ -57,7 +58,7 @@ def pytest_configure(config):
     config.oc_env = str.lower(environment)
 
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def configInfo(pytestconfig):
     global data
     global reporting
@@ -103,7 +104,7 @@ def configInfo(pytestconfig):
     return configData
 
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def connections(configInfo):
 
     client_id = configInfo['SELLER-API-CLIENT']
@@ -126,10 +127,7 @@ def connections(configInfo):
     admin.headers.update(headers)
 
     sessions = {
-        'admin': admin,
-        'anon': None,
-        'buyer': None,
-        'supplier': None
+        'admin': admin
     }
 
     return sessions
@@ -149,7 +147,7 @@ def reporting_header(request):
     return(pytest.reporting)
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='module', autouse=True)
 def buyer_setup(request, configInfo, connections):
     admin = connections['admin']
     log.info('setting up a new buyer...')
@@ -226,6 +224,8 @@ def buyer_setup(request, configInfo, connections):
         configInfo['API'] + 'v1/messagesenders/assignments', json=assignmentBody)
     log.debug(assignMessageSender.status_code)
     assert assignMessageSender.status_code == 204
+    log.info('Assigned ' + messageID + ' to ' +
+             buyerSession['buyerID'] + ' buyer.')
     # create new user in buyer
     userProfile = fake.profile()
     userBody = {
@@ -268,6 +268,8 @@ def buyer_setup(request, configInfo, connections):
         configInfo['API'] + 'v1/securityprofiles/assignments', json=assignBody)
     log.debug(assignProfile.status_code)
     assert assignProfile.status_code is codes.no_content
+    log.info('Assigned basic security profile to ' +
+             buyerSession['buyerID'] + ' buyer.')
 
     # create a default ship from address
 
@@ -292,6 +294,7 @@ def buyer_setup(request, configInfo, connections):
         configInfo['API'] + 'v1/addresses', json=addressBody)
     log.debug(newAddress.status_code)
     assert newAddress.status_code is codes.created
+    log.info('Created new ShipFrom Address')
 
     # create a default catalog and assign to buyer
 
@@ -323,6 +326,7 @@ def buyer_setup(request, configInfo, connections):
     createPS = admin.post(configInfo['API'] + 'v1/priceschedules', json=psBody)
     log.debug(createPS.status_code)
     assert createPS.status_code is codes.created
+    log.info('Created new Default Price Schedule')
 
     # products create & to catalog
     allProducts = get_Products(configInfo, admin,  {'PageSize': 100})
@@ -346,7 +350,7 @@ def buyer_setup(request, configInfo, connections):
         log.debug(productCatalogAssign.text)
         log.debug(productCatalogAssign.status_code)
         assert productCatalogAssign.status_code is codes.no_content
-
+    log.info('Created and Assigned 20 products to ' + buyerSession['buyerID'])
     # set up buyer user session
 
     log.debug(buyerSession)
@@ -376,6 +380,29 @@ def buyer_setup(request, configInfo, connections):
     log.debug(buyerSession)
 
     connections['buyer'] = buyerSession['session']
+    configInfo['Buyer'] = buyerSession['buyerID']
+
+    # anon user session
+
+    # can successfully get a token
+    anontoken = get_anon_user_token(configInfo, client_id, scope)
+    anon = requests.Session()
+
+    headers = {
+        'Authorization': 'Bearer ' + anontoken['access_token'],
+        'Content-Type': 'application/json',
+        'charset': 'UTF-8'
+    }
+
+    anon.headers.update(headers)
+
+    connections['anon'] = anon
+
+    for item in connections:
+        log.debug(item)
+        log.debug(connections[item])
+       # log.debug(json.dumps(connections[item].auth, indent=4))
+        log.debug(connections[item].headers)
 
     def buyer_teardown():
         log.info('tearing down the buyer user ' +
