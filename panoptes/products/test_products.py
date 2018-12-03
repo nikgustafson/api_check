@@ -8,6 +8,7 @@ import logging
 import json
 import urllib.parse
 from faker import Faker
+from . import product_setup
 
 from time import sleep
 
@@ -17,58 +18,15 @@ fake = Faker()
 
 from . import createProducts, assignProducts
 
-from ..me import getMeProducts
+from ..me import getMeProducts, get_Me
 
 
 log = logging.getLogger(__name__)
 
 
-@pytest.fixture()
-def product_setup(configInfo, connections):
-
-    admin = connections['admin']
-
-    meAdmin = get_Me(configInfo, admin)
-
-    catalog = meAdmin['']
-
-# products create & to catalog
-    allProducts = get_Products(configInfo, admin,  {'PageSize': 100})
-    log.debug(allProducts['Meta'])
-    #assert allProducts['Meta']['TotalCount'] == 0
-
-    newProducts = createProducts(
-        configInfo, admin, DefaultPriceScheduleID=createPS.json()['ID'], numberOfProducts=100)
-    log.debug(newProducts)
-
-    allProducts = get_Products(configInfo, admin, {'PageSize': 100})
-    log.debug(allProducts['Meta'])
-
-    for item in newProducts:
-        assignProductsBody = {
-            "CatalogID": catalog,
-            "ProductID": item
-        }
-        productCatalogAssign = admin.post(
-            configInfo['API'] + 'v1/catalogs/productassignments/', json=assignProductsBody)
-        log.debug(productCatalogAssign.text)
-        log.debug(productCatalogAssign.status_code)
-        assert productCatalogAssign.status_code is codes.no_content
-    log.info('Created and Assigned 100 products to ' + buyerSession['buyerID'])
-    # set up buyer user session
-
-    def product_teardown():
-        log.info('tearing down the extra products...')
-        for item in newProducts:
-            deleteProduct = admin.delete(
-                configInfo['API'] + 'v1/products/' + item['ID'])
-            log.debug(deleteProduct.status_code)
-            assert deleteProduct.status_code is codes.no_content
-
-
 @pytest.mark.smoke
 @pytest.mark.Description("Admin List Products endpoint, with performance info.")
-def test_ListProducts(configInfo, connections):
+def test_ListProducts(configInfo, connections, product_setup):
 
     admin = connections['admin']
 
@@ -76,8 +34,9 @@ def test_ListProducts(configInfo, connections):
         'pageSize': 100
     }
     productList = admin.get(configInfo['API'] + 'v1/products', params=filters)
-    log.info(productList.status_code)
-    log.info(productList.elapsed.total_seconds())
+    log.debug(productList.status_code)
+    log.info(repr(productList.elapsed.total_seconds()) +
+             ' total seconds elapsed.')
     assert productList.status_code is codes.ok
     log.debug(json.dumps(productList.json()))
 

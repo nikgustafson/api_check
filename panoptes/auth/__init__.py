@@ -20,7 +20,7 @@ def get_anon_user_token(configInfo, client_id, scope=[]):
 
     anon_token = get_Token_ClientID(configInfo, client_id, scope=scope)
 
-    log.info(anon_token)
+    # log.info(anon_token)
     return anon_token
 
 

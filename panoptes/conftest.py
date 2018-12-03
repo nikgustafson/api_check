@@ -149,6 +149,9 @@ def reporting_header(request):
 
 @pytest.fixture(scope='module', autouse=True)
 def buyer_setup(request, configInfo, connections):
+    log.info('--------------------------')
+    log.info('| Setting Up A New Buyer |')
+    log.info('--------------------------')
     admin = connections['admin']
     log.info('setting up a new buyer...')
     buyerName = fake.company()
@@ -324,21 +327,21 @@ def buyer_setup(request, configInfo, connections):
     log.debug(psBody)
 
     createPS = admin.post(configInfo['API'] + 'v1/priceschedules', json=psBody)
-    log.debug(createPS.status_code)
+    # log.debug(createPS.status_code)
     assert createPS.status_code is codes.created
     log.info('Created new Default Price Schedule')
 
     # products create & to catalog
     allProducts = get_Products(configInfo, admin,  {'PageSize': 100})
-    log.debug(allProducts['Meta'])
+    # log.debug(allProducts['Meta'])
     #assert allProducts['Meta']['TotalCount'] == 0
 
     newProducts = createProducts(
         configInfo, admin, DefaultPriceScheduleID=createPS.json()['ID'], numberOfProducts=20)
-    log.debug(newProducts)
+    # log.debug(newProducts)
 
     allProducts = get_Products(configInfo, admin, {'PageSize': 100})
-    log.debug(allProducts['Meta'])
+    # log.debug(allProducts['Meta'])
 
     for item in allProducts['Items']:
         assignProductsBody = {
@@ -405,6 +408,9 @@ def buyer_setup(request, configInfo, connections):
         log.debug(connections[item].headers)
 
     def buyer_teardown():
+        log.info('-----------------------------')
+        log.info('| tearing down the buyer... |')
+        log.info('-----------------------------')
         log.info('tearing down the buyer user ' +
                  buyerUser.json()['ID'] + '...')
 
@@ -430,6 +436,12 @@ def buyer_setup(request, configInfo, connections):
                 configInfo['API'] + 'v1/products/' + item['ID'])
             log.debug(deleteProduct.status_code)
             assert deleteProduct.status_code is codes.no_content
+
+        log.info('tear down the priceschedules...')
+        deletePS = admin.delete(
+            configInfo['API'] + 'v1/priceschedules/' + createPS.json()['ID'])
+        log.debug(deletePS.status_code)
+        assert deletePS.status_code is codes.no_content
 
         log.info('tearing down the ' + buyerName + ' catalog...')
         deleteCatalog = admin.delete(

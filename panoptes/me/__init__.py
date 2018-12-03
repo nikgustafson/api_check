@@ -125,25 +125,25 @@ def registerMe(configInfo, session):
 
     #?anonUserToken={{anonUserToken}}
     if type(session) is dict:
-        log.info(session)
+        # log.info(session)
         token = session['access_token']
-        log.info(token)
+        # log.info(token)
 
         user = requests.put(configInfo['API'] + 'v1/me/register',
                             json=newUser, params={'anonUserToken': token})
-        log.info(user.url)
-        log.info(user.status_code)
-        log.info(user.json())
+       # log.info(user.url)
+       # log.info(user.status_code)
+       # log.info(user.json())
         assert user.status_code is codes.ok
         return user.json()
 
     else:
-        log.info(session.headers)
+       # log.info(session.headers)
 
         token = session.headers['Authorization']
-        log.info(token)
+      #  log.info(token)
         token = token[7:]
-        log.info(token)
+       # log.info(token)
 
         user = session.put(configInfo['API'] + 'v1/me/register',
                            json=newUser, params={'anonUserToken': token})

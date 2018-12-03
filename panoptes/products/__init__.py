@@ -11,21 +11,11 @@ from random import choice
 from faker import Faker
 from time import sleep
 
+from ..me import getMeProducts, get_Me
+
 fake = Faker()
 
 log = logging.getLogger(__name__)
-
-
-productParams = {
-    'catalogID': '',
-    'categoryID': '',
-    'supplierID': '',
-    'search': '',
-    'searchOn': '',
-    'page': 1,
-    'pageSize': 20,
-
-}
 
 
 def get_Products(configInfo, session, params):
@@ -162,3 +152,75 @@ def assignProducts(configInfo, session, products, PriceScheduleID=None, BuyerID=
             log.info(e)
 
     return True
+
+
+productParams = {
+    'catalogID': '',
+    'categoryID': '',
+    'supplierID': '',
+    'search': '',
+    'searchOn': '',
+    'page': 1,
+    'pageSize': 20,
+
+}
+
+
+@pytest.fixture(scope='module', autouse=True)
+def product_setup(configInfo, connections):
+    log.info('---------------------------')
+    log.info('| Building up products... |')
+    log.info('---------------------------')
+
+    admin = connections['admin']
+    buyer = connections['buyer']
+
+    meBuyer = get_Me(configInfo, buyer)
+    # log.info(meBuyer)
+
+    buyerID = meBuyer['Buyer']['ID']
+    catalogID = meBuyer['Buyer']['DefaultCatalogID']
+
+    meAdmin = get_Me(configInfo, admin)
+    # log.info(meAdmin)
+
+    #catalog = meAdmin['']
+
+# products create & to catalog
+    filters = {
+        'name': 'defaultPriceSchedule'
+    }
+    priceSchedule = admin.get(
+        configInfo['API'] + 'v1/priceschedules/', params=filters)
+    # log.info(priceSchedule.json())
+    log.debug(priceSchedule.status_code)
+    assert priceSchedule.status_code is codes.ok
+
+    defaultPS = priceSchedule.json()['Items'][0]['ID']
+
+    newProducts = createProducts(
+        configInfo, admin, DefaultPriceScheduleID=defaultPS, numberOfProducts=100)
+   # log.debug(newProducts)
+
+    for item in newProducts:
+        assignProductsBody = {
+            "CatalogID": catalogID,
+            "ProductID": item
+        }
+        productCatalogAssign = admin.post(
+            configInfo['API'] + 'v1/catalogs/productassignments/', json=assignProductsBody)
+        # log.debug(productCatalogAssign.text)
+        # log.debug(productCatalogAssign.status_code)
+        assert productCatalogAssign.status_code is codes.no_content
+    log.info('Created and Assigned 100 products to ' + buyerID)
+
+    def product_teardown():
+        log.info('--------------------------------------')
+        log.info('| tearing down the extra products... |')
+        log.info('--------------------------------------')
+
+        for item in newProducts:
+            deleteProduct = admin.delete(
+                configInfo['API'] + 'v1/products/' + item['ID'])
+            # log.debug(deleteProduct.status_code)
+            assert deleteProduct.status_code is codes.no_content
